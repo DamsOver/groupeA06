@@ -23,14 +23,4 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-} // Commentaire damien
-
-//commentaire Martin
-
-// commentaire 17:00
-
-//commentaire 2
-
-// test
-
-//test2
+}
