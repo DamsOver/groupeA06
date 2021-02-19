@@ -11,16 +11,20 @@ import model.BasicCard;
 import model.Question;
 import vue.AddCards;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.image.Image;
+
 
 
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			
 			AddCards root = new AddCards();
-
-			Scene scene = new Scene(root,400,400);
+			primaryStage.setTitle("How much are you worth ?");
+			primaryStage.getIcons().add(new Image("/icon/icon.png"));
+			
+			Scene scene = new Scene(root,600,315);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
