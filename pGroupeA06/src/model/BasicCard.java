@@ -40,6 +40,14 @@ public class BasicCard {
 			throw new TooManyException();
 		}
 		questions.add(newQuestion);
+		
+		//on retrie la carte
+		try {
+			sortByDifficulty();
+		} catch (TooLittleException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void removeQuestion(String challenge, String answer,int difficulty)throws NotPresentException,TooLittleException {
@@ -80,11 +88,5 @@ public class BasicCard {
 	
 	public BasicCard fromJson(String json) {
 		return new Gson().fromJson(json,BasicCard.class);
-	}
-	
-	
-	
-	
-	
-	
+	}	
 }
