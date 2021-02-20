@@ -41,8 +41,8 @@ public class Home extends GridPane {
 		btnStartGame.getStyleClass().add("btn-style");
 
 		// Line 6
-		this.add(getBtnOption(), 7, 5, 6, 1);
-		GridPane.setHalignment(getBtnOption(), HPos.CENTER);
+		this.add(getBtnOptions(), 7, 5, 6, 1);
+		GridPane.setHalignment(getBtnOptions(), HPos.CENTER);
 		btnOption.getStyleClass().add("btn-style");
 
 		// Line 8
@@ -86,7 +86,7 @@ public class Home extends GridPane {
 		return btnQuit;
 	}
 
-	public Button getBtnOption() {
+	public Button getBtnOptions() {
 		if (btnOption == null) {
 			btnOption = new Button("Option");
 		}
