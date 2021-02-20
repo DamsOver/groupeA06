@@ -6,10 +6,13 @@ import exceptions.NotPresentException;
 import exceptions.TooLittleException;
 import exceptions.TooManyException;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import model.BasicCard;
 import model.Question;
 import vue.AddCards;
+import vue.Home;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 
@@ -20,13 +23,30 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			
-			AddCards root = new AddCards();
 			primaryStage.setTitle("How much are you worth ?");
 			primaryStage.getIcons().add(new Image("/icon/icon.png"));
 			
-			Scene scene = new Scene(root,600,315);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
+			Home root = new Home();	
+			AddCards addCards = new AddCards();
+			Scene sceneRoot = new Scene(root,600,315);
+			Scene sceneAddCards = new Scene(addCards,600,315);
+			
+			// Event StartGame
+			EventHandler<ActionEvent> eventStartGame = new EventHandler<ActionEvent>() { 
+	            public void handle(ActionEvent e) 
+	            { 
+	            	// Start game
+	            	// primaryStage.setScene(scene);
+	    			// primaryStage.show();
+	            } 
+	        }; 
+			root.getBtnStartGame().setOnAction(eventStartGame); 
+			
+
+			
+			
+			sceneRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(sceneRoot);
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
