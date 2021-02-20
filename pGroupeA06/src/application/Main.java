@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import model.BasicCard;
 import model.Question;
 import vue.AddCards;
+import vue.AddPlayers;
 import vue.Admin;
 import vue.Game;
 import vue.Home;
@@ -30,11 +31,13 @@ public class Main extends Application {
 			AddCards addCards = new AddCards();
 			Admin admin = new Admin();
 			Game game = new Game();
+			AddPlayers addPlayers = new AddPlayers();
 
 			Scene sceneRoot = new Scene(root, 600, 315);
 			Scene sceneAddCards = new Scene(addCards, 600, 315);
 			Scene sceneAdmin = new Scene(admin, 600, 315);
 			Scene sceneGame = new Scene(game, 600, 315);
+			Scene sceneAddPlayers = new Scene(addPlayers, 600, 315);
 
 			// Event StartGame
 			EventHandler<ActionEvent> eventStartGame = new EventHandler<ActionEvent>() {
@@ -45,7 +48,19 @@ public class Main extends Application {
 					primaryStage.show();
 				}
 			};
-			root.getBtnStartGame().setOnAction(eventStartGame);
+			addPlayers.getBtnSubmit().setOnAction(eventStartGame);
+
+			// Event StartGame
+			EventHandler<ActionEvent> eventAddPlayers = new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent e) {
+					// Start game
+
+					primaryStage.setScene(sceneAddPlayers);
+					primaryStage.show();
+				}
+			};
+			root.getBtnStartGame().setOnAction(eventAddPlayers);
+			game.getBtnBack().setOnAction(eventAddPlayers);
 
 			EventHandler<ActionEvent> eventAdmin = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
@@ -65,7 +80,7 @@ public class Main extends Application {
 				}
 			};
 			admin.getBtnBack().setOnAction(eventHome);
-			game.getBtnBack().setOnAction(eventHome);
+			addPlayers.getBtnBack().setOnAction(eventHome);
 
 			EventHandler<ActionEvent> eventQuit = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
@@ -83,6 +98,7 @@ public class Main extends Application {
 			};
 			admin.getBtnAddCards().setOnAction(eventAddCards);
 
+			sceneAddPlayers.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			sceneAddCards.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			sceneGame.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			sceneAdmin.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
