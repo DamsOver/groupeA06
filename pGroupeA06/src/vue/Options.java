@@ -3,12 +3,16 @@ package vue;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 public class Options extends GridPane {
 
+	private Label lblVolume;
+	private Slider slVolume;
 	private Text txtTitle;
 	private Button btnBack;
 
@@ -32,8 +36,21 @@ public class Options extends GridPane {
 		GridPane.setHalignment(getTxtTitle(), HPos.CENTER);
 		txtTitle.getStyleClass().add("title-style");
 
+		// Line 3
+		this.add(getLblVolume(), 1, 3, 3, 1);
+		this.add(getSlVolume(), 4, 3, 8, 1);
+		lblVolume.getStyleClass().add("h1");
+		slVolume.setMin(0);
+		slVolume.setMax(100);
+		slVolume.setValue(40);
+		slVolume.setShowTickLabels(true);
+		slVolume.setShowTickMarks(true);
+		slVolume.setMajorTickUnit(50);
+		slVolume.setMinorTickCount(5);
+		slVolume.setBlockIncrement(10);
+
 		// Line 20
-		this.add(getBtnBack(), 18, 19, 4, 4);
+		this.add(getBtnBack(), 18, 15, 4, 4);
 		btnBack.getStyleClass().add("btn-style");
 		GridPane.setHalignment(getBtnBack(), HPos.CENTER);
 
@@ -51,6 +68,20 @@ public class Options extends GridPane {
 			btnBack = new Button("Back");
 		}
 		return btnBack;
+	}
+
+	public Label getLblVolume() {
+		if (lblVolume == null) {
+			lblVolume = new Label("Volume : ");
+		}
+		return lblVolume;
+	}
+
+	public Slider getSlVolume() {
+		if (slVolume == null) {
+			slVolume = new Slider();
+		}
+		return slVolume;
 	}
 
 }

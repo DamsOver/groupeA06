@@ -8,7 +8,7 @@
 
 .btn-style {
 	-fx-font-size: 18;
-	-fx-alignment: center ;
+	-fx-alignment: center;
 }
 
 .title-style {
@@ -22,4 +22,9 @@
     -fx-background-size: 900 506;
     -fx-background-position: center center;
     -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+}
+
+.h1 {
+	-fx-font-size: 15;
+	-fx-font-weight: bold;
 }

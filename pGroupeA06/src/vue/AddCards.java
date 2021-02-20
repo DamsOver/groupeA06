@@ -90,10 +90,14 @@ public class AddCards extends GridPane {
 		this.add(gettxtFAnswer4(), 13, 7, 7, 1);
 
 		// Line 10
-		this.add(getBtnErase(), 0, 9, 2, 1);
-		this.add(getBtnSubmit(), 2, 9, 3, 1);
-
-		this.add(getBtnBack(), 18, 9, 3, 1);
+		this.add(getBtnErase(), 0, 8, 4, 2);
+		btnErase.getStyleClass().add("btn-style");
+		
+		this.add(getBtnSubmit(), 3, 8, 4, 2);
+		btnSubmit.getStyleClass().add("btn-style");
+		
+		this.add(getBtnBack(), 18, 8, 4, 2);
+		btnBack.getStyleClass().add("btn-style");
 
 	}
 
