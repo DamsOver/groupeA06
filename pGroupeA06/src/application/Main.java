@@ -1,5 +1,7 @@
 package application;
 
+import java.io.File;
+
 import enumerations.Theme;
 import exceptions.AlreadyPresentException;
 import exceptions.NotPresentException;
@@ -9,6 +11,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.BasicCard;
 import model.Question;
 import vue.AddCards;
@@ -19,6 +22,8 @@ import vue.Home;
 import vue.Options;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class Main extends Application {
 	@Override
@@ -29,6 +34,19 @@ public class Main extends Application {
 			primaryStage.getIcons().add(new Image("/img/icon.png"));
 			primaryStage.setResizable(false);
 
+			MediaPlayer mediaPlayer = new MediaPlayer(new Media(new File("src/musics/bensound-hipjazz.mp3").toURI().toString()));
+			mediaPlayer.play();
+			mediaPlayer.setVolume(0.04);
+			mediaPlayer.setStartTime(Duration.seconds(0));
+			mediaPlayer.setStopTime(Duration.seconds(160));
+			mediaPlayer.setOnEndOfMedia(new Runnable() {
+		        @Override
+		        public void run() {
+		        	mediaPlayer.seek(Duration.ZERO);
+		        	mediaPlayer.play();
+		        }
+		    }); 
+			
 			Home root = new Home();
 			AddCards addCards = new AddCards();
 			Admin admin = new Admin();
