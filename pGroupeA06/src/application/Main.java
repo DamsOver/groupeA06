@@ -26,7 +26,7 @@ public class Main extends Application {
 		try {
 
 			primaryStage.setTitle("How much are you worth ?");
-			primaryStage.getIcons().add(new Image("/icon/icon.png"));
+			primaryStage.getIcons().add(new Image("/img/icon.png"));
 
 			Home root = new Home();
 			AddCards addCards = new AddCards();
