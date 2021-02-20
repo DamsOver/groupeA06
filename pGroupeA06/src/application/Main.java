@@ -27,18 +27,20 @@ public class Main extends Application {
 
 			primaryStage.setTitle("How much are you worth ?");
 			primaryStage.getIcons().add(new Image("/img/icon.png"));
-
+			primaryStage.setResizable(false);
+			
 			Home root = new Home();
 			AddCards addCards = new AddCards();
 			Admin admin = new Admin();
 			Game game = new Game();
+			game.setId("gameBoard");
 			AddPlayers addPlayers = new AddPlayers();
 			Options options = new Options();
 
 			Scene sceneRoot = new Scene(root, 600, 315);
 			Scene sceneAddCards = new Scene(addCards, 600, 315);
 			Scene sceneAdmin = new Scene(admin, 600, 315);
-			Scene sceneGame = new Scene(game, 600, 315);
+			Scene sceneGame = new Scene(game, 900, 506);		
 			Scene sceneAddPlayers = new Scene(addPlayers, 600, 315);
 			Scene sceneOptions = new Scene(options, 600, 315);
 

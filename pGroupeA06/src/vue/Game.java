@@ -32,7 +32,7 @@ public class Game extends GridPane {
 		txtTitle.getStyleClass().add("title-style");
 
 		// Line
-		this.add(getBtnBack(), 18, 19, 4, 4);
+		this.add(getBtnBack(), 19, 38, 4, 4);
 		btnBack.getStyleClass().add("btn-style");
 	}
 
