@@ -21,24 +21,25 @@ public class AddCards extends GridPane {
 	private Label lblChallenges3;
 	private Label lblChallenges4;
 
-	private ComboBox cbTheme;
+	private ComboBox<String> cbTheme;
 
-	private TextField txtAuthor;
-	private TextField txtSubject;
-	private TextField txtChallenges1;
-	private TextField txtChallenges2;
-	private TextField txtChallenges3;
-	private TextField txtChallenges4;
-	private TextField txtAnswer1;
-	private TextField txtAnswer2;
-	private TextField txtAnswer3;
-	private TextField txtAnswer4;
+	private TextField txtFAuthor;
+	private TextField txtFSubject;
+	private TextField txtFChallenges1;
+	private TextField txtFChallenges2;
+	private TextField txtFChallenges3;
+	private TextField txtFChallenges4;
+	private TextField txtFAnswer1;
+	private TextField txtFAnswer2;
+	private TextField txtFAnswer3;
+	private TextField txtFAnswer4;
 
 	private Button btnErase;
 	private Button btnSubmit;
+	private Button btnBack;
 
 	public AddCards() {
-		
+
 		this.setPadding(new Insets(10));
 //		this.setGridLinesVisible(true); // Rend visible ligne de séparation
 		this.setVgap(10);
@@ -58,11 +59,11 @@ public class AddCards extends GridPane {
 		GridPane.setHalignment(getCbTheme(), HPos.CENTER);
 		cbTheme.getSelectionModel().selectFirst();
 		this.add(getLblAuthor(), 7, 0, 3, 1);
-		this.add(getTxtAuthor(), 9, 0, 11, 1);
+		this.add(gettxtFAuthor(), 9, 0, 11, 1);
 
 		// Line 2
 		this.add(getLblSubject(), 0, 1, 2, 1);
-		this.add(getTxtSubject(), 2, 1, 18, 1);
+		this.add(gettxtFSubject(), 2, 1, 18, 1);
 
 		// Line 4
 		this.add(getLblChallenges(), 0, 3, 3, 1);
@@ -70,27 +71,33 @@ public class AddCards extends GridPane {
 
 		// Line 5
 		this.add(getLblChallenges1(), 0, 4, 3, 1);
-		this.add(getTxtChallenges1(), 3, 4, 10, 1);
-		this.add(getTxtAnswer1(), 13, 4, 7, 1);
+		this.add(gettxtFChallenges1(), 3, 4, 10, 1);
+		this.add(gettxtFAnswer1(), 13, 4, 7, 1);
 
 		// Line 6
 		this.add(getLblChallenges2(), 0, 5, 3, 1);
-		this.add(getTxtChallenges2(), 3, 5, 10, 1);
-		this.add(getTxtAnswer2(), 13, 5, 7, 1);
+		this.add(gettxtFChallenges2(), 3, 5, 10, 1);
+		this.add(gettxtFAnswer2(), 13, 5, 7, 1);
 
 		// Line 7
 		this.add(getLblChallenges3(), 0, 6, 3, 1);
-		this.add(getTxtChallenges3(), 3, 6, 10, 1);
-		this.add(getTxtAnswer3(), 13, 6, 7, 1);
+		this.add(gettxtFChallenges3(), 3, 6, 10, 1);
+		this.add(gettxtFAnswer3(), 13, 6, 7, 1);
 
 		// Line 8
 		this.add(getLblChallenges4(), 0, 7, 3, 1);
-		this.add(getTxtChallenges4(), 3, 7, 10, 1);
-		this.add(getTxtAnswer4(), 13, 7, 7, 1);
+		this.add(gettxtFChallenges4(), 3, 7, 10, 1);
+		this.add(gettxtFAnswer4(), 13, 7, 7, 1);
 
 		// Line 10
-		this.add(getBtnErase(), 0, 9, 2, 1);
-		this.add(getBtnSubmit(), 2, 9, 3, 1);
+		this.add(getBtnErase(), 0, 8, 4, 2);
+		btnErase.getStyleClass().add("btn-style");
+		
+		this.add(getBtnSubmit(), 3, 8, 4, 2);
+		btnSubmit.getStyleClass().add("btn-style");
+		
+		this.add(getBtnBack(), 18, 8, 4, 2);
+		btnBack.getStyleClass().add("btn-style");
 
 	}
 
@@ -157,81 +164,81 @@ public class AddCards extends GridPane {
 		return lblChallenges4;
 	}
 
-	public ComboBox getCbTheme() {
+	public ComboBox<String> getCbTheme() {
 		if (cbTheme == null) {
-			cbTheme = new ComboBox();
+			cbTheme = new ComboBox<String>();
 		}
 		return cbTheme;
 	}
 
-	public TextField getTxtAuthor() {
-		if (txtAuthor == null) {
-			txtAuthor = new TextField();
+	public TextField gettxtFAuthor() {
+		if (txtFAuthor == null) {
+			txtFAuthor = new TextField();
 		}
-		return txtAuthor;
+		return txtFAuthor;
 	}
 
-	public TextField getTxtSubject() {
-		if (txtSubject == null) {
-			txtSubject = new TextField();
+	public TextField gettxtFSubject() {
+		if (txtFSubject == null) {
+			txtFSubject = new TextField();
 		}
-		return txtSubject;
+		return txtFSubject;
 	}
 
-	public TextField getTxtChallenges1() {
-		if (txtChallenges1 == null) {
-			txtChallenges1 = new TextField();
+	public TextField gettxtFChallenges1() {
+		if (txtFChallenges1 == null) {
+			txtFChallenges1 = new TextField();
 		}
-		return txtChallenges1;
+		return txtFChallenges1;
 	}
 
-	public TextField getTxtChallenges2() {
-		if (txtChallenges2 == null) {
-			txtChallenges2 = new TextField();
+	public TextField gettxtFChallenges2() {
+		if (txtFChallenges2 == null) {
+			txtFChallenges2 = new TextField();
 		}
-		return txtChallenges2;
+		return txtFChallenges2;
 	}
 
-	public TextField getTxtChallenges3() {
-		if (txtChallenges3 == null) {
-			txtChallenges3 = new TextField();
+	public TextField gettxtFChallenges3() {
+		if (txtFChallenges3 == null) {
+			txtFChallenges3 = new TextField();
 		}
-		return txtChallenges3;
+		return txtFChallenges3;
 	}
 
-	public TextField getTxtChallenges4() {
-		if (txtChallenges4 == null) {
-			txtChallenges4 = new TextField();
+	public TextField gettxtFChallenges4() {
+		if (txtFChallenges4 == null) {
+			txtFChallenges4 = new TextField();
 		}
-		return txtChallenges4;
+		return txtFChallenges4;
 	}
 
-	public TextField getTxtAnswer1() {
-		if (txtAnswer1 == null) {
-			txtAnswer1 = new TextField();
+	public TextField gettxtFAnswer1() {
+		if (txtFAnswer1 == null) {
+			txtFAnswer1 = new TextField();
 		}
-		return txtAnswer1;
+		return txtFAnswer1;
 	}
 
-	public TextField getTxtAnswer2() {
-		if (txtAnswer2 == null) {
-			txtAnswer2 = new TextField();
+	public TextField gettxtFAnswer2() {
+		if (txtFAnswer2 == null) {
+			txtFAnswer2 = new TextField();
 		}
-		return txtAnswer2;
+		return txtFAnswer2;
 	}
 
-	public TextField getTxtAnswer3() {
-		if (txtAnswer3 == null) {
-			txtAnswer3 = new TextField();
+	public TextField gettxtFAnswer3() {
+		if (txtFAnswer3 == null) {
+			txtFAnswer3 = new TextField();
 		}
-		return txtAnswer3;
+		return txtFAnswer3;
 	}
 
-	public TextField getTxtAnswer4() {
-		if (txtAnswer4 == null) {
-			txtAnswer4 = new TextField();
+	public TextField gettxtFAnswer4() {
+		if (txtFAnswer4 == null) {
+			txtFAnswer4 = new TextField();
 		}
-		return txtAnswer4;
+		return txtFAnswer4;
 	}
 
 	public Button getBtnErase() {
@@ -246,5 +253,12 @@ public class AddCards extends GridPane {
 			btnSubmit = new Button("Submit");
 		}
 		return btnSubmit;
+	}
+
+	public Button getBtnBack() {
+		if (btnBack == null) {
+			btnBack = new Button("Back");
+		}
+		return btnBack;
 	}
 }
