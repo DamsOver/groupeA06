@@ -36,9 +36,10 @@ public class AddCards extends GridPane {
 
 	private Button btnErase;
 	private Button btnSubmit;
+	private Button btnBack;
 
 	public AddCards() {
-		
+
 		this.setPadding(new Insets(10));
 //		this.setGridLinesVisible(true); // Rend visible ligne de séparation
 		this.setVgap(10);
@@ -91,6 +92,8 @@ public class AddCards extends GridPane {
 		// Line 10
 		this.add(getBtnErase(), 0, 9, 2, 1);
 		this.add(getBtnSubmit(), 2, 9, 3, 1);
+
+		this.add(getBtnBack(), 18, 9, 3, 1);
 
 	}
 
@@ -246,5 +249,12 @@ public class AddCards extends GridPane {
 			btnSubmit = new Button("Submit");
 		}
 		return btnSubmit;
+	}
+
+	public Button getBtnBack() {
+		if (btnBack == null) {
+			btnBack = new Button("Back");
+		}
+		return btnBack;
 	}
 }

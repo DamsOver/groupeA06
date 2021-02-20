@@ -1,28 +1,22 @@
 package vue;
 
-import javafx.collections.FXCollections;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 public class Home extends GridPane {
-	
+
 	private Text txtTitle;
 	private Button btnStartGame;
 	private Button btnAdmin;
 	private Button btnQuit;
 	private Button btnOption;
-	
-	
+
 	public Home() {
-		
-		
+
 		this.setPadding(new Insets(10));
 //		this.setGridLinesVisible(true); // Rend visible ligne de séparation
 		this.setVgap(10);
@@ -34,65 +28,64 @@ public class Home extends GridPane {
 			colConstr.setPercentWidth(100. / nbCol);
 			this.getColumnConstraints().add(colConstr);
 		}
-		
+
 		// Line 2
 		this.add(getTxtTitle(), 8, 1, 4, 2); // elt, columnIndex, rowIndex, colspan, rowspan
 		txtTitle.setText("Game menu");
 		GridPane.setHalignment(getTxtTitle(), HPos.CENTER);
 		txtTitle.getStyleClass().add("title-style");
-		
+
 		// Line 4
 		this.add(getBtnStartGame(), 7, 3, 6, 1);
 		GridPane.setHalignment(getBtnStartGame(), HPos.CENTER);
 		btnStartGame.getStyleClass().add("btn-style");
-		
+
 		// Line 6
 		this.add(getBtnOption(), 7, 5, 6, 1);
 		GridPane.setHalignment(getBtnOption(), HPos.CENTER);
 		btnOption.getStyleClass().add("btn-style");
-		
+
 		// Line 8
 		this.add(getBtnAdmin(), 7, 7, 6, 1);
 		GridPane.setHalignment(getBtnAdmin(), HPos.CENTER);
 		btnAdmin.getStyleClass().add("btn-style");
-		
+
 		// Line 14
 		this.add(getBtnQuit(), 17, 8, 3, 1);
 		GridPane.setHalignment(getBtnQuit(), HPos.CENTER);
 		btnQuit.getStyleClass().add("btn-style");
 		btnQuit.getStyleClass().add("btnQuit-style");
-		
-		
+
 	}
-	
+
 	public Text getTxtTitle() {
 		if (txtTitle == null) {
 			txtTitle = new Text();
 		}
 		return txtTitle;
 	}
-	
+
 	public Button getBtnStartGame() {
 		if (btnStartGame == null) {
 			btnStartGame = new Button("Start Game");
 		}
 		return btnStartGame;
 	}
-	
+
 	public Button getBtnAdmin() {
 		if (btnAdmin == null) {
 			btnAdmin = new Button("Admin");
 		}
 		return btnAdmin;
 	}
-	
+
 	public Button getBtnQuit() {
 		if (btnQuit == null) {
 			btnQuit = new Button("Quit");
 		}
 		return btnQuit;
 	}
-	
+
 	public Button getBtnOption() {
 		if (btnOption == null) {
 			btnOption = new Button("Option");
