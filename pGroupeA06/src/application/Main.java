@@ -154,19 +154,7 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) {
-		launch(args);	
-		BasicCard bc;
-		bc = new BasicCard("Martin",Theme.IMPROBABLE,"Nature");
-		try {
-			bc.addQuestion("What is the only flying mammal?", "The bat");
-		} catch (AlreadyPresentException | TooManyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(bc.toString());
 		launch(args);
-
-
 	}
 
 }
