@@ -39,10 +39,10 @@ public class Main extends Application {
 			Scene sceneGame = new Scene(game, 600, 315);
 			Scene sceneAddPlayers = new Scene(addPlayers, 600, 315);
 
-			// Event StartGame
+			// Event "change scene" with clic button
+			// addPlayers -> Game
 			EventHandler<ActionEvent> eventStartGame = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
-					// Start game
 
 					primaryStage.setScene(sceneGame);
 					primaryStage.show();
@@ -50,10 +50,10 @@ public class Main extends Application {
 			};
 			addPlayers.getBtnSubmit().setOnAction(eventStartGame);
 
-			// Event StartGame
+			// Home -> AddPlayers
+			// Game -> AddPlayers
 			EventHandler<ActionEvent> eventAddPlayers = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
-					// Start game
 
 					primaryStage.setScene(sceneAddPlayers);
 					primaryStage.show();
@@ -62,9 +62,10 @@ public class Main extends Application {
 			root.getBtnStartGame().setOnAction(eventAddPlayers);
 			game.getBtnBack().setOnAction(eventAddPlayers);
 
+			// Home -> Admin
+			// AddCards -> Admin
 			EventHandler<ActionEvent> eventAdmin = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
-					// Start Admin
 
 					primaryStage.setScene(sceneAdmin);
 					primaryStage.show();
@@ -73,6 +74,8 @@ public class Main extends Application {
 			root.getBtnAdmin().setOnAction(eventAdmin);
 			addCards.getBtnBack().setOnAction(eventAdmin);
 
+			// Admin -> Home
+			// AddPlayers -> Home
 			EventHandler<ActionEvent> eventHome = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
 					primaryStage.setScene(sceneRoot);
@@ -82,14 +85,7 @@ public class Main extends Application {
 			admin.getBtnBack().setOnAction(eventHome);
 			addPlayers.getBtnBack().setOnAction(eventHome);
 
-			EventHandler<ActionEvent> eventQuit = new EventHandler<ActionEvent>() {
-				public void handle(ActionEvent e) {
-
-					primaryStage.close();
-				}
-			};
-			root.getBtnQuit().setOnAction(eventQuit);
-
+			// Admin -> AddCards
 			EventHandler<ActionEvent> eventAddCards = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
 					primaryStage.setScene(sceneAddCards);
@@ -98,12 +94,23 @@ public class Main extends Application {
 			};
 			admin.getBtnAddCards().setOnAction(eventAddCards);
 
+			// Close Application
+			EventHandler<ActionEvent> eventQuit = new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent e) {
+
+					primaryStage.close();
+				}
+			};
+			root.getBtnQuit().setOnAction(eventQuit);
+
+			// Style
 			sceneAddPlayers.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			sceneAddCards.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			sceneGame.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			sceneAdmin.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			sceneRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
+			// Main Scene
 			primaryStage.setScene(sceneRoot);
 			primaryStage.show();
 		} catch (Exception e) {
