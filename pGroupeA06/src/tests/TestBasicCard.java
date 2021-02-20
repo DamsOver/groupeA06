@@ -109,7 +109,7 @@ class TestBasicCard {
 		assertFalse(bc.equals(questions));
 		
 		BasicCard bc1 = new BasicCard("Martin",null,"Nature");
-		assertFalse(bc1.equals(bc));
+		assertFalse(bc.equals(bc1));
 		BasicCard bc2 = new BasicCard("Martin",Theme.INFORMATICS,"Nature");
 		assertFalse(bc.equals(bc2));
 		BasicCard bc3 = new BasicCard("Martin",Theme.IMPROBABLE,"Na");
