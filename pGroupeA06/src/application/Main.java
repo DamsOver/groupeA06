@@ -34,95 +34,16 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
-		launch(args);
-		
-	/**QUESTION**/
-		//test Json Question
-			Question q = new Question("Martin",Theme.IMPROBABLE,"Nature","What is the only flying mammal?","The bat",2);
-			System.out.println("Test JSON Question");
-			System.out.println(q.toJson());
-			Question q2 = new Question();
-			System.out.println(q2.fromJson(q.toJson()));
-		
-		
-	/**BASICCARD**/
-		BasicCard bc = new BasicCard("Martin",Theme.IMPROBABLE,"Nature");
-		//test removeQuestion
-			System.out.println("Test removeQuestion");	
-			//tooLittleException
-			try {
-				bc.removeQuestion("What is the only flying mammal?","The bat",2);
-			} catch (NotPresentException | TooLittleException e) {
-				System.err.println(e.getMessage());
-			}
-			
-			//normal
-			try {
-				bc.addQuestion("What is the only flying mammal?", "The bat",2);
-			} catch (AlreadyPresentException | TooManyException e) {
-				System.err.println(e.getMessage());
-			}
-		
-			try {
-				bc.removeQuestion("What is the only flying mammal?","The bat",2);
-			} catch (NotPresentException | TooLittleException e) {
-				System.err.println(e.getMessage());
-			}
-			
-		
-		//test addQuestion	
-			System.out.println("\nTest addQuestion");	
-			//normal
-			try {
-				bc.addQuestion("What is the only flying mammal?", "The bat",2);
-			} catch (AlreadyPresentException | TooManyException e) {
-				System.err.println(e.getMessage());
-			}
-			
-			//AlreadyPresentException
-			try {
-				bc.addQuestion("What is the only flying mammal?", "The bat",2);
-			} catch (AlreadyPresentException | TooManyException e) {
-				System.err.println(e.getMessage());
-			}
-			try {
-				bc.addQuestion("What is the only flying mammal?", "The ba",3);
-			} catch (AlreadyPresentException | TooManyException e) {
-				System.err.println(e.getMessage());
-			}
-			try {
-				bc.addQuestion("What is the only flying mammal?", "The b",1);
-			} catch (AlreadyPresentException | TooManyException e) {
-				System.err.println(e.getMessage());
-			}
-			try {
-				bc.addQuestion("What is the only flying mammal?", "The ",4);
-			} catch (AlreadyPresentException | TooManyException e) {
-				System.err.println(e.getMessage());
-			}
-			//TooManyException
-			try {
-				bc.addQuestion("What is the only flying mammal?", "The",2);
-			} catch (AlreadyPresentException | TooManyException e) {
-				System.err.println(e.getMessage());
-			}
-			
-		//test sortByDifficulty
-			System.out.println("\nTest sortByDifficulty");	
-			System.out.println(bc);
-			try {
-				bc.sortByDifficulty();
-			} catch (TooLittleException e) {
-				System.err.println(e.getMessage());
-			}
-			System.out.println(bc);
-			
-		
-		//test Json BasicCard
-		
-		
-		
-		
+		launch(args);	
+		BasicCard bc;
+		bc = new BasicCard("Martin",Theme.IMPROBABLE,"Nature");
+		try {
+			bc.addQuestion("What is the only flying mammal?", "The bat");
+		} catch (AlreadyPresentException | TooManyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(bc.toString());
 	}
 
 }

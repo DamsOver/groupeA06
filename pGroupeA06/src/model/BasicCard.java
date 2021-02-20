@@ -10,7 +10,6 @@ import exceptions.AlreadyPresentException;
 import exceptions.NotPresentException;
 import exceptions.TooLittleException;
 import exceptions.TooManyException;
-import util.DifficultyComparator;
 
 public class BasicCard {
 	
@@ -21,6 +20,7 @@ public class BasicCard {
 	private List<Question> questions;
 	
 	
+	//constructor
 	public BasicCard(String author, Theme theme, String subject) {
 		this.author = author;
 		this.theme = theme;
@@ -28,54 +28,79 @@ public class BasicCard {
 		this.questions = new ArrayList<Question>();
 	}
 	
-	public void addQuestion(String challenge, String answer,int difficulty)throws AlreadyPresentException,TooManyException {
-		Question newQuestion = new Question(this.author,this.theme,this.subject,challenge,answer,difficulty);
+	//to add a question
+	public boolean addQuestion(String challenge, String answer)throws AlreadyPresentException,TooManyException {
 		
+		//creation of a question
+		Question newQuestion = new Question(this.author,this.theme,this.subject,challenge,answer);
+		
+		//scanning the list of questions to check if the question already exists
 		for(Question q : questions) {
 			if(q.equals(newQuestion)) {
 				throw new AlreadyPresentException();
 			}
 		}
+	
+		//verification if the number of question is not the maximum
 		if(NB_QUESTIONS_MAX==questions.size()) {
 			throw new TooManyException();
 		}
+		
+		//if everything is ok, adding the question
 		questions.add(newQuestion);
-		
-		//on retrie la carte
-		try {
-			sortByDifficulty();
-		} catch (TooLittleException e) {
-			e.printStackTrace();
-		}
-		
+		return true;
 	}
 	
-	public void removeQuestion(String challenge, String answer,int difficulty)throws NotPresentException,TooLittleException {
-		Question newQuestion = new Question(this.author,this.theme,this.subject,challenge,answer,difficulty);
+	//to remove a question
+	public boolean removeQuestion(String challenge, String answer)throws NotPresentException,TooLittleException {
+		
+		//creation of a question
+		Question newQuestion = new Question(this.author,this.theme,this.subject,challenge,answer);
+		
+		//verification if the number of question is not 0
 		if(0==questions.size()) {
 			throw new TooLittleException();
 		}
 		
+		//scanning the list of questions to check if the question exists
 		boolean x = false;
 		for(Question q : questions) {
 			if(q.equals(newQuestion)) {
 				x=true;
 			}
 		}
+		
+		//if the question does not exist
 		if(x==false) {
 			throw new NotPresentException();
 		}
 		
+		//removing the question
 		questions.remove(newQuestion);
+		return true;
 	}
 	
-	public void sortByDifficulty()  throws TooLittleException{
-		if(0==questions.size()) {
-			throw new TooLittleException();
-		}
-		questions.sort(new DifficultyComparator());
-	}
 	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BasicCard other = (BasicCard) obj;
+		if (subject == null) {
+			if (other.subject != null)
+				return false;
+		} else if (!subject.equals(other.subject))
+			return false;
+		if (theme != other.theme)
+			return false;
+		return true;
+	}
+
 	@Override
 	public String toString() {
 		return "BasicCard [author=" + author + ", theme=" + theme + ", subject=" + subject + ", questions=" + questions

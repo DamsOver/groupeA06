@@ -6,38 +6,21 @@ import enumerations.Theme;
 
 public class Question {
 	
-	public final static int MIN_DIFFICULTY = 1, MAX_DIFFICULTY = 4;
 	private String author;
 	private Theme theme;
 	private String subject;
 	private String challenge;
 	private String answer;
-	private int difficulty;
-	
-	public Question() {};
 	
 	
-	public Question(String author, Theme theme, String subject, String challenge, String answer, int difficulty) {
+	public Question(String author, Theme theme, String subject, String challenge, String answer) {
 		this.author = author;
 		this.theme = theme;
 		this.subject = subject;
 		this.challenge = challenge;
 		this.answer = answer;
-		setDifficulty(difficulty);
 	}
 
-	public int getDifficulty() {
-		return difficulty;
-	}
-
-
-	public void setDifficulty(int difficulty) {
-		if(difficulty>MAX_DIFFICULTY||difficulty<MIN_DIFFICULTY) {
-			this.difficulty=1;
-		}else {
-			this.difficulty = difficulty;
-		}
-	}
 
 
 	public String toJson() {
@@ -89,7 +72,7 @@ public class Question {
 	@Override
 	public String toString() {
 		return "Question [author=" + author + ", theme=" + theme + ", subject=" + subject + ", challenge=" + challenge
-				+ ", answer=" + answer + ", difficulty=" + difficulty +"]\n";
+				+ ", answer=" + answer + "]\n";
 	}
 
 	public void setAnswer(String answer) {
