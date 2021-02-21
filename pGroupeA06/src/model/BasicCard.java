@@ -126,6 +126,7 @@ public class BasicCard {
 	}	
 	
 	public BasicCard clone() {
+		//the clone of the questions is done in the constructor
 		return new BasicCard(this.author,this.theme,this.subject,questions);
 	}
 }

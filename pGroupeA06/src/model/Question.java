@@ -32,42 +32,6 @@ public class Question {
 	}
 	
 	
-	
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
-	public Theme getTheme() {
-		return theme;
-	}
-
-	public void setTheme(Theme theme) {
-		this.theme = theme;
-	}
-
-	public String getSubject() {
-		return subject;
-	}
-
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-
-	public String getChallenge() {
-		return challenge;
-	}
-
-	public void setChallenge(String challenge) {
-		this.challenge = challenge;
-	}
-
-	public String getAnswer() {
-		return answer;
-	}
 
 	@Override
 	public String toString() {
@@ -75,9 +39,6 @@ public class Question {
 				+ ", answer=" + answer + "]\n";
 	}
 
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
 	
 	public boolean equals(Object obj) {
 		if (this == obj)
