@@ -102,4 +102,9 @@ public class Question {
 		return true;
 	}
 	
+	public Question clone() {
+		return new Question(this.author,this.theme,this.subject,this.challenge,this.answer);
+	}
+	
+	
 }

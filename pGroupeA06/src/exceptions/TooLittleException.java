@@ -6,5 +6,9 @@ public class TooLittleException extends Exception{
 	public TooLittleException() {
 		super("There is no questions on this card");
 	}
+	
+	public TooLittleException(int i) {
+		super("There is no cards in this deck");
+	}
 
 }

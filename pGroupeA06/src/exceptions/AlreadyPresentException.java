@@ -8,4 +8,8 @@ public class AlreadyPresentException extends Exception {
 		super("This question is already present");
 	}
 	
+	public AlreadyPresentException(int i) {
+		super("This card is already present");
+	}
+	
 }

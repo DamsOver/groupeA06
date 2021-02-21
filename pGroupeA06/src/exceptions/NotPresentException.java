@@ -8,4 +8,8 @@ public class NotPresentException extends Exception {
 		super("This question is not present on this card");
 	}
 	
+	public NotPresentException(int i) {
+		super("This card is not present in this deck");
+	}
+	
 }

@@ -28,6 +28,19 @@ public class BasicCard {
 		this.questions = new ArrayList<Question>();
 	}
 	
+	//constructor
+	public BasicCard(String author, Theme theme, String subject,List<Question>questions) {
+		this.author = author;
+		this.theme = theme;
+		this.subject = subject;
+		
+		//new objects because a question can only be accessed by one card
+		this.questions = new ArrayList<Question>();
+		for(Question q : questions) {
+			this.questions.add(q.clone());
+		}
+	}
+	
 	//to add a question
 	public boolean addQuestion(String challenge, String answer)throws AlreadyPresentException,TooManyException {
 		
@@ -91,10 +104,7 @@ public class BasicCard {
 		if (getClass() != obj.getClass())
 			return false;
 		BasicCard other = (BasicCard) obj;
-		if (subject == null) {
-			if (other.subject != null)
-				return false;
-		} else if (!subject.equals(other.subject))
+		if (!subject.equals(other.subject))
 			return false;
 		if (theme != other.theme)
 			return false;
@@ -104,7 +114,7 @@ public class BasicCard {
 	@Override
 	public String toString() {
 		return "BasicCard [author=" + author + ", theme=" + theme + ", subject=" + subject + ", questions=" + questions
-				+ "]";
+				+ "]\n";
 	}
 
 	public String toJson() {
@@ -114,4 +124,8 @@ public class BasicCard {
 	public BasicCard fromJson(String json) {
 		return new Gson().fromJson(json,BasicCard.class);
 	}	
+	
+	public BasicCard clone() {
+		return new BasicCard(this.author,this.theme,this.subject,questions);
+	}
 }

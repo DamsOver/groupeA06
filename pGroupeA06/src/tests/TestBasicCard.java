@@ -99,7 +99,7 @@ class TestBasicCard {
 	void testToString() throws AlreadyPresentException, TooManyException {
 		//add a question
 		assertTrue(bc.addQuestion("What is the only flying mammal?", "The bat"));
-		assertEquals(bc.toString(),"BasicCard [author=Martin, theme=IMPROBABLE, subject=Nature, questions=[Question [author=Martin, theme=IMPROBABLE, subject=Nature, challenge=What is the only flying mammal?, answer=The bat]\n]]");
+		assertEquals(bc.toString(),"BasicCard [author=Martin, theme=IMPROBABLE, subject=Nature, questions=[Question [author=Martin, theme=IMPROBABLE, subject=Nature, challenge=What is the only flying mammal?, answer=The bat]\n]]\n");
 	}
 	
 	@Test
@@ -108,8 +108,6 @@ class TestBasicCard {
 		assertFalse(bc.equals(null));
 		assertFalse(bc.equals(questions));
 		
-		BasicCard bc1 = new BasicCard("Martin",null,"Nature");
-		assertFalse(bc.equals(bc1));
 		BasicCard bc2 = new BasicCard("Martin",Theme.INFORMATICS,"Nature");
 		assertFalse(bc.equals(bc2));
 		BasicCard bc3 = new BasicCard("Martin",Theme.IMPROBABLE,"Na");
