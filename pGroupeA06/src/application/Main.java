@@ -145,11 +145,27 @@ public class Main extends Application {
 			// Add the BasicCard
 			EventHandler<ActionEvent> eventAddBasicCard = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
+					
+					BasicCard bc =  new BasicCard(addCards.gettxtFAuthor().getText(),Theme(addCards.getCbTheme().getValue().toString()),addCards.gettxtFSubject().getText());
+					System.out.println(bc.toString());
+					
 					//Check if the questions are correct and add them to the deck
 					
 					//Checking the questions
+						//check if they are not empty
+							//if they are, error message ="try to add all 4 questions"
+						//if they are not try to add them to the card
+							//if error during the adding, error message = "exceptions"
+						
+						//if everything ok 
+							//create a card and add the questions
+							//add the card
 					
-					//adding the card
+				}
+
+				private Theme Theme(String value) {
+					// TODO Auto-generated method stub
+					return null;
 				}
 			};
 			addCards.getBtnSubmit().setOnAction(eventAddBasicCard);

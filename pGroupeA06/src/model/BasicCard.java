@@ -10,10 +10,10 @@ import exceptions.AlreadyPresentException;
 import exceptions.NotPresentException;
 import exceptions.TooLittleException;
 import exceptions.TooManyException;
+import util.Constants;
 
 public class BasicCard {
 	
-	public final static int NB_QUESTIONS_MAX = 4;
 	private String author;
 	private Theme theme;
 	private String subject;
@@ -55,7 +55,7 @@ public class BasicCard {
 		}
 	
 		//verification if the number of question is not the maximum
-		if(NB_QUESTIONS_MAX==questions.size()) {
+		if(Constants.NB_QUESTIONS_MAX==questions.size()) {
 			throw new TooManyException();
 		}
 		

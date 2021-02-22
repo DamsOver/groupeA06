@@ -12,6 +12,16 @@ public enum Theme {
 		this.theme = string;
 	}
 	
+	public Theme getTheme(String string) {
+		   for (Theme t : Theme.values()) {
+		        if (t.name().equals(string)) {
+		            return this;
+		        }
+		    }
+		return null;
+	}
+	
+	
 	public String getTheme() {
 		return this.theme;
 	}
