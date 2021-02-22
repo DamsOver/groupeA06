@@ -9,7 +9,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
-public class AddPlayers extends GridPane {
+public class AddPlayersGP extends GridPane {
 
 	private Text txtTitle;
 
@@ -22,7 +22,7 @@ public class AddPlayers extends GridPane {
 	private Button btnBack;
 	private Button btnSubmit;
 
-	public AddPlayers() {
+	public AddPlayersGP() {
 
 		this.setPadding(new Insets(10));
 //		this.setGridLinesVisible(true); // Rend visible ligne de séparation

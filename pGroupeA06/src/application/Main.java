@@ -17,12 +17,12 @@ import javafx.util.Duration;
 import model.BasicCard;
 import model.Question;
 import util.Constants;
-import vue.AddCards;
-import vue.AddPlayers;
-import vue.Admin;
-import vue.Game;
-import vue.Home;
-import vue.Options;
+import vue.AddCardsGP;
+import vue.AddPlayersGP;
+import vue.AdminGP;
+import vue.GameGP;
+import vue.HomeGP;
+import vue.OptionsGP;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
@@ -50,13 +50,13 @@ public class Main extends Application {
 		        }
 		    }); 
 			
-			Home root = new Home();
-			AddCards addCards = new AddCards();
-			Admin admin = new Admin();
-			Game game = new Game();
+			HomeGP root = new HomeGP();
+			AddCardsGP addCards = new AddCardsGP();
+			AdminGP admin = new AdminGP();
+			GameGP game = new GameGP();
 			game.setId("gameBoard");
-			AddPlayers addPlayers = new AddPlayers();
-			Options options = new Options();
+			AddPlayersGP addPlayers = new AddPlayersGP();
+			OptionsGP options = new OptionsGP();
 
 			Scene sceneRoot = new Scene(root, 600, 315);
 			Scene sceneAddCards = new Scene(addCards, 600, 315);
