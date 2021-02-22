@@ -8,6 +8,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import util.Constants;
 
 public class Options extends GridPane {
 
@@ -42,7 +43,7 @@ public class Options extends GridPane {
 		lblVolume.getStyleClass().add("h1");
 		slVolume.setMin(0);
 		slVolume.setMax(100);
-		slVolume.setValue(40);
+		slVolume.setValue(Constants.INITIAL_VOLUME);
 		slVolume.setShowTickLabels(true);
 		slVolume.setShowTickMarks(true);
 		slVolume.setMajorTickUnit(50);

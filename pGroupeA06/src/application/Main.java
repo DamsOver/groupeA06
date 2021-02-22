@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.BasicCard;
 import model.Question;
+import util.Constants;
 import vue.AddCards;
 import vue.AddPlayers;
 import vue.Admin;
@@ -38,7 +39,7 @@ public class Main extends Application {
 
 			MediaPlayer mediaPlayer = new MediaPlayer(new Media(new File("src/musics/bensound-hipjazz.mp3").toURI().toString()));
 			mediaPlayer.play();
-			mediaPlayer.setVolume(0.04);
+			mediaPlayer.setVolume(Constants.INITIAL_VOLUME*Constants.VOLUME_FACTOR);
 			mediaPlayer.setStartTime(Duration.seconds(0));
 			mediaPlayer.setStopTime(Duration.seconds(160));
 			mediaPlayer.setOnEndOfMedia(new Runnable() {
@@ -98,6 +99,7 @@ public class Main extends Application {
 			};
 			root.getBtnAdmin().setOnAction(eventAdmin);
 			addCards.getBtnBack().setOnAction(eventAdmin);
+			
 
 			// Admin -> Home
 			// AddPlayers -> Home
@@ -139,10 +141,26 @@ public class Main extends Application {
 			};
 			root.getBtnQuit().setOnAction(eventQuit);
 			
+			
+			// Add the BasicCard
+			EventHandler<ActionEvent> eventAddBasicCard = new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent e) {
+					//Check if the questions are correct and add them to the deck
+					
+					//Checking the questions
+					
+					//adding the card
+				}
+			};
+			addCards.getBtnSubmit().setOnAction(eventAddBasicCard);
+			
+			
+			
+			
 			options.getSlVolume().valueProperty().addListener(new ChangeListener<Number>() {
 	            public void changed(ObservableValue<? extends Number> ov,
 	                Number old_val, Number new_val) {
-	            	mediaPlayer.setVolume((double) new_val*0.005);
+	            	mediaPlayer.setVolume((double) new_val*Constants.VOLUME_FACTOR);
 	            }
 	        });
 
