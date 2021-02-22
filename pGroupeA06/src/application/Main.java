@@ -8,6 +8,8 @@ import exceptions.NotPresentException;
 import exceptions.TooLittleException;
 import exceptions.TooManyException;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
@@ -136,6 +138,13 @@ public class Main extends Application {
 				}
 			};
 			root.getBtnQuit().setOnAction(eventQuit);
+			
+			options.getSlVolume().valueProperty().addListener(new ChangeListener<Number>() {
+	            public void changed(ObservableValue<? extends Number> ov,
+	                Number old_val, Number new_val) {
+	            	mediaPlayer.setVolume((double) new_val*0.005);
+	            }
+	        });
 
 			// Style
 			sceneOptions.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
