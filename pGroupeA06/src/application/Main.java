@@ -146,7 +146,9 @@ public class Main extends Application {
 			EventHandler<ActionEvent> eventAddBasicCard = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
 					
-					BasicCard bc =  new BasicCard(addCards.gettxtFAuthor().getText(),Theme(addCards.getCbTheme().getValue().toString()),addCards.gettxtFSubject().getText());
+					System.out.println(Theme("Improbable"));
+					
+					BasicCard bc =  new BasicCard(addCards.gettxtFAuthor().getText(),Theme(addCards.getCbTheme().getValue().toString().toUpperCase()),addCards.gettxtFSubject().getText());
 					System.out.println(bc.toString());
 					
 					//Check if the questions are correct and add them to the deck
