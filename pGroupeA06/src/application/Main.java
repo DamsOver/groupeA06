@@ -56,6 +56,7 @@ public class Main extends Application {
 			Scene sceneGame = new Scene(game, 900, 506);
 			Scene sceneAddPlayers = new Scene(addPlayers, 600, 315);
 			Scene sceneOptions = new Scene(options, 600, 315);
+			Scene sceneLoginAdmin = new Scene(loginAdmin, 600, 315);
 
 			// Event "change scene" with click button
 			// addPlayers -> Game

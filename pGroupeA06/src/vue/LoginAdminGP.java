@@ -1,5 +1,6 @@
 package vue;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -18,16 +19,18 @@ public class LoginAdminGP extends GridPane{
 	
 	
 	public LoginAdminGP() {
-		this.setGridLinesVisible(true);
+//		this.setGridLinesVisible(true);
+		this.setPadding(new Insets(10));
 		this.setVgap(10);
 		this.setHgap(10);
 		
-		int nbCol = 10;
+		int nbCol = 20;
 		for (int i = 0; i < nbCol; i++) {
 			ColumnConstraints colConstr = new ColumnConstraints();
 			colConstr.setPercentWidth(100. / nbCol);
 			this.getColumnConstraints().add(colConstr);
 		}
+		
 		//title
 		this.add(getTxtTitle(), 4, 1);
 		txtTitle.getStyleClass().add("title-style");
@@ -39,6 +42,7 @@ public class LoginAdminGP extends GridPane{
 		//Validate Button
 		this.add(getBtnVal(), 6 , 6, 8, 1);
 		btnVal.getStyleClass().add("btn-style");
+		
 	}
 	public PasswordField getPwfAdmin() {
 		if(pwfAdmin == null) {
@@ -63,7 +67,7 @@ public class LoginAdminGP extends GridPane{
 	
 	public Button getBtnVal() {
 		if(btnVal == null) {
-			btnVal = new Button ("Validate");
+			btnVal = new Button("Validate");
 		}
 		return btnVal;
 	}
