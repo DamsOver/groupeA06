@@ -3,10 +3,7 @@ package application;
 import java.io.File;
 
 import enumerations.Theme;
-import exceptions.AlreadyPresentException;
-import exceptions.NotPresentException;
-import exceptions.TooLittleException;
-import exceptions.TooManyException;
+import exceptions.*;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -14,15 +11,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import model.BasicCard;
-import model.Question;
+import model.*;
 import util.Constants;
-import vue.AddCards;
-import vue.AddPlayers;
-import vue.Admin;
-import vue.Game;
-import vue.Home;
-import vue.Options;
+import vue.*;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
@@ -50,22 +41,24 @@ public class Main extends Application {
 		        }
 		    }); 
 			
-			Home root = new Home();
-			AddCards addCards = new AddCards();
-			Admin admin = new Admin();
-			Game game = new Game();
+			HomeGP root = new HomeGP();
+			AddCardsGP addCards = new AddCardsGP();
+			AdminGP admin = new AdminGP();
+			GameGP game = new GameGP();
 			game.setId("gameBoard");
-			AddPlayers addPlayers = new AddPlayers();
-			Options options = new Options();
-
+			AddPlayersGP addPlayers = new AddPlayersGP();
+			OptionsGP options = new OptionsGP();
+			LoginAdminGP loginAdmin = new LoginAdminGP();
+			
 			Scene sceneRoot = new Scene(root, 600, 315);
 			Scene sceneAddCards = new Scene(addCards, 600, 315);
 			Scene sceneAdmin = new Scene(admin, 600, 315);
 			Scene sceneGame = new Scene(game, 900, 506);
 			Scene sceneAddPlayers = new Scene(addPlayers, 600, 315);
 			Scene sceneOptions = new Scene(options, 600, 315);
+			Scene sceneLoginAdmin = new Scene(loginAdmin, 600, 315);
 
-			// Event "change scene" with clic button
+			// Event "change scene" with click button
 			// addPlayers -> Game
 			EventHandler<ActionEvent> eventStartGame = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {

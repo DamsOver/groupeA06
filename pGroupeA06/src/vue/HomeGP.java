@@ -7,7 +7,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
-public class Home extends GridPane {
+public class HomeGP extends GridPane {
 
 	private Text txtTitle;
 	private Button btnStartGame;
@@ -15,7 +15,7 @@ public class Home extends GridPane {
 	private Button btnQuit;
 	private Button btnOption;
 
-	public Home() {
+	public HomeGP() {
 
 		this.setPadding(new Insets(10));
 //		this.setGridLinesVisible(true); // Rend visible ligne de séparation
