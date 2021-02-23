@@ -3,6 +3,7 @@ package vue;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -30,28 +31,28 @@ public class HomeGP extends GridPane {
 		}
 
 		// Line 2
-		this.add(getTxtTitle(), 8, 1, 4, 2); // elt, columnIndex, rowIndex, colspan, rowspan
+		this.add(getTxtTitle(), 8, 6, 4, 2); // elt, columnIndex, rowIndex, colspan, rowspan
 		txtTitle.setText("Game menu");
 		GridPane.setHalignment(getTxtTitle(), HPos.CENTER);
 		txtTitle.getStyleClass().add("title-style");
 
 		// Line 4
-		this.add(getBtnStartGame(), 7, 3, 6, 1);
+		this.add(getBtnStartGame(), 7, 14, 6, 1);
 		GridPane.setHalignment(getBtnStartGame(), HPos.CENTER);
 		btnStartGame.getStyleClass().add("btn-style");
 
 		// Line 6
-		this.add(getBtnOptions(), 7, 5, 6, 1);
+		this.add(getBtnOptions(), 7, 16, 6, 1);
 		GridPane.setHalignment(getBtnOptions(), HPos.CENTER);
 		btnOption.getStyleClass().add("btn-style");
 
 		// Line 8
-		this.add(getBtnAdmin(), 7, 7, 6, 1);
+		this.add(getBtnAdmin(), 7, 18, 6, 1);
 		GridPane.setHalignment(getBtnAdmin(), HPos.CENTER);
 		btnAdmin.getStyleClass().add("btn-style");
 
 		// Line 14
-		this.add(getBtnQuit(), 17, 8, 3, 1);
+		this.add(getBtnQuit(), 17, 30, 3, 1);
 		GridPane.setHalignment(getBtnQuit(), HPos.CENTER);
 		btnQuit.getStyleClass().add("btn-style");
 		btnQuit.getStyleClass().add("btnQuit-style");

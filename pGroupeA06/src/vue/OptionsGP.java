@@ -32,26 +32,23 @@ public class OptionsGP extends GridPane {
 		}
 
 		// Line 2
-		this.add(getTxtTitle(), 8, 1, 4, 1); // elt, columnIndex, rowIndex, colspan, rowspan
+		this.add(getTxtTitle(), 8, 3, 4, 1); // elt, columnIndex, rowIndex, colspan, rowspan
 		txtTitle.setText("Options");
 		GridPane.setHalignment(getTxtTitle(), HPos.CENTER);
 		txtTitle.getStyleClass().add("title-style");
 
 		// Line 3
-		this.add(getLblVolume(), 1, 3, 3, 1);
-		this.add(getSlVolume(), 4, 3, 8, 1);
+		this.add(getLblVolume(), 2, 9, 5, 1);
+		this.add(getSlVolume(), 6, 9, 8, 1);
 		lblVolume.getStyleClass().add("h1");
-		slVolume.setMin(0);
-		slVolume.setMax(100);
 		slVolume.setValue(Constants.INITIAL_VOLUME);
-		slVolume.setShowTickLabels(true);
-		slVolume.setShowTickMarks(true);
 		slVolume.setMajorTickUnit(50);
 		slVolume.setMinorTickCount(5);
-		slVolume.setBlockIncrement(10);
+		slVolume.setBlockIncrement(1);
+		slVolume.getStyleClass().add("slider-style");
 
 		// Line 20
-		this.add(getBtnBack(), 18, 15, 4, 4);
+		this.add(getBtnBack(), 15, 50, 4, 4);
 		btnBack.getStyleClass().add("btn-style");
 		GridPane.setHalignment(getBtnBack(), HPos.CENTER);
 

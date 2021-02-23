@@ -4,6 +4,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -21,6 +22,8 @@ public class AddPlayersGP extends GridPane {
 
 	private Button btnBack;
 	private Button btnSubmit;
+	
+	private Slider slPlayer;
 
 	public AddPlayersGP() {
 
@@ -41,6 +44,9 @@ public class AddPlayersGP extends GridPane {
 		txtTitle.setText("Add Players");
 		GridPane.setHalignment(getTxtTitle(), HPos.CENTER);
 		txtTitle.getStyleClass().add("title-style");
+		
+		// Line 3
+		this.add(getSlPlayer(), 8,2,4,1);
 
 		// Line 4
 		this.add(getLblPlayer1(), 1, 3, 3, 1);
@@ -107,6 +113,13 @@ public class AddPlayersGP extends GridPane {
 			txtFPlayer2 = new TextField();
 		}
 		return txtFPlayer2;
+	}
+	
+	public Slider getSlPlayer() {
+		if (slPlayer == null) {
+			slPlayer = new Slider();
+		}
+		return slPlayer;
 	}
 
 }

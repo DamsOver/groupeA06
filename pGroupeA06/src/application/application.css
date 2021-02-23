@@ -1,19 +1,42 @@
+@font-face {
+    src: url('../fonts/BalsamiqSans-Regular.ttf');
+}
+
+
+
+*{
+	-fx-font-family: 'Balsamiq Sans';
+	-fx-background-color: white;
+}
+
+.btn-style {
+	-fx-background-image: url("/img/bgBorder01.png");
+    -fx-background-size: stretch,stretch;
+	-fx-background-color: white;
+	-fx-font-size: 75;
+	-fx-font-color: black;
+	-fx-alignment: center;
+}
+
 .btnQuit-style {
-  	-fx-background-color: red;
 	-fx-font-weight: bold;
-	-fx-border-color:black;
 	-fx-background-insets: 1;
 	-fx-border-width: 2 2 2 2;
 }
 
-.btn-style {
-	-fx-font-size: 18;
-	-fx-alignment: center;
+.slider-style .track{
+	-fx-background-color:black; 
+	-fx-padding : 8;
 }
 
+.slider-style .thumb{
+	-fx-background-color: black; 
+	-fx-padding : 24;
+}
+
+
 .title-style {
-	-fx-font-family: 'bauhaus 93';
-	-fx-font-size: 50;
+	-fx-font-size: 150;
 }
 
 #gameBoard {
@@ -25,6 +48,6 @@
 }
 
 .h1 {
-	-fx-font-size: 15;
+	-fx-font-size: 75;
 	-fx-font-weight: bold;
 }
