@@ -24,7 +24,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-
+			
+			primaryStage.setFullScreen(true);
 			primaryStage.setTitle("How much are you worth ?");
 			primaryStage.getIcons().add(new Image("/img/icon.png"));
 			primaryStage.setResizable(false);
@@ -51,13 +52,13 @@ public class Main extends Application {
 			OptionsGP options = new OptionsGP();
 			LoginAdminGP loginAdmin = new LoginAdminGP();
 			
-			Scene sceneRoot = new Scene(root, 600, 315);
-			Scene sceneAddCards = new Scene(addCards, 600, 315);
-			Scene sceneAdmin = new Scene(admin, 600, 315);
-			Scene sceneGame = new Scene(game, 900, 506);
-			Scene sceneAddPlayers = new Scene(addPlayers, 600, 315);
-			Scene sceneOptions = new Scene(options, 600, 315);
-			Scene sceneLoginAdmin = new Scene(loginAdmin, 600, 315);
+			Scene sceneRoot = new Scene(root, 1920, 1080);
+			Scene sceneAddCards = new Scene(addCards, 1920, 180);
+			Scene sceneAdmin = new Scene(admin, 1920, 1080);
+			Scene sceneGame = new Scene(game, 1920, 1080);
+			Scene sceneAddPlayers = new Scene(addPlayers, 1920, 1080);
+			Scene sceneOptions = new Scene(options, 1920, 1080);
+			Scene sceneLoginAdmin = new Scene(loginAdmin, 1920, 1080);
 
 			// Event "change scene" with click button
 			// addPlayers -> Game
@@ -168,10 +169,7 @@ public class Main extends Application {
 			// Add the BasicCard
 			EventHandler<ActionEvent> eventAddBasicCard = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
-					
-					BasicCard bc =  new BasicCard(addCards.gettxtFAuthor().getText(),Theme(addCards.getCbTheme().getValue().toString()),addCards.gettxtFSubject().getText());
-					System.out.println(bc.toString());
-					
+
 					//Check if the questions are correct and add them to the deck
 					
 					//Checking the questions
@@ -185,15 +183,8 @@ public class Main extends Application {
 							//add the card
 					
 				}
-
-				private Theme Theme(String value) {
-					// TODO Auto-generated method stub
-					return null;
-				}
 			};
 			addCards.getBtnSubmit().setOnAction(eventAddBasicCard);
-			
-			
 			
 			
 			options.getSlVolume().valueProperty().addListener(new ChangeListener<Number>() {
