@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.*;
 import util.Constants;
+import util.PasswordAdmin;
 import vue.*;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -83,15 +84,44 @@ public class Main extends Application {
 
 			// Home -> Admin
 			// AddCards -> Admin
+			EventHandler<ActionEvent> eventLogin = new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent e) {
+					primaryStage.setScene(sceneLoginAdmin);
+					primaryStage.show();
+				}
+			};
+			root.getBtnAdmin().setOnAction(eventLogin);
+			
+			
+			
+			EventHandler<ActionEvent> eventValidateLogin = new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent e) {
+					String response = loginAdmin.getPwfAdmin().getText();
+					PasswordAdmin pw = new PasswordAdmin(response);
+					loginAdmin.setTxtMessage(pw.getMessage());
+					if(pw.getValidation()) {
+						primaryStage.setScene(sceneAdmin);
+						primaryStage.show();
+					}
+					else {
+						//loginAdmin.getTxtMessage().setSelectionFill(Color.rgb(210,  39,  30));
+					}
+					loginAdmin.getPwfAdmin().clear();
+				}
+			};
+			
+			loginAdmin.getBtnVal().setOnAction(eventValidateLogin);
+			
 			EventHandler<ActionEvent> eventAdmin = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
-
 					primaryStage.setScene(sceneAdmin);
 					primaryStage.show();
 				}
 			};
-			root.getBtnAdmin().setOnAction(eventAdmin);
 			addCards.getBtnBack().setOnAction(eventAdmin);
+			/*
+			root.getBtnAdmin().setOnAction(eventAdmin);
+			*/
 			
 
 			// Admin -> Home
@@ -106,7 +136,7 @@ public class Main extends Application {
 			admin.getBtnBack().setOnAction(eventHome);
 			addPlayers.getBtnBack().setOnAction(eventHome);
 			options.getBtnBack().setOnAction(eventHome);
-
+			loginAdmin.getBtnBack().setOnAction(eventHome);
 			// Admin -> AddCards
 			EventHandler<ActionEvent> eventAddCards = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {

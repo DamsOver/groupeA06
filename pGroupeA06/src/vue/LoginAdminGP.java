@@ -11,11 +11,15 @@ import javafx.scene.layout.ColumnConstraints;
 public class LoginAdminGP extends GridPane{
 	
 	private PasswordField pwfAdmin;
+	
 	private Button btnVal;
+	private Button btnBack;
 	
 	private Text txtTitle;
+	private Text txtMessage;
 	
 	private Label lblPw;
+	
 	
 	
 	public LoginAdminGP() {
@@ -39,10 +43,14 @@ public class LoginAdminGP extends GridPane{
 		this.add(getLblPw(), 1, 3, 4, 1);
 		this.add(getPwfAdmin(), 5, 3, 4, 1);
 		
-		//Validate Button
-		this.add(getBtnVal(), 6 , 6, 8, 1);
-		btnVal.getStyleClass().add("btn-style");
+		//Message
+		this.add(getTxtMessage(), 1, 6, 9, 1);
 		
+		//Validate Button
+		this.add(getBtnVal(), 6 , 7, 8, 1);
+		btnVal.getStyleClass().add("btn-style");
+		this.add(getBtnBack(), 1, 7, 3, 1);
+		btnBack.getStyleClass().add("btn-style");
 	}
 	public PasswordField getPwfAdmin() {
 		if(pwfAdmin == null) {
@@ -58,6 +66,21 @@ public class LoginAdminGP extends GridPane{
 		return txtTitle;
 	}
 	
+	public Text getTxtMessage() {
+		if(txtMessage == null) {
+			txtMessage = new Text("");
+		}
+		return txtMessage;
+	}
+	public void setTxtMessage(String s) {
+		if(txtMessage== null) {
+			txtMessage = new Text(s);
+		}
+		else {
+			txtMessage.setText(s);
+		}
+	}
+	
 	public Label getLblPw() {
 		if(lblPw == null) {
 			lblPw = new Label("Insert the password :");
@@ -70,5 +93,12 @@ public class LoginAdminGP extends GridPane{
 			btnVal = new Button("Validate");
 		}
 		return btnVal;
+	}
+	
+	public Button getBtnBack() {
+		if(btnBack == null) {
+			btnBack = new Button("Back");
+		}
+		return btnBack;
 	}
 }
