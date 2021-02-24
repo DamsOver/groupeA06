@@ -94,7 +94,7 @@ public class Main extends Application {
 			root.getBtnAdmin().setOnAction(eventLogin);
 			
 			
-			
+			//Password validate
 			EventHandler<ActionEvent> eventValidateLogin = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
 					String response = loginAdmin.getPwfAdmin().getText();
@@ -119,11 +119,9 @@ public class Main extends Application {
 					primaryStage.show();
 				}
 			};
+			//addCards -> menu
 			addCards.getBtnBack().setOnAction(eventAdmin);
-			/*
-			root.getBtnAdmin().setOnAction(eventAdmin);
-			*/
-			
+			//root.getBtnAdmin().setOnAction(eventAdmin);			
 
 			// Admin -> Home
 			// AddPlayers -> Home
