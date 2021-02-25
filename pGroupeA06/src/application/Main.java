@@ -44,6 +44,10 @@ public class Main extends Application {
 		    }); 
 			
 			HomeGP root = new HomeGP();
+			
+			//background 
+			root.getStyleClass().add("pane");
+			
 			AddCardsGP addCards = new AddCardsGP();
 			AdminGP admin = new AdminGP();
 			GameGP game = new GameGP();

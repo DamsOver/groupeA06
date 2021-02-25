@@ -47,6 +47,12 @@
     -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
 }
 
+.pane{
+	-fx-background-image: url("/img/background.jpg");
+    -fx-background-size: stretch,stretch;
+}
+
+
 .h1 {
 	-fx-font-size: 75;
 	-fx-font-weight: bold;

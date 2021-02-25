@@ -17,7 +17,7 @@ public class HomeGP extends GridPane {
 	private Button btnOption;
 
 	public HomeGP() {
-
+		
 		this.setPadding(new Insets(10));
 //		this.setGridLinesVisible(true); // Rend visible ligne de séparation
 		this.setVgap(10);
