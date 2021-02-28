@@ -1,37 +1,42 @@
 package serialisation;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.Serializable;
 import java.util.Scanner;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.FileWriter;
 
 import model.Deck;
-import model.Question;
 
-public class Serialisation {
+public class Serialisation implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-	public static void saveDeckClear(Deck q,String nom) throws IOException {
-		
-		FileWriter fileWriter = new FileWriter(nom);
-		fileWriter.write(q.toJson());
-		fileWriter.close();
+	public static void saveDeckClear(Deck q, String nom) {
+
+		FileWriter fileWriter;
+		try {
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			String json = gson.toJson(q);
+
+			fileWriter = new FileWriter(nom);
+			fileWriter.write(json);
+			fileWriter.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
-	
-	public static Deck loadDeckClear(String nom) throws FileNotFoundException {
-		String data = null;
-	    File myObj = new File(nom);
-	    Scanner scanner = new Scanner(myObj);
-	    data = scanner.nextLine();
-	    scanner.close();
-		return new Deck().fromJson(data);
+
+	public static Deck loadDeckClear(String nom) {
+
+		return new Deck().fromJson(nom);
+
 	}
 }

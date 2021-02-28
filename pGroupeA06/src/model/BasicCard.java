@@ -113,7 +113,7 @@ public class BasicCard {
 
 	@Override
 	public String toString() {
-		return "BasicCard [author=" + author + ", theme=" + theme + ", subject=" + subject + ", questions=" + questions
+		return "\nBasicCard [author=" + author + ", theme=" + theme + ", subject=" + subject + ", questions=" + questions
 				+ "]\n";
 	}
 

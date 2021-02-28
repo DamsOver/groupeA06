@@ -35,8 +35,8 @@ public class Question {
 
 	@Override
 	public String toString() {
-		return "Question [author=" + author + ", theme=" + theme + ", subject=" + subject + ", challenge=" + challenge
-				+ ", answer=" + answer + "]\n";
+		return "\nQuestion [author=" + author + ", theme=" + theme + ", subject=" + subject + ", challenge=" + challenge
+				+ ", answer=" + answer + "]";
 	}
 
 	

@@ -15,19 +15,16 @@ public class AddCards {
 
 	public static void main(String[] args) {
 		Deck d = new Deck();
-		try {
-			d = Serialisation.loadDeckClear("deck.JSON");
-		} catch (FileNotFoundException e) {
-			System.out.println("File Not Found");
-		}
-		
+
+		d = Serialisation.loadDeckClear("deck.JSON");
+
 		System.out.println(d.toString());
 		int x = 1;
 		Scanner sc = new Scanner(System.in);
-		while(x!=0) {
+		while (x != 0) {
 			System.out.println("Do you want to add a card?\n0 : no\n1 : yes");
-			x=sc.nextInt();
-			if(x==1) {
+			x = sc.nextInt();
+			if (x == 1) {
 				int choix;
 				do {
 					System.out.println("Theme of the card : ");
@@ -35,31 +32,34 @@ public class AddCards {
 					System.out.println("2 : PLEASURE");
 					System.out.println("3 : INFORMATICS");
 					System.out.println("4 : SCHOOL\n");
-					choix=sc.nextInt();
-				}while(choix>4||choix<1);
-				
+					choix = sc.nextInt();
+				} while (choix > 4 || choix < 1);
+
 				System.out.println("Name of the author :");
 				String name = sc.nextLine();
 				name = sc.nextLine();
 				System.out.println("Theme of the card :");
-				String subject= sc.nextLine();
-				BasicCard bc = new BasicCard(name,(choix==1)?Theme.IMPROBABLE:(choix==2)?Theme.PLEASURE:(choix==3)?Theme.INFORMATICS:Theme.SCHOOL,subject);
-				for(int i = 1;i<=4;i++) {
-					System.out.println("\nQuestion "+i+" :");
+				String subject = sc.nextLine();
+				BasicCard bc = new BasicCard(name,
+						(choix == 1) ? Theme.IMPROBABLE
+								: (choix == 2) ? Theme.PLEASURE : (choix == 3) ? Theme.INFORMATICS : Theme.SCHOOL,
+						subject);
+				for (int i = 1; i <= 4; i++) {
+					System.out.println("\nQuestion " + i + " :");
 					System.out.println("What is the question?");
-					String question =sc.nextLine();
+					String question = sc.nextLine();
 					System.out.println("What is the answer?");
-					String answer =sc.nextLine();
+					String answer = sc.nextLine();
 					try {
 						bc.addQuestion(question, answer);
 					} catch (AlreadyPresentException | TooManyException e) {
 						e.printStackTrace();
 					}
 				}
-				System.out.println("\nDo you want to add that card?\n"+bc.toString());
+				System.out.println("\nDo you want to add that card?\n" + bc.toString());
 				System.out.println("0 : no\n1 : yes");
-				choix=sc.nextInt();
-				if(choix==1) {
+				choix = sc.nextInt();
+				if (choix == 1) {
 					try {
 						d.addBasicCard(bc);
 					} catch (AlreadyPresentException e) {
@@ -68,14 +68,11 @@ public class AddCards {
 				}
 			}
 		}
-		
+
 		System.out.println(d.toString());
-		
-		try {
-			Serialisation.saveDeckClear(d,"deck.JSON");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
+		Serialisation.saveDeckClear(d, "deck.JSON");
+
 	}
 
 }

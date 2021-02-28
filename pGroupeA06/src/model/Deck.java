@@ -1,5 +1,8 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,8 +69,16 @@ public class Deck {
 		return new Gson().toJson(this);
 	}
 	
-	public Deck fromJson(String json) {
-		return new Gson().fromJson(json,Deck.class);
+	public Deck fromJson(String nom) {
+		BufferedReader bufferedReader = null;
+		try {
+			bufferedReader = new BufferedReader(new FileReader(nom));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return new Gson().fromJson(bufferedReader,Deck.class);
 	}
 
 
