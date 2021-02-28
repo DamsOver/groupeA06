@@ -10,7 +10,7 @@
 }
 
 .btn-style {
-	-fx-background-image: url("/img/bgBorder01.png");
+	-fx-background-image: url("/img/bgBorder.png");
     -fx-background-size: stretch,stretch;
 	-fx-background-color: white;
 	-fx-font-size: 75;
@@ -40,15 +40,15 @@
 }
 
 #gameBoard {
-	-fx-background-image: url("/img/gameBoard.jpg");
-    -fx-background-repeat: stretch;   
+	-fx-background-image: url("/img/gameboard.jpg");
+  /*  -fx-background-repeat: stretch;   
     -fx-background-size: 900 506;
     -fx-background-position: center center;
-    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);  */
 }
 
 .pane{
-	-fx-background-image: url("/img/background.jpg");
+	-fx-background-image: url("/img/backGround_Paper.jpg");
     -fx-background-size: stretch,stretch;
 }
 

@@ -26,21 +26,9 @@ public class GameGP extends GridPane {
 			this.getColumnConstraints().add(colConstr);
 		}
 
-		this.add(getTxtTitle(), 8, 1, 4, 1); // elt, columnIndex, rowIndex, colspan, rowspan
-		txtTitle.setText("Game");
-		GridPane.setHalignment(getTxtTitle(), HPos.CENTER);
-		txtTitle.getStyleClass().add("title-style");
-
 		// Line
 		this.add(getBtnBack(), 19, 38, 4, 4);
 		btnBack.getStyleClass().add("btn-style");
-	}
-
-	public Text getTxtTitle() {
-		if (txtTitle == null) {
-			txtTitle = new Text();
-		}
-		return txtTitle;
 	}
 
 	public Button getBtnBack() {

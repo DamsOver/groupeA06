@@ -44,14 +44,9 @@ public class Main extends Application {
 		    }); 
 			
 			HomeGP root = new HomeGP();
-			
-			//background 
-			root.getStyleClass().add("pane");
-			
 			AddCardsGP addCards = new AddCardsGP();
 			AdminGP admin = new AdminGP();
 			GameGP game = new GameGP();
-			game.setId("gameBoard");
 			AddPlayersGP addPlayers = new AddPlayersGP();
 			OptionsGP options = new OptionsGP();
 			LoginAdminGP loginAdmin = new LoginAdminGP();
@@ -63,6 +58,18 @@ public class Main extends Application {
 			Scene sceneAddPlayers = new Scene(addPlayers, 1920, 1080);
 			Scene sceneOptions = new Scene(options, 1920, 1080);
 			Scene sceneLoginAdmin = new Scene(loginAdmin, 1920, 1080);
+			
+			//Image
+			game.setId("gameBoard");
+			
+			//background 
+//			root.getStyleClass().add("pane");
+//			addCards.getStyleClass().add("pane");
+//			admin.getStyleClass().add("pane");
+//			game.getStyleClass().add("pane");
+//			addPlayers.getStyleClass().add("pane");
+//			options.getStyleClass().add("pane");
+//			loginAdmin.getStyleClass().add("pane");
 
 			// Event "change scene" with click button
 			// addPlayers -> Game
