@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 import exceptions.AlreadyPresentException;
 import exceptions.NotPresentException;
 import exceptions.TooLittleException;
+import serialisation.Serialisation;
 
 public class Deck {
 	
@@ -70,15 +71,7 @@ public class Deck {
 	}
 	
 	public Deck fromJson(String nom) {
-		BufferedReader bufferedReader = null;
-		try {
-			bufferedReader = new BufferedReader(new FileReader(nom));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return new Gson().fromJson(bufferedReader,Deck.class);
+		return Serialisation.loadDeckClear(nom);
 	}
 
 

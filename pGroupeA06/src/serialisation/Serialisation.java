@@ -1,5 +1,6 @@
 package serialisation;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -28,15 +29,20 @@ public class Serialisation implements Serializable {
 			fileWriter.write(json);
 			fileWriter.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		System.err.println(e);
 		}
 
 	}
 
 	public static Deck loadDeckClear(String nom) {
-
-		return new Deck().fromJson(nom);
-
+		BufferedReader bufferedReader = null;
+		try {
+			bufferedReader = new BufferedReader(new FileReader(nom));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return new Gson().fromJson(bufferedReader,Deck.class);
 	}
 }

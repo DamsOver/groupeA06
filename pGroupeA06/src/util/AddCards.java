@@ -16,7 +16,7 @@ public class AddCards {
 	public static void main(String[] args) {
 		Deck d = new Deck();
 
-		d = Serialisation.loadDeckClear("deck.JSON");
+		d = d.fromJson("deck.JSON");
 
 		System.out.println(d.toString());
 		int x = 1;
