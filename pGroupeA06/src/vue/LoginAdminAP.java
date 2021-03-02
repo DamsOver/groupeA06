@@ -8,7 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.scene.layout.ColumnConstraints;
 
-public class LoginAdminGP extends GridPane{
+public class LoginAdminAP extends GridPane{
 	
 	private PasswordField pwfAdmin;
 	
@@ -22,7 +22,7 @@ public class LoginAdminGP extends GridPane{
 	
 	
 	
-	public LoginAdminGP() {
+	public LoginAdminAP() {
 //		this.setGridLinesVisible(true);
 		this.setPadding(new Insets(10));
 		this.setVgap(10);

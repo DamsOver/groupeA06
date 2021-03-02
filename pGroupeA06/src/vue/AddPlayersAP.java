@@ -10,7 +10,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
-public class AddPlayersGP extends GridPane {
+public class AddPlayersAP extends GridPane {
 
 	private Text txtTitle;
 
@@ -25,7 +25,7 @@ public class AddPlayersGP extends GridPane {
 	
 	private Slider slPlayer;
 
-	public AddPlayersGP() {
+	public AddPlayersAP() {
 
 		this.setPadding(new Insets(10));
 //		this.setGridLinesVisible(true); // Rend visible ligne de séparation

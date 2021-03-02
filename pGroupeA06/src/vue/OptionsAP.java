@@ -10,13 +10,13 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.text.Text;
 import util.Constants;
 
-public class OptionsGP extends AnchorPane {
+public class OptionsAP extends AnchorPane {
 
 	private Slider slVolume;
 	private Text txtTitle, txtVolume;
 	private Button btnBack,btnCards;
 
-	public OptionsGP() {
+	public OptionsAP() {
 
 		this.getChildren().addAll(getTxtTitle(), getBtnBack(), getTxtVolume(), getSlVolume(),getBtnCards());
 

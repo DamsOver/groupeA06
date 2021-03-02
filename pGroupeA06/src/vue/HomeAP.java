@@ -8,7 +8,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.text.Text;
 
-public class HomeGP extends AnchorPane {
+public class HomeAP extends AnchorPane {
 
 	private Text txtTitle;
 	private Button btnStartGame;
@@ -16,7 +16,7 @@ public class HomeGP extends AnchorPane {
 	private Button btnQuit;
 	private Button btnOption;
 
-	public HomeGP() {
+	public HomeAP() {
 		
 		this.getChildren().addAll(getTxtTitle(),getBtnStartGame(),getBtnGameRule(),getBtnOptions(),getBtnQuit());
 		
