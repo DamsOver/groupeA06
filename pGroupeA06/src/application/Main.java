@@ -62,9 +62,6 @@ public class Main extends Application {
 			Scene sceneOptions = new Scene(options, 1920, 1080);
 			Scene sceneLoginAdmin = new Scene(loginAdmin, 1920, 1080);
 
-			
-			Parent rootSB = FXMLLoader.load(getClass().getResource("/vue/sampleBorderPane.fxml"));
-			Scene sceneRootSB = new Scene(rootSB, 1920, 1080);
 
 			// Image
 			game.setId("gameBoard");
