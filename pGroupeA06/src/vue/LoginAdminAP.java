@@ -5,11 +5,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 
-public class LoginAdminGP extends AnchorPane{
+public class LoginAdminAP extends AnchorPane{
 	
 	private TextField tfLog;
 	private PasswordField pwfAdmin;
@@ -23,7 +24,7 @@ public class LoginAdminGP extends AnchorPane{
 	private Label lblPw;
 	private Label lblLog;
 	
-	public LoginAdminGP() {
+	public LoginAdminAP() {
 		/*this.setVgap(10);
 		this.setHgap(10);
 		
@@ -50,8 +51,6 @@ public class LoginAdminGP extends AnchorPane{
 		this.setTopAnchor(getTxtTitle(), 30.0);
 		this.setLeftAnchor(getTxtTitle(), 60.0);
 		this.setRightAnchor(getTxtTitle(), 60.0);
-		
-		
 		
 	}
 	public PasswordField getPwfAdmin() {

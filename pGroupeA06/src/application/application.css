@@ -10,12 +10,18 @@
 }
 
 .btn-style {
-	-fx-background-image: url("/img/bgBorder.png");
+	-fx-background-color: transparent;
+	-fx-background-image: url("/img/btn_border.png");
     -fx-background-size: stretch,stretch;
-	-fx-background-color: white;
-	-fx-font-size: 75;
+	-fx-font-size: 65;
 	-fx-font-color: black;
 	-fx-alignment: center;
+}
+
+.button:pressed{
+	-fx-background-color: transparent;
+	-fx-background-image: url("/img/btn_border_press.png");
+    -fx-background-size: stretch,stretch;
 }
 
 .btnQuit-style {
@@ -24,7 +30,9 @@
 	-fx-border-width: 2 2 2 2;
 }
 
-
+.slider{
+	-fx-background-color: transparent;
+}
 
 .slider-style .track{
 	-fx-background-color:black; 
@@ -38,7 +46,7 @@
 
 
 .title-style {
-	-fx-font-size: 175;
+	-fx-font-size: 150;
 }
 
 #gameBoard {
@@ -56,6 +64,6 @@
 
 
 .h1 {
-	-fx-font-size: 75;
+	-fx-font-size: 60;
 	-fx-font-weight: bold;
 }

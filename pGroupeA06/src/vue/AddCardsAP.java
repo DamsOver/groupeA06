@@ -11,7 +11,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
-public class AddCardsGP extends GridPane {
+public class AddCardsAP extends GridPane {
 	private Text lblTheme;
 	private Label lblAuthor;
 	private Label lblSubject;
@@ -39,7 +39,7 @@ public class AddCardsGP extends GridPane {
 	private Button btnSubmit;
 	private Button btnBack;
 
-	public AddCardsGP() {
+	public AddCardsAP() {
 
 		this.setPadding(new Insets(10));
 //		this.setGridLinesVisible(true); // Rend visible ligne de séparation

@@ -46,13 +46,13 @@ public class Main extends Application {
 				}
 			});
 
-			HomeGP root = new HomeGP();
-			AddCardsGP addCards = new AddCardsGP();
-			AdminGP admin = new AdminGP();
-			GameGP game = new GameGP();
-			AddPlayersGP addPlayers = new AddPlayersGP();
-			OptionsGP options = new OptionsGP();
-			LoginAdminGP loginAdmin = new LoginAdminGP();
+			HomeAP root = new HomeAP();
+			AddCardsAP addCards = new AddCardsAP();
+			AdminAP admin = new AdminAP();
+			GameAP game = new GameAP();
+			AddPlayersAP addPlayers = new AddPlayersAP();
+			OptionsAP options = new OptionsAP();
+			LoginAdminAP loginAdmin = new LoginAdminAP();
 
 			Scene sceneRoot = new Scene(root, 1920, 1080);
 			Scene sceneAddCards = new Scene(addCards, 1920, 1080);
@@ -62,9 +62,6 @@ public class Main extends Application {
 			Scene sceneOptions = new Scene(options, 1920, 1080);
 			Scene sceneLoginAdmin = new Scene(loginAdmin, 1920, 1080);
 
-			
-			Parent rootSB = FXMLLoader.load(getClass().getResource("/vue/sampleBorderPane.fxml"));
-			Scene sceneRootSB = new Scene(rootSB, 1920, 1080);
 
 			// Image
 			game.setId("gameBoard");
@@ -90,10 +87,8 @@ public class Main extends Application {
 			addPlayers.getBtnSubmit().setOnAction(eventStartGame);
 
 			// Home -> AddPlayers
-			// Game -> AddPlayers
 			EventHandler<ActionEvent> eventAddPlayers = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
-
 					primaryStage.setScene(sceneAddPlayers);
 					primaryStage.show();
 				}
@@ -101,6 +96,7 @@ public class Main extends Application {
 			root.getBtnStartGame().setOnAction(eventAddPlayers);
 			game.getBtnBack().setOnAction(eventAddPlayers);
 
+			/*
 			// Home -> Admin
 			// AddCards -> Admin
 			EventHandler<ActionEvent> eventLogin = new EventHandler<ActionEvent>() {
@@ -110,6 +106,7 @@ public class Main extends Application {
 				}
 			};
 			root.getBtnAdmin().setOnAction(eventLogin);
+*/
 
 			// Password validate
 			EventHandler<ActionEvent> eventValidateLogin = new EventHandler<ActionEvent>() {
