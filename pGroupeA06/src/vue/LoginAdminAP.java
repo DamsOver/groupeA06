@@ -4,12 +4,15 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 
-public class LoginAdminAP extends GridPane{
+public class LoginAdminAP extends AnchorPane{
 	
+	private TextField tfLog;
 	private PasswordField pwfAdmin;
 	
 	private Button btnVal;
@@ -19,21 +22,12 @@ public class LoginAdminAP extends GridPane{
 	private Text txtMessage;
 	
 	private Label lblPw;
-	
-	
+	private Label lblLog;
 	
 	public LoginAdminAP() {
-//		this.setGridLinesVisible(true);
-		this.setPadding(new Insets(10));
-		this.setVgap(10);
+		/*this.setVgap(10);
 		this.setHgap(10);
 		
-		int nbCol = 20;
-		for (int i = 0; i < nbCol; i++) {
-			ColumnConstraints colConstr = new ColumnConstraints();
-			colConstr.setPercentWidth(100. / nbCol);
-			this.getColumnConstraints().add(colConstr);
-		}
 		
 		//title
 		this.add(getTxtTitle(), 4, 1);
@@ -50,13 +44,43 @@ public class LoginAdminAP extends GridPane{
 		this.add(getBtnVal(), 6 , 7, 8, 1);
 		btnVal.getStyleClass().add("btn-style");
 		this.add(getBtnBack(), 1, 7, 3, 1);
-		btnBack.getStyleClass().add("btn-style");
+		btnBack.getStyleClass().add("btn-style");*/
+		this.getChildren().addAll(getTxtTitle(), getLblLog(), getTfLog(), 
+				getLblPw(), getPwfAdmin(), getTxtMessage(), getBtnVal(), getBtnBack());
+		
+		//title
+		txtTitle.getStyleClass().add("title-style");
+		this.setTopAnchor(getTxtTitle(), 30.0);
+		this.setLeftAnchor(getTxtTitle(), 60.0);
+		this.setRightAnchor(getTxtTitle(), 60.0);
+		
+		//label login
+		
+		//textfield login
+		
+		//label password
+		
+		//passwordfield
+		
+		//message
+		
+		//btn validate
+		
+		//btn back
+		
 	}
 	public PasswordField getPwfAdmin() {
 		if(pwfAdmin == null) {
 			pwfAdmin = new PasswordField();
 		}
 		return pwfAdmin;
+	}
+	
+	public TextField getTfLog() {
+		if(tfLog == null) {
+			tfLog = new TextField();
+		}
+		return tfLog;
 	}
 	
 	public Text getTxtTitle() {
@@ -86,6 +110,13 @@ public class LoginAdminAP extends GridPane{
 			lblPw = new Label("Insert the password :");
 		}
 		return lblPw;
+	}
+	
+	public Label getLblLog() {
+		if(lblLog == null) {
+			lblLog = new Label("Login : ");
+		}
+		return lblLog;
 	}
 	
 	public Button getBtnVal() {
