@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="1080" prefWidth="1920" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="vue.SampleBorderPane">
+   <children>
+      <Button id="btnValidate" layoutX="415.0" layoutY="611.0" mnemonicParsing="false" onAction="#test" prefHeight="150.0" prefWidth="423.0" styleClass="btn-style" stylesheets="/application/application.css" text="Validate" />
+   </children>
+</AnchorPane>
