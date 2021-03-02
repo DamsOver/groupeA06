@@ -3,7 +3,6 @@
 }
 
 
-
 *{
 	-fx-font-family: 'Balsamiq Sans';
 	-fx-background-color: white;
@@ -18,7 +17,7 @@
 	-fx-alignment: center;
 }
 
-.button:pressed{
+.btn-style:pressed{
 	-fx-background-color: transparent;
 	-fx-background-image: url("/img/btn_border_press.png");
     -fx-background-size: stretch,stretch;
@@ -28,6 +27,30 @@
 	-fx-font-weight: bold;
 	-fx-background-insets: 1;
 	-fx-border-width: 2 2 2 2;
+}
+
+.arrowUp{
+	-fx-background-color: transparent;
+	-fx-background-image: url("/img/btn_arrow_up.png");
+	-fx-background-size: stretch,stretch;
+}
+
+.arrowUp:pressed{
+	-fx-background-color: transparent;
+	-fx-background-image: url("/img/btn_arrow_up_press.png");
+	-fx-background-size: stretch,stretch;
+}
+
+.arrowDown:pressed{
+	-fx-background-color: transparent;
+	-fx-background-image: url("/img/btn_arrow_down_press.png");
+	-fx-background-size: stretch,stretch;
+}
+
+.arrowDown{
+	-fx-background-color: transparent;
+	-fx-background-image: url("/img/btn_arrow_down.png");
+	-fx-background-size: stretch,stretch;
 }
 
 .slider{
@@ -42,6 +65,12 @@
 .slider-style .thumb{
 	-fx-background-color: black; 
 	-fx-padding : 24;
+}
+
+.txtField{
+	-fx-font-size: 25;
+	-fx-border-color: black;
+	-fx-border-width: 3px;
 }
 
 
@@ -66,4 +95,8 @@
 .h1 {
 	-fx-font-size: 60;
 	-fx-font-weight: bold;
+}
+
+.txtAddPlayer{
+	-fx-font-size: 40;
 }

@@ -84,7 +84,7 @@ public class Main extends Application {
 					primaryStage.show();
 				}
 			};
-			addPlayers.getBtnSubmit().setOnAction(eventStartGame);
+			addPlayers.getBtnStart().setOnAction(eventStartGame);
 
 			// Home -> AddPlayers
 			EventHandler<ActionEvent> eventAddPlayers = new EventHandler<ActionEvent>() {
