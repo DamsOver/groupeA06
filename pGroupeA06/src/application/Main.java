@@ -87,10 +87,8 @@ public class Main extends Application {
 			addPlayers.getBtnSubmit().setOnAction(eventStartGame);
 
 			// Home -> AddPlayers
-			// Game -> AddPlayers
 			EventHandler<ActionEvent> eventAddPlayers = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
-
 					primaryStage.setScene(sceneAddPlayers);
 					primaryStage.show();
 				}
@@ -98,6 +96,7 @@ public class Main extends Application {
 			root.getBtnStartGame().setOnAction(eventAddPlayers);
 			game.getBtnBack().setOnAction(eventAddPlayers);
 
+			/*
 			// Home -> Admin
 			// AddCards -> Admin
 			EventHandler<ActionEvent> eventLogin = new EventHandler<ActionEvent>() {
@@ -107,6 +106,7 @@ public class Main extends Application {
 				}
 			};
 			root.getBtnAdmin().setOnAction(eventLogin);
+*/
 
 			// Password validate
 			EventHandler<ActionEvent> eventValidateLogin = new EventHandler<ActionEvent>() {

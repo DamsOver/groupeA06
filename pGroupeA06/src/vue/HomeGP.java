@@ -3,65 +3,58 @@ package vue;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
-public class HomeGP extends GridPane {
+public class HomeGP extends AnchorPane {
 
 	private Text txtTitle;
 	private Button btnStartGame;
-	private Button btnAdmin;
+	private Button btnGameRule;
 	private Button btnQuit;
 	private Button btnOption;
 
 	public HomeGP() {
 		
-		this.setPadding(new Insets(10));
-//		this.setGridLinesVisible(true); // Rend visible ligne de séparation
-		this.setVgap(10);
-		this.setHgap(10);
-
-		int nbCol = 20;
-		for (int i = 0; i < nbCol; i++) {
-			ColumnConstraints colConstr = new ColumnConstraints();
-			colConstr.setPercentWidth(100. / nbCol);
-			this.getColumnConstraints().add(colConstr);
-		}
-
-		// Line 2
-		this.add(getTxtTitle(), 8, 6, 4, 2); // elt, columnIndex, rowIndex, colspan, rowspan
-		txtTitle.setText("Game menu");
-		GridPane.setHalignment(getTxtTitle(), HPos.CENTER);
-		txtTitle.getStyleClass().add("title-style");
-
-		// Line 4
-		this.add(getBtnStartGame(), 7, 14, 6, 1);
-		GridPane.setHalignment(getBtnStartGame(), HPos.CENTER);
-		btnStartGame.getStyleClass().add("btn-style");
-
-		// Line 6
-		this.add(getBtnOptions(), 7, 16, 6, 1);
-		GridPane.setHalignment(getBtnOptions(), HPos.CENTER);
-		btnOption.getStyleClass().add("btn-style");
-
-		// Line 8
-		this.add(getBtnAdmin(), 7, 18, 6, 1);
-		GridPane.setHalignment(getBtnAdmin(), HPos.CENTER);
-		btnAdmin.getStyleClass().add("btn-style");
-
-		// Line 14
-		this.add(getBtnQuit(), 17, 30, 3, 1);
-		GridPane.setHalignment(getBtnQuit(), HPos.CENTER);
-		btnQuit.getStyleClass().add("btn-style");
-		btnQuit.getStyleClass().add("btnQuit-style");
-
+		this.getChildren().addAll(getTxtTitle(),getBtnStartGame(),getBtnGameRule(),getBtnOptions(),getBtnQuit());
+		
+		//title		
+		getTxtTitle().getStyleClass().add("title-style");
+		AnchorPane.setTopAnchor(getTxtTitle(), 100.0 );
+		AnchorPane.setRightAnchor(getTxtTitle(), 550.0 );
+		AnchorPane.setLeftAnchor(getTxtTitle(), 550.0 );
+		
+		//BtnStartGame
+		getBtnStartGame().getStyleClass().add("btn-style");
+		AnchorPane.setTopAnchor(getBtnStartGame(), 350.0 );
+		AnchorPane.setRightAnchor(getBtnStartGame(), 700.0 );
+		AnchorPane.setLeftAnchor(getBtnStartGame(), 700.0 );
+		
+		//BtnGameRule
+		getBtnGameRule().getStyleClass().add("btn-style");
+		AnchorPane.setTopAnchor(getBtnGameRule(), 550.0 );
+		AnchorPane.setRightAnchor(getBtnGameRule(), 700.0 );
+		AnchorPane.setLeftAnchor(getBtnGameRule(), 700.0 );
+		
+		//BtnOptions
+		getBtnOptions().getStyleClass().add("btn-style");
+		AnchorPane.setTopAnchor(getBtnOptions(), 750.0 );
+		AnchorPane.setRightAnchor(getBtnOptions(), 700.0 );
+		AnchorPane.setLeftAnchor(getBtnOptions(), 700.0 );
+		
+		//BtnQuit
+		getBtnQuit().getStyleClass().add("btn-style");
+		AnchorPane.setTopAnchor(getBtnQuit(), 900.0 );
+		AnchorPane.setRightAnchor(getBtnQuit(), 50.0 );
+		AnchorPane.setLeftAnchor(getBtnQuit(), 1600.0 );
+		
 	}
 
 	public Text getTxtTitle() {
 		if (txtTitle == null) {
-			txtTitle = new Text();
+			txtTitle = new Text("Game Menu");
 		}
 		return txtTitle;
 	}
@@ -73,11 +66,11 @@ public class HomeGP extends GridPane {
 		return btnStartGame;
 	}
 
-	public Button getBtnAdmin() {
-		if (btnAdmin == null) {
-			btnAdmin = new Button("Admin");
+	public Button getBtnGameRule() {
+		if (btnGameRule == null) {
+			btnGameRule = new Button("Game rules");
 		}
-		return btnAdmin;
+		return btnGameRule;
 	}
 
 	public Button getBtnQuit() {
@@ -89,7 +82,7 @@ public class HomeGP extends GridPane {
 
 	public Button getBtnOptions() {
 		if (btnOption == null) {
-			btnOption = new Button("Option");
+			btnOption = new Button("Options");
 		}
 		return btnOption;
 	}

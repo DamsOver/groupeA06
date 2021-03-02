@@ -5,58 +5,57 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import util.Constants;
 
-public class OptionsGP extends GridPane {
+public class OptionsGP extends AnchorPane {
 
-	private Label lblVolume;
 	private Slider slVolume;
-	private Text txtTitle;
-	private Button btnBack;
+	private Text txtTitle, txtVolume;
+	private Button btnBack,btnCards;
 
 	public OptionsGP() {
 
-		this.setPadding(new Insets(10));
-//		this.setGridLinesVisible(true); // Rend visible ligne de séparation
-		this.setVgap(10);
-		this.setHgap(10);
+		this.getChildren().addAll(getTxtTitle(), getBtnBack(), getTxtVolume(), getSlVolume(),getBtnCards());
 
-		int nbCol = 20;
-		for (int i = 0; i < nbCol; i++) {
-			ColumnConstraints colConstr = new ColumnConstraints();
-			colConstr.setPercentWidth(100. / nbCol);
-			this.getColumnConstraints().add(colConstr);
-		}
-
-		// Line 2
-		this.add(getTxtTitle(), 8, 3, 4, 1); // elt, columnIndex, rowIndex, colspan, rowspan
-		txtTitle.setText("Options");
-		GridPane.setHalignment(getTxtTitle(), HPos.CENTER);
+		// title
 		txtTitle.getStyleClass().add("title-style");
+		AnchorPane.setTopAnchor(getTxtTitle(), 100.0);
+		AnchorPane.setRightAnchor(getTxtTitle(), 700.0);
+		AnchorPane.setLeftAnchor(getTxtTitle(), 700.0);
 
-		// Line 3
-		this.add(getLblVolume(), 2, 9, 5, 1);
-		this.add(getSlVolume(), 6, 9, 8, 1);
-		lblVolume.getStyleClass().add("h1");
-		slVolume.setValue(Constants.INITIAL_VOLUME);
-		slVolume.setMajorTickUnit(50);
-		slVolume.setMinorTickCount(5);
-		slVolume.setBlockIncrement(1);
-		slVolume.getStyleClass().add("slider-style");
-
-		// Line 20
-		this.add(getBtnBack(), 15, 50, 4, 4);
+		// BtnBack
 		btnBack.getStyleClass().add("btn-style");
-		GridPane.setHalignment(getBtnBack(), HPos.CENTER);
+		AnchorPane.setTopAnchor(getBtnBack(), 900.0);
+		AnchorPane.setRightAnchor(getBtnBack(), 50.0);
+		AnchorPane.setLeftAnchor(getBtnBack(), 1600.0);
+
+		// SlVolume
+		slVolume.setValue(Constants.INITIAL_VOLUME);
+		slVolume.getStyleClass().add("slider-style");
+		AnchorPane.setTopAnchor(getSlVolume(), 410.0);
+		AnchorPane.setRightAnchor(getSlVolume(), 550.0);
+		AnchorPane.setLeftAnchor(getSlVolume(), 600.0);
+
+		// TxtVolume
+		txtVolume.getStyleClass().add("h1");
+		AnchorPane.setTopAnchor(getTxtVolume(), 400.0);
+		AnchorPane.setRightAnchor(getTxtVolume(), 1400.0);
+		AnchorPane.setLeftAnchor(getTxtVolume(), 200.0);	
+		
+		// BtnCards
+		btnCards.getStyleClass().add("btn-style");
+		AnchorPane.setTopAnchor(getBtnCards(),625.0);
+		AnchorPane.setRightAnchor(getBtnCards(), 1050.0);
+		AnchorPane.setLeftAnchor(getBtnCards(), 200.0);
 
 	}
 
 	public Text getTxtTitle() {
 		if (txtTitle == null) {
-			txtTitle = new Text();
+			txtTitle = new Text("Options");
 		}
 		return txtTitle;
 	}
@@ -67,12 +66,19 @@ public class OptionsGP extends GridPane {
 		}
 		return btnBack;
 	}
-
-	public Label getLblVolume() {
-		if (lblVolume == null) {
-			lblVolume = new Label("Volume : ");
+	
+	public Button getBtnCards() {
+		if (btnCards == null) {
+			btnCards = new Button("Card Management");
 		}
-		return lblVolume;
+		return btnCards;
+	}
+
+	public Text getTxtVolume() {
+		if (txtVolume == null) {
+			txtVolume = new Text("Volume : ");
+		}
+		return txtVolume;
 	}
 
 	public Slider getSlVolume() {
