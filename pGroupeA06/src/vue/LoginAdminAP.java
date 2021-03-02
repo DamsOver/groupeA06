@@ -47,10 +47,24 @@ public class LoginAdminAP extends AnchorPane{
 		btnBack.getStyleClass().add("btn-style");*/
 		this.getChildren().addAll(getTxtTitle(), getLblLog(), getTfLog(), 
 				getLblPw(), getPwfAdmin(), getTxtMessage(), getBtnVal(), getBtnBack());
-		
+		//title
 		this.setTopAnchor(getTxtTitle(), 30.0);
 		this.setLeftAnchor(getTxtTitle(), 60.0);
 		this.setRightAnchor(getTxtTitle(), 60.0);
+		
+		//label login
+		
+		//textfield login
+		
+		//label password
+		
+		//passwordfield
+		
+		//message
+		
+		//btn validate
+		
+		//btn back
 		
 	}
 	public PasswordField getPwfAdmin() {
