@@ -9,9 +9,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 
 public class AddCardsGP extends GridPane {
-	private Label lblTheme;
+	private Text lblTheme;
 	private Label lblAuthor;
 	private Label lblSubject;
 	private Label lblChallenges;
@@ -101,9 +102,9 @@ public class AddCardsGP extends GridPane {
 
 	}
 
-	public Label getLblTheme() {
+	public Text getLblTheme() {
 		if (lblTheme == null) {
-			lblTheme = new Label("Theme : ");
+			lblTheme = new Text("Theme : ");
 		}
 		return lblTheme;
 	}

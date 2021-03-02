@@ -62,6 +62,7 @@ public class Main extends Application {
 			Scene sceneOptions = new Scene(options, 1920, 1080);
 			Scene sceneLoginAdmin = new Scene(loginAdmin, 1920, 1080);
 
+			
 			Parent rootSB = FXMLLoader.load(getClass().getResource("/vue/sampleBorderPane.fxml"));
 			Scene sceneRootSB = new Scene(rootSB, 1920, 1080);
 
@@ -69,13 +70,13 @@ public class Main extends Application {
 			game.setId("gameBoard");
 
 			// background
-//			root.getStyleClass().add("pane");
-//			addCards.getStyleClass().add("pane");
-//			admin.getStyleClass().add("pane");
-//			game.getStyleClass().add("pane");
-//			addPlayers.getStyleClass().add("pane");
-//			options.getStyleClass().add("pane");
-//			loginAdmin.getStyleClass().add("pane");
+			root.getStyleClass().add("pane");
+			addCards.getStyleClass().add("pane");
+			admin.getStyleClass().add("pane");
+			game.getStyleClass().add("pane");
+			addPlayers.getStyleClass().add("pane");
+			options.getStyleClass().add("pane");
+			loginAdmin.getStyleClass().add("pane");
 
 			// Event "change scene" with click button
 			// addPlayers -> Game
@@ -213,7 +214,7 @@ public class Main extends Application {
 			sceneRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
 			// Main Scene
-			primaryStage.setScene(sceneRootSB);
+			primaryStage.setScene(sceneRoot);
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
