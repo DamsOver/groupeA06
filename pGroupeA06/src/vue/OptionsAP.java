@@ -85,7 +85,7 @@ public class OptionsAP extends AnchorPane {
 	        public void handle(ActionEvent event) {
 	            SceneManager.getSceneRoot().setRoot(SceneManager.getStackAdmin());
 	            }
-			});
+		});
 		return btnCards;
 	}
 
