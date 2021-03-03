@@ -146,3 +146,9 @@
 	-fx-border-color: black;
 	-fx-border-width: 3px;
 }
+
+.lview {
+	-fx-font-size: 25;
+	-fx-border-color: black;
+	-fx-border-width: 3px;
+}
