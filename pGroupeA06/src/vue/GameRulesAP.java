@@ -8,6 +8,9 @@ public class GameRulesAP extends AnchorPane {
 	private Text txtTitle,txtRules;
 	
 	public GameRulesAP() {
+		
+		this.getStyleClass().add("pane");
+		
 		this.getChildren().addAll(getTxtTitle(),getTxtRules());
 		
 		getTxtTitle().getStyleClass().add("title-style");

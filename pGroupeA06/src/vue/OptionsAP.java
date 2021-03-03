@@ -18,6 +18,8 @@ public class OptionsAP extends AnchorPane {
 
 	public OptionsAP() {
 
+		
+		this.getStyleClass().add("pane");
 		this.getChildren().addAll(getTxtTitle(), getBtnBack(), getTxtVolume(), getSlVolume(),getBtnCards());
 
 		// title

@@ -9,13 +9,15 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import application.Main;
+import application.SceneManager;
 
 public class HomeAP extends AnchorPane {
-
+	
 	private Text txtTitle;
 	private Button btnStartGame;
 	private Button btnGameRule;
@@ -24,6 +26,7 @@ public class HomeAP extends AnchorPane {
 
 	public HomeAP() {
 		
+		this.getStyleClass().add("pane");
 		this.getChildren().addAll(getTxtTitle(),getBtnStartGame(),getBtnGameRule(),getBtnOptions(),getBtnQuit());
 		
 		//title		
@@ -69,7 +72,6 @@ public class HomeAP extends AnchorPane {
 		if (btnStartGame == null) {
 			btnStartGame = new Button("Start Game");
 		}
-
 		return btnStartGame;
 	}
 
@@ -91,6 +93,12 @@ public class HomeAP extends AnchorPane {
 		if (btnOption == null) {
 			btnOption = new Button("Options");
 		}
+		btnOption.setOnAction(new EventHandler<ActionEvent>(){
+        public void handle(ActionEvent event) {
+            SceneManager.getSceneRoot().setRoot(SceneManager.getStackOptions());
+            }
+		});
+		
 		return btnOption;
 	}
 

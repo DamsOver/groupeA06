@@ -14,6 +14,8 @@ public class GameAP extends GridPane {
 
 	public GameAP() {
 
+		this.setId("gameBoard");
+		
 		this.setPadding(new Insets(10));
 //		this.setGridLinesVisible(true); // Rend visible ligne de séparation
 		this.setVgap(10);

@@ -25,6 +25,9 @@ public class LoginAdminAP extends AnchorPane{
 	private Label lblLog;
 	
 	public LoginAdminAP() {
+		
+		this.getStyleClass().add("pane");
+		
 		/*this.setVgap(10);
 		this.setHgap(10);
 		

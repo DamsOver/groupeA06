@@ -25,7 +25,6 @@ public class AddPlayersAP extends AnchorPane {
 
 	public AddPlayersAP() {
 
-		this.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 		this.getStyleClass().add("pane");
 		this.getChildren().addAll(getTxtTitle(), getBtnBack(),getBtnStart(),getTxtNbPlayer(),getArrowUp(),getArrowDown(), getAllPlayers()/*,
 				getTxtPlayer1(),getTxtPlayer2(),getTxtPlayer3(),getTxtPlayer4(),getTxtPlayer5(),getTxtPlayer6(),getTxtPlayer7(),getTxtPlayer8(),

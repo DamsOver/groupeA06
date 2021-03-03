@@ -41,6 +41,7 @@ public class AddCardsAP extends GridPane {
 
 	public AddCardsAP() {
 
+		this.getStyleClass().add("pane");
 		this.setPadding(new Insets(10));
 //		this.setGridLinesVisible(true); // Rend visible ligne de séparation
 		this.setVgap(10);

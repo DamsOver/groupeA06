@@ -23,8 +23,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class Main extends Application {
-
-	static Stage pStage; 
+	
 	public void start(Stage primaryStage) {
 		try {
 		
@@ -45,38 +44,11 @@ public class Main extends Application {
 					mediaPlayer.play();
 				}
 			});
-
-						
-			HomeAP root = new HomeAP();	
-			AddCardsAP addCards = new AddCardsAP();
-			AdminAP admin = new AdminAP();
-			GameAP game = new GameAP();
-			AddPlayersAP addPlayers = new AddPlayersAP();
-			OptionsAP options = new OptionsAP();
-			LoginAdminAP loginAdmin = new LoginAdminAP();
-					
-			StackPane stackRoot = new StackPane(root);
-			StackPane stackAddCards = new StackPane(addCards);
-			StackPane stackAdmin = new StackPane(admin);
-			StackPane stackGame = new StackPane(game);
-			StackPane stackAddPlayers = new StackPane(addPlayers);
-			StackPane stackOptions = new StackPane(options);
-			StackPane stackLoginAdmin = new StackPane(loginAdmin);
 			
-			Scene sceneRoot = new Scene(stackRoot, 1920, 1080);
+			SceneManager.initialize();
+			
 
-			// Image
-			game.setId("gameBoard");
-
-			// background
-			root.getStyleClass().add("pane");
-			addCards.getStyleClass().add("pane");
-			admin.getStyleClass().add("pane");
-			game.getStyleClass().add("pane");
-			addPlayers.getStyleClass().add("pane");
-			options.getStyleClass().add("pane");
-			loginAdmin.getStyleClass().add("pane");
-
+			/*
 			// Event "change scene" with click button
 			// addPlayers -> Game
 			EventHandler<ActionEvent> eventStartGame = new EventHandler<ActionEvent>() {
@@ -87,13 +59,13 @@ public class Main extends Application {
 			addPlayers.getBtnStart().setOnAction(eventStartGame);
 
 			// Home -> AddPlayers
-			/*EventHandler<ActionEvent> eventAddPlayers = new EventHandler<ActionEvent>() {
+			EventHandler<ActionEvent> eventAddPlayers = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
 					sceneRoot.setRoot(stackAddPlayers);
 				}
 			};
 			root.getBtnStartGame().setOnAction(eventAddPlayers);
-			game.getBtnBack().setOnAction(eventAddPlayers);*/
+			game.getBtnBack().setOnAction(eventAddPlayers);
 
 
 
@@ -130,7 +102,7 @@ public class Main extends Application {
 //			admin.getBtnAddCards().setOnAction(eventAddCards);
 
 			// Home -> Options
-			EventHandler<ActionEvent> eventOptions = new EventHandler<ActionEvent>() {
+			/*EventHandler<ActionEvent> eventOptions = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {		
 					sceneRoot.setRoot(stackOptions);
 				}
@@ -153,11 +125,12 @@ public class Main extends Application {
 				}
 			});
 
+*/
 			// Style
-			sceneRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			SceneManager.getSceneRoot().getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
 			// Main Scene
-			primaryStage.setScene(sceneRoot);
+			primaryStage.setScene(SceneManager.getSceneRoot());
 			primaryStage.setFullScreen(true);
 			primaryStage.show();
 		} catch (Exception e) {
@@ -170,8 +143,9 @@ public class Main extends Application {
 		launch(args);
 
 	}
-
 }
+
+
 
 
 //// Add the BasicCard

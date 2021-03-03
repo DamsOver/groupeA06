@@ -14,7 +14,8 @@ public class AdminAP extends GridPane {
 	private Button addCards;
 
 	public AdminAP() {
-
+		
+		this.getStyleClass().add("pane");
 		this.setPadding(new Insets(10));
 //		this.setGridLinesVisible(true); // Rend visible ligne de séparation
 		this.setVgap(10);
