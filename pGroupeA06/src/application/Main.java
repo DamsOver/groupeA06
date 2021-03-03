@@ -18,6 +18,7 @@ import vue.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -27,7 +28,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 
-			primaryStage.setFullScreen(true);
+			
 			primaryStage.setTitle("How much are you worth ?");
 			primaryStage.getIcons().add(new Image("/img/icon.png"));
 			primaryStage.setResizable(false);
@@ -45,23 +46,25 @@ public class Main extends Application {
 					mediaPlayer.play();
 				}
 			});
-			pStage = primaryStage;
-			HomeAP root = new HomeAP();
+
+						
+			HomeAP root = new HomeAP();	
 			AddCardsAP addCards = new AddCardsAP();
 			AdminAP admin = new AdminAP();
 			GameAP game = new GameAP();
 			AddPlayersAP addPlayers = new AddPlayersAP();
 			OptionsAP options = new OptionsAP();
 			LoginAdminAP loginAdmin = new LoginAdminAP();
-
-			Scene sceneRoot = new Scene(root, 1920, 1080);
-			Scene sceneAddCards = new Scene(addCards, 1920, 1080);
-			Scene sceneAdmin = new Scene(admin, 1920, 1080);
-			Scene sceneGame = new Scene(game, 1920, 1080);
-			Scene sceneAddPlayers = new Scene(addPlayers, 1920, 1080);
-			Scene sceneOptions = new Scene(options, 1920, 1080);
-			Scene sceneLoginAdmin = new Scene(loginAdmin, 1920, 1080);
-
+					
+			StackPane stackRoot = new StackPane(root);
+			StackPane stackAddCards = new StackPane(addCards);
+			StackPane stackAdmin = new StackPane(admin);
+			StackPane stackGame = new StackPane(game);
+			StackPane stackAddPlayers = new StackPane(addPlayers);
+			StackPane stackOptions = new StackPane(options);
+			StackPane stackLoginAdmin = new StackPane(loginAdmin);
+			
+			Scene sceneRoot = new Scene(stackRoot, 1920, 1080);
 
 			// Image
 			game.setId("gameBoard");
@@ -79,9 +82,7 @@ public class Main extends Application {
 			// addPlayers -> Game
 			EventHandler<ActionEvent> eventStartGame = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
-
-					primaryStage.setScene(sceneGame);
-					primaryStage.show();
+					sceneRoot.setRoot(stackGame);
 				}
 			};
 			addPlayers.getBtnStart().setOnAction(eventStartGame);
@@ -89,24 +90,18 @@ public class Main extends Application {
 			// Home -> AddPlayers
 			/*EventHandler<ActionEvent> eventAddPlayers = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
-					primaryStage.setScene(sceneAddPlayers);
-					primaryStage.show();
+					sceneRoot.setRoot(stackAddPlayers);
 				}
 			};
 			root.getBtnStartGame().setOnAction(eventAddPlayers);
 			game.getBtnBack().setOnAction(eventAddPlayers);*/
 
 			/*
-			// Home -> Admin
-			// AddCards -> Admin
-			EventHandler<ActionEvent> eventLogin = new EventHandler<ActionEvent>() {
-				public void handle(ActionEvent e) {
-					primaryStage.setScene(sceneLoginAdmin);
-					primaryStage.show();
-				}
-			};
-			root.getBtnAdmin().setOnAction(eventLogin);
-*/
+			 * // Home -> Admin // AddCards -> Admin EventHandler<ActionEvent> eventLogin =
+			 * new EventHandler<ActionEvent>() { public void handle(ActionEvent e) {
+			 * primaryStage.setScene(sceneLoginAdmin); primaryStage.show(); } };
+			 * root.getBtnAdmin().setOnAction(eventLogin);
+			 */
 
 			// Password validate
 			EventHandler<ActionEvent> eventValidateLogin = new EventHandler<ActionEvent>() {
@@ -115,8 +110,8 @@ public class Main extends Application {
 					PasswordAdmin pw = new PasswordAdmin(response);
 					loginAdmin.setTxtMessage(pw.getMessage());
 					if (pw.getValidation()) {
-						primaryStage.setScene(sceneAdmin);
-						primaryStage.show();
+//						primaryStage.setScene(sceneAdmin);
+//						primaryStage.show();
 					} else {
 						// loginAdmin.getTxtMessage().setSelectionFill(Color.rgb(210, 39, 30));
 					}
@@ -124,45 +119,42 @@ public class Main extends Application {
 				}
 			};
 
-			loginAdmin.getBtnVal().setOnAction(eventValidateLogin);
+//			loginAdmin.getBtnVal().setOnAction(eventValidateLogin);
 
 			EventHandler<ActionEvent> eventAdmin = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
-					primaryStage.setScene(sceneAdmin);
-					primaryStage.show();
+					sceneRoot.setRoot(stackAdmin);
 				}
 			};
 			// addCards -> menu
 			addCards.getBtnBack().setOnAction(eventAdmin);
-			// root.getBtnAdmin().setOnAction(eventAdmin);
+//			root.getBtnAdmin().setOnAction(eventAdmin);
 
 			// Admin -> Home
 			// AddPlayers -> Home
 			// Options -> Home
 			EventHandler<ActionEvent> eventHome = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
-					primaryStage.setScene(sceneRoot);
-					primaryStage.show();
+					sceneRoot.setRoot(stackRoot);
 				}
 			};
 			admin.getBtnBack().setOnAction(eventHome);
 			addPlayers.getBtnBack().setOnAction(eventHome);
 			options.getBtnBack().setOnAction(eventHome);
 			loginAdmin.getBtnBack().setOnAction(eventHome);
+			
 			// Admin -> AddCards
 			EventHandler<ActionEvent> eventAddCards = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
-					primaryStage.setScene(sceneAddCards);
-					primaryStage.show();
+					sceneRoot.setRoot(stackAddCards);
 				}
 			};
-			admin.getBtnAddCards().setOnAction(eventAddCards);
+//			admin.getBtnAddCards().setOnAction(eventAddCards);
 
 			// Home -> Options
 			EventHandler<ActionEvent> eventOptions = new EventHandler<ActionEvent>() {
-				public void handle(ActionEvent e) {
-					primaryStage.setScene(sceneOptions);
-					primaryStage.show();
+				public void handle(ActionEvent e) {		
+					sceneRoot.setRoot(stackOptions);
 				}
 			};
 			root.getBtnOptions().setOnAction(eventOptions);
@@ -170,7 +162,6 @@ public class Main extends Application {
 			// Close Application
 			EventHandler<ActionEvent> eventQuit = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
-
 					primaryStage.close();
 				}
 			};
@@ -203,27 +194,18 @@ public class Main extends Application {
 			});
 
 			// Style
-			sceneOptions.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			sceneAddPlayers.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			sceneAddCards.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			sceneGame.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			sceneAdmin.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			sceneRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
 			// Main Scene
 			primaryStage.setScene(sceneRoot);
+			primaryStage.setFullScreen(true);
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static Stage getPStage() {
-		if(pStage == null) {
-			return null;
-		}
-		return pStage;
-	}
+	
 	public static void main(String[] args) {
 		launch(args);
 
