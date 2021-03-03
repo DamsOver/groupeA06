@@ -2,7 +2,10 @@ package vue;
 
 import com.sun.javafx.geom.Area;
 
+import application.SceneManager;
 import javafx.beans.binding.Bindings;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
@@ -212,6 +215,13 @@ public class AddPlayersAP extends AnchorPane {
 		if (btnBack == null) {
 			btnBack = new Button("Back");
 		}
+		
+		btnBack.setOnAction(new EventHandler<ActionEvent>(){
+	        public void handle(ActionEvent event) {
+	            SceneManager.getSceneRoot().setRoot(SceneManager.getStackRoot());
+	        }
+		});
+		
 		return btnBack;
 	}
 
@@ -219,6 +229,13 @@ public class AddPlayersAP extends AnchorPane {
 		if (btnStart == null) {
 			btnStart = new Button("Start");
 		}
+		
+		btnStart.setOnAction(new EventHandler<ActionEvent>(){
+	        public void handle(ActionEvent event) {
+	            SceneManager.getSceneRoot().setRoot(SceneManager.getStackGame());
+	        }
+		});
+		
 		return btnStart;
 	}
 
