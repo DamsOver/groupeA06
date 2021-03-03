@@ -32,7 +32,7 @@ public class GameAP extends AnchorPane {
 		}
 		btnSettings.setOnAction(new EventHandler<ActionEvent>(){
 	        public void handle(ActionEvent event) {
-	            SceneManager.getSceneRoot().setRoot(SceneManager.getStackAddPlayers());
+	            SceneManager.getSceneRoot().setRoot(SceneManager.getStackSettings());
 	            }
 			});
 		return btnSettings;

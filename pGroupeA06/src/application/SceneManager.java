@@ -11,6 +11,7 @@ import vue.GameAP;
 import vue.GameRulesAP;
 import vue.HomeAP;
 import vue.OptionsAP;
+import vue.SettingsAP;
 import vue.TransitionAnimationAP;
 
 public class SceneManager {
@@ -25,18 +26,21 @@ public class SceneManager {
 								stackAddPlayers,
 								stackGameRule,
 								stackCardsManagement,
-								stackTransitionAnimation;
+								stackTransitionAnimation,
+								stackSettings;
 	
 
 	private static HomeAP root;
 	private static OptionsAP options;
 	private static TransitionAnimationAP ta;
+	private static SettingsAP settings;
 	
 	public static void initialize() {
 		
 		root = new HomeAP();
 		options=new OptionsAP();
 		ta = new TransitionAnimationAP();
+		settings = new SettingsAP();
 		stackRoot = new StackPane(root);
 		stackAddCards = new StackPane(new AddCardsAP());
 		stackAdmin = new StackPane(new AdminAP());
@@ -46,6 +50,7 @@ public class SceneManager {
 		stackGameRule = new StackPane(new GameRulesAP());
 		stackCardsManagement = new StackPane(new CardsManagementAP());
 		stackTransitionAnimation = new StackPane(ta);
+		stackSettings = new StackPane(settings);
 		sceneRoot = new Scene(stackRoot, 1920, 1080);
 	}
 	
@@ -59,6 +64,11 @@ public class SceneManager {
 	public static TransitionAnimationAP getTransitionAnimation() {
 		return ta;
 	}
+	public static SettingsAP getSettings() {
+		return settings;
+	}
+	
+	
 	
 	public static Scene getSceneRoot() {
 		return sceneRoot;
@@ -96,6 +106,9 @@ public class SceneManager {
 	}
 	public static StackPane getStackTransititionAnimation() {
 		return stackTransitionAnimation;
+	}
+	public static StackPane getStackSettings() {
+		return stackSettings;
 	}
 	
 }
