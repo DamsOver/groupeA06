@@ -96,16 +96,11 @@ public class Main extends Application {
 			game.getBtnBack().setOnAction(eventAddPlayers);
 
 			/*
-			// Home -> Admin
-			// AddCards -> Admin
-			EventHandler<ActionEvent> eventLogin = new EventHandler<ActionEvent>() {
-				public void handle(ActionEvent e) {
-					primaryStage.setScene(sceneLoginAdmin);
-					primaryStage.show();
-				}
-			};
-			root.getBtnAdmin().setOnAction(eventLogin);
-*/
+			 * // Home -> Admin // AddCards -> Admin EventHandler<ActionEvent> eventLogin =
+			 * new EventHandler<ActionEvent>() { public void handle(ActionEvent e) {
+			 * primaryStage.setScene(sceneLoginAdmin); primaryStage.show(); } };
+			 * root.getBtnAdmin().setOnAction(eventLogin);
+			 */
 
 			// Password validate
 			EventHandler<ActionEvent> eventValidateLogin = new EventHandler<ActionEvent>() {
