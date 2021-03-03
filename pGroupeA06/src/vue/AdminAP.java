@@ -107,6 +107,8 @@ public class AdminAP extends AnchorPane {
 		btnBack.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				SceneManager.getSceneRoot().setRoot(SceneManager.getStackOptions());
+				txtFLogin.clear();
+				pwdFPassword.clear();
 			}
 		});
 		return btnBack;

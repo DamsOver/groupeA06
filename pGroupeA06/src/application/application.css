@@ -5,7 +5,7 @@
 
 *{
 	-fx-font-family: 'Balsamiq Sans';
-	-fx-background-color: white;
+	/*-fx-background-color: white;*/
 }
 
 .btn-style {
@@ -139,4 +139,10 @@
 	-fx-background-color: transparent;
 	-fx-background-image: url("/img/btn_border_press.png");
     -fx-background-size: stretch,stretch;
+}
+
+.cbbox {
+	-fx-font-size: 25;
+	-fx-border-color: black;
+	-fx-border-width: 3px;
 }
