@@ -25,17 +25,22 @@ public class SceneManager {
 								stackLoginAdmin,
 								stackGameRule;
 	
+	public static OptionsAP getOptions() {
+		return options;
+	}
 	private static HomeAP root;
+	private static OptionsAP options;
 	
 	public static void initialize() {
 		
 		root = new HomeAP();
+		options=new OptionsAP();
 		stackRoot = new StackPane(root);
 		stackAddCards = new StackPane(new AddCardsAP());
 		stackAdmin = new StackPane(new AdminAP());
 		stackGame = new StackPane(new GameAP());
 		stackAddPlayers = new StackPane(new AddPlayersAP());
-		stackOptions = new StackPane(new OptionsAP());
+		stackOptions = new StackPane(options);
 		stackLoginAdmin = new StackPane(new LoginAdminAP());
 		stackGameRule = new StackPane(new GameRulesAP());
 		sceneRoot = new Scene(stackRoot, 1920, 1080);

@@ -26,11 +26,8 @@ public class Main extends Application {
 	
 	public void start(Stage primaryStage) {
 		try {
-		
-			primaryStage.setTitle("How much are you worth ?");
-			primaryStage.getIcons().add(new Image("/img/icon.png"));
-			primaryStage.setResizable(false);
-
+			
+			//Music
 			MediaPlayer mediaPlayer = new MediaPlayer(
 					new Media(new File("src/musics/bensound-hipjazz.mp3").toURI().toString()));
 			mediaPlayer.play();
@@ -38,77 +35,18 @@ public class Main extends Application {
 			mediaPlayer.setStartTime(Duration.seconds(0));
 			mediaPlayer.setStopTime(Duration.seconds(160));
 			mediaPlayer.setOnEndOfMedia(new Runnable() {
-				@Override
-				public void run() {
-					mediaPlayer.seek(Duration.ZERO);
-					mediaPlayer.play();
-				}
-			});
+					@Override
+					public void run() {
+						mediaPlayer.seek(Duration.ZERO);
+						mediaPlayer.play();
+					}
+				});
 			
+			
+			//initialisation of the scene
 			SceneManager.initialize();
 			
-
-			/*
-			// Event "change scene" with click button
-			// addPlayers -> Game
-			EventHandler<ActionEvent> eventStartGame = new EventHandler<ActionEvent>() {
-				public void handle(ActionEvent e) {
-					sceneRoot.setRoot(stackGame);
-				}
-			};
-			addPlayers.getBtnStart().setOnAction(eventStartGame);
-
-			// Home -> AddPlayers
-			EventHandler<ActionEvent> eventAddPlayers = new EventHandler<ActionEvent>() {
-				public void handle(ActionEvent e) {
-					sceneRoot.setRoot(stackAddPlayers);
-				}
-			};
-			root.getBtnStartGame().setOnAction(eventAddPlayers);
-			game.getBtnBack().setOnAction(eventAddPlayers);
-
-
-
-//			loginAdmin.getBtnVal().setOnAction(eventValidateLogin);
-
-			EventHandler<ActionEvent> eventAdmin = new EventHandler<ActionEvent>() {
-				public void handle(ActionEvent e) {
-					sceneRoot.setRoot(stackAdmin);
-				}
-			};
-			// addCards -> menu
-			addCards.getBtnBack().setOnAction(eventAdmin);
-//			root.getBtnAdmin().setOnAction(eventAdmin);
-
-			// Admin -> Home
-			// AddPlayers -> Home
-			// Options -> Home
-			EventHandler<ActionEvent> eventHome = new EventHandler<ActionEvent>() {
-				public void handle(ActionEvent e) {
-					sceneRoot.setRoot(stackRoot);
-				}
-			};
-			admin.getBtnBack().setOnAction(eventHome);
-			addPlayers.getBtnBack().setOnAction(eventHome);
-			options.getBtnBack().setOnAction(eventHome);
-			loginAdmin.getBtnBack().setOnAction(eventHome);
 			
-			// Admin -> AddCards
-			EventHandler<ActionEvent> eventAddCards = new EventHandler<ActionEvent>() {
-				public void handle(ActionEvent e) {
-					sceneRoot.setRoot(stackAddCards);
-				}
-			};
-//			admin.getBtnAddCards().setOnAction(eventAddCards);
-
-			// Home -> Options
-			/*EventHandler<ActionEvent> eventOptions = new EventHandler<ActionEvent>() {
-				public void handle(ActionEvent e) {		
-					sceneRoot.setRoot(stackOptions);
-				}
-			};
-			root.getBtnOptions().setOnAction(eventOptions);
-*/
 			// Close Application
 			EventHandler<ActionEvent> eventQuit = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
@@ -118,21 +56,30 @@ public class Main extends Application {
 			SceneManager.getRoot().getBtnQuit().setOnAction(eventQuit);
 
 
-/*
-			options.getSlVolume().valueProperty().addListener(new ChangeListener<Number>() {
+			//Volume
+			SceneManager.getOptions().getSlVolume().valueProperty().addListener(new ChangeListener<Number>() {
 				public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
 					mediaPlayer.setVolume((double) new_val * Constants.VOLUME_FACTOR);
 				}
 			});
 
-*/
+
 			// Style
 			SceneManager.getSceneRoot().getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-
-			// Main Scene
+			
+			//Window appearance
+			primaryStage.setTitle("How much are you worth ?");
+			primaryStage.getIcons().add(new Image("/img/icon.png"));
+			primaryStage.setResizable(false);
+			
+			// Main Scene set Scene
 			primaryStage.setScene(SceneManager.getSceneRoot());
 			primaryStage.setFullScreen(true);
 			primaryStage.show();
+			
+			
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

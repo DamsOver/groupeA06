@@ -99,6 +99,18 @@
 	-fx-font-weight: bold;
 }
 
+.scroll-pane{
+	-fx-background: transparent;
+	-fx-background-color: transparent;
+}
+
+.scroll-pane .viewport {  
+	-fx-background: transparent;
+    -fx-background-color: transparent;
+ 
+}
+
 .txtAddPlayer{
 	-fx-font-size: 40;
+	-fx-background-color: transparent;
 }
