@@ -2,6 +2,7 @@ package application;
 
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import vue.AddCardsAP;
 import vue.AddPlayersAP;
 import vue.AdminAP;
@@ -24,8 +25,12 @@ public class SceneManager {
 								stackLoginAdmin,
 								stackGameRule;
 	
+	private static HomeAP root;
+	
 	public static void initialize() {
-		stackRoot = new StackPane(new HomeAP());
+		
+		root = new HomeAP();
+		stackRoot = new StackPane(root);
 		stackAddCards = new StackPane(new AddCardsAP());
 		stackAdmin = new StackPane(new AdminAP());
 		stackGame = new StackPane(new GameAP());
@@ -34,6 +39,10 @@ public class SceneManager {
 		stackLoginAdmin = new StackPane(new LoginAdminAP());
 		stackGameRule = new StackPane(new GameRulesAP());
 		sceneRoot = new Scene(stackRoot, 1920, 1080);
+	}
+
+	public static HomeAP getRoot() {
+		return root;
 	}
 
 	public static Scene getSceneRoot() {

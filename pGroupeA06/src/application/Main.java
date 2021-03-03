@@ -108,17 +108,17 @@ public class Main extends Application {
 				}
 			};
 			root.getBtnOptions().setOnAction(eventOptions);
-
+*/
 			// Close Application
 			EventHandler<ActionEvent> eventQuit = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
 					primaryStage.close();
 				}
 			};
-			root.getBtnQuit().setOnAction(eventQuit);
+			SceneManager.getRoot().getBtnQuit().setOnAction(eventQuit);
 
 
-
+/*
 			options.getSlVolume().valueProperty().addListener(new ChangeListener<Number>() {
 				public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
 					mediaPlayer.setVolume((double) new_val * Constants.VOLUME_FACTOR);
@@ -141,7 +141,6 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
-
 	}
 }
 
