@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import vue.AddCardsAP;
 import vue.AddPlayersAP;
 import vue.AdminAP;
+import vue.CardsManagementAP;
 import vue.GameAP;
 import vue.GameRulesAP;
 import vue.HomeAP;
@@ -24,7 +25,7 @@ public class SceneManager {
 								stackAddPlayers,
 								stackLoginAdmin,
 								stackGameRule,
-								stackCardsManager;
+								stackCardsManagement;
 	
 	public static OptionsAP getOptions() {
 		return options;
@@ -44,7 +45,7 @@ public class SceneManager {
 		stackOptions = new StackPane(options);
 		stackLoginAdmin = new StackPane(new LoginAdminAP());
 		stackGameRule = new StackPane(new GameRulesAP());
-		stactCardsManager = new StackPane(new StackCardsMAnagerAP());
+		stackCardsManagement = new StackPane(new CardsManagementAP());
 		sceneRoot = new Scene(stackRoot, 1920, 1080);
 	}
 
@@ -87,7 +88,7 @@ public class SceneManager {
 		return stackGameRule;
 	}
 	public static StackPane getStackCardsManager() {
-		return stackCardsManager;
+		return stackCardsManagement;
 	}
 	
 	
