@@ -1,12 +1,18 @@
 package vue;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+import application.Main;
 
 public class HomeAP extends AnchorPane {
 
@@ -63,6 +69,7 @@ public class HomeAP extends AnchorPane {
 		if (btnStartGame == null) {
 			btnStartGame = new Button("Start Game");
 		}
+
 		return btnStartGame;
 	}
 
