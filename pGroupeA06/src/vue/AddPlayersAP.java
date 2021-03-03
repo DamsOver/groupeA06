@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import model.GameOperation;
+import util.Constants;
 
 
 public class AddPlayersAP extends AnchorPane {
@@ -233,8 +234,8 @@ public class AddPlayersAP extends AnchorPane {
 		
 		btnStart.setOnAction(new EventHandler<ActionEvent>(){
 	        public void handle(ActionEvent event) {
-	        	
-	        	GameOperation.skipMilliseconds(2000,SceneManager.getStackRoot(), SceneManager.getStackGame());
+	        	SceneManager.getTransitionAnimation().setTxtAnimation("The game starts!");
+	        	GameOperation.skipMilliseconds(Constants.TIME_ANIMATION,SceneManager.getStackTransititionAnimation(), SceneManager.getStackGame());
 	        }
 		});
 		
