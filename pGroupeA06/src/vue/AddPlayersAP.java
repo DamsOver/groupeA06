@@ -236,6 +236,8 @@ public class AddPlayersAP extends AnchorPane {
 	        public void handle(ActionEvent event) {
 	        	SceneManager.getTransitionAnimation().setTxtAnimation("The game starts!");
 	        	GameOperation.skipMilliseconds(Constants.TIME_ANIMATION,SceneManager.getStackTransititionAnimation(), SceneManager.getStackGame());
+	        	SceneManager.getTransitionAnimation().setTxtAnimation("It's Damien's turn!");
+	        	GameOperation.skipMilliseconds(Constants.TIME_ANIMATION,SceneManager.getStackTransititionAnimation(), SceneManager.getStackGame());
 	        }
 		});
 		
