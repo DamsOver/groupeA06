@@ -113,9 +113,9 @@ public class AdminAP extends AnchorPane {
 		if (btnUnlock == null) {
 			btnUnlock = new Button("Unlock");
 		}
-		btnBack.setOnAction(new EventHandler<ActionEvent>() {
+		btnUnlock.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				SceneManager.getSceneRoot().setRoot(SceneManager.getStackOptions());
+				SceneManager.getSceneRoot().setRoot(SceneManager.getStackCardsManager());
 			}
 		});
 		
