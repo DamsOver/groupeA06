@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.*;
 import util.Constants;
-import util.PasswordAdmin;
+import util.UnlockAdmin;
 import vue.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import util.UnlockAdmin;
 
 public class AdminAP extends AnchorPane {
 
@@ -110,12 +111,15 @@ public class AdminAP extends AnchorPane {
 	}
 
 	public Button getBtnUnlock() {
+		
 		if (btnUnlock == null) {
 			btnUnlock = new Button("Unlock");
 		}
-		btnBack.setOnAction(new EventHandler<ActionEvent>() {
+		btnUnlock.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				SceneManager.getSceneRoot().setRoot(SceneManager.getStackOptions());
+				UnlockAdmin unlockAdmin = new UnlockAdmin(txtFLogin.getText(), txtFPassword.getText());
+				if(unlockAdmin.isValide())
+					SceneManager.getSceneRoot().setRoot(SceneManager.getStackCardsManager());
 			}
 		});
 		
