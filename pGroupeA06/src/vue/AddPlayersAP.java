@@ -6,6 +6,7 @@ import application.SceneManager;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
@@ -25,13 +26,14 @@ public class AddPlayersAP extends AnchorPane {
 	private Button btnBack,btnStart,arrowUp,arrowDown;
 
 	private Slider slPlayer;
+	private Region allPlayers;
+	private SubScene subscene;
 	
-	private AllPlayersTP allPlayers;
 
 	public AddPlayersAP() {
 
 		this.getStyleClass().add("pane");
-		this.getChildren().addAll(getTxtTitle(), getBtnBack(),getBtnStart(),getTxtNbPlayer(),getArrowUp(),getArrowDown(), getAllPlayers()/*,
+		this.getChildren().addAll(getTxtTitle(), getBtnBack(),getBtnStart(),getTxtNbPlayer(),getArrowUp(),getArrowDown(), getSubScene()/*,
 				getTxtPlayer1(),getTxtPlayer2(),getTxtPlayer3(),getTxtPlayer4(),getTxtPlayer5(),getTxtPlayer6(),getTxtPlayer7(),getTxtPlayer8(),
 				getTxtFPlayer1(),getTxtFPlayer2(),getTxtFPlayer3(),getTxtFPlayer4(),getTxtFPlayer5(),getTxtFPlayer6(),getTxtFPlayer7(),getTxtFPlayer8()*/);
 		
@@ -200,9 +202,10 @@ public class AddPlayersAP extends AnchorPane {
 		txtFPlayer8.setDisable(true);*/
 		
 		//region
-		this.setTopAnchor(getAllPlayers(),425.);
-		this.setRightAnchor(getAllPlayers(), 260.);
-		this.setLeftAnchor(getAllPlayers(), 460.);
+		this.setTopAnchor(getSubScene(), 500.);
+		this.setRightAnchor(getSubScene(), 600.);
+		this.setLeftAnchor(getSubScene(), 600.);
+		
 		
 	}
 
@@ -383,11 +386,17 @@ public class AddPlayersAP extends AnchorPane {
 		return txtFPlayer8;
 	}
 	*/
-	public Region getAllPlayers() {
+/*	public Region getAllPlayers() {
 		if(allPlayers == null) {
 			allPlayers = new AllPlayersTP();
 		}
 		return allPlayers;
+	}*/
+	public SubScene getSubScene() {
+		if(subscene == null) {
+			subscene =  new SubScene(new AllPlayersTP(), 1000. , 500.);
+		}
+		return subscene;
 	}
 	public Slider getSlPlayer() {
 		if (slPlayer == null) {
