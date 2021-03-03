@@ -15,7 +15,7 @@ public class AllPlayersTP extends TilePane{
 		this.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
 		this.getStyleClass().add("addpane");
 		this.getChildren().addAll(getNodes());
-		this.setOrientation(Orientation.);
+		
 	}
 	
 	public List<PlayersAP> getNodes(){
