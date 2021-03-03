@@ -26,8 +26,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-
-			
+		
 			primaryStage.setTitle("How much are you worth ?");
 			primaryStage.getIcons().add(new Image("/img/icon.png"));
 			primaryStage.setResizable(false);
@@ -94,28 +93,7 @@ public class Main extends Application {
 			root.getBtnStartGame().setOnAction(eventAddPlayers);
 			game.getBtnBack().setOnAction(eventAddPlayers);
 
-			/*
-			 * // Home -> Admin // AddCards -> Admin EventHandler<ActionEvent> eventLogin =
-			 * new EventHandler<ActionEvent>() { public void handle(ActionEvent e) {
-			 * primaryStage.setScene(sceneLoginAdmin); primaryStage.show(); } };
-			 * root.getBtnAdmin().setOnAction(eventLogin);
-			 */
 
-			// Password validate
-			EventHandler<ActionEvent> eventValidateLogin = new EventHandler<ActionEvent>() {
-				public void handle(ActionEvent e) {
-					String response = loginAdmin.getPwfAdmin().getText();
-					PasswordAdmin pw = new PasswordAdmin(response);
-					loginAdmin.setTxtMessage(pw.getMessage());
-					if (pw.getValidation()) {
-//						primaryStage.setScene(sceneAdmin);
-//						primaryStage.show();
-					} else {
-						// loginAdmin.getTxtMessage().setSelectionFill(Color.rgb(210, 39, 30));
-					}
-					loginAdmin.getPwfAdmin().clear();
-				}
-			};
 
 //			loginAdmin.getBtnVal().setOnAction(eventValidateLogin);
 
@@ -165,25 +143,7 @@ public class Main extends Application {
 			};
 			root.getBtnQuit().setOnAction(eventQuit);
 
-			// Add the BasicCard
-			EventHandler<ActionEvent> eventAddBasicCard = new EventHandler<ActionEvent>() {
-				public void handle(ActionEvent e) {
 
-					// Check if the questions are correct and add them to the deck
-
-					// Checking the questions
-					// check if they are not empty
-					// if they are, error message ="try to add all 4 questions"
-					// if they are not try to add them to the card
-					// if error during the adding, error message = "exceptions"
-
-					// if everything ok
-					// create a card and add the questions
-					// add the card
-
-				}
-			};
-			addCards.getBtnSubmit().setOnAction(eventAddBasicCard);
 
 			options.getSlVolume().valueProperty().addListener(new ChangeListener<Number>() {
 				public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
@@ -209,3 +169,41 @@ public class Main extends Application {
 	}
 
 }
+
+
+//// Add the BasicCard
+//EventHandler<ActionEvent> eventAddBasicCard = new EventHandler<ActionEvent>() {
+//	public void handle(ActionEvent e) {
+//
+//		// Check if the questions are correct and add them to the deck
+//
+//		// Checking the questions
+//		// check if they are not empty
+//		// if they are, error message ="try to add all 4 questions"
+//		// if they are not try to add them to the card
+//		// if error during the adding, error message = "exceptions"
+//
+//		// if everything ok
+//		// create a card and add the questions
+//		// add the card
+//
+//	}
+//};
+//addCards.getBtnSubmit().setOnAction(eventAddBasicCard);
+
+
+//// Password validate
+//EventHandler<ActionEvent> eventValidateLogin = new EventHandler<ActionEvent>() {
+//	public void handle(ActionEvent e) {
+//		String response = loginAdmin.getPwfAdmin().getText();
+//		PasswordAdmin pw = new PasswordAdmin(response);
+//		loginAdmin.setTxtMessage(pw.getMessage());
+//		if (pw.getValidation()) {
+////			primaryStage.setScene(sceneAdmin);
+////			primaryStage.show();
+//		} else {
+//			// loginAdmin.getTxtMessage().setSelectionFill(Color.rgb(210, 39, 30));
+//		}
+//		loginAdmin.getPwfAdmin().clear();
+//	}
+//};
