@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
+import model.GameOperation;
 
 
 public class AddPlayersAP extends AnchorPane {
@@ -232,7 +233,8 @@ public class AddPlayersAP extends AnchorPane {
 		
 		btnStart.setOnAction(new EventHandler<ActionEvent>(){
 	        public void handle(ActionEvent event) {
-	            SceneManager.getSceneRoot().setRoot(SceneManager.getStackGame());
+	        	
+	        	GameOperation.skipMilliseconds(2000,SceneManager.getStackRoot(), SceneManager.getStackGame());
 	        }
 		});
 		

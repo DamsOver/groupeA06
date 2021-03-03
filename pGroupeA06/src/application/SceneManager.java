@@ -23,7 +23,8 @@ public class SceneManager {
 								stackGame,
 								stackAddPlayers,
 								stackLoginAdmin,
-								stackGameRule;
+								stackGameRule,
+								stackCardsManager;
 	
 	public static OptionsAP getOptions() {
 		return options;
@@ -43,6 +44,7 @@ public class SceneManager {
 		stackOptions = new StackPane(options);
 		stackLoginAdmin = new StackPane(new LoginAdminAP());
 		stackGameRule = new StackPane(new GameRulesAP());
+		stactCardsManager = new StackPane(new StackCardsMAnagerAP());
 		sceneRoot = new Scene(stackRoot, 1920, 1080);
 	}
 
@@ -84,5 +86,9 @@ public class SceneManager {
 	public static StackPane getStackGameRule() {
 		return stackGameRule;
 	}
+	public static StackPane getStackCardsManager() {
+		return stackCardsManager;
+	}
+	
 	
 }

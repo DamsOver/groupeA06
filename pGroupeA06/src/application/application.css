@@ -78,8 +78,8 @@
 	-fx-font-size: 150;
 }
 
-#gameBoard {
-	-fx-background-image: url("/img/gameboard.jpg");
+.gameBoard {
+	-fx-background-image: url("/img/gameBoard_V2.jpg");
     -fx-background-repeat: stretch;   
     -fx-background-size: 900 506;
     -fx-background-position: center center;
