@@ -1,30 +1,54 @@
 package vue;
 
 import application.SceneManager;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 public class CardsManagementAP extends AnchorPane {
 	private Text txtTitle, txtTheme;
 	private Button btnBack, btnModify, btnDelete, btnAdd;
+	private ComboBox<String> cbTheme;
+	private ListView<String> lvCards;
 
 	public CardsManagementAP() {
 		this.getStyleClass().add("pane");
 
-		this.getChildren().addAll(getTxtTitle(), getBtnBack());
+		this.getChildren().addAll(getTxtTitle(), getBtnBack(), getTxtTheme(), getCbTheme(), getLvCards());
 
 		// title
 		txtTitle.getStyleClass().add("title-style");
 		AnchorPane.setTopAnchor(getTxtTitle(), 100.0);
 		AnchorPane.setLeftAnchor(getTxtTitle(), 300.0);
 
+		// Theme
+		txtTheme.getStyleClass().add("basicText");
+		AnchorPane.setTopAnchor(getTxtTheme(), 450.0);
+		AnchorPane.setLeftAnchor(getTxtTheme(), 200.0);
+		
+		// lvCards
+		lvCards.getStyleClass().add("lview");
+		AnchorPane.setTopAnchor(getLvCards(), 550.0);
+		AnchorPane.setLeftAnchor(getLvCards(), 200.0);
+		
+		// cbbTheme
+		cbTheme.getStyleClass().add("cbbox");
+		AnchorPane.setTopAnchor(getCbTheme(), 450.0);
+		AnchorPane.setLeftAnchor(getCbTheme(), 370.0);
+		cbTheme.setItems(FXCollections.observableArrayList("IMPROBABLE", "PLEASURE", "INFORMATICS", "SCHOOL"));
+		cbTheme.getSelectionModel().selectFirst();
+		
 		// BtnBack
 		btnBack.getStyleClass().add("btn-style");
 		AnchorPane.setTopAnchor(getBtnBack(), 900.0);
 		AnchorPane.setLeftAnchor(getBtnBack(), 1600.0);
+		
+		
 	}
 
 	public Text getTxtTitle() {
@@ -44,6 +68,39 @@ public class CardsManagementAP extends AnchorPane {
 			}
 		});
 		return btnBack;
+	}
+
+	public Text getTxtTheme() {
+		if (txtTheme == null) {
+			txtTheme = new Text("Theme : ");
+		}
+		return txtTheme;
+	}
+	
+	public ListView<String> getLvCards() {
+		if (lvCards == null) {
+			lvCards = new ListView<String>();
+		}
+		return lvCards;
+	}
+	
+	public ComboBox getCbTheme() {
+		if (cbTheme == null) {
+			cbTheme = new ComboBox();
+		}
+		return cbTheme;
+	}
+
+	public Button getBtnModify() {
+		return btnModify;
+	}
+
+	public Button getBtnDelete() {
+		return btnDelete;
+	}
+
+	public Button getBtnAdd() {
+		return btnAdd;
 	}
 
 }

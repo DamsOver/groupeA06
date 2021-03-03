@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -16,14 +17,15 @@ import util.UnlockAdmin;
 public class AdminAP extends AnchorPane {
 
 	private Text txtTitle, txtLogin, txtPassword;
-	private TextField txtFLogin, txtFPassword;
+	private TextField txtFLogin;
+	private PasswordField pwdFPassword;
 
 	private Button btnBack, btnUnlock;
 
 	public AdminAP() {
 		this.getStyleClass().add("pane");
 		this.getChildren().addAll(getTxtTitle(), getBtnBack(), getBtnUnlock(), getTxtPassword(), getTxtLogin(),
-				getTxtFLogin(), getTxtFPassword());
+				getTxtFLogin(), getPwdFPassword());
 
 		// title
 		txtTitle.getStyleClass().add("title-style");
@@ -47,13 +49,13 @@ public class AdminAP extends AnchorPane {
 		AnchorPane.setRightAnchor(getTxtFLogin(), 1160.0);
 
 		// PasswordField
-		txtFPassword.getStyleClass().add("txtField");
-		AnchorPane.setTopAnchor(getTxtFPassword(), 545.0);
-		AnchorPane.setLeftAnchor(getTxtFPassword(), 410.0);
-		AnchorPane.setRightAnchor(getTxtFPassword(), 1160.0);
+		pwdFPassword.getStyleClass().add("txtField");
+		AnchorPane.setTopAnchor(getPwdFPassword(), 545.0);
+		AnchorPane.setLeftAnchor(getPwdFPassword(), 410.0);
+		AnchorPane.setRightAnchor(getPwdFPassword(), 1160.0);
 
 		// Unlock
-		btnUnlock.getStyleClass().add("btn-style");
+		btnUnlock.getStyleClass().add("btn_small");
 		AnchorPane.setTopAnchor(getBtnUnlock(), 700.0);
 		AnchorPane.setLeftAnchor(getBtnUnlock(), 200.0);
 
@@ -84,11 +86,11 @@ public class AdminAP extends AnchorPane {
 		return txtFLogin;
 	}
 
-	public TextField getTxtFPassword() {
-		if (txtFPassword == null) {
-			txtFPassword = new TextField();
+	public PasswordField getPwdFPassword() {
+		if (pwdFPassword == null) {
+			pwdFPassword = new PasswordField();
 		}
-		return txtFPassword;
+		return pwdFPassword;
 	}
 
 	public Text getTxtTitle() {
@@ -105,24 +107,30 @@ public class AdminAP extends AnchorPane {
 		btnBack.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				SceneManager.getSceneRoot().setRoot(SceneManager.getStackOptions());
+				txtFLogin.clear();
+				pwdFPassword.clear();
 			}
 		});
 		return btnBack;
 	}
 
 	public Button getBtnUnlock() {
-		
+
 		if (btnUnlock == null) {
 			btnUnlock = new Button("Unlock");
 		}
 		btnUnlock.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				UnlockAdmin unlockAdmin = new UnlockAdmin(txtFLogin.getText(), txtFPassword.getText());
-				if(unlockAdmin.isValide())
+				UnlockAdmin unlockAdmin = new UnlockAdmin(txtFLogin.getText(), pwdFPassword.getText());
+				if (unlockAdmin.isValide()) {
 					SceneManager.getSceneRoot().setRoot(SceneManager.getStackCardsManager());
+					txtFLogin.clear();
+					pwdFPassword.clear();
+				}
+
 			}
 		});
-		
+
 		return btnUnlock;
 	}
 

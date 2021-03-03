@@ -62,6 +62,11 @@ public class Main extends Application {
 					mediaPlayer.setVolume((double) new_val * Constants.VOLUME_FACTOR);
 				}
 			});
+			SceneManager.getSettings().getSlVolume().valueProperty().addListener(new ChangeListener<Number>() {
+				public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+					mediaPlayer.setVolume((double) new_val * Constants.VOLUME_FACTOR);
+				}
+			});
 
 
 			// Style
