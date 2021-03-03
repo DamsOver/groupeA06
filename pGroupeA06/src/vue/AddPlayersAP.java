@@ -79,7 +79,7 @@ public class AddPlayersAP extends AnchorPane {
 		
 		
 		
-		//TxtPlayer1
+/*		//TxtPlayer1
 		txtPlayer1.getStyleClass().add("txtAddPlayer");
 		AnchorPane.setTopAnchor(getTxtPlayer1(),430.0);
 		AnchorPane.setRightAnchor(getTxtPlayer1(), 1400.0);
@@ -185,7 +185,7 @@ public class AddPlayersAP extends AnchorPane {
 		AnchorPane.setRightAnchor(getTxtFPlayer4(), 260.0);
 		AnchorPane.setLeftAnchor(getTxtFPlayer4(), 1300.0);
 		txtFPlayer4.opacityProperty().bind(Bindings.when(txtFPlayer4.disabledProperty()).then(0.4).otherwise(1));
-		txtFPlayer4.setDisable(true);
+		//txtFPlayer4.setDisable(true);
 		
 		//TxtFPlayer6
 		txtFPlayer6.getStyleClass().add("txtField");
@@ -201,8 +201,9 @@ public class AddPlayersAP extends AnchorPane {
 		AnchorPane.setRightAnchor(getTxtFPlayer8(), 260.0);
 		AnchorPane.setLeftAnchor(getTxtFPlayer8(), 1300.0);
 		txtFPlayer8.opacityProperty().bind(Bindings.when(txtFPlayer8.disabledProperty()).then(0.4).otherwise(1));
-		txtFPlayer8.setDisable(true);
-		
+		txtFPlayer8.setDisable(true);*/
+		toForm();
+		hideOrShowPlayer();
 		
 	}
 
@@ -338,7 +339,7 @@ public class AddPlayersAP extends AnchorPane {
 	public TextField getTxtFPlayer1() {
 		if (txtFPlayer1 == null) {
 			txtFPlayer1 = new TextField();
-			txtFPlayer1.setPromptText("name");
+			//		txtFPlayer1.setPromptText("name");
 		}
 		return txtFPlayer1;
 	}
@@ -346,7 +347,7 @@ public class AddPlayersAP extends AnchorPane {
 	public TextField getTxtFPlayer2() {
 		if (txtFPlayer2 == null) {
 			txtFPlayer2 = new TextField();
-			txtFPlayer2.setPromptText("name");
+			//		txtFPlayer2.setPromptText("name");
 		}
 		return txtFPlayer2;
 	}
@@ -354,7 +355,7 @@ public class AddPlayersAP extends AnchorPane {
 	public TextField getTxtFPlayer3() {
 		if (txtFPlayer3 == null) {
 			txtFPlayer3 = new TextField();
-			txtFPlayer3.setPromptText("name");
+			//		txtFPlayer3.setPromptText("name");
 		}
 		return txtFPlayer3;
 	}
@@ -362,7 +363,7 @@ public class AddPlayersAP extends AnchorPane {
 	public TextField getTxtFPlayer4() {
 		if (txtFPlayer4 == null) {
 			txtFPlayer4 = new TextField();
-			txtFPlayer4.setPromptText("name");
+			//		txtFPlayer4.setPromptText("name");
 		}
 		return txtFPlayer4;
 	}
@@ -370,7 +371,7 @@ public class AddPlayersAP extends AnchorPane {
 	public TextField getTxtFPlayer5() {
 		if (txtFPlayer5 == null) {
 			txtFPlayer5 = new TextField();
-			txtFPlayer5.setPromptText("name");
+			//		txtFPlayer5.setPromptText("name");
 		}
 		return txtFPlayer5;
 	}
@@ -378,7 +379,7 @@ public class AddPlayersAP extends AnchorPane {
 	public TextField getTxtFPlayer6() {
 		if (txtFPlayer6 == null) {
 			txtFPlayer6 = new TextField();
-			txtFPlayer6.setPromptText("name");
+			//			txtFPlayer6.setPromptText("name");
 		}
 		return txtFPlayer6;
 	}
@@ -386,7 +387,7 @@ public class AddPlayersAP extends AnchorPane {
 	public TextField getTxtFPlayer7() {
 		if (txtFPlayer7 == null) {
 			txtFPlayer7 = new TextField();
-			txtFPlayer7.setPromptText("name");
+			//			txtFPlayer7.setPromptText("name");
 		}
 		return txtFPlayer7;
 	}
@@ -394,7 +395,7 @@ public class AddPlayersAP extends AnchorPane {
 	public TextField getTxtFPlayer8() {
 		if (txtFPlayer8 == null) {
 			txtFPlayer8 = new TextField();
-			txtFPlayer8.setPromptText("name");
+//			txtFPlayer8.setPromptText("name");
 		}
 		return txtFPlayer8;
 	}
@@ -441,8 +442,50 @@ public class AddPlayersAP extends AnchorPane {
 		}
 		return textfds;
 	}
+	public void toForm() {
+		double topfp = 425.0;
+		double toptxt = 430.;
+		double topAdd = 110.;
+		for(int i=MIN_PLAYER-2; i<MAX_PLAYER; i++) {
+			//ajout des fonctionnalité
+			getTexts().get(i).getStyleClass().add("txtAddPlayer");
+			getTexts().get(i).opacityProperty().bind(Bindings.when(getTexts().get(i).disabledProperty()).then(0.4).otherwise(1));
+			
+			getTextfds().get(i).getStyleClass().add("txtField");
+			getTextfds().get(i).opacityProperty().bind(Bindings.when(getTextfds().get(i).disabledProperty()).then(0.4).otherwise(1));
+			
+			getTextfds().get(i).setPromptText("name");
+			
+			//mise ne forme
+			if((i+1)%2==0) {
+				//top selon la regle des plus 110
+				//nb joueur pair : right anchor = 260 pour textfield
+				AnchorPane.setRightAnchor(getTextfds().get(i), 260.0);
+				//left anchor = 1300 pour txtfield
+				AnchorPane.setLeftAnchor(getTextfds().get(i), 1300.0);
+				//left anchor = 1100 pour text
+				AnchorPane.setLeftAnchor(getTexts().get(i), 1100.0);
+			}
+			else {
+				//nbJoueur impaire : right anchor = 1100 pour textfield
+				AnchorPane.setRightAnchor(getTextfds().get(i), 1100.0);
+				//left anchor = 460 pour txtfield
+				AnchorPane.setLeftAnchor(getTextfds().get(i), 460.0);
+				//left anchor = 275 pour text
+				AnchorPane.setLeftAnchor(getTexts().get(i), 275.0);
+				topfp+=topAdd;
+				toptxt+=topAdd;
+			}
+			//tous ont le meme top (selon leur type) qui augmente de 110 à chaque ligne
+			AnchorPane.setTopAnchor(getTexts().get(i), toptxt);
+			AnchorPane.setTopAnchor(getTextfds().get(i), topfp);
+			//tout les txtPlayer on un rightAnchor de 1400.
+			AnchorPane.setRightAnchor(getTexts().get(i), 1400.0);			
+		}
+	}
 	public void hideOrShowPlayer() {
 		for(int i=MIN_PLAYER-1; i<MAX_PLAYER; i++) {
+			
 			if(i< getNbPl()) {
 				getTexts().get(i).setDisable(false);
 				getTextfds().get(i).setDisable(false);
