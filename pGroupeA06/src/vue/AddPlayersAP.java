@@ -1,24 +1,25 @@
 package vue;
 
-import com.sun.javafx.geom.Area;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import application.SceneManager;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import model.GameOperation;
 import util.Constants;
 
 
 public class AddPlayersAP extends AnchorPane {
-
+	private int nbPl;
+	private final int MIN_PLAYER = 2, MAX_PLAYER =8;
 	private Text txtTitle,txtPlayer1,txtPlayer2,txtPlayer3,txtPlayer4,txtPlayer5,txtPlayer6,txtPlayer7,txtPlayer8,txtNbPlayer;
 
 	private TextField txtFPlayer1,txtFPlayer2,txtFPlayer3,txtFPlayer4,txtFPlayer5,txtFPlayer6,txtFPlayer7,txtFPlayer8;
@@ -26,16 +27,17 @@ public class AddPlayersAP extends AnchorPane {
 	private Button btnBack,btnStart,arrowUp,arrowDown;
 
 	private Slider slPlayer;
-	private Region allPlayers;
-	private SubScene subscene;
+	
+	private List<Text> texts ;
+	private List<TextField> textfds;
 	
 
 	public AddPlayersAP() {
-
+		setNbPl(MIN_PLAYER);
 		this.getStyleClass().add("pane");
-		this.getChildren().addAll(getTxtTitle(), getBtnBack(),getBtnStart(),getTxtNbPlayer(),getArrowUp(),getArrowDown(), getSubScene()/*,
+		this.getChildren().addAll(getTxtTitle(), getBtnBack(),getBtnStart(),getTxtNbPlayer(),getArrowUp(),getArrowDown(),
 				getTxtPlayer1(),getTxtPlayer2(),getTxtPlayer3(),getTxtPlayer4(),getTxtPlayer5(),getTxtPlayer6(),getTxtPlayer7(),getTxtPlayer8(),
-				getTxtFPlayer1(),getTxtFPlayer2(),getTxtFPlayer3(),getTxtFPlayer4(),getTxtFPlayer5(),getTxtFPlayer6(),getTxtFPlayer7(),getTxtFPlayer8()*/);
+				getTxtFPlayer1(),getTxtFPlayer2(),getTxtFPlayer3(),getTxtFPlayer4(),getTxtFPlayer5(),getTxtFPlayer6(),getTxtFPlayer7(),getTxtFPlayer8());
 		
 		// title
 		txtTitle.getStyleClass().add("title-style");
@@ -78,7 +80,7 @@ public class AddPlayersAP extends AnchorPane {
 		
 		
 		//TxtPlayer1
-		/*txtPlayer1.getStyleClass().add("txtAddPlayer");
+		txtPlayer1.getStyleClass().add("txtAddPlayer");
 		AnchorPane.setTopAnchor(getTxtPlayer1(),430.0);
 		AnchorPane.setRightAnchor(getTxtPlayer1(), 1400.0);
 		AnchorPane.setLeftAnchor(getTxtPlayer1(), 275.0);
@@ -199,12 +201,7 @@ public class AddPlayersAP extends AnchorPane {
 		AnchorPane.setRightAnchor(getTxtFPlayer8(), 260.0);
 		AnchorPane.setLeftAnchor(getTxtFPlayer8(), 1300.0);
 		txtFPlayer8.opacityProperty().bind(Bindings.when(txtFPlayer8.disabledProperty()).then(0.4).otherwise(1));
-		txtFPlayer8.setDisable(true);*/
-		
-		//region
-		this.setTopAnchor(getSubScene(), 500.);
-		this.setRightAnchor(getSubScene(), 600.);
-		this.setLeftAnchor(getSubScene(), 600.);
+		txtFPlayer8.setDisable(true);
 		
 		
 	}
@@ -249,7 +246,7 @@ public class AddPlayersAP extends AnchorPane {
 
 	public Text getTxtNbPlayer() {
 		if (txtNbPlayer == null) {
-			txtNbPlayer = new Text("2 Players  : ");
+			txtNbPlayer = new Text(getNbPl()+" Players  : ");
 		}
 		return txtNbPlayer;
 	}
@@ -258,6 +255,13 @@ public class AddPlayersAP extends AnchorPane {
 		if (arrowUp == null) {
 			arrowUp = new Button();
 		}
+		arrowUp.setOnAction(new EventHandler<ActionEvent>(){
+	        public void handle(ActionEvent event) {
+	        	setNbPl(getNbPl()+1);
+	        	getTxtNbPlayer().setText(getNbPl()+" Players  : ");
+	        	hideOrShowPlayer();
+	        }
+		});
 		return arrowUp;
 	} 
 	
@@ -265,10 +269,17 @@ public class AddPlayersAP extends AnchorPane {
 		if (arrowDown == null) {
 			arrowDown = new Button();
 		}
+		arrowDown.setOnAction(new EventHandler<ActionEvent>(){
+	        public void handle(ActionEvent event) {
+	        	setNbPl(getNbPl()-1);
+	        	getTxtNbPlayer().setText(getNbPl()+" Players  : ");
+	        	hideOrShowPlayer();
+	        }
+		});
 		return arrowDown;
 	}
 
-	/*public Text getTxtPlayer1() {
+	public Text getTxtPlayer1() {
 		if (txtPlayer1 == null) {
 			txtPlayer1 = new Text("Player 1 : ");
 		}
@@ -387,24 +398,59 @@ public class AddPlayersAP extends AnchorPane {
 		}
 		return txtFPlayer8;
 	}
-	*/
-/*	public Region getAllPlayers() {
-		if(allPlayers == null) {
-			allPlayers = new AllPlayersTP();
-		}
-		return allPlayers;
-	}*/
-	public SubScene getSubScene() {
-		if(subscene == null) {
-			subscene =  new SubScene(new AllPlayersTP(), 1000. , 500.);
-		}
-		return subscene;
-	}
+	
 	public Slider getSlPlayer() {
 		if (slPlayer == null) {
 			slPlayer = new Slider();
 		}
 		return slPlayer;
 	}
+	public int getNbPl() {
+		return nbPl;
+	}
 
+	public void setNbPl(int nb) {
+		if(nb <MIN_PLAYER) {
+			nbPl= MIN_PLAYER;
+		}
+		else if(nb>MAX_PLAYER){
+			nbPl=MAX_PLAYER;
+		}
+		else {
+			nbPl = nb;
+		}
+	}
+	
+	public List<Text> getTexts(){
+		if(texts == null) {
+			texts = new ArrayList<>();
+			texts.addAll(Arrays.asList(getTxtPlayer1(),getTxtPlayer2(),getTxtPlayer3(),
+					getTxtPlayer4(),getTxtPlayer5(),getTxtPlayer6(),
+					getTxtPlayer7(),getTxtPlayer8()));
+		}
+		return texts;
+	}
+	
+	public List<TextField> getTextfds(){
+		if(textfds == null) {
+			textfds = new ArrayList<>();
+			textfds.addAll(Arrays.asList(getTxtFPlayer1(),getTxtFPlayer2(),getTxtFPlayer3(),
+					getTxtFPlayer4(),getTxtFPlayer5(),getTxtFPlayer6(),
+					getTxtFPlayer7(),getTxtFPlayer8()));
+			
+		}
+		return textfds;
+	}
+	public void hideOrShowPlayer() {
+		for(int i=MIN_PLAYER-1; i<MAX_PLAYER; i++) {
+			if(i< getNbPl()) {
+				getTexts().get(i).setDisable(false);
+				getTextfds().get(i).setDisable(false);
+			}
+			else {
+				getTexts().get(i).setDisable(true);
+				getTextfds().get(i).setDisable(true);
+			}
+		}
+	}
 }
