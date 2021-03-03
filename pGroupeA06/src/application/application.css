@@ -91,7 +91,9 @@
     -fx-background-size: stretch,stretch;
 }
 
-
+.addpane{
+	-fx-background-color: transparent;
+}
 .h1 {
 	-fx-font-size: 60;
 	-fx-font-weight: bold;

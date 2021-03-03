@@ -22,7 +22,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class Main extends Application {
-	@Override
+
+	static Stage pStage; 
 	public void start(Stage primaryStage) {
 		try {
 
@@ -44,7 +45,7 @@ public class Main extends Application {
 					mediaPlayer.play();
 				}
 			});
-
+			pStage = primaryStage;
 			HomeAP root = new HomeAP();
 			AddCardsAP addCards = new AddCardsAP();
 			AdminAP admin = new AdminAP();
@@ -86,14 +87,14 @@ public class Main extends Application {
 			addPlayers.getBtnStart().setOnAction(eventStartGame);
 
 			// Home -> AddPlayers
-			EventHandler<ActionEvent> eventAddPlayers = new EventHandler<ActionEvent>() {
+			/*EventHandler<ActionEvent> eventAddPlayers = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
 					primaryStage.setScene(sceneAddPlayers);
 					primaryStage.show();
 				}
 			};
 			root.getBtnStartGame().setOnAction(eventAddPlayers);
-			game.getBtnBack().setOnAction(eventAddPlayers);
+			game.getBtnBack().setOnAction(eventAddPlayers);*/
 
 			/*
 			// Home -> Admin
@@ -217,6 +218,12 @@ public class Main extends Application {
 		}
 	}
 
+	public static Stage getPStage() {
+		if(pStage == null) {
+			return null;
+		}
+		return pStage;
+	}
 	public static void main(String[] args) {
 		launch(args);
 

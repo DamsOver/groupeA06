@@ -1,17 +1,15 @@
 package vue;
 
+import com.sun.javafx.geom.Area;
+
 import javafx.beans.binding.Bindings;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
+
 
 public class AddPlayersAP extends AnchorPane {
 
@@ -23,14 +21,16 @@ public class AddPlayersAP extends AnchorPane {
 
 	private Slider slPlayer;
 	
-	
+	private AllPlayersTP allPlayers;
 
 	public AddPlayersAP() {
 
-		this.getChildren().addAll(getTxtTitle(), getBtnBack(),getBtnStart(),getTxtNbPlayer(),getArrowUp(),getArrowDown(),
+		this.getStylesheets().add(getClass().getResource("/application/application.css").toExternalForm());
+		this.getStyleClass().add("pane");
+		this.getChildren().addAll(getTxtTitle(), getBtnBack(),getBtnStart(),getTxtNbPlayer(),getArrowUp(),getArrowDown(), getAllPlayers()/*,
 				getTxtPlayer1(),getTxtPlayer2(),getTxtPlayer3(),getTxtPlayer4(),getTxtPlayer5(),getTxtPlayer6(),getTxtPlayer7(),getTxtPlayer8(),
-				getTxtFPlayer1(),getTxtFPlayer2(),getTxtFPlayer3(),getTxtFPlayer4(),getTxtFPlayer5(),getTxtFPlayer6(),getTxtFPlayer7(),getTxtFPlayer8());
-
+				getTxtFPlayer1(),getTxtFPlayer2(),getTxtFPlayer3(),getTxtFPlayer4(),getTxtFPlayer5(),getTxtFPlayer6(),getTxtFPlayer7(),getTxtFPlayer8()*/);
+		
 		// title
 		txtTitle.getStyleClass().add("title-style");
 		AnchorPane.setTopAnchor(getTxtTitle(), 80.0);
@@ -70,8 +70,9 @@ public class AddPlayersAP extends AnchorPane {
 		AnchorPane.setLeftAnchor(getArrowDown(),1000.0);
 		
 		
+		
 		//TxtPlayer1
-		txtPlayer1.getStyleClass().add("txtAddPlayer");
+		/*txtPlayer1.getStyleClass().add("txtAddPlayer");
 		AnchorPane.setTopAnchor(getTxtPlayer1(),430.0);
 		AnchorPane.setRightAnchor(getTxtPlayer1(), 1400.0);
 		AnchorPane.setLeftAnchor(getTxtPlayer1(), 275.0);
@@ -192,7 +193,13 @@ public class AddPlayersAP extends AnchorPane {
 		AnchorPane.setRightAnchor(getTxtFPlayer8(), 260.0);
 		AnchorPane.setLeftAnchor(getTxtFPlayer8(), 1300.0);
 		txtFPlayer8.opacityProperty().bind(Bindings.when(txtFPlayer8.disabledProperty()).then(0.4).otherwise(1));
-		txtFPlayer8.setDisable(true);
+		txtFPlayer8.setDisable(true);*/
+		
+		//region
+		this.setTopAnchor(getAllPlayers(),425.);
+		this.setRightAnchor(getAllPlayers(), 260.);
+		this.setLeftAnchor(getAllPlayers(), 460.);
+		
 	}
 
 	public Text getTxtTitle() {
@@ -237,7 +244,7 @@ public class AddPlayersAP extends AnchorPane {
 		return arrowDown;
 	}
 
-	public Text getTxtPlayer1() {
+	/*public Text getTxtPlayer1() {
 		if (txtPlayer1 == null) {
 			txtPlayer1 = new Text("Player 1 : ");
 		}
@@ -356,7 +363,13 @@ public class AddPlayersAP extends AnchorPane {
 		}
 		return txtFPlayer8;
 	}
-	
+	*/
+	public Region getAllPlayers() {
+		if(allPlayers == null) {
+			allPlayers = new AllPlayersTP();
+		}
+		return allPlayers;
+	}
 	public Slider getSlPlayer() {
 		if (slPlayer == null) {
 			slPlayer = new Slider();
