@@ -72,6 +72,11 @@ public class HomeAP extends AnchorPane {
 		if (btnStartGame == null) {
 			btnStartGame = new Button("Start Game");
 		}
+		btnStartGame.setOnAction(new EventHandler<ActionEvent>(){
+	        public void handle(ActionEvent event) {
+	            SceneManager.getSceneRoot().setRoot(SceneManager.getStackAddPlayers());
+	            }
+			});
 		return btnStartGame;
 	}
 
@@ -79,6 +84,11 @@ public class HomeAP extends AnchorPane {
 		if (btnGameRule == null) {
 			btnGameRule = new Button("Game rules");
 		}
+		btnGameRule.setOnAction(new EventHandler<ActionEvent>(){
+	        public void handle(ActionEvent event) {
+	            SceneManager.getSceneRoot().setRoot(SceneManager.getStackGameRule());
+	            }
+			});
 		return btnGameRule;
 	}
 

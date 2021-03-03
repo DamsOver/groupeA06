@@ -6,6 +6,7 @@ import vue.AddCardsAP;
 import vue.AddPlayersAP;
 import vue.AdminAP;
 import vue.GameAP;
+import vue.GameRulesAP;
 import vue.HomeAP;
 import vue.LoginAdminAP;
 import vue.OptionsAP;
@@ -20,7 +21,8 @@ public class SceneManager {
 								stackAdmin,
 								stackGame,
 								stackAddPlayers,
-								stackLoginAdmin;
+								stackLoginAdmin,
+								stackGameRule;
 	
 	public static void initialize() {
 		stackRoot = new StackPane(new HomeAP());
@@ -30,6 +32,7 @@ public class SceneManager {
 		stackAddPlayers = new StackPane(new AddPlayersAP());
 		stackOptions = new StackPane(new OptionsAP());
 		stackLoginAdmin = new StackPane(new LoginAdminAP());
+		stackGameRule = new StackPane(new GameRulesAP());
 		sceneRoot = new Scene(stackRoot, 1920, 1080);
 	}
 
@@ -64,6 +67,8 @@ public class SceneManager {
 	public static StackPane getStackLoginAdmin() {
 		return stackLoginAdmin;
 	}
-	
+	public static StackPane getStackGameRule() {
+		return stackGameRule;
+	}
 	
 }
