@@ -1,7 +1,7 @@
 package util;
 
 public interface Constants {
-	public static final double 	INITIAL_VOLUME = 25,
+	public static final double 	INITIAL_VOLUME = 0,
 								VOLUME_FACTOR = 0.001;
 	public static final int NB_QUESTIONS_MAX = 4;
 }

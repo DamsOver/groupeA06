@@ -1,5 +1,8 @@
 package vue;
 
+import application.SceneManager;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -66,6 +69,11 @@ public class OptionsAP extends AnchorPane {
 		if (btnBack == null) {
 			btnBack = new Button("Back");
 		}
+		btnBack.setOnAction(new EventHandler<ActionEvent>(){
+	        public void handle(ActionEvent event) {
+	            SceneManager.getSceneRoot().setRoot(SceneManager.getStackRoot());
+	            }
+			});
 		return btnBack;
 	}
 	
@@ -73,6 +81,11 @@ public class OptionsAP extends AnchorPane {
 		if (btnCards == null) {
 			btnCards = new Button("Card Management");
 		}
+		btnCards.setOnAction(new EventHandler<ActionEvent>(){
+	        public void handle(ActionEvent event) {
+	            SceneManager.getSceneRoot().setRoot(SceneManager.getStackAdmin());
+	            }
+			});
 		return btnCards;
 	}
 
