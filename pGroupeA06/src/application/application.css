@@ -125,3 +125,18 @@
 	-fx-font-size: 40;
 	-fx-background-color: transparent;
 }
+
+.btn_small {
+	-fx-background-color: transparent;
+	-fx-background-image: url("/img/btn_border.png");
+    -fx-background-size: stretch,stretch;
+	-fx-font-size: 45;
+	-fx-font-color: black;
+	-fx-alignment: center;
+}
+
+.btn_small:pressed{
+	-fx-background-color: transparent;
+	-fx-background-image: url("/img/btn_border_press.png");
+    -fx-background-size: stretch,stretch;
+}
