@@ -1,12 +1,6 @@
 package vue;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javafx.scene.Node;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -20,6 +14,7 @@ public class PlayersAP extends VBox{
 		this.getStyleClass().add("addpane");
 		this.getChildren().addAll(getTxtPlayer(), getTxtFdPlayer());
 		txtPlayer.getStyleClass().add("txtField");
+		
 	}
 	
 	public Text getTxtPlayer() {
