@@ -20,6 +20,8 @@ import util.Constants;
 public class AddPlayersAP extends AnchorPane {
 	private int nbPl;
 	private final int MIN_PLAYER = 2, MAX_PLAYER =8;
+	private List<String> playerNames;
+	
 	private Text txtTitle,/*txtPlayer1,txtPlayer2,txtPlayer3,txtPlayer4,txtPlayer5,txtPlayer6,txtPlayer7,txtPlayer8,*/txtNbPlayer;
 
 //	private TextField txtFPlayer1,txtFPlayer2,txtFPlayer3,txtFPlayer4,txtFPlayer5,txtFPlayer6,txtFPlayer7,txtFPlayer8;
@@ -236,9 +238,10 @@ public class AddPlayersAP extends AnchorPane {
 		
 		btnStart.setOnAction(new EventHandler<ActionEvent>(){
 	        public void handle(ActionEvent event) {
+	        	setPlayerNames();
 	        	SceneManager.getTransitionAnimation().setTxtAnimation("The game starts!");
 	        	GameOperation.skipMilliseconds(Constants.TIME_ANIMATION,SceneManager.getStackTransititionAnimation(), SceneManager.getStackGame());
-	        	SceneManager.getTransitionAnimation().setTxtAnimation("It's Damien's turn!");
+	        	SceneManager.getTransitionAnimation().setTxtAnimation("It's "+ getPlayerNames().get(0) +"'s turn!");
 	        	GameOperation.skipMilliseconds(Constants.TIME_ANIMATION,SceneManager.getStackTransititionAnimation(), SceneManager.getStackGame());
 	        }
 		});
@@ -500,5 +503,18 @@ public class AddPlayersAP extends AnchorPane {
 				getTextfds().get(i).setDisable(true);
 			}
 		}
+	}
+	//private pour pas modifier ailleurs dans le code
+	private void setPlayerNames() {
+		playerNames = new ArrayList<>();
+		for(int i=MIN_PLAYER-2; i<getNbPl(); i++) {
+			playerNames.add(getTextfds().get(i).getText());
+		}
+	}
+	public List<String> getPlayerNames() {
+		if(playerNames == null) {
+			setPlayerNames();
+		}
+		return playerNames;
 	}
 }
