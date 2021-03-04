@@ -22,9 +22,7 @@ public class AddPlayersAP extends AnchorPane {
 	private final int MIN_PLAYER = 2, MAX_PLAYER =8;
 	private List<String> playerNames;
 	
-	private Text txtTitle,/*txtPlayer1,txtPlayer2,txtPlayer3,txtPlayer4,txtPlayer5,txtPlayer6,txtPlayer7,txtPlayer8,*/txtNbPlayer;
-
-//	private TextField txtFPlayer1,txtFPlayer2,txtFPlayer3,txtFPlayer4,txtFPlayer5,txtFPlayer6,txtFPlayer7,txtFPlayer8;
+	private Text txtTitle,txtNbPlayer;
 
 	private Button btnBack,btnStart,arrowUp,arrowDown;
 
@@ -37,9 +35,7 @@ public class AddPlayersAP extends AnchorPane {
 	public AddPlayersAP() {
 		setNbPl(MIN_PLAYER);
 		this.getStyleClass().add("pane");
-		this.getChildren().addAll(getTxtTitle(), getBtnBack(),getBtnStart(),getTxtNbPlayer(),getArrowUp(),getArrowDown()
-				/*getTxtPlayer1(),getTxtPlayer2(),getTxtPlayer3(),getTxtPlayer4(),getTxtPlayer5(),getTxtPlayer6(),getTxtPlayer7(),getTxtPlayer8(),
-				getTxtFPlayer1(),getTxtFPlayer2(),getTxtFPlayer3(),getTxtFPlayer4(),getTxtFPlayer5(),getTxtFPlayer6(),getTxtFPlayer7(),getTxtFPlayer8()*/);
+		this.getChildren().addAll(getTxtTitle(), getBtnBack(),getBtnStart(),getTxtNbPlayer(),getArrowUp(),getArrowDown());
 		this.getChildren().addAll(getTexts());
 		this.getChildren().addAll(getTextfds());
 		// title
@@ -209,6 +205,20 @@ public class AddPlayersAP extends AnchorPane {
 		}
 		return textfds;
 	}
+	//private pour pas modifier ailleurs dans le code
+	private void setPlayerNames() {
+		playerNames = new ArrayList<>();
+		for(int i=MIN_PLAYER-2; i<getNbPl(); i++) {
+			playerNames.add(getTextfds().get(i).getText());
+		}
+	}
+	public List<String> getPlayerNames() {
+		if(playerNames == null) {
+			setPlayerNames();
+		}
+		return playerNames;
+	}
+	
 	public void toForm() {
 		double topfp = 315.0;
 		double toptxt = 320.;
@@ -269,18 +279,5 @@ public class AddPlayersAP extends AnchorPane {
 			}
 		}
 		return true;
-	}
-	//private pour pas modifier ailleurs dans le code
-	private void setPlayerNames() {
-		playerNames = new ArrayList<>();
-		for(int i=MIN_PLAYER-2; i<getNbPl(); i++) {
-			playerNames.add(getTextfds().get(i).getText());
-		}
-	}
-	public List<String> getPlayerNames() {
-		if(playerNames == null) {
-			setPlayerNames();
-		}
-		return playerNames;
 	}
 }
