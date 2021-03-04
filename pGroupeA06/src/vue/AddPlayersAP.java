@@ -1,6 +1,8 @@
 package vue;
 
-import com.sun.javafx.geom.Area;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import application.SceneManager;
 import javafx.beans.binding.Bindings;
@@ -10,31 +12,36 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import model.GameOperation;
 import util.Constants;
 
 
 public class AddPlayersAP extends AnchorPane {
+	private int nbPl;
+	private final int MIN_PLAYER = 2, MAX_PLAYER =8;
+	private List<String> playerNames;
+	
+	private Text txtTitle,/*txtPlayer1,txtPlayer2,txtPlayer3,txtPlayer4,txtPlayer5,txtPlayer6,txtPlayer7,txtPlayer8,*/txtNbPlayer;
 
-	private Text txtTitle,txtPlayer1,txtPlayer2,txtPlayer3,txtPlayer4,txtPlayer5,txtPlayer6,txtPlayer7,txtPlayer8,txtNbPlayer;
-
-	private TextField txtFPlayer1,txtFPlayer2,txtFPlayer3,txtFPlayer4,txtFPlayer5,txtFPlayer6,txtFPlayer7,txtFPlayer8;
+//	private TextField txtFPlayer1,txtFPlayer2,txtFPlayer3,txtFPlayer4,txtFPlayer5,txtFPlayer6,txtFPlayer7,txtFPlayer8;
 
 	private Button btnBack,btnStart,arrowUp,arrowDown;
 
 	private Slider slPlayer;
 	
-	private AllPlayersTP allPlayers;
+	private List<Text> texts ;
+	private List<TextField> textfds;
+	
 
 	public AddPlayersAP() {
-
+		setNbPl(MIN_PLAYER);
 		this.getStyleClass().add("pane");
-		this.getChildren().addAll(getTxtTitle(), getBtnBack(),getBtnStart(),getTxtNbPlayer(),getArrowUp(),getArrowDown(), getAllPlayers()/*,
-				getTxtPlayer1(),getTxtPlayer2(),getTxtPlayer3(),getTxtPlayer4(),getTxtPlayer5(),getTxtPlayer6(),getTxtPlayer7(),getTxtPlayer8(),
+		this.getChildren().addAll(getTxtTitle(), getBtnBack(),getBtnStart(),getTxtNbPlayer(),getArrowUp(),getArrowDown()
+				/*getTxtPlayer1(),getTxtPlayer2(),getTxtPlayer3(),getTxtPlayer4(),getTxtPlayer5(),getTxtPlayer6(),getTxtPlayer7(),getTxtPlayer8(),
 				getTxtFPlayer1(),getTxtFPlayer2(),getTxtFPlayer3(),getTxtFPlayer4(),getTxtFPlayer5(),getTxtFPlayer6(),getTxtFPlayer7(),getTxtFPlayer8()*/);
-		
+		this.getChildren().addAll(getTexts());
+		this.getChildren().addAll(getTextfds());
 		// title
 		txtTitle.getStyleClass().add("title-style");
 		AnchorPane.setTopAnchor(getTxtTitle(), 80.0);
@@ -75,8 +82,8 @@ public class AddPlayersAP extends AnchorPane {
 		
 		
 		
-		//TxtPlayer1
-		/*txtPlayer1.getStyleClass().add("txtAddPlayer");
+/*		//TxtPlayer1
+		txtPlayer1.getStyleClass().add("txtAddPlayer");
 		AnchorPane.setTopAnchor(getTxtPlayer1(),430.0);
 		AnchorPane.setRightAnchor(getTxtPlayer1(), 1400.0);
 		AnchorPane.setLeftAnchor(getTxtPlayer1(), 275.0);
@@ -181,7 +188,7 @@ public class AddPlayersAP extends AnchorPane {
 		AnchorPane.setRightAnchor(getTxtFPlayer4(), 260.0);
 		AnchorPane.setLeftAnchor(getTxtFPlayer4(), 1300.0);
 		txtFPlayer4.opacityProperty().bind(Bindings.when(txtFPlayer4.disabledProperty()).then(0.4).otherwise(1));
-		txtFPlayer4.setDisable(true);
+		//txtFPlayer4.setDisable(true);
 		
 		//TxtFPlayer6
 		txtFPlayer6.getStyleClass().add("txtField");
@@ -198,11 +205,8 @@ public class AddPlayersAP extends AnchorPane {
 		AnchorPane.setLeftAnchor(getTxtFPlayer8(), 1300.0);
 		txtFPlayer8.opacityProperty().bind(Bindings.when(txtFPlayer8.disabledProperty()).then(0.4).otherwise(1));
 		txtFPlayer8.setDisable(true);*/
-		
-		//region
-		this.setTopAnchor(getAllPlayers(),425.);
-		this.setRightAnchor(getAllPlayers(), 260.);
-		this.setLeftAnchor(getAllPlayers(), 460.);
+		toForm();
+		hideOrShowPlayer();
 		
 	}
 
@@ -234,9 +238,10 @@ public class AddPlayersAP extends AnchorPane {
 		
 		btnStart.setOnAction(new EventHandler<ActionEvent>(){
 	        public void handle(ActionEvent event) {
+	        	setPlayerNames();
 	        	SceneManager.getTransitionAnimation().setTxtAnimation("The game starts!");
 	        	GameOperation.skipMilliseconds(Constants.TIME_ANIMATION,SceneManager.getStackTransititionAnimation(), SceneManager.getStackGame());
-	        	SceneManager.getTransitionAnimation().setTxtAnimation("It's Damien's turn!");
+	        	SceneManager.getTransitionAnimation().setTxtAnimation("It's "+ getPlayerNames().get(0) +"'s turn!");
 	        	GameOperation.skipMilliseconds(Constants.TIME_ANIMATION,SceneManager.getStackTransititionAnimation(), SceneManager.getStackGame());
 	        }
 		});
@@ -246,7 +251,7 @@ public class AddPlayersAP extends AnchorPane {
 
 	public Text getTxtNbPlayer() {
 		if (txtNbPlayer == null) {
-			txtNbPlayer = new Text("2 Players  : ");
+			txtNbPlayer = new Text(getNbPl()+" Players  : ");
 		}
 		return txtNbPlayer;
 	}
@@ -255,6 +260,13 @@ public class AddPlayersAP extends AnchorPane {
 		if (arrowUp == null) {
 			arrowUp = new Button();
 		}
+		arrowUp.setOnAction(new EventHandler<ActionEvent>(){
+	        public void handle(ActionEvent event) {
+	        	setNbPl(getNbPl()+1);
+	        	getTxtNbPlayer().setText(getNbPl()+" Players  : ");
+	        	hideOrShowPlayer();
+	        }
+		});
 		return arrowUp;
 	} 
 	
@@ -262,10 +274,17 @@ public class AddPlayersAP extends AnchorPane {
 		if (arrowDown == null) {
 			arrowDown = new Button();
 		}
+		arrowDown.setOnAction(new EventHandler<ActionEvent>(){
+	        public void handle(ActionEvent event) {
+	        	setNbPl(getNbPl()-1);
+	        	getTxtNbPlayer().setText(getNbPl()+" Players  : ");
+	        	hideOrShowPlayer();
+	        }
+		});
 		return arrowDown;
 	}
 
-	/*public Text getTxtPlayer1() {
+/*	public Text getTxtPlayer1() {
 		if (txtPlayer1 == null) {
 			txtPlayer1 = new Text("Player 1 : ");
 		}
@@ -324,7 +343,7 @@ public class AddPlayersAP extends AnchorPane {
 	public TextField getTxtFPlayer1() {
 		if (txtFPlayer1 == null) {
 			txtFPlayer1 = new TextField();
-			txtFPlayer1.setPromptText("name");
+			//		txtFPlayer1.setPromptText("name");
 		}
 		return txtFPlayer1;
 	}
@@ -332,7 +351,7 @@ public class AddPlayersAP extends AnchorPane {
 	public TextField getTxtFPlayer2() {
 		if (txtFPlayer2 == null) {
 			txtFPlayer2 = new TextField();
-			txtFPlayer2.setPromptText("name");
+			//		txtFPlayer2.setPromptText("name");
 		}
 		return txtFPlayer2;
 	}
@@ -340,7 +359,7 @@ public class AddPlayersAP extends AnchorPane {
 	public TextField getTxtFPlayer3() {
 		if (txtFPlayer3 == null) {
 			txtFPlayer3 = new TextField();
-			txtFPlayer3.setPromptText("name");
+			//		txtFPlayer3.setPromptText("name");
 		}
 		return txtFPlayer3;
 	}
@@ -348,7 +367,7 @@ public class AddPlayersAP extends AnchorPane {
 	public TextField getTxtFPlayer4() {
 		if (txtFPlayer4 == null) {
 			txtFPlayer4 = new TextField();
-			txtFPlayer4.setPromptText("name");
+			//		txtFPlayer4.setPromptText("name");
 		}
 		return txtFPlayer4;
 	}
@@ -356,7 +375,7 @@ public class AddPlayersAP extends AnchorPane {
 	public TextField getTxtFPlayer5() {
 		if (txtFPlayer5 == null) {
 			txtFPlayer5 = new TextField();
-			txtFPlayer5.setPromptText("name");
+			//		txtFPlayer5.setPromptText("name");
 		}
 		return txtFPlayer5;
 	}
@@ -364,7 +383,7 @@ public class AddPlayersAP extends AnchorPane {
 	public TextField getTxtFPlayer6() {
 		if (txtFPlayer6 == null) {
 			txtFPlayer6 = new TextField();
-			txtFPlayer6.setPromptText("name");
+			//			txtFPlayer6.setPromptText("name");
 		}
 		return txtFPlayer6;
 	}
@@ -372,7 +391,7 @@ public class AddPlayersAP extends AnchorPane {
 	public TextField getTxtFPlayer7() {
 		if (txtFPlayer7 == null) {
 			txtFPlayer7 = new TextField();
-			txtFPlayer7.setPromptText("name");
+			//			txtFPlayer7.setPromptText("name");
 		}
 		return txtFPlayer7;
 	}
@@ -380,22 +399,122 @@ public class AddPlayersAP extends AnchorPane {
 	public TextField getTxtFPlayer8() {
 		if (txtFPlayer8 == null) {
 			txtFPlayer8 = new TextField();
-			txtFPlayer8.setPromptText("name");
+//			txtFPlayer8.setPromptText("name");
 		}
 		return txtFPlayer8;
-	}
-	*/
-	public Region getAllPlayers() {
-		if(allPlayers == null) {
-			allPlayers = new AllPlayersTP();
-		}
-		return allPlayers;
-	}
+	}*/
+	
 	public Slider getSlPlayer() {
 		if (slPlayer == null) {
 			slPlayer = new Slider();
 		}
 		return slPlayer;
 	}
+	public int getNbPl() {
+		return nbPl;
+	}
 
+	public void setNbPl(int nb) {
+		if(nb <MIN_PLAYER) {
+			nbPl= MIN_PLAYER;
+		}
+		else if(nb>MAX_PLAYER){
+			nbPl=MAX_PLAYER;
+		}
+		else {
+			nbPl = nb;
+		}
+	}
+	
+	public List<Text> getTexts(){
+		if(texts == null) {
+			texts = new ArrayList<>();
+//			texts.addAll(Arrays.asList(getTxtPlayer1(),getTxtPlayer2(),getTxtPlayer3(),
+//					getTxtPlayer4(),getTxtPlayer5(),getTxtPlayer6(),
+//					getTxtPlayer7(),getTxtPlayer8()));
+			for(int i=MIN_PLAYER-2; i<MAX_PLAYER; i++) {
+				texts.add(new Text("Player "+(i+1)+" : "));
+			}
+		}
+		return texts;
+	}
+	
+	public List<TextField> getTextfds(){
+		if(textfds == null) {
+			textfds = new ArrayList<>();
+//			textfds.addAll(Arrays.asList(getTxtFPlayer1(),getTxtFPlayer2(),getTxtFPlayer3(),
+//					getTxtFPlayer4(),getTxtFPlayer5(),getTxtFPlayer6(),
+//					getTxtFPlayer7(),getTxtFPlayer8()));
+			for(int i=MIN_PLAYER-2; i<MAX_PLAYER; i++) {
+				textfds.add(new TextField());
+				textfds.get(i).setPromptText("name");
+			}
+		}
+		return textfds;
+	}
+	public void toForm() {
+		double topfp = 425.0;
+		double toptxt = 430.;
+		double topAdd = 110.;
+		for(int i=MIN_PLAYER-2; i<MAX_PLAYER; i++) {
+			//ajout des fonctionnalité
+			getTexts().get(i).getStyleClass().add("txtAddPlayer");
+			getTexts().get(i).opacityProperty().bind(Bindings.when(getTexts().get(i).disabledProperty()).then(0.4).otherwise(1));
+			
+			getTextfds().get(i).getStyleClass().add("txtField");
+			getTextfds().get(i).opacityProperty().bind(Bindings.when(getTextfds().get(i).disabledProperty()).then(0.4).otherwise(1));
+			
+			//mise ne forme
+			if((i+1)%2==0) {
+				//top selon la regle des plus 110
+				//nb joueur pair : right anchor = 260 pour textfield
+				AnchorPane.setRightAnchor(getTextfds().get(i), 260.0);
+				//left anchor = 1300 pour txtfield
+				AnchorPane.setLeftAnchor(getTextfds().get(i), 1300.0);
+				//left anchor = 1100 pour text
+				AnchorPane.setLeftAnchor(getTexts().get(i), 1100.0);
+			}
+			else {
+				//nbJoueur impaire : right anchor = 1100 pour textfield
+				AnchorPane.setRightAnchor(getTextfds().get(i), 1100.0);
+				//left anchor = 460 pour txtfield
+				AnchorPane.setLeftAnchor(getTextfds().get(i), 460.0);
+				//left anchor = 275 pour text
+				AnchorPane.setLeftAnchor(getTexts().get(i), 275.0);
+				topfp+=topAdd;
+				toptxt+=topAdd;
+			}
+			//tous ont le meme top (selon leur type) qui augmente de 110 à chaque ligne
+			AnchorPane.setTopAnchor(getTexts().get(i), toptxt);
+			AnchorPane.setTopAnchor(getTextfds().get(i), topfp);
+			//tout les txtPlayer on un rightAnchor de 1400.
+			AnchorPane.setRightAnchor(getTexts().get(i), 1400.0);			
+		}
+	}
+	public void hideOrShowPlayer() {
+		for(int i=MIN_PLAYER-1; i<MAX_PLAYER; i++) {
+			
+			if(i< getNbPl()) {
+				getTexts().get(i).setDisable(false);
+				getTextfds().get(i).setDisable(false);
+			}
+			else {
+				getTexts().get(i).setDisable(true);
+				getTextfds().get(i).setDisable(true);
+			}
+		}
+	}
+	//private pour pas modifier ailleurs dans le code
+	private void setPlayerNames() {
+		playerNames = new ArrayList<>();
+		for(int i=MIN_PLAYER-2; i<getNbPl(); i++) {
+			playerNames.add(getTextfds().get(i).getText());
+		}
+	}
+	public List<String> getPlayerNames() {
+		if(playerNames == null) {
+			setPlayerNames();
+		}
+		return playerNames;
+	}
 }
