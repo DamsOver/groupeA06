@@ -72,7 +72,7 @@ public class SceneManager {
 		
 		//creation of a MediaPlayer
 		MediaPlayer mediaPlayer = new MediaPlayer(
-				new Media(ClassLoader.getSystemResource("musics/bensound-hipjazz.mp3").toExternalForm()));
+				new Media(ClassLoader.getSystemResource("musics/bensound-hipjazz.wav").toExternalForm()));
 		mediaPlayer.play();
 		mediaPlayer.setVolume(Constants.INITIAL_VOLUME * Constants.VOLUME_FACTOR);
 		mediaPlayer.setStartTime(Duration.seconds(0));
