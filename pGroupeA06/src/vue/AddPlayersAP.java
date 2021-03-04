@@ -20,9 +20,9 @@ import util.Constants;
 public class AddPlayersAP extends AnchorPane {
 	private int nbPl;
 	private final int MIN_PLAYER = 2, MAX_PLAYER =8;
-	private Text txtTitle,txtPlayer1,txtPlayer2,txtPlayer3,txtPlayer4,txtPlayer5,txtPlayer6,txtPlayer7,txtPlayer8,txtNbPlayer;
+	private Text txtTitle,/*txtPlayer1,txtPlayer2,txtPlayer3,txtPlayer4,txtPlayer5,txtPlayer6,txtPlayer7,txtPlayer8,*/txtNbPlayer;
 
-	private TextField txtFPlayer1,txtFPlayer2,txtFPlayer3,txtFPlayer4,txtFPlayer5,txtFPlayer6,txtFPlayer7,txtFPlayer8;
+//	private TextField txtFPlayer1,txtFPlayer2,txtFPlayer3,txtFPlayer4,txtFPlayer5,txtFPlayer6,txtFPlayer7,txtFPlayer8;
 
 	private Button btnBack,btnStart,arrowUp,arrowDown;
 
@@ -35,10 +35,11 @@ public class AddPlayersAP extends AnchorPane {
 	public AddPlayersAP() {
 		setNbPl(MIN_PLAYER);
 		this.getStyleClass().add("pane");
-		this.getChildren().addAll(getTxtTitle(), getBtnBack(),getBtnStart(),getTxtNbPlayer(),getArrowUp(),getArrowDown(),
-				getTxtPlayer1(),getTxtPlayer2(),getTxtPlayer3(),getTxtPlayer4(),getTxtPlayer5(),getTxtPlayer6(),getTxtPlayer7(),getTxtPlayer8(),
-				getTxtFPlayer1(),getTxtFPlayer2(),getTxtFPlayer3(),getTxtFPlayer4(),getTxtFPlayer5(),getTxtFPlayer6(),getTxtFPlayer7(),getTxtFPlayer8());
-		
+		this.getChildren().addAll(getTxtTitle(), getBtnBack(),getBtnStart(),getTxtNbPlayer(),getArrowUp(),getArrowDown()
+				/*getTxtPlayer1(),getTxtPlayer2(),getTxtPlayer3(),getTxtPlayer4(),getTxtPlayer5(),getTxtPlayer6(),getTxtPlayer7(),getTxtPlayer8(),
+				getTxtFPlayer1(),getTxtFPlayer2(),getTxtFPlayer3(),getTxtFPlayer4(),getTxtFPlayer5(),getTxtFPlayer6(),getTxtFPlayer7(),getTxtFPlayer8()*/);
+		this.getChildren().addAll(getTexts());
+		this.getChildren().addAll(getTextfds());
 		// title
 		txtTitle.getStyleClass().add("title-style");
 		AnchorPane.setTopAnchor(getTxtTitle(), 80.0);
@@ -280,7 +281,7 @@ public class AddPlayersAP extends AnchorPane {
 		return arrowDown;
 	}
 
-	public Text getTxtPlayer1() {
+/*	public Text getTxtPlayer1() {
 		if (txtPlayer1 == null) {
 			txtPlayer1 = new Text("Player 1 : ");
 		}
@@ -398,7 +399,7 @@ public class AddPlayersAP extends AnchorPane {
 //			txtFPlayer8.setPromptText("name");
 		}
 		return txtFPlayer8;
-	}
+	}*/
 	
 	public Slider getSlPlayer() {
 		if (slPlayer == null) {
@@ -425,9 +426,12 @@ public class AddPlayersAP extends AnchorPane {
 	public List<Text> getTexts(){
 		if(texts == null) {
 			texts = new ArrayList<>();
-			texts.addAll(Arrays.asList(getTxtPlayer1(),getTxtPlayer2(),getTxtPlayer3(),
-					getTxtPlayer4(),getTxtPlayer5(),getTxtPlayer6(),
-					getTxtPlayer7(),getTxtPlayer8()));
+//			texts.addAll(Arrays.asList(getTxtPlayer1(),getTxtPlayer2(),getTxtPlayer3(),
+//					getTxtPlayer4(),getTxtPlayer5(),getTxtPlayer6(),
+//					getTxtPlayer7(),getTxtPlayer8()));
+			for(int i=MIN_PLAYER-2; i<MAX_PLAYER; i++) {
+				texts.add(new Text("Player "+(i+1)+" : "));
+			}
 		}
 		return texts;
 	}
@@ -435,10 +439,13 @@ public class AddPlayersAP extends AnchorPane {
 	public List<TextField> getTextfds(){
 		if(textfds == null) {
 			textfds = new ArrayList<>();
-			textfds.addAll(Arrays.asList(getTxtFPlayer1(),getTxtFPlayer2(),getTxtFPlayer3(),
-					getTxtFPlayer4(),getTxtFPlayer5(),getTxtFPlayer6(),
-					getTxtFPlayer7(),getTxtFPlayer8()));
-			
+//			textfds.addAll(Arrays.asList(getTxtFPlayer1(),getTxtFPlayer2(),getTxtFPlayer3(),
+//					getTxtFPlayer4(),getTxtFPlayer5(),getTxtFPlayer6(),
+//					getTxtFPlayer7(),getTxtFPlayer8()));
+			for(int i=MIN_PLAYER-2; i<MAX_PLAYER; i++) {
+				textfds.add(new TextField());
+				textfds.get(i).setPromptText("name");
+			}
 		}
 		return textfds;
 	}
@@ -453,8 +460,6 @@ public class AddPlayersAP extends AnchorPane {
 			
 			getTextfds().get(i).getStyleClass().add("txtField");
 			getTextfds().get(i).opacityProperty().bind(Bindings.when(getTextfds().get(i).disabledProperty()).then(0.4).otherwise(1));
-			
-			getTextfds().get(i).setPromptText("name");
 			
 			//mise ne forme
 			if((i+1)%2==0) {
