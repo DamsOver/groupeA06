@@ -27,9 +27,6 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			
-			
-			
-			
 			//initialisation of the scene
 			SceneManager.initialize();
 			

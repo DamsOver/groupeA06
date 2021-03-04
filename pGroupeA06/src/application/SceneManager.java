@@ -85,7 +85,8 @@ public class SceneManager {
 				}
 			});
 
-		//Slider change the volume
+		//Slider that change the volume
+		//Not in the OptionsAP or SettingsAP to make it easier to change
 			// in options
 		SceneManager.getOptions().getSlVolume().valueProperty().addListener(new ChangeListener<Number>() {
 			public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
