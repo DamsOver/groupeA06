@@ -114,10 +114,16 @@ public class AddPlayersAP extends AnchorPane {
 		btnStart.setOnAction(new EventHandler<ActionEvent>(){
 	        public void handle(ActionEvent event) {
 	        	setPlayerNames();
-	        	SceneManager.getTransitionAnimation().setTxtAnimation("The game starts!");
-	        	GameOperation.skipMilliseconds(Constants.TIME_ANIMATION,SceneManager.getStackTransititionAnimation(), SceneManager.getStackGame());
-	        	SceneManager.getTransitionAnimation().setTxtAnimation("It's "+ getPlayerNames().get(0) +"'s turn!");
-	        	GameOperation.skipMilliseconds(Constants.TIME_ANIMATION,SceneManager.getStackTransititionAnimation(), SceneManager.getStackGame());
+	        	if(!checkTxtField()) {
+	        		//afficher un message pour allerter qu'une textBox est vide
+	        		
+	        	}
+	        	else {
+		        	SceneManager.getTransitionAnimation().setTxtAnimation("The game starts!");
+		        	GameOperation.skipMilliseconds(Constants.TIME_ANIMATION,SceneManager.getStackTransititionAnimation(), SceneManager.getStackGame());
+		        	SceneManager.getTransitionAnimation().setTxtAnimation("It's "+ getPlayerNames().get(0) +"'s turn!");
+		        	GameOperation.skipMilliseconds(Constants.TIME_ANIMATION,SceneManager.getStackTransititionAnimation(), SceneManager.getStackGame());
+		        }
 	        }
 		});
 		
@@ -217,24 +223,24 @@ public class AddPlayersAP extends AnchorPane {
 			
 			//mise ne forme
 			if((i+1)%2==0) {
-				//top selon la regle des plus 110
-				//nb joueur pair : right anchor = 260 pour textfield
+				//nb joueur pair : right anchor = 200 pour textfield
 				AnchorPane.setRightAnchor(getTextfds().get(i), 200.0);
-				//left anchor = 460 pour txtfield
+				//left anchor = 1350 pour txtfield
 				AnchorPane.setLeftAnchor(getTextfds().get(i), 1350.0);
 				//left anchor = 1100 pour text
 				AnchorPane.setLeftAnchor(getTexts().get(i), 1100.0);
 				AnchorPane.setRightAnchor(getTexts().get(i),600.0);
 			}
 			else {
-				//nbJoueur impaire : right anchor = 1100 pour textfield
+				//nbJoueur impaire : right anchor = 1200 pour textfield
 				AnchorPane.setRightAnchor(getTextfds().get(i), 1200.0);
-				//left anchor = 1300 pour txtfield
+				//left anchor = 350 pour txtfield
 				AnchorPane.setLeftAnchor(getTextfds().get(i),350.0);
 
-				//left anchor = 275 pour text
+				//left anchor = 100 pour text
 				AnchorPane.setLeftAnchor(getTexts().get(i), 100.0);
 				AnchorPane.setRightAnchor(getTexts().get(i),1600.0);
+				//top selon la regle des plus 110
 				topfp+=topAdd;
 				toptxt+=topAdd;
 			}
@@ -255,6 +261,14 @@ public class AddPlayersAP extends AnchorPane {
 				getTextfds().get(i).setDisable(true);
 			}
 		}
+	}
+	public boolean checkTxtField() {
+		for(int i=MIN_PLAYER-2; i<getNbPl(); i++) {
+			if(getTextfds().get(i).getText().isEmpty()) {
+				return false;
+			}
+		}
+		return true;
 	}
 	//private pour pas modifier ailleurs dans le code
 	private void setPlayerNames() {
