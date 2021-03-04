@@ -27,24 +27,14 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			
-			//Music
-			MediaPlayer mediaPlayer = new MediaPlayer(
-					new Media(new File("src/musics/bensound-hipjazz.mp3").toURI().toString()));
-			mediaPlayer.play();
-			mediaPlayer.setVolume(Constants.INITIAL_VOLUME * Constants.VOLUME_FACTOR);
-			mediaPlayer.setStartTime(Duration.seconds(0));
-			mediaPlayer.setStopTime(Duration.seconds(160));
-			mediaPlayer.setOnEndOfMedia(new Runnable() {
-					@Override
-					public void run() {
-						mediaPlayer.seek(Duration.ZERO);
-						mediaPlayer.play();
-					}
-				});
+			
 			
 			
 			//initialisation of the scene
 			SceneManager.initialize();
+			
+			//initialisation of the volume
+			SceneManager.volumeInitialization();
 			
 			
 			// Close Application
@@ -54,20 +44,6 @@ public class Main extends Application {
 				}
 			};
 			SceneManager.getRoot().getBtnQuit().setOnAction(eventQuit);
-
-
-			//Volume
-			SceneManager.getOptions().getSlVolume().valueProperty().addListener(new ChangeListener<Number>() {
-				public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
-					mediaPlayer.setVolume((double) new_val * Constants.VOLUME_FACTOR);
-				}
-			});
-			SceneManager.getSettings().getSlVolume().valueProperty().addListener(new ChangeListener<Number>() {
-				public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
-					mediaPlayer.setVolume((double) new_val * Constants.VOLUME_FACTOR);
-				}
-			});
-
 
 			// Style
 			SceneManager.getSceneRoot().getStylesheets().add(getClass().getResource("application.css").toExternalForm());
