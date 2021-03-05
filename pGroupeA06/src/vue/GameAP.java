@@ -25,7 +25,7 @@ public class GameAP extends AnchorPane {
 		AnchorPane.setRightAnchor(getBtnSettings(), 25.0 );
 		AnchorPane.setLeftAnchor(getBtnSettings(), 1820.0 );
 	}
-
+	
 	public Button getBtnSettings() {
 		if (btnSettings == null) {
 			btnSettings = new Button();

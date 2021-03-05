@@ -2,9 +2,16 @@ package application;
 
 import java.io.File;
 
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.Media;
@@ -19,6 +26,7 @@ import vue.GameAP;
 import vue.GameRulesAP;
 import vue.HomeAP;
 import vue.OptionsAP;
+import vue.RatingAP;
 import vue.SettingsAP;
 import vue.TransitionAnimationAP;
 
@@ -35,7 +43,9 @@ public class SceneManager {
 								stackGameRule,
 								stackCardsManagement,
 								stackTransitionAnimation,
-								stackSettings;
+								stackSettings,
+								stackAnimation,
+								stackRating;
 	
 
 	private static HomeAP root;
@@ -63,6 +73,7 @@ public class SceneManager {
 		stackCardsManagement = new StackPane(new CardsManagementAP());
 		stackTransitionAnimation = new StackPane(ta);
 		stackSettings = new StackPane(settings);
+		stackRating = new StackPane(new RatingAP());
 		sceneRoot = new Scene(stackRoot, 1920, 1080);
 		
 		
@@ -102,6 +113,30 @@ public class SceneManager {
 				SceneManager.getOptions().getSlVolume().setValue((double) new_val);
 			}
 		});
+	}
+	
+	public static void transition(StackPane first, StackPane second, int time) {
+		
+		//getSceneRoot().setRoot(first);
+		
+	    TransitionAnimationAP paneToRemove = (TransitionAnimationAP) first.getChildren().get(0);    
+	    GameAP paneToAdd = (GameAP)second.getChildren().get(0);
+	    
+	    stackAnimation = new StackPane();
+	    stackAnimation.getChildren().add(paneToRemove);
+	    paneToAdd.translateXProperty().set(1920);
+	    stackAnimation.getChildren().add(paneToAdd);
+	    
+	    getSceneRoot().setRoot(stackAnimation);
+	    var keyValue = new KeyValue(paneToAdd.translateXProperty(), 0, Interpolator.EASE_IN);
+	    var keyFrame = new KeyFrame(Duration.millis(time), keyValue);
+	    var timeline = new Timeline(keyFrame);
+	    timeline.setOnFinished(evt -> {
+	        stackAnimation.getChildren().remove(paneToRemove);
+	    });
+	    timeline.play();
+	    //second.getChildren().add(stackAnimation.getChildren().get(1));
+	    //getSceneRoot().setRoot(second);
 	}
 	
 	
@@ -159,6 +194,9 @@ public class SceneManager {
 	}
 	public static StackPane getStackSettings() {
 		return stackSettings;
+	}
+	public static StackPane getStackRating() {
+		return stackRating;
 	}
 	
 }

@@ -85,6 +85,18 @@
 	-fx-font-size: 150;
 }
 
+.title2-style {
+	-fx-font-size: 100;
+}
+
+.theme-subject{
+	-fx-font-size: 50;
+	-fx-border-radius: 10px;
+	-fx-border-color: black;
+	-fx-border-width: 3px;
+}
+
+
 .gameBoard {
 	-fx-background-image: url("/img/gameBoard_V2.jpg");
     -fx-background-repeat: stretch;   
