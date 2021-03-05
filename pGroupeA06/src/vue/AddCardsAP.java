@@ -1,6 +1,9 @@
 package vue;
 
+import application.SceneManager;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -406,6 +409,11 @@ public class AddCardsAP extends AnchorPane {
 		if (btnBack == null) {
 			btnBack = new Button("Back");
 		}
+		btnBack.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				SceneManager.getSceneRoot().setRoot(SceneManager.getStackCardsManager());
+			}
+		});
 		return btnBack;
 	}
 }
