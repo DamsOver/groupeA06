@@ -86,14 +86,19 @@
 }
 
 .title2-style {
-	-fx-font-size: 100;
+	-fx-font-size: 130;
 }
 
 .theme-subject{
-	-fx-font-size: 50;
+	-fx-text-fill:white;
+	-fx-font-size: 75;
 	-fx-border-radius: 10px;
 	-fx-border-color: black;
 	-fx-border-width: 3px;
+	-fx-background-color: grey;
+	-fx-background-radius: 10px;
+	-fx-alignment:center;
+	
 }
 
 
@@ -106,6 +111,11 @@
 
 .pane{
 	-fx-background-image: url("/img/backGround_Paper.jpg");
+    -fx-background-size: stretch,stretch;
+}
+
+.paneQuestion{
+	-fx-background-image: url("/img/Fond_flou.jpg");
     -fx-background-size: stretch,stretch;
 }
 

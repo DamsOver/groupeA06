@@ -26,6 +26,7 @@ import vue.GameAP;
 import vue.GameRulesAP;
 import vue.HomeAP;
 import vue.OptionsAP;
+import vue.QuestionAP;
 import vue.RatingAP;
 import vue.SettingsAP;
 import vue.TransitionAnimationAP;
@@ -45,7 +46,8 @@ public class SceneManager {
 								stackTransitionAnimation,
 								stackSettings,
 								stackAnimation,
-								stackRating;
+								stackRating,
+								stackQuestion;
 	
 
 	private static HomeAP root;
@@ -74,6 +76,7 @@ public class SceneManager {
 		stackTransitionAnimation = new StackPane(ta);
 		stackSettings = new StackPane(settings);
 		stackRating = new StackPane(new RatingAP());
+		stackQuestion = new StackPane(new QuestionAP());
 		sceneRoot = new Scene(stackRoot, 1920, 1080);
 		
 		
@@ -197,6 +200,9 @@ public class SceneManager {
 	}
 	public static StackPane getStackRating() {
 		return stackRating;
+	}
+	public static StackPane getStackQuestion() {
+		return stackQuestion;
 	}
 	
 }
