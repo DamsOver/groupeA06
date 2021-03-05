@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import application.SceneManager;
+import javafx.animation.PauseTransition;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,6 +14,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import model.GameOperation;
 import util.Constants;
 
@@ -115,8 +117,23 @@ public class AddPlayersAP extends AnchorPane {
 	        		
 	        	}
 	        	else {
-		        	SceneManager.getTransitionAnimation().setTxtAnimation("The game starts!");
-		        	SceneManager.transition(SceneManager.getStackTransititionAnimation(), SceneManager.getStackGame(),Constants.TIME_ANIMATION);
+
+	        		SceneManager.getTransitionAnimation().setTxtAnimation("It's Damien's turn !");
+	        		SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
+	        		
+	        		PauseTransition pause = new PauseTransition(Duration.seconds(3));
+	                pause.setOnFinished(
+	                    e -> SceneManager.getSceneRoot().setRoot(SceneManager.getStackRating())
+	                    );
+	                pause.play();
+	        		
+	        		
+//	        		SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
+	        		
+	        		
+//		        	SceneManager.getTransitionAnimation().setTxtAnimation("The game starts!");
+//		        	SceneManager.transition(SceneManager.getStackTransititionAnimation(), SceneManager.getStackGame(),Constants.TIME_ANIMATION);
+
 		        	//SceneManager.getTransitionAnimation().setTxtAnimation("It's "+ getPlayerNames().get(0) +"'s turn!");
 		        	//GameOperation.skipMilliseconds(Constants.TIME_ANIMATION,SceneManager.getStackTransititionAnimation(), SceneManager.getStackGame());
 		        }

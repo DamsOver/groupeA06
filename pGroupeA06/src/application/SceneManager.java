@@ -26,6 +26,7 @@ import vue.GameAP;
 import vue.GameRulesAP;
 import vue.HomeAP;
 import vue.OptionsAP;
+import vue.QuestionAP;
 import vue.RatingAP;
 import vue.SettingsAP;
 import vue.TransitionAnimationAP;
@@ -45,7 +46,8 @@ public class SceneManager {
 								stackTransitionAnimation,
 								stackSettings,
 								stackAnimation,
-								stackRating;
+								stackRating,
+								stackQuestion;
 	
 
 	private static HomeAP root;
@@ -74,6 +76,7 @@ public class SceneManager {
 		stackTransitionAnimation = new StackPane(ta);
 		stackSettings = new StackPane(settings);
 		stackRating = new StackPane(new RatingAP());
+		stackQuestion = new StackPane(new QuestionAP());
 		sceneRoot = new Scene(stackRoot, 1920, 1080);
 		
 		
@@ -115,29 +118,29 @@ public class SceneManager {
 		});
 	}
 	
-	public static void transition(StackPane first, StackPane second, int time) {
-		
-		//getSceneRoot().setRoot(first);
-		
-	    TransitionAnimationAP paneToRemove = (TransitionAnimationAP) first.getChildren().get(0);    
-	    GameAP paneToAdd = (GameAP)second.getChildren().get(0);
-	    
-	    stackAnimation = new StackPane();
-	    stackAnimation.getChildren().add(paneToRemove);
-	    paneToAdd.translateXProperty().set(1920);
-	    stackAnimation.getChildren().add(paneToAdd);
-	    
-	    getSceneRoot().setRoot(stackAnimation);
-	    var keyValue = new KeyValue(paneToAdd.translateXProperty(), 0, Interpolator.EASE_IN);
-	    var keyFrame = new KeyFrame(Duration.millis(time), keyValue);
-	    var timeline = new Timeline(keyFrame);
-	    timeline.setOnFinished(evt -> {
-	        stackAnimation.getChildren().remove(paneToRemove);
-	    });
-	    timeline.play();
-	    //second.getChildren().add(stackAnimation.getChildren().get(1));
-	    //getSceneRoot().setRoot(second);
-	}
+//	public static void transition(StackPane first, StackPane second, int time) {
+//		
+//		//getSceneRoot().setRoot(first);
+//		
+//	    TransitionAnimationAP paneToRemove = (TransitionAnimationAP) first.getChildren().get(0);    
+//	    GameAP paneToAdd = (GameAP)second.getChildren().get(0);
+//	    
+//	    stackAnimation = new StackPane();
+//	    stackAnimation.getChildren().add(paneToRemove);
+//	    paneToAdd.translateXProperty().set(1920);
+//	    stackAnimation.getChildren().add(paneToAdd);
+//	    
+//	    getSceneRoot().setRoot(stackAnimation);
+//	    var keyValue = new KeyValue(paneToAdd.translateXProperty(), 0, Interpolator.EASE_IN);
+//	    var keyFrame = new KeyFrame(Duration.millis(time), keyValue);
+//	    var timeline = new Timeline(keyFrame);
+//	    timeline.setOnFinished(evt -> {
+//	        stackAnimation.getChildren().remove(paneToRemove);
+//	    });
+//	    timeline.play();
+//	    //second.getChildren().add(stackAnimation.getChildren().get(1));
+//	    //getSceneRoot().setRoot(second);
+//	}
 	
 	
 	public static OptionsAP getOptions() {
@@ -197,6 +200,9 @@ public class SceneManager {
 	}
 	public static StackPane getStackRating() {
 		return stackRating;
+	}
+	public static StackPane getStackQuestion() {
+		return stackQuestion;
 	}
 	
 }
