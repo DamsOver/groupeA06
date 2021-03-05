@@ -35,7 +35,7 @@ public class GameOperation {
 		st.play();
 		*/
 		
-		SceneManager.transition(firstPane,nextPane, milliseconds);
+//		SceneManager.transition(firstPane,nextPane, milliseconds);
 		
 		//SceneManager.getSceneRoot().setRoot(nextPane);
 		/*
