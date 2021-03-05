@@ -123,21 +123,19 @@ public class AddPlayersAP extends AnchorPane {
 	        		PauseTransition pause3 = new PauseTransition(Duration.seconds(2));	        		            
 
 	                pause1.setOnFinished(
-	                    e -> {	                    	
-	                    	SceneManager.getSceneRoot().setRoot(SceneManager.getStackGame());
-		                    pause2.play(); 
-	                    	}              
-	                    );      
-	                
-	                pause2.setOnFinished(
-		                    e -> {
+	                    e -> {	 
 		                    	int MIN = 0, MAX = getPlayerNames().size()-1;	                    	                   
 		                    	int nombreAleatoire = MIN + (int)(Math.random() * ((MAX - MIN) + 1));
-		                    	SceneManager.getTransitionAnimation().setTxtAnimation("It's "+ getPlayerNames().get(nombreAleatoire) +"'s turn!");
-		                    	
-		                    	SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
+		                    	SceneManager.getTransitionAnimation().setTxtAnimation("It's "+ getPlayerNames().get(nombreAleatoire) +"'s turn!");                    	
+		                    	SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());	                  		                    	
+			                    pause2.play(); 
+	                    	}              
+	                    );	                
+	                pause2.setOnFinished(
+		                    e -> {
+		                    	SceneManager.getSceneRoot().setRoot(SceneManager.getStackGame());
 			                    pause3.play();
-			                    }
+			                }
 		            );	                                                
 	                pause3.setOnFinished(
 		                    e -> {
