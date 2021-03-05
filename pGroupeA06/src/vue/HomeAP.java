@@ -30,10 +30,10 @@ public class HomeAP extends AnchorPane {
 		this.getChildren().addAll(getTxtTitle(),getBtnStartGame(),getBtnGameRule(),getBtnOptions(),getBtnQuit());
 		
 		//title		
-		getTxtTitle().getStyleClass().add("title-style");
+		getTxtTitle().getStyleClass().add("title2-style");
 		AnchorPane.setTopAnchor(getTxtTitle(), 100.0 );
 //		AnchorPane.setRightAnchor(getTxtTitle(), 550.0 );
-		AnchorPane.setLeftAnchor(getTxtTitle(), 0.0 );
+		AnchorPane.setLeftAnchor(getTxtTitle(), 177.0 );
 		
 		//BtnStartGame
 		getBtnStartGame().getStyleClass().add("btn-style");
