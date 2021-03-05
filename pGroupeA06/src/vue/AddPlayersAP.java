@@ -117,7 +117,7 @@ public class AddPlayersAP extends AnchorPane {
 	        		
 	        	}
 	        	else {
-
+	        		setPlayerNames();
 	        		SceneManager.getTransitionAnimation().setTxtAnimation("It's Damien's turn !");
 	        		SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
 	        		
@@ -126,6 +126,8 @@ public class AddPlayersAP extends AnchorPane {
 	                    e -> SceneManager.getSceneRoot().setRoot(SceneManager.getStackRating())
 	                    );
 	                pause.play();
+	                
+	                System.out.println(SceneManager.getAddPlayers().getPlayerNames().get(0));
 	        		
 	        		
 //	        		SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());

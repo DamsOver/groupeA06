@@ -88,6 +88,10 @@
 .title2-style {
 	-fx-font-size: 130;
 }
+.title3-style {
+	-fx-font-size: 80;
+	-fx-underline:true;
+}
 
 .theme-subject{
 	-fx-text-fill:white;
@@ -115,7 +119,7 @@
 }
 
 .paneQuestion{
-	-fx-background-image: url("/img/Fond_flou.jpg");
+	-fx-background-image: url("/img/blurred_background.jpg");
     -fx-background-size: stretch,stretch;
 }
 

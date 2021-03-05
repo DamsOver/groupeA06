@@ -54,6 +54,7 @@ public class SceneManager {
 	private static OptionsAP options;
 	private static TransitionAnimationAP ta;
 	private static SettingsAP settings;
+	private static AddPlayersAP addPlayers;
 	
 	public static void initialize() {
 		
@@ -63,13 +64,14 @@ public class SceneManager {
 		options=new OptionsAP();
 		ta = new TransitionAnimationAP();
 		settings = new SettingsAP();
+		addPlayers = new AddPlayersAP();
 		
 		//StackPane Creation
 		stackRoot = new StackPane(root);
 		stackAddCards = new StackPane(new AddCardsAP());
 		stackAdmin = new StackPane(new AdminAP());
 		stackGame = new StackPane(new GameAP());
-		stackAddPlayers = new StackPane(new AddPlayersAP());
+		stackAddPlayers = new StackPane(addPlayers);
 		stackOptions = new StackPane(options);
 		stackGameRule = new StackPane(new GameRulesAP());
 		stackCardsManagement = new StackPane(new CardsManagementAP());
@@ -143,6 +145,7 @@ public class SceneManager {
 //	}
 	
 	
+	//getters AnchorPane
 	public static OptionsAP getOptions() {
 		return options;
 	}
@@ -154,6 +157,9 @@ public class SceneManager {
 	}
 	public static SettingsAP getSettings() {
 		return settings;
+	}
+	public static AddPlayersAP getAddPlayers() {
+		return addPlayers;
 	}
 	
 	

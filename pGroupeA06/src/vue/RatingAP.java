@@ -1,7 +1,10 @@
 package vue;
 
+import application.SceneManager;
 import enumerations.Theme;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -48,7 +51,6 @@ public class RatingAP extends AnchorPane{
 		AnchorPane.setTopAnchor(getTxtAnswer(), 720.0);
 		AnchorPane.setLeftAnchor(getTxtAnswer(), 650.0);
 		
-		
 		// BtnGo
 		btnGo.getStyleClass().add("btn-style");
 		AnchorPane.setTopAnchor(getBtnGo(), 900.0);
@@ -84,6 +86,12 @@ public class RatingAP extends AnchorPane{
 		if (btnGo == null) {
 			btnGo = new Button("Go");
 		}
+		btnGo.setOnAction(new EventHandler<ActionEvent>(){
+	        public void handle(ActionEvent event) {
+	        	SceneManager.getSceneRoot().setRoot(SceneManager.getStackQuestion());
+	           }
+			});
+		
 		return btnGo;
 	}
 	public ComboBox getCbbRating() {
