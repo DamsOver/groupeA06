@@ -51,34 +51,48 @@ public class SceneManager {
 	
 
 	private static HomeAP root;
+	private static AddCardsAP addCards;
+	private static AdminAP admin;
+	private static GameAP game;
+	private static AddPlayersAP addPlayers;
 	private static OptionsAP options;
+	private static GameRulesAP gameRule;	
+	private static CardsManagementAP cardsManagement;
 	private static TransitionAnimationAP ta;
 	private static SettingsAP settings;
-	private static AddPlayersAP addPlayers;
+	private static RatingAP rating;
+	private static QuestionAP question;
 	
 	public static void initialize() {
 		
 		
-		//AnchorPane Creation
+		// AnchorPane Creation
 		root = new HomeAP();
-		options=new OptionsAP();
+		addCards = new AddCardsAP();
+		admin = new AdminAP();
+		game = new GameAP();
+		options = new OptionsAP();
+		gameRule = new GameRulesAP();
+		cardsManagement = new CardsManagementAP();
 		ta = new TransitionAnimationAP();
 		settings = new SettingsAP();
+		rating = new RatingAP();
 		addPlayers = new AddPlayersAP();
+		question = new QuestionAP();
 		
-		//StackPane Creation
+		// StackPane Creation
 		stackRoot = new StackPane(root);
-		stackAddCards = new StackPane(new AddCardsAP());
-		stackAdmin = new StackPane(new AdminAP());
-		stackGame = new StackPane(new GameAP());
+		stackAddCards = new StackPane(addCards);
+		stackAdmin = new StackPane(admin);
+		stackGame = new StackPane(game);
 		stackAddPlayers = new StackPane(addPlayers);
-		stackOptions = new StackPane(options);
-		stackGameRule = new StackPane(new GameRulesAP());
-		stackCardsManagement = new StackPane(new CardsManagementAP());
+		stackOptions = new StackPane(options);	
+		stackGameRule = new StackPane(gameRule);	
+		stackCardsManagement = new StackPane(cardsManagement);
 		stackTransitionAnimation = new StackPane(ta);
-		stackSettings = new StackPane(settings);
-		stackRating = new StackPane(new RatingAP());
-		stackQuestion = new StackPane(new QuestionAP());
+		stackSettings = new StackPane(settings);		
+		stackRating = new StackPane(rating);	
+		stackQuestion = new StackPane(question);
 		sceneRoot = new Scene(stackRoot, 1920, 1080);
 		
 		
