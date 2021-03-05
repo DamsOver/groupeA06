@@ -79,6 +79,13 @@
 	-fx-border-color: black;
 	-fx-border-width: 3px;
 }
+.txtField_round{
+	-fx-font-size: 25;
+	-fx-border-color: black;
+	-fx-border-width: 3px;
+	-fx-background-radius: 10px;
+	-fx-border-radius: 10px;
+}
 
 .title-style {
 	-fx-font-size: 150;
@@ -101,8 +108,31 @@
 	-fx-background-color: grey;
 	-fx-background-radius: 10px;
 	-fx-alignment:center;
-	
 }
+
+.question{
+	-fx-text-fill:white;
+	-fx-font-size: 40;
+	-fx-border-radius: 10px;
+	-fx-border-color: black;
+	-fx-border-width: 3px;
+	-fx-background-color: grey;
+	-fx-background-radius: 10px;
+	-fx-alignment:center;
+	-fx-padding:10px;
+}
+
+.answer{
+	-fx-text-fill:white;
+	-fx-font-size: 40;
+	-fx-border-radius: 10px;
+	-fx-border-color: black;
+	-fx-border-width: 3px;
+	-fx-background-color: green;
+	-fx-background-radius: 10px;
+	-fx-alignment:center;
+}
+
 
 
 .gameBoard {
@@ -165,6 +195,22 @@
 	-fx-background-image: url("/img/btn_border_press.png");
     -fx-background-size: stretch,stretch;
 }
+.btn_verysmall {
+	-fx-background-color: transparent;
+	-fx-background-image: url("/img/btn_border.png");
+    -fx-background-size: stretch,stretch;
+	-fx-font-size: 30;
+	-fx-font-color: black;
+	-fx-alignment: center;
+}
+
+.btn_verysmall:pressed{
+	-fx-background-color: transparent;
+	-fx-background-image: url("/img/btn_border_press.png");
+    -fx-background-size: stretch,stretch;
+}
+
+
 
 .cbbox {
 	-fx-font-size: 25;
@@ -176,4 +222,22 @@
 	-fx-font-size: 25;
 	-fx-border-color: black;
 	-fx-border-width: 3px;
+}
+
+.qm1{
+	-fx-background-image: url("/img/interrogation_1.png");
+    -fx-background-size: stretch,stretch;
+    -fx-background-color: transparent;
+}
+
+.qm2{
+	-fx-background-image: url("/img/interrogation_2.png");
+    -fx-background-size: stretch,stretch;
+    -fx-background-color: transparent;
+}
+
+.qm3{
+	-fx-background-image: url("/img/interrogation_3.png");
+    -fx-background-size: stretch,stretch;
+    -fx-background-color: transparent;
 }
