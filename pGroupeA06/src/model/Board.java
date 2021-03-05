@@ -35,6 +35,6 @@ public class Board {
 	}
 	
 	public String toString() {
-		return "Deck [deck=" + squares + "]";
+		return "Board [Board=" + squares + "]";
 	}
 }
