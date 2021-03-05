@@ -37,8 +37,8 @@ public class Main extends Application {
 			// Close Application
 			EventHandler<ActionEvent> eventQuit = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent e) {
-					SceneManager.getSceneRoot().setRoot(SceneManager.getStackRating());
-					//primaryStage.close();
+					//SceneManager.getSceneRoot().setRoot(SceneManager.getStackRating());
+					primaryStage.close();
 				}
 			};
 			SceneManager.getRoot().getBtnQuit().setOnAction(eventQuit);
