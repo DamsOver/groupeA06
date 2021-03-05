@@ -11,21 +11,27 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import model.GameOperation;
 
 public class RatingAP extends AnchorPane{
 	private Text txtTitle,txtAnswer;
-	private Label lbTheme,lbSubject;
+	private Label lbTheme,lbSubject,lbTurn;
 	private Button btnGo;
 	private ComboBox<String> cbbRating;
 	
 	public RatingAP() {
 		this.getStyleClass().add("paneQuestion");
-		this.getChildren().addAll(getTxtTitle(),getCbbRating(),getLbTheme(),getLbSubject(),getBtnGo(),getTxtAnswer());
+		this.getChildren().addAll(getTxtTitle(),getLbTurn(),getCbbRating(),getLbTheme(),getLbSubject(),getBtnGo(),getTxtAnswer());
 		
 		// title
 		txtTitle.getStyleClass().add("title2-style");
 		AnchorPane.setTopAnchor(getTxtTitle(), 100.0);
 		AnchorPane.setLeftAnchor(getTxtTitle(), 550.0);
+		
+		// lbTurn
+		lbTurn.getStyleClass().add("title3-style");
+		AnchorPane.setTopAnchor(getLbTurn(), 50.0);
+		AnchorPane.setLeftAnchor(getLbTurn(), 150.0);
 		
 		// Theme
 		lbTheme.getStyleClass().add("theme-subject");
@@ -67,6 +73,13 @@ public class RatingAP extends AnchorPane{
 		return txtTitle;
 	}
 	
+	public Label getLbTurn() {
+		if (lbTurn == null) {
+			lbTurn = new Label("'s turn");
+		}
+		return lbTurn;
+	}
+	
 	public Label getLbTheme() {
 		if (lbTheme == null) {
 			lbTheme = new Label("Theme : " + Theme.IMPROBABLE.getTheme().toUpperCase());
@@ -89,6 +102,7 @@ public class RatingAP extends AnchorPane{
 		btnGo.setOnAction(new EventHandler<ActionEvent>(){
 	        public void handle(ActionEvent event) {
 	        	SceneManager.getSceneRoot().setRoot(SceneManager.getStackQuestion());
+	        	SceneManager.getQuestion().setLbTurn(GameOperation.getGame().getPlayers().get(0).getName());
 	           }
 			});
 		

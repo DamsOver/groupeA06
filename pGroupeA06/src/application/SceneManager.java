@@ -17,6 +17,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.Media;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.GameOperation;
 import util.Constants;
 import vue.AddCardsAP;
 import vue.AddPlayersAP;
@@ -63,8 +64,10 @@ public class SceneManager {
 	private static RatingAP rating;
 	private static QuestionAP question;
 	
+	private static GameOperation go;
+	
 	public static void initialize() {
-		
+		go = new GameOperation();
 		
 		// AnchorPane Creation
 		root = new HomeAP();
@@ -175,8 +178,15 @@ public class SceneManager {
 	public static AddPlayersAP getAddPlayers() {
 		return addPlayers;
 	}
+	public static QuestionAP getQuestion() {
+		return question;
+	}
 	
 	
+	//getter GameOperation
+	public static GameOperation getGameOperation() {
+		return go;
+	}
 	
 	public static Scene getSceneRoot() {
 		return sceneRoot;

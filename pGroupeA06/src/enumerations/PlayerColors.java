@@ -13,15 +13,21 @@ public enum PlayerColors {
 	private int color;
 	
 	PlayerColors(int i) {
-		this.color=1;
+		this.color=i;
 	}
 	
 	public static PlayerColors getColor(int i) {
-		for (PlayerColors p : PlayerColors.values()) {
+		for (PlayerColors p : values()) {
 	        if (p.color==i) {
 	            return p;
 	        }
 	    }
+		System.out.println("pas trouvé");
 		return null;
 	}
+	
+	public static int getValue(PlayerColors p) {
+		return p.color;
+	}
+	
 }

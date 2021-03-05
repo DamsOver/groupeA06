@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import model.GameOperation;
 
 public class QuestionAP extends AnchorPane{
 
@@ -79,7 +80,7 @@ public class QuestionAP extends AnchorPane{
 
 	public Label getLbTurn() {
 		if (lbTurn == null) {
-			lbTurn = new Label("It's "+ SceneManager.getAddPlayers().getPlayerNames().get(0)+"'s turn");
+			lbTurn = new Label("'s turn");
 		}
 		return lbTurn;
 	}
@@ -89,6 +90,12 @@ public class QuestionAP extends AnchorPane{
 			lbQuestion = new Label("Question bateau dire de tester si ca marche ?");
 		}
 		return lbQuestion;
+	}
+	
+	public void setLbTurn(String name) {
+		if (lbTurn != null) {
+			lbTurn.setText(name+"'s turn");
+		}
 	}
 
 	public Button getBtnOK() {

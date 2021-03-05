@@ -12,6 +12,12 @@ public class Player {
 		this.color=PlayerColors.getColor(number);
 		this.square=Game.getBoard().getSquares().get(0);
 	}
+	
+	public Player(String name,int number,Square sq) {
+		this.name=name;
+		this.color=PlayerColors.getColor(number);
+		this.square=sq;
+	}
 
 	public String getName() {
 		return name;
@@ -24,9 +30,12 @@ public class Player {
 	public Square getSquare() {
 		return square;
 	}
+
+	public void setSquare(Square square) {
+		this.square = square;
+	}
 	
-	
-	
-	
-	
+	public Player clone() {
+		return new Player(name,PlayerColors.getValue(color),square);
+	}
 }

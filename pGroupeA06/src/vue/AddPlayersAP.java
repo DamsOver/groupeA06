@@ -121,12 +121,10 @@ public class AddPlayersAP extends AnchorPane {
 	        		PauseTransition pause1 = new PauseTransition(Duration.seconds(2));
 	        		PauseTransition pause2 = new PauseTransition(Duration.seconds(2));
 	        		PauseTransition pause3 = new PauseTransition(Duration.seconds(2));	        		            
-
+	        		GameOperation.addPlayers(getPlayerNames());
 	                pause1.setOnFinished(
 	                    e -> {	 
-		                    	int MIN = 0, MAX = getPlayerNames().size()-1;	                    	                   
-		                    	int nombreAleatoire = MIN + (int)(Math.random() * ((MAX - MIN) + 1));
-		                    	SceneManager.getTransitionAnimation().setTxtAnimation("It's "+ getPlayerNames().get(nombreAleatoire) +"'s turn!");                    	
+		                    	SceneManager.getTransitionAnimation().setTxtAnimation("It's "+ GameOperation.getGame().getPlayers().get(0).getName() +"'s turn!");                    	
 		                    	SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());	                  		                    	
 			                    pause2.play(); 
 	                    	}              

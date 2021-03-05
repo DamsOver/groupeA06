@@ -12,4 +12,8 @@ public class AlreadyPresentException extends Exception {
 		super("This card is already present");
 	}
 	
+	public AlreadyPresentException(double i) {
+		super("This player is already present");
+	}
+	
 }
