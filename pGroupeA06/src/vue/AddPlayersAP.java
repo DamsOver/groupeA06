@@ -116,26 +116,36 @@ public class AddPlayersAP extends AnchorPane {
 	        		//afficher un message pour allerter qu'une textBox est vide
 	        		
 	        	}
-	        	else {
-
-	        		SceneManager.getTransitionAnimation().setTxtAnimation("It's Damien's turn !");
-	        		SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
+	        	else {    
+	        		        		
+	        		PauseTransition pause1 = new PauseTransition(Duration.seconds(2));
+	        		PauseTransition pause2 = new PauseTransition(Duration.seconds(2));
+	        		PauseTransition pause3 = new PauseTransition(Duration.seconds(2));	        		
 	        		
-	        		PauseTransition pause = new PauseTransition(Duration.seconds(3));
-	                pause.setOnFinished(
-	                    e -> SceneManager.getSceneRoot().setRoot(SceneManager.getStackRating())
-	                    );
-	                pause.play();
-	        		
-	        		
-//	        		SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
-	        		
-	        		
-//		        	SceneManager.getTransitionAnimation().setTxtAnimation("The game starts!");
-//		        	SceneManager.transition(SceneManager.getStackTransititionAnimation(), SceneManager.getStackGame(),Constants.TIME_ANIMATION);
-
-		        	//SceneManager.getTransitionAnimation().setTxtAnimation("It's "+ getPlayerNames().get(0) +"'s turn!");
-		        	//GameOperation.skipMilliseconds(Constants.TIME_ANIMATION,SceneManager.getStackTransititionAnimation(), SceneManager.getStackGame());
+	                pause1.setOnFinished(
+	                    e -> {	                    	
+	                    	SceneManager.getSceneRoot().setRoot(SceneManager.getStackGame());
+		                    pause2.play(); 
+	                    	}              
+	                    );      
+	                
+	                pause2.setOnFinished(
+		                    e -> {
+		                    	SceneManager.getTransitionAnimation().setTxtAnimation("Damiens's turn !");
+		                    	SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
+			                    pause3.play();
+			                    }
+		            );	                                                
+	                pause3.setOnFinished(
+		                    e -> {
+		                    	SceneManager.getSceneRoot().setRoot(SceneManager.getStackRating());
+		                    }
+		            );
+	                	              	                	                
+	                SceneManager.getTransitionAnimation().setTxtAnimation("The game starts");
+	                SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
+	                pause1.play();
+	                	        		
 		        }
 	        }
 		});
