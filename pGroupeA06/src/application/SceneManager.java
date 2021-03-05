@@ -93,7 +93,8 @@ public class SceneManager {
 		stackSettings = new StackPane(settings);		
 		stackRating = new StackPane(rating);	
 		stackQuestion = new StackPane(question);
-		sceneRoot = new Scene(stackRoot, 1920, 1080);
+//		sceneRoot = new Scene(stackRoot, 1920, 1080);
+		sceneRoot = new Scene(stackAddCards, 1920, 1080);
 		
 		
 	}
