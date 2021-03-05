@@ -120,13 +120,7 @@ public class AddPlayersAP extends AnchorPane {
 	        		        		
 	        		PauseTransition pause1 = new PauseTransition(Duration.seconds(2));
 	        		PauseTransition pause2 = new PauseTransition(Duration.seconds(2));
-	        		PauseTransition pause3 = new PauseTransition(Duration.seconds(2));	        		
-
-	        		PauseTransition pause = new PauseTransition(Duration.seconds(3));
-	                pause.setOnFinished(
-	                    e -> SceneManager.getSceneRoot().setRoot(SceneManager.getStackRating())
-	                    );
-	                pause.play();	            
+	        		PauseTransition pause3 = new PauseTransition(Duration.seconds(2));	        		            
 
 	                pause1.setOnFinished(
 	                    e -> {	                    	

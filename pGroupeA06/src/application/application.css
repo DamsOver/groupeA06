@@ -106,7 +106,7 @@
 
 
 .gameBoard {
-	-fx-background-image: url("/img/gameBoard_V2.jpg");
+	-fx-background-image: url("/img/gameboard_blank.jpg");
     -fx-background-repeat: stretch;   
     -fx-background-position: center center;
     -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);  

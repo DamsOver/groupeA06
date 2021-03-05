@@ -19,7 +19,7 @@ public class CardsManagementAP extends AnchorPane {
 	public CardsManagementAP() {
 		this.getStyleClass().add("pane");
 
-		this.getChildren().addAll(getTxtTitle(), getBtnBack(), getTxtTheme(), getCbTheme(), getLvCards());
+		this.getChildren().addAll(getTxtTitle(), getBtnBack(), getTxtTheme(), getCbTheme(), getLvCards(), getBtnAdd(), getBtnDelete(), getBtnModify());
 
 		// title
 		txtTitle.getStyleClass().add("title-style");
@@ -28,13 +28,14 @@ public class CardsManagementAP extends AnchorPane {
 
 		// Theme
 		txtTheme.getStyleClass().add("basicText");
-		AnchorPane.setTopAnchor(getTxtTheme(), 450.0);
+		AnchorPane.setTopAnchor(getTxtTheme(), 350.0);
 		AnchorPane.setLeftAnchor(getTxtTheme(), 200.0);
 		
 		// lvCards
 		lvCards.getStyleClass().add("lview");
-		AnchorPane.setTopAnchor(getLvCards(), 550.0);
+		AnchorPane.setTopAnchor(getLvCards(), 450.0);
 		AnchorPane.setLeftAnchor(getLvCards(), 200.0);
+		AnchorPane.setRightAnchor(getLvCards(), 500.0);
 		
 		// cbbTheme
 		cbTheme.getStyleClass().add("cbbox");
@@ -42,6 +43,24 @@ public class CardsManagementAP extends AnchorPane {
 		AnchorPane.setLeftAnchor(getCbTheme(), 370.0);
 		cbTheme.setItems(FXCollections.observableArrayList("IMPROBABLE", "PLEASURE", "INFORMATICS", "SCHOOL"));
 		cbTheme.getSelectionModel().selectFirst();
+		
+		// BtnModify
+		btnModify.getStyleClass().add("btn_small");
+		AnchorPane.setTopAnchor(getBtnModify(), 490.0);
+		AnchorPane.setLeftAnchor(getBtnModify(), 1600.0);
+		AnchorPane.setRightAnchor(getBtnModify(), 100.0);
+		
+		// BtnDelete
+		btnDelete.getStyleClass().add("btn_small");
+		AnchorPane.setTopAnchor(getBtnDelete(), 620.0);
+		AnchorPane.setLeftAnchor(getBtnDelete(), 1600.0);
+		AnchorPane.setRightAnchor(getBtnDelete(), 100.0);
+		
+		// BtnAdd
+		btnAdd.getStyleClass().add("btn_small");
+		AnchorPane.setTopAnchor(getBtnAdd(), 750.0);
+		AnchorPane.setLeftAnchor(getBtnAdd(), 1600.0);
+		AnchorPane.setRightAnchor(getBtnAdd(), 100.0);
 		
 		// BtnBack
 		btnBack.getStyleClass().add("btn-style");
@@ -92,14 +111,23 @@ public class CardsManagementAP extends AnchorPane {
 	}
 
 	public Button getBtnModify() {
+		if (btnModify == null) {
+			btnModify = new Button("Modify");
+		}
 		return btnModify;
 	}
 
 	public Button getBtnDelete() {
+		if (btnDelete == null) {
+			btnDelete = new Button("Delete");
+		}
 		return btnDelete;
 	}
 
 	public Button getBtnAdd() {
+		if (btnAdd == null) {
+			btnAdd = new Button("Add");
+		}
 		return btnAdd;
 	}
 
