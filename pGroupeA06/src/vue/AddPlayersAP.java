@@ -50,12 +50,12 @@ public class AddPlayersAP extends AnchorPane {
 		btnStart.getStyleClass().add("btn-style");
 		AnchorPane.setTopAnchor(getBtnStart(), 900.0);
 		AnchorPane.setRightAnchor(getBtnStart(), 1600.0);
-		AnchorPane.setLeftAnchor(getBtnStart(), 50.0);
+		AnchorPane.setLeftAnchor(getBtnStart(), 100.0);
 		
 		//BtnBack
 		btnBack.getStyleClass().add("btn-style");
 		AnchorPane.setTopAnchor(getBtnBack(), 900.0);
-		AnchorPane.setRightAnchor(getBtnBack(), 50.0);
+		AnchorPane.setRightAnchor(getBtnBack(), 100.0);
 		AnchorPane.setLeftAnchor(getBtnBack(),1600.0);
 		
 		//NbPlayer
