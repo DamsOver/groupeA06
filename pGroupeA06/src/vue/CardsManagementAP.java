@@ -129,6 +129,11 @@ public class CardsManagementAP extends AnchorPane {
 		if (btnAdd == null) {
 			btnAdd = new Button("Add");
 		}
+		btnAdd.setOnAction(new EventHandler<ActionEvent>(){
+	        public void handle(ActionEvent event) {
+	            SceneManager.getSceneRoot().setRoot(SceneManager.getStackAddCards());
+	            }
+			});
 		return btnAdd;
 	}
 

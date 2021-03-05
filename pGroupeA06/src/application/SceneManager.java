@@ -97,6 +97,7 @@ public class SceneManager {
 		stackRating = new StackPane(rating);	
 		stackQuestion = new StackPane(question);
 		sceneRoot = new Scene(stackRoot, 1920, 1080);
+	
 		
 		
 	}
