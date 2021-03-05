@@ -32,35 +32,36 @@ public class CardsManagementAP extends AnchorPane {
 		AnchorPane.setLeftAnchor(getTxtTheme(), 200.0);
 		
 		// lvCards
-		lvCards.getStyleClass().add("lview");
+		lvCards.getStyleClass().add("lview");	
 		AnchorPane.setTopAnchor(getLvCards(), 450.0);
 		AnchorPane.setLeftAnchor(getLvCards(), 200.0);
-		AnchorPane.setRightAnchor(getLvCards(), 500.0);
+		AnchorPane.setRightAnchor(getLvCards(), 480.0);
+		AnchorPane.setBottomAnchor(getLvCards(), 120.0);
 		
 		// cbbTheme
 		cbTheme.getStyleClass().add("cbbox");
-		AnchorPane.setTopAnchor(getCbTheme(), 450.0);
-		AnchorPane.setLeftAnchor(getCbTheme(), 370.0);
+		AnchorPane.setTopAnchor(getCbTheme(), 350.0);
+		AnchorPane.setLeftAnchor(getCbTheme(), 380.0);
 		cbTheme.setItems(FXCollections.observableArrayList("IMPROBABLE", "PLEASURE", "INFORMATICS", "SCHOOL"));
 		cbTheme.getSelectionModel().selectFirst();
 		
 		// BtnModify
 		btnModify.getStyleClass().add("btn_small");
-		AnchorPane.setTopAnchor(getBtnModify(), 490.0);
-		AnchorPane.setLeftAnchor(getBtnModify(), 1600.0);
-		AnchorPane.setRightAnchor(getBtnModify(), 100.0);
+		AnchorPane.setTopAnchor(getBtnModify(), 460.0);
+		AnchorPane.setLeftAnchor(getBtnModify(), 1550.0);
+		AnchorPane.setRightAnchor(getBtnModify(), 150.0);
 		
 		// BtnDelete
 		btnDelete.getStyleClass().add("btn_small");
-		AnchorPane.setTopAnchor(getBtnDelete(), 620.0);
-		AnchorPane.setLeftAnchor(getBtnDelete(), 1600.0);
-		AnchorPane.setRightAnchor(getBtnDelete(), 100.0);
+		AnchorPane.setTopAnchor(getBtnDelete(), 590.0);
+		AnchorPane.setLeftAnchor(getBtnDelete(), 1550.0);
+		AnchorPane.setRightAnchor(getBtnDelete(), 150.0);
 		
 		// BtnAdd
 		btnAdd.getStyleClass().add("btn_small");
-		AnchorPane.setTopAnchor(getBtnAdd(), 750.0);
-		AnchorPane.setLeftAnchor(getBtnAdd(), 1600.0);
-		AnchorPane.setRightAnchor(getBtnAdd(), 100.0);
+		AnchorPane.setTopAnchor(getBtnAdd(), 720.0);
+		AnchorPane.setLeftAnchor(getBtnAdd(), 1550.0);
+		AnchorPane.setRightAnchor(getBtnAdd(), 150.0);
 		
 		// BtnBack
 		btnBack.getStyleClass().add("btn-style");
