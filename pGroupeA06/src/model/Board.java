@@ -26,6 +26,10 @@ public class Board {
 		return true;
 	}
 	
+	public List<Square> getSquares(){
+		return this.squares;
+	}
+	
 	public String toJson() {
 		return new Gson().toJson(this);
 	}

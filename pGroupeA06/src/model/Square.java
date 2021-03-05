@@ -14,6 +14,6 @@ public class Square {
 	}
 	
 	public String toString() {
-		return theme.getTheme()+" ";
+		return theme.getTheme();
 	}
 }

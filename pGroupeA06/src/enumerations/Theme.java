@@ -12,10 +12,10 @@ public enum Theme {
 		this.theme = string;
 	}
 	
-	public Theme getTheme(String string) {
+	public static Theme getTheme(String string) {
 		   for (Theme t : Theme.values()) {
 		        if (t.name().equals(string)) {
-		            return this;
+		            return t;
 		        }
 		    }
 		return null;

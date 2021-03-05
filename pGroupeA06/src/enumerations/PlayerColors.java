@@ -15,4 +15,13 @@ public enum PlayerColors {
 	PlayerColors(int i) {
 		this.color=1;
 	}
+	
+	public static PlayerColors getColor(int i) {
+		for (PlayerColors p : PlayerColors.values()) {
+	        if (p.color==i) {
+	            return p;
+	        }
+	    }
+		return null;
+	}
 }

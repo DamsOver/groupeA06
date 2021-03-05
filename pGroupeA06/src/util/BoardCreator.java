@@ -3,9 +3,6 @@ package util;
 import java.util.Scanner;
 
 import enumerations.Theme;
-import exceptions.AlreadyPresentException;
-import exceptions.TooManyException;
-import model.BasicCard;
 import model.Board;
 import model.Square;
 import serialisation.Serialisation;
@@ -15,6 +12,7 @@ public class BoardCreator {
 	public static void main(String[] args) {
 		Board bd = new Board();
 		bd= bd.fromJson("board.JSON");
+		
 		
 		System.out.println(bd.toString());
 		int x = 1;
@@ -50,7 +48,7 @@ public class BoardCreator {
 
 		System.out.println(bd.toString());
 
-		Serialisation.saveBoardClear(bd, "deck.JSON");
+		Serialisation.saveBoardClear(bd, "board.JSON");
 		
 	}
 
