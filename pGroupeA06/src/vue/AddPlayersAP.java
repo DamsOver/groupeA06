@@ -108,7 +108,7 @@ public class AddPlayersAP extends AnchorPane {
 		if (btnStart == null) {
 			btnStart = new Button("Start");
 		}
-		
+		//SceneManager.getTransitionAnimation().setTxtAnimation("It's "+ getPlayerNames().get(0) +"'s turn!");
 		btnStart.setOnAction(new EventHandler<ActionEvent>(){
 	        public void handle(ActionEvent event) {
 	        	setPlayerNames();
@@ -131,7 +131,10 @@ public class AddPlayersAP extends AnchorPane {
 	                
 	                pause2.setOnFinished(
 		                    e -> {
-		                    	SceneManager.getTransitionAnimation().setTxtAnimation("Damiens's turn !");
+		                    	int MIN = 0, MAX = getPlayerNames().size()-1;	                    	                   
+		                    	int nombreAleatoire = MIN + (int)(Math.random() * ((MAX - MIN) + 1));
+		                    	SceneManager.getTransitionAnimation().setTxtAnimation("It's "+ getPlayerNames().get(nombreAleatoire) +"'s turn!");
+		                    	
 		                    	SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
 			                    pause3.play();
 			                    }

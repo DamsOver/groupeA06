@@ -32,8 +32,8 @@ public class HomeAP extends AnchorPane {
 		//title		
 		getTxtTitle().getStyleClass().add("title-style");
 		AnchorPane.setTopAnchor(getTxtTitle(), 100.0 );
-		AnchorPane.setRightAnchor(getTxtTitle(), 550.0 );
-		AnchorPane.setLeftAnchor(getTxtTitle(), 550.0 );
+//		AnchorPane.setRightAnchor(getTxtTitle(), 550.0 );
+		AnchorPane.setLeftAnchor(getTxtTitle(), 0.0 );
 		
 		//BtnStartGame
 		getBtnStartGame().getStyleClass().add("btn-style");
@@ -63,7 +63,7 @@ public class HomeAP extends AnchorPane {
 
 	public Text getTxtTitle() {
 		if (txtTitle == null) {
-			txtTitle = new Text("Game Menu");
+			txtTitle = new Text("How much are you works ?");
 		}
 		return txtTitle;
 	}
