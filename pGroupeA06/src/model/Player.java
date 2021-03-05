@@ -1,5 +1,10 @@
 package model;
 
-public class Player {
+import enumerations.PlayerColors;
 
+public class Player {
+	private String name;
+	private PlayerColors color;
+	private Square square;
+	
 }

@@ -5,4 +5,5 @@ public interface Constants {
 								VOLUME_FACTOR = 0.001;
 	public static final int NB_QUESTIONS_MAX = 4,
 							TIME_ANIMATION = 1500;
+	public static final String DECK_PATH = "deck.JSON";
 }

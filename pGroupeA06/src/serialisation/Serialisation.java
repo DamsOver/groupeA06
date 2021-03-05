@@ -13,6 +13,7 @@ import com.google.gson.GsonBuilder;
 
 import java.io.FileWriter;
 
+import model.Board;
 import model.Deck;
 
 public class Serialisation implements Serializable {
@@ -45,4 +46,33 @@ public class Serialisation implements Serializable {
 		
 		return new Gson().fromJson(bufferedReader,Deck.class);
 	}
+	
+	public static void saveBoardClear(Board q, String nom) {
+
+		FileWriter fileWriter;
+		try {
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			String json = gson.toJson(q);
+
+			fileWriter = new FileWriter(nom);
+			fileWriter.write(json);
+			fileWriter.close();
+		} catch (IOException e) {
+		System.err.println(e);
+		}
+	}
+	
+	public static Board loadBoardClear(String nom) {
+		BufferedReader bufferedReader = null;
+		try {
+			bufferedReader = new BufferedReader(new FileReader(nom));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return new Gson().fromJson(bufferedReader,Board.class);
+	}
+	
+	
 }
