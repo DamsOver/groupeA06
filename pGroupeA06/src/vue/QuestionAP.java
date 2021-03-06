@@ -2,21 +2,36 @@ package vue;
 
 import application.SceneManager;
 import enumerations.Theme;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import model.GameOperation;
 import model.Question;
+import util.Constants;
 
 public class QuestionAP extends AnchorPane{
 
-	private Label lbTurn,lbQuestion, lbCorrectAS;
+	private Label lbTurn, lbQuestion, lbCorrectAS, lblTimer;
 	private Button btnOK, btnQuestionMark1,btnQuestionMark2,btnQuestionMark3;
 	private TextField tfAnswer;
+	
 	private String answer;
+	
+	private IntegerProperty timeSeconds = new SimpleIntegerProperty(Constants.TIMER_START);
+	private Timeline timeline;
+	
+	private EventHandler<ActionEvent> clickBtn;
 	
 	public QuestionAP() {
 		this.getStyleClass().add("paneQuestion");
@@ -27,7 +42,8 @@ public class QuestionAP extends AnchorPane{
 				getLbQuestion(),
 				getBtnOK(),
 				getTfAnswer(),
-				getLbCorrectAS());
+				getLbCorrectAS(),
+				getLblTimer());
 		
 		// lbTurn
 		lbTurn.getStyleClass().add("title3-style");
@@ -81,6 +97,11 @@ public class QuestionAP extends AnchorPane{
 		AnchorPane.setTopAnchor(getLbCorrectAS(), 775.0);
 		AnchorPane.setRightAnchor(getLbCorrectAS(), 300.0);
 		AnchorPane.setLeftAnchor(getLbCorrectAS(), 900.0);	
+		
+		//timer
+		getLblTimer().getStyleClass().add("timer");
+		AnchorPane.setTopAnchor(getLblTimer(), 50.);
+		AnchorPane.setRightAnchor(getLblTimer(), 70.);
 	}
 
 	public Label getLbTurn() {
@@ -118,13 +139,14 @@ public class QuestionAP extends AnchorPane{
 		if(btnOK == null ) {
 			btnOK =  new Button("OK");
 		}
-		btnOK.setOnAction(new EventHandler<ActionEvent>(){
+		btnOK.setOnAction(getClickBtn());
+		/*btnOK.setOnAction(new EventHandler<ActionEvent>(){
 	        public void handle(ActionEvent event) {
 	        	setAnswer();
 	        	SceneManager.getGameOperation().answerVerification();
 	        	getTfAnswer().clear();
 	           }
-			});
+			});*/
 		return btnOK;
 	}
 	
@@ -215,7 +237,6 @@ public class QuestionAP extends AnchorPane{
 	}
 	
 	
-	
 	public Label getLbCorrectAS() {
 		if(lbCorrectAS == null) {
 			lbCorrectAS = new Label("The correct answer was :"+" réponse");
@@ -223,4 +244,52 @@ public class QuestionAP extends AnchorPane{
 		return lbCorrectAS;
 	}
 	
-}
+	public Label getLblTimer() {
+		if(lblTimer == null) {
+			lblTimer = new Label(""+Constants.TIMER_START);
+		}
+		return lblTimer;
+	}
+	
+	public void goTimer() {
+		if(timeline != null) {
+			timeline.stop();
+		}
+		timeSeconds.set(Constants.TIMER_START);
+		lblTimer.setText(""+timeSeconds.get());
+		timeline = new Timeline(0);
+		timeline.setCycleCount(Constants.TIMER_START);
+        timeline.getKeyFrames().add(
+                new KeyFrame(Duration.seconds(1),
+                  new EventHandler() {
+                    // KeyFrame event handler
+                    @Override
+					public void handle(Event e) {
+						// TODO Auto-generated method stub
+						timeSeconds.set(timeSeconds.get()-1);
+                        // update timerLabel
+                        lblTimer.setText(""+timeSeconds.get());
+                        if(timeSeconds.get() <= Constants.TIMER_LIMIT) {
+                        	getLblTimer().setTextFill(Color.RED);
+                        }
+					}
+                }));
+		timeline.playFromStart();
+		timeline.setOnFinished(getClickBtn());
+	}
+	
+	public EventHandler<ActionEvent> getClickBtn() {
+		if(clickBtn == null) {
+			clickBtn = new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent event) {
+					setAnswer();
+		        	SceneManager.getGameOperation().answerVerification();
+		        	getTfAnswer().clear();
+		        	timeline.stop();
+				}
+			};
+		}
+		return clickBtn;
+	}
+}	
+

@@ -133,7 +133,13 @@
 	-fx-alignment:center;
 }
 
-
+.timer{
+	-fx-background-color: transparent;
+	-fx-background-image: url("/img/Timer-01.png");
+	-fx-text-fill:white;
+	-fx-font-size : 70;
+	
+}
 
 .gameBoard {
 	-fx-background-image: url("/img/gameboard_blank.jpg");

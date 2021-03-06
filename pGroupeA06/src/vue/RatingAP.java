@@ -130,6 +130,7 @@ public class RatingAP extends AnchorPane{
 		btnGo.setOnAction(new EventHandler<ActionEvent>(){
 	        public void handle(ActionEvent event) {
 	        	SceneManager.getGameOperation().turnQuestion();
+	        	
 	           }
 			});
 		

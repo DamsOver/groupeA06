@@ -93,6 +93,7 @@ public class GameOperation {
 		
 		//setting the StackQuestion
 		SceneManager.getSceneRoot().setRoot(SceneManager.getStackQuestion());
+		SceneManager.getQuestion().goTimer();
 	}
 	
 	public void answerVerification() {
