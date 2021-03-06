@@ -15,10 +15,10 @@ import serialisation.Serialisation;
 
 public class Deck {
 	
-	private List<BasicCard> deck;
+	private List<BasicCard> cards;
 	
 	public Deck() {
-		this.deck= new ArrayList<BasicCard>();
+		this.cards= new ArrayList<BasicCard>();
 	}
 	
 	public boolean addBasicCard(BasicCard newBasicCard)throws AlreadyPresentException {
@@ -26,7 +26,7 @@ public class Deck {
 			return false;
 		
 		//scanning the list of cards to check if the BasicCard already exists
-		for(BasicCard bc : deck) {
+		for(BasicCard bc : cards) {
 			if(bc.equals(newBasicCard)) {
 				throw new AlreadyPresentException(1);
 			}
@@ -34,7 +34,7 @@ public class Deck {
 		
 		//if everything is ok, adding the card
 		//clone because the card can only be accessed in one deck
-		deck.add(newBasicCard.clone());
+		cards.add(newBasicCard.clone());
 		return true;
 	}
 	
@@ -43,13 +43,13 @@ public class Deck {
 	public boolean removeBasicCard(BasicCard basicCard)throws TooLittleException,NotPresentException {
 
 		//verification if the number of cards is not 0
-		if(0==deck.size()) {
+		if(0==cards.size()) {
 			throw new TooLittleException(1);
 		}
 		
 		//scanning the list of card to check if it exists
 		boolean x = false;
-		for(BasicCard bc : deck) {
+		for(BasicCard bc : cards) {
 			if(bc.equals(basicCard)) {
 				x=true;
 			}
@@ -61,13 +61,13 @@ public class Deck {
 		}
 		
 		//removing the question
-		deck.remove(basicCard);
+		cards.remove(basicCard);
 		return true;
 	}
 	
 	public List<BasicCard> getBasicCards(){
 		ArrayList<BasicCard> newDeck = new ArrayList<BasicCard>();
-		for(BasicCard bc : deck) {
+		for(BasicCard bc : cards) {
 			newDeck.add(bc.clone());
 		}
 		
@@ -85,7 +85,7 @@ public class Deck {
 
 
 	public String toString() {
-		return "Deck [deck=" + deck + "]";
+		return "Deck [deck=" + cards + "]";
 	}
 
 
@@ -98,14 +98,14 @@ public class Deck {
 		if (getClass() != obj.getClass())
 			return false;
 		Deck other = (Deck) obj;
-		if (!deck.equals(other.deck))
+		if (!cards.equals(other.cards))
 			return false;
 		return true;
 	}	
 	
 	public Deck clone() {
 		Deck newDeck = new Deck();
-		for(BasicCard bc : deck) {
+		for(BasicCard bc : cards) {
 			try {
 				newDeck.addBasicCard(bc.clone());
 			} catch (AlreadyPresentException e) {
