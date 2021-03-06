@@ -31,7 +31,7 @@ public class Player {
 		return square;
 	}
 
-	public void setSquare(Square square) {
+	public void going(Square square) {
 		this.square = square;
 	}
 	

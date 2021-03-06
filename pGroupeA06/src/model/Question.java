@@ -23,6 +23,18 @@ public class Question {
 
 
 
+	public String getChallenge() {
+		return challenge;
+	}
+
+
+
+	public String getAnswer() {
+		return answer;
+	}
+
+
+
 	public String toJson() {
 		return new Gson().toJson(this);
 	}

@@ -65,6 +65,15 @@ public class Deck {
 		return true;
 	}
 	
+	public List<BasicCard> getBasicCards(){
+		ArrayList<BasicCard> newDeck = new ArrayList<BasicCard>();
+		for(BasicCard bc : deck) {
+			newDeck.add(bc.clone());
+		}
+		
+		return newDeck;
+	}
+	
 	
 	public String toJson() {
 		return new Gson().toJson(this);
@@ -94,7 +103,16 @@ public class Deck {
 		return true;
 	}	
 	
-
-	
-	
+	public Deck clone() {
+		Deck newDeck = new Deck();
+		for(BasicCard bc : deck) {
+			try {
+				newDeck.addBasicCard(bc.clone());
+			} catch (AlreadyPresentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return newDeck;
+	}
 }

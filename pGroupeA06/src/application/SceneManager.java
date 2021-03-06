@@ -137,32 +137,7 @@ public class SceneManager {
 			}
 		});
 	}
-	
-//	public static void transition(StackPane first, StackPane second, int time) {
-//		
-//		//getSceneRoot().setRoot(first);
-//		
-//	    TransitionAnimationAP paneToRemove = (TransitionAnimationAP) first.getChildren().get(0);    
-//	    GameAP paneToAdd = (GameAP)second.getChildren().get(0);
-//	    
-//	    stackAnimation = new StackPane();
-//	    stackAnimation.getChildren().add(paneToRemove);
-//	    paneToAdd.translateXProperty().set(1920);
-//	    stackAnimation.getChildren().add(paneToAdd);
-//	    
-//	    getSceneRoot().setRoot(stackAnimation);
-//	    var keyValue = new KeyValue(paneToAdd.translateXProperty(), 0, Interpolator.EASE_IN);
-//	    var keyFrame = new KeyFrame(Duration.millis(time), keyValue);
-//	    var timeline = new Timeline(keyFrame);
-//	    timeline.setOnFinished(evt -> {
-//	        stackAnimation.getChildren().remove(paneToRemove);
-//	    });
-//	    timeline.play();
-//	    //second.getChildren().add(stackAnimation.getChildren().get(1));
-//	    //getSceneRoot().setRoot(second);
-//	}
-	
-	
+		
 	//getters AnchorPane
 	public static OptionsAP getOptions() {
 		return options;
@@ -182,6 +157,10 @@ public class SceneManager {
 	public static QuestionAP getQuestion() {
 		return question;
 	}
+	public static RatingAP getRating(){
+		return rating;
+	}
+	
 	
 	
 	//getter GameOperation

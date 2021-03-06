@@ -30,8 +30,8 @@ public class RatingAP extends AnchorPane{
 		
 		// lbTurn
 		lbTurn.getStyleClass().add("title3-style");
-		AnchorPane.setTopAnchor(getLbTurn(), 50.0);
-		AnchorPane.setLeftAnchor(getLbTurn(), 150.0);
+		AnchorPane.setTopAnchor(getLbTurn(), 25.0);
+		AnchorPane.setLeftAnchor(getLbTurn(), 75.0);
 		
 		// Theme
 		lbTheme.getStyleClass().add("theme-subject");
@@ -80,11 +80,30 @@ public class RatingAP extends AnchorPane{
 		return lbTurn;
 	}
 	
+	public void setLbTurn(String name) {
+		if (lbTurn == null) {
+			lbTurn = new Label("'s turn");
+		}
+		else {
+			lbTurn.setText(name + "'s turn");
+		}
+	}
+	
 	public Label getLbTheme() {
 		if (lbTheme == null) {
-			lbTheme = new Label("Theme : " + Theme.IMPROBABLE.getTheme().toUpperCase());
+			lbTheme = new Label("Theme : ");
 		}
 		return lbTheme;
+	}
+	
+	
+	public void setLbTheme(Theme name) {
+		if (lbTheme == null) {
+			lbTheme = new Label("Theme : " + name.getTheme().toUpperCase());
+		}
+		else {
+			lbTheme.setText("Theme : " +name.getTheme().toUpperCase());
+		}
 	}
 	
 	public Label getLbSubject() {
@@ -94,6 +113,15 @@ public class RatingAP extends AnchorPane{
 		return lbSubject;
 	}
 	
+	public void setLbSubject(String name) {
+		if (lbSubject == null) {
+			lbSubject = new Label("Subject : " + name);
+		}
+		else {
+			lbSubject.setText("Subject : " + name);
+		}
+	}
+	
 	
 	public Button getBtnGo() {
 		if (btnGo == null) {
@@ -101,8 +129,7 @@ public class RatingAP extends AnchorPane{
 		}
 		btnGo.setOnAction(new EventHandler<ActionEvent>(){
 	        public void handle(ActionEvent event) {
-	        	SceneManager.getSceneRoot().setRoot(SceneManager.getStackQuestion());
-	        	SceneManager.getQuestion().setLbTurn(GameOperation.getGame().getPlayers().get(0).getName());
+	        	SceneManager.getGameOperation().turnQuestion();
 	           }
 			});
 		
@@ -113,6 +140,12 @@ public class RatingAP extends AnchorPane{
 			cbbRating = new ComboBox();
 		}
 		return cbbRating;
+	}
+	
+	
+	public int getRating() {
+		int x = Integer.parseInt(cbbRating.getValue());
+		return x;
 	}
 	
 	public Text getTxtAnswer() {

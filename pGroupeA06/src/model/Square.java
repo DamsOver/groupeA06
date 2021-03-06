@@ -16,4 +16,12 @@ public class Square {
 	public String toString() {
 		return theme.getTheme();
 	}
+	
+	public boolean equals(Object o) {
+		if(o instanceof Square) {
+			Square sq = (Square)o;
+			return sq.theme.equals(this.theme);
+		}
+		return false;
+	}
 }

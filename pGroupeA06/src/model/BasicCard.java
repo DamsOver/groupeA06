@@ -64,6 +64,23 @@ public class BasicCard {
 		return true;
 	}
 	
+	public Theme getTheme() {
+		return theme;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+	
+	public ArrayList<Question> getQuestions() {
+		ArrayList<Question> q = new ArrayList<Question>();
+		
+		for(Question quest : questions) {
+			q.add(quest);
+		}
+		return q;
+	}
+
 	//to remove a question
 	public boolean removeQuestion(String challenge, String answer)throws NotPresentException,TooLittleException {
 		

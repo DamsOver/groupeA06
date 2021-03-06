@@ -5,14 +5,19 @@ import java.util.List;
 
 import enumerations.PlayerColors;
 import exceptions.AlreadyPresentException;
+import util.Constants;
 
 public class Game {
 	private List<Player> players;
 	private static Board board;
+	private int turn;
+	private Deck deck;
 	
 	public Game() {
 		this.board=new Board().fromJson("board.JSON");
 		this.players = new ArrayList<Player>();
+		this.turn = 0;
+		this.deck = new Deck().fromJson(Constants.DECK_PATH);
 	}
 	
 	public boolean addPlayer(String name, int number) throws AlreadyPresentException {
@@ -42,22 +47,56 @@ public class Game {
 		players.add(p);
 	}
 	
+	public Square movePlayer(int next,Square sq) {
+		boolean ok = false;
+		int indice = 0;
+		
+		for(Square square : board.getSquares()) {
+			if(square.equals(sq)) {
+				ok=true;
+				indice = board.getSquares().indexOf(sq);
+				break;
+			}
+				
+		}
+		if(!ok) {
+			return null;
+		}
+		return board.getSquares().get(indice+next);
+	}
+	
+	
 	public static Board getBoard() {
 		return board;
 	}
 	
+	public void turnUp(){
+		this.turn++;
+	}
+	
+	public Deck getDeck() {
+		
+		//not clone to be able to remove the used cards
+		return deck.clone();
+	}
+	
+	public int getTurn() {
+		return this.turn;
+	}
 	public Game clone() {
 		Game g = new Game();
 		for(Player p : players) {
 			g.addPlayer(p.clone());
 		}
+		g.turn=this.turn;
+		g.deck = this.deck.clone();
 		return g;
 	}
 
 	public List<Player> getPlayers() {
 		List<Player>p = new ArrayList<Player>();
 		for(Player pl : players) {
-			p.add(pl.clone());
+			p.add(pl);
 		}
 		return p;
 	}	

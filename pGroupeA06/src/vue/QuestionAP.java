@@ -1,11 +1,15 @@
 package vue;
 
 import application.SceneManager;
+import enumerations.Theme;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.GameOperation;
+import model.Question;
 
 public class QuestionAP extends AnchorPane{
 
@@ -87,10 +91,21 @@ public class QuestionAP extends AnchorPane{
 
 	public Label getLbQuestion() {
 		if (lbQuestion == null) {
-			lbQuestion = new Label("Question bateau dire de tester si ca marche ?");
+			lbQuestion = new Label("Question bateau ");
 		}
 		return lbQuestion;
 	}
+	
+	public void setLbQuestion(Question q) {
+		if (lbQuestion == null) {
+			lbQuestion= new Label(q.getChallenge());
+		}
+		else {
+			lbQuestion.setText(q.getChallenge());
+		}
+	}
+	
+	
 	
 	public void setLbTurn(String name) {
 		if (lbTurn != null) {
@@ -102,8 +117,19 @@ public class QuestionAP extends AnchorPane{
 		if(btnOK == null ) {
 			btnOK =  new Button("OK");
 		}
+		btnOK.setOnAction(new EventHandler<ActionEvent>(){
+	        public void handle(ActionEvent event) {
+	        	SceneManager.getGameOperation().answerVerification();
+	           }
+			});
 		return btnOK;
 	}
+	
+	
+	public void enableBtnOK(boolean choice) {
+		btnOK.setVisible(choice);
+	}
+	
 
 	public Button getBtnQuestionMark1() {
 		if (btnQuestionMark1 == null) {
@@ -131,6 +157,53 @@ public class QuestionAP extends AnchorPane{
 		}
 		return tfAnswer;
 	}
+	
+	public String getAnswer() {
+		if(tfAnswer == null) {
+			return null;
+		}
+		return tfAnswer.getText();
+	}
+	
+	public void setLbAnswer(Question q) {
+		if(lbCorrectAS == null) {
+			lbCorrectAS = new Label();
+		}
+		lbCorrectAS.setText(q.getAnswer());
+	}
+	
+	public void enableLbAnswer(boolean activated) {
+		if(lbCorrectAS == null) {
+			lbCorrectAS = new Label();
+		}
+		if(activated) {
+			lbCorrectAS.setVisible(true);
+		}
+		else {
+			lbCorrectAS.setVisible(false);
+		}
+	}
+	
+	public void enableQuestionMark(int choice) {
+		if(choice==1) {
+			btnQuestionMark1.setVisible(true);
+			btnQuestionMark2.setVisible(false);
+			btnQuestionMark3.setVisible(false);
+		}
+		else if(choice==2){
+			btnQuestionMark1.setVisible(false);
+			btnQuestionMark2.setVisible(true);
+			btnQuestionMark3.setVisible(false);
+		}
+		else if(choice==3) {
+			btnQuestionMark1.setVisible(false);
+			btnQuestionMark2.setVisible(false);
+			btnQuestionMark3.setVisible(true);
+		}
+		
+	}
+	
+	
 	
 	public Label getLbCorrectAS() {
 		if(lbCorrectAS == null) {

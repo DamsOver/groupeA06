@@ -25,12 +25,11 @@ public class TransitionAnimationAP extends AnchorPane{
 		return txtAnimation;
 	}
 	
-	public Text setTxtAnimation(String texte) {
+	public void setTxtAnimation(String texte) {
 		if(txtAnimation==null) {
 			txtAnimation = new Text(texte);
 		}else {
 			txtAnimation.setText(texte);
 		}
-		return txtAnimation;
 	}
 }

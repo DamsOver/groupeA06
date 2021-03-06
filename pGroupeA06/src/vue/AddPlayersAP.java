@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import model.GameOperation;
@@ -108,42 +109,29 @@ public class AddPlayersAP extends AnchorPane {
 		if (btnStart == null) {
 			btnStart = new Button("Start");
 		}
-		//SceneManager.getTransitionAnimation().setTxtAnimation("It's "+ getPlayerNames().get(0) +"'s turn!");
+
 		btnStart.setOnAction(new EventHandler<ActionEvent>(){
 	        public void handle(ActionEvent event) {
+	        	//getting the players names
 	        	setPlayerNames();
 	        	if(!checkTxtField()) {
-	        		//afficher un message pour allerter qu'une textBox est vide
-	        		
+	        		SceneManager.getTransitionAnimation().setTxtAnimation("Some fields are empty!");
+	        		 SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
+	        		PauseTransition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_ERROR,SceneManager.getStackAddPlayers(),null,null);
+	        		pause1.play();
 	        	}
-	        	else {    
-	        		        		
-	        		PauseTransition pause1 = new PauseTransition(Duration.seconds(2));
-	        		PauseTransition pause2 = new PauseTransition(Duration.seconds(2));
-	        		PauseTransition pause3 = new PauseTransition(Duration.seconds(2));	        		            
-	        		GameOperation.addPlayers(getPlayerNames());
-	                pause1.setOnFinished(
-	                    e -> {	 
-		                    	SceneManager.getTransitionAnimation().setTxtAnimation("It's "+ GameOperation.getGame().getPlayers().get(0).getName() +"'s turn!");                    	
-		                    	SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());	                  		                    	
-			                    pause2.play(); 
-	                    	}              
-	                    );	                
-	                pause2.setOnFinished(
-		                    e -> {
-		                    	SceneManager.getSceneRoot().setRoot(SceneManager.getStackGame());
-			                    pause3.play();
-			                }
-		            );	                                                
-	                pause3.setOnFinished(
-		                    e -> {
-		                    	SceneManager.getSceneRoot().setRoot(SceneManager.getStackRating());
-		                    }
-		            );
-	                	              	                	                
-	                SceneManager.getTransitionAnimation().setTxtAnimation("The game starts");
-	                SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
-	                pause1.play();
+	        	else {
+	        		
+	        		//checking if it's the first turn off the game (if there are no players and it's turn 0)
+	        		if(SceneManager.getGameOperation().getGame().getPlayers().size()==0&&SceneManager.getGameOperation().getGame().getTurn()==0) {
+	        			GameOperation.addPlayers(getPlayerNames());
+	        			SceneManager.getGameOperation().turnRating(true);
+		        		
+	        		}
+	        		else {
+	        			SceneManager.getGameOperation().turnRating(false);
+	        		}
+	        		
 	                	      
 		        }
 	        }
