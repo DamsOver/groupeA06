@@ -16,6 +16,7 @@ public class QuestionAP extends AnchorPane{
 	private Label lbTurn,lbQuestion, lbCorrectAS;
 	private Button btnOK, btnQuestionMark1,btnQuestionMark2,btnQuestionMark3;
 	private TextField tfAnswer;
+	private String answer;
 	
 	public QuestionAP() {
 		this.getStyleClass().add("paneQuestion");
@@ -119,7 +120,9 @@ public class QuestionAP extends AnchorPane{
 		}
 		btnOK.setOnAction(new EventHandler<ActionEvent>(){
 	        public void handle(ActionEvent event) {
+	        	setAnswer();
 	        	SceneManager.getGameOperation().answerVerification();
+	        	getTfAnswer().clear();
 	           }
 			});
 		return btnOK;
@@ -162,7 +165,15 @@ public class QuestionAP extends AnchorPane{
 		if(tfAnswer == null) {
 			return null;
 		}
-		return tfAnswer.getText();
+		return answer;
+	}
+	public void setAnswer() {
+		if(tfAnswer == null) {
+			answer = null;
+		}
+		else {
+			answer = tfAnswer.getText();
+		}
 	}
 	
 	public void setLbAnswer(Question q) {
