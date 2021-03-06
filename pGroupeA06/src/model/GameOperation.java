@@ -5,13 +5,10 @@ import java.util.List;
 
 import application.SceneManager;
 import exceptions.AlreadyPresentException;
-import exceptions.NotPresentException;
-import exceptions.TooLittleException;
 import javafx.animation.PauseTransition;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import util.Constants;
-import vue.TransitionAnimationAP;
 
 public class GameOperation {
 	private static Game game;
