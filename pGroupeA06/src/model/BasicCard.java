@@ -13,57 +13,56 @@ import exceptions.TooManyException;
 import util.Constants;
 
 public class BasicCard {
-	
+
 	private String author;
 	private Theme theme;
 	private String subject;
 	private List<Question> questions;
-	
-	
-	//constructor
+
+	// constructor
 	public BasicCard(String author, Theme theme, String subject) {
 		this.author = author;
 		this.theme = theme;
 		this.subject = subject;
 		this.questions = new ArrayList<Question>();
 	}
-	
-	//constructor
-	public BasicCard(String author, Theme theme, String subject,List<Question>questions) {
+
+	// constructor
+	public BasicCard(String author, Theme theme, String subject, List<Question> questions) {
 		this.author = author;
 		this.theme = theme;
 		this.subject = subject;
-		
-		//new objects because a question can only be accessed by one card
+
+		// new objects because a question can only be accessed by one card
 		this.questions = new ArrayList<Question>();
-		for(Question q : questions) {
+		for (Question q : questions) {
 			this.questions.add(q.clone());
 		}
 	}
-	
-	//to add a question
-	public boolean addQuestion(String challenge, String answer)throws AlreadyPresentException,TooManyException {
-		
-		//creation of a question
-		Question newQuestion = new Question(this.author,this.theme,this.subject,challenge,answer);
-		
-		//scanning the list of questions to check if the question already exists
-		for(Question q : questions) {
-			if(q.equals(newQuestion)) {
+
+	// to add a question
+	public boolean addQuestion(String challenge, String answer) throws AlreadyPresentException, TooManyException {
+
+		// creation of a question
+		Question newQuestion = new Question(this.author, this.theme, this.subject, challenge, answer);
+
+		// scanning the list of questions to check if the question already exists
+		for (Question q : questions) {
+			if (q.equals(newQuestion)) {
 				throw new AlreadyPresentException();
 			}
 		}
-	
-		//verification if the number of question is not the maximum
-		if(Constants.NB_QUESTIONS_MAX==questions.size()) {
+
+		// verification if the number of question is not the maximum
+		if (Constants.NB_QUESTIONS_MAX == questions.size()) {
 			throw new TooManyException();
 		}
-		
-		//if everything is ok, adding the question
+
+		// if everything is ok, adding the question
 		questions.add(newQuestion);
 		return true;
 	}
-	
+
 	public Theme getTheme() {
 		return theme;
 	}
@@ -71,46 +70,44 @@ public class BasicCard {
 	public String getSubject() {
 		return subject;
 	}
-	
+
 	public ArrayList<Question> getQuestions() {
 		ArrayList<Question> q = new ArrayList<Question>();
-		
-		for(Question quest : questions) {
+
+		for (Question quest : questions) {
 			q.add(quest);
 		}
 		return q;
 	}
 
-	//to remove a question
-	public boolean removeQuestion(String challenge, String answer)throws NotPresentException,TooLittleException {
-		
-		//creation of a question
-		Question newQuestion = new Question(this.author,this.theme,this.subject,challenge,answer);
-		
-		//verification if the number of question is not 0
-		if(0==questions.size()) {
+	// to remove a question
+	public boolean removeQuestion(String challenge, String answer) throws NotPresentException, TooLittleException {
+
+		// creation of a question
+		Question newQuestion = new Question(this.author, this.theme, this.subject, challenge, answer);
+
+		// verification if the number of question is not 0
+		if (0 == questions.size()) {
 			throw new TooLittleException();
 		}
-		
-		//scanning the list of questions to check if the question exists
+
+		// scanning the list of questions to check if the question exists
 		boolean x = false;
-		for(Question q : questions) {
-			if(q.equals(newQuestion)) {
-				x=true;
+		for (Question q : questions) {
+			if (q.equals(newQuestion)) {
+				x = true;
 			}
 		}
-		
-		//if the question does not exist
-		if(x==false) {
+
+		// if the question does not exist
+		if (x == false) {
 			throw new NotPresentException();
 		}
-		
-		//removing the question
+
+		// removing the question
 		questions.remove(newQuestion);
 		return true;
 	}
-	
-	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -125,25 +122,34 @@ public class BasicCard {
 			return false;
 		if (theme != other.theme)
 			return false;
-		return true;
+
+		for (Question q : questions) {
+			for (Question q2 : other.questions) {
+				if (q.equals(q2)) {
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 
 	@Override
 	public String toString() {
-		return "\nBasicCard [author=" + author + ", theme=" + theme + ", subject=" + subject + ", questions=" + questions
-				+ "]\n";
+		return "\nBasicCard [author=" + author + ", theme=" + theme + ", subject=" + subject + ", questions="
+				+ questions + "]\n";
 	}
 
 	public String toJson() {
 		return new Gson().toJson(this);
 	}
-	
+
 	public BasicCard fromJson(String json) {
-		return new Gson().fromJson(json,BasicCard.class);
-	}	
-	
+		return new Gson().fromJson(json, BasicCard.class);
+	}
+
 	public BasicCard clone() {
-		//the clone of the questions is done in the constructor
-		return new BasicCard(this.author,this.theme,this.subject,questions);
+		// the clone of the questions is done in the constructor
+		return new BasicCard(this.author, this.theme, this.subject, questions);
 	}
 }
