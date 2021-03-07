@@ -123,6 +123,7 @@ public class BasicCard {
 		if (theme != other.theme)
 			return false;
 
+		//A virer
 		for (Question q : questions) {
 			for (Question q2 : other.questions) {
 				if (q.equals(q2)) {
