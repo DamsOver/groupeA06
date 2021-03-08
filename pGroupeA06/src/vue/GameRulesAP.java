@@ -12,6 +12,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import util.Constants;
 
 public class GameRulesAP extends AnchorPane {
 	
@@ -59,7 +60,7 @@ public class GameRulesAP extends AnchorPane {
 	public Text getTxtRules() {
 		if (txtRules == null) {
 			/*try {
-				Scanner rule = new Scanner(new FileReader("/text/GameRule.txt"));
+				Scanner rule = new Scanner(new FileReader(Constants.GAME_RULE_PATH));
 				System.out.print(rule);
 				txtRules = new Text(rule.toString());
 			}

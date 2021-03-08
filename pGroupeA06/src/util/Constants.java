@@ -10,5 +10,6 @@ public interface Constants {
 							ANIMATION_TIME_TURN = 3000, 
 							TIMER_START = 25,
 							TIMER_LIMIT = 5;   //500
-	public static final String DECK_PATH = "deck.JSON";
+	public static final String DECK_PATH = "deck.JSON",
+								BOARD_PATH= "board.JSON";
 }

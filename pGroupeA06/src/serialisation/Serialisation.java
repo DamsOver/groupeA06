@@ -74,5 +74,4 @@ public class Serialisation implements Serializable {
 		return new Gson().fromJson(bufferedReader,Board.class);
 	}
 	
-	
 }
