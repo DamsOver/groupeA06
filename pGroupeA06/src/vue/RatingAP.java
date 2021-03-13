@@ -16,12 +16,12 @@ import model.GameOperation;
 public class RatingAP extends AnchorPane{
 	private Text txtTitle,txtAnswer;
 	private Label lbTheme,lbSubject,lbTurn;
-	private Button btnGo;
+	private Button btnGo,btnSettings;
 	private ComboBox<String> cbbRating;
 	
 	public RatingAP() {
 		this.getStyleClass().add("paneQuestion");
-		this.getChildren().addAll(getTxtTitle(),getLbTurn(),getCbbRating(),getLbTheme(),getLbSubject(),getBtnGo(),getTxtAnswer());
+		this.getChildren().addAll(getTxtTitle(),getLbTurn(),getCbbRating(),getLbTheme(),getLbSubject(),getBtnGo(),getTxtAnswer(),getBtnSettings());
 		
 		// title
 		txtTitle.getStyleClass().add("title2-style");
@@ -62,6 +62,13 @@ public class RatingAP extends AnchorPane{
 		AnchorPane.setTopAnchor(getBtnGo(), 900.0);
 		AnchorPane.setRightAnchor(getBtnGo(), 50.0);
 		AnchorPane.setLeftAnchor(getBtnGo(), 1650.0);
+		
+		//BtnSettings
+		btnSettings.getStyleClass().add("btnSettings");
+		AnchorPane.setTopAnchor(getBtnSettings(), 25.0 );
+		AnchorPane.setBottomAnchor(getBtnSettings(), 975.0 );
+		AnchorPane.setRightAnchor(getBtnSettings(), 25.0 );
+		AnchorPane.setLeftAnchor(getBtnSettings(), 1820.0 );
 		
 	}
 	
@@ -155,5 +162,21 @@ public class RatingAP extends AnchorPane{
 		}
 		return txtAnswer;
 	}
+	public Button getBtnSettings() {
+		if (btnSettings == null) {
+			btnSettings = new Button();
+		}
+		btnSettings.setOnAction(new EventHandler<ActionEvent>(){
+	        public void handle(ActionEvent event) { 
+	        	//tell the button back where we come from
+	        	SceneManager.getSettings().getBtnBack(SceneManager.getStackRating());
+	        	//setting the root
+	            SceneManager.getSceneRoot().setRoot(SceneManager.getStackSettings());
+	           
+	            }
+			});
+		return btnSettings;
+	}
+
 	
 }

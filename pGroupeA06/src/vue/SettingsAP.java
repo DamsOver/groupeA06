@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import util.Constants;
 
@@ -18,7 +19,7 @@ public class SettingsAP extends AnchorPane {
 
 		
 		this.getStyleClass().add("pane");
-		this.getChildren().addAll(getTxtTitle(), getBtnBack(), getTxtVolume(), getSlVolume(),getBtnMainMenu());
+		this.getChildren().addAll(getTxtTitle(), getBtnBack(null), getTxtVolume(), getSlVolume(),getBtnMainMenu());
 
 		// title
 		txtTitle.getStyleClass().add("title-style");
@@ -28,9 +29,9 @@ public class SettingsAP extends AnchorPane {
 
 		// BtnBack
 		btnBack.getStyleClass().add("btn-style");
-		AnchorPane.setTopAnchor(getBtnBack(), 750.0);
-		AnchorPane.setRightAnchor(getBtnBack(), 650.0);
-		AnchorPane.setLeftAnchor(getBtnBack(), 650.0);
+		AnchorPane.setTopAnchor(getBtnBack(null), 750.0);
+		AnchorPane.setRightAnchor(getBtnBack(null), 650.0);
+		AnchorPane.setLeftAnchor(getBtnBack(null), 650.0);
 		
 		// BtnMainMenu
 		btnMainMenu.getStyleClass().add("btn-style");
@@ -62,15 +63,22 @@ public class SettingsAP extends AnchorPane {
 		return txtTitle;
 	}
 
-	public Button getBtnBack() {
+	public Button getBtnBack(StackPane sp) {
 		if (btnBack == null) {
 			btnBack = new Button("Resume");
 		}
 		btnBack.setOnAction(new EventHandler<ActionEvent>(){
 	        public void handle(ActionEvent event) {
-	            SceneManager.getSceneRoot().setRoot(SceneManager.getStackGame());
-	            }
-			});
+	        	//verify the collection of StackPane from SceneManager, 
+	        	//and if the StackPane is the same, come back to it
+	        	
+	        	for(StackPane p : SceneManager.getStackPanes()) {
+	        		if(p.equals(sp)) {
+	        			SceneManager.getSceneRoot().setRoot(p);
+	        		}
+	        	}
+	        }
+		});
 		return btnBack;
 	}
 	

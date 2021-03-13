@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.SceneManager;
+import enumerations.CharAnswerRemoval;
 import exceptions.AlreadyPresentException;
 import javafx.animation.PauseTransition;
 import javafx.scene.layout.Pane;
@@ -139,13 +140,151 @@ public class GameOperation {
 		turnRating(false);
 	}
 	
-	//NEED A BETTER IMPLEMENTATION
 	public boolean questionVerificationAlgorithm() {
 		int rating = SceneManager.getRating().getRating();	
 		Question q = bc.getQuestions().get(rating-1);
-		String answer = SceneManager.getQuestion().getAnswer();
+		String answer = q.getAnswer();
+		String playerAnswer = SceneManager.getQuestion().getAnswer();
+		boolean modification = true,integer1 = true , integer2 = true;
 		
-		return answer.equals(q.getAnswer());
+		
+		//lowercase
+		answer=answer.toLowerCase();
+		playerAnswer = playerAnswer.toLowerCase();
+		
+		//the, a, an, and , in  suppression
+		while(modification) {
+			modification = false;
+			
+			//parcouring the list of words to remove
+			for(String c : CharAnswerRemoval.getChar()) {
+				
+				//answer
+				//If its the first word
+				while(answer.contains(c+" ")&&answer.substring(0,c.length()).equals(c)) {
+					StringBuffer sb = new StringBuffer(answer);
+					answer=sb.replace(0,c.length()+1,"").toString();
+					modification = true;
+				}
+				//if the word is in the answer
+				while(answer.contains(" "+c+" ")) {
+					int index = answer.indexOf(" "+c+" ");
+					StringBuffer sb = new StringBuffer(answer);
+					answer=sb.replace(index,index + c.length()+1,"").toString();
+					modification = true;
+				}
+			
+				//playerAnswer
+				while((playerAnswer.contains(c+" ")&&playerAnswer.substring(0,c.length()).equals(c))) {
+					StringBuffer sb = new StringBuffer(playerAnswer);
+					playerAnswer=sb.replace(0,c.length()+1,"").toString();
+					modification = true;
+				}
+				//if the word is in the PlayerAnswer
+				while(playerAnswer.contains(" "+c+" ")) {
+					int index = playerAnswer.indexOf(" "+c+" ");
+					StringBuffer sb = new StringBuffer(playerAnswer);
+					playerAnswer=sb.replace(index,index + c.length()+1,"").toString();
+					modification = true;
+				}
+			}
+		}
+		
+		while(answer.contains(" ")) {
+			int index = answer.indexOf(" ");
+			StringBuffer sb = new StringBuffer(answer);
+			answer=sb.replace(index,index +1,"").toString();
+		}
+		
+		//removing spaces
+		while(playerAnswer.contains(" ")) {
+			int index = playerAnswer.indexOf(" ");
+			StringBuffer sb = new StringBuffer(playerAnswer);
+			playerAnswer=sb.replace(index,index +1,"").toString();
+		}
+		
+		//removing slashs
+		while(playerAnswer.contains("/")) {
+			int index = playerAnswer.indexOf("/");
+			StringBuffer sb = new StringBuffer(playerAnswer);
+			playerAnswer=sb.replace(index,index +1,"").toString();
+		}
+		
+		//verifying if it's a number
+		for(int i = 0;i<playerAnswer.length();i++) {
+			if(Character.isDigit(playerAnswer.charAt(i))||playerAnswer.charAt(i)=='.'||playerAnswer.charAt(i)==','){}
+			else {
+				integer1=false;
+			}
+		}
+		for(int i = 0;i<answer.length();i++) {
+			if(Character.isDigit(answer.charAt(i))||answer.charAt(i)=='.'||answer.charAt(i)==','){}
+			else {
+				integer2=false;
+			}
+		}
+		
+		//if both of them are integers
+		if(integer1&&integer2) {
+			
+			//replacing ,
+			while(playerAnswer.contains(",")) {
+				int index = playerAnswer.indexOf(",");
+				StringBuffer sb = new StringBuffer(playerAnswer);
+				playerAnswer=sb.replace(index,index +1,".").toString();
+			}
+			while(answer.contains(",")) {
+				int index = answer.indexOf(",");
+				StringBuffer sb = new StringBuffer(answer);
+				answer=sb.replace(index,index +1,".").toString();
+			}
+			
+			
+			double a = Double.valueOf(answer);
+			double pa = Double.valueOf(playerAnswer);
+			double errorMax= Constants.NUMBER_PERCENTAGE_ERROR_ANSWER*0.01*a;
+			
+			if(((a+errorMax)>pa)&&((a-errorMax)<pa)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			//same size
+			if(answer.length()>playerAnswer.length()) {
+				for(int i=0;i<answer.length()-playerAnswer.length();i++) {
+					playerAnswer=playerAnswer+" ";
+				}
+			}
+			if(answer.length()<playerAnswer.length()) {
+				for(int i=0;i<playerAnswer.length()-answer.length();i++) {
+					answer=answer+" ";
+				}
+			}
+			
+			System.out.println(playerAnswer.length());
+			System.out.println(answer.length());
+			
+			//error margin
+			int errorSize= (int)(Constants.STRING_PERCENTAGE_ERROR_ANSWER*playerAnswer.length()*0.01)+1;
+			int actualError = 0;
+			
+			//verifying the strings
+			for(int i = 0;i<answer.length();i++) {
+				if(answer.charAt(i)!=playerAnswer.charAt(i)){
+					actualError++;
+				}
+			}
+			
+			if(errorSize>=actualError) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
 	}
 	
 	

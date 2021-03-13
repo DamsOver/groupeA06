@@ -1,6 +1,8 @@
 package application;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -50,6 +52,7 @@ public class SceneManager {
 								stackRating,
 								stackQuestion;
 	
+	private static List<StackPane> stackPanes;
 
 	private static HomeAP root;
 	private static AddCardsAP addCards;
@@ -98,8 +101,13 @@ public class SceneManager {
 		stackQuestion = new StackPane(question);
 		sceneRoot = new Scene(stackRoot, 1920, 1080);
 	
-		
-		
+		//adding stackPane to the list
+		//no.clone() because the equals method is not redefined, so we need the real object
+		//we only add the two panes that are important a this point.
+		//used in settingsAP
+		stackPanes = new ArrayList<StackPane>();
+		stackPanes.add(stackQuestion);
+		stackPanes.add(stackRating);
 	}
 	
 	public static void volumeInitialization() {
@@ -161,6 +169,11 @@ public class SceneManager {
 		return rating;
 	}
 	
+	
+	//getterStackPanes
+	public static List<StackPane> getStackPanes(){
+		return stackPanes;
+	}
 	
 	
 	//getter GameOperation
