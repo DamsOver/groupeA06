@@ -76,7 +76,7 @@ public class QuestionAP extends AnchorPane{
 		
 		// Question
 		lbQuestion.getStyleClass().add("question");
-		AnchorPane.setTopAnchor(getLbQuestion(), 650.0);
+		AnchorPane.setTopAnchor(getLbQuestion(), 600.0);
 		AnchorPane.setRightAnchor(getLbQuestion(), 300.0);
 		AnchorPane.setLeftAnchor(getLbQuestion(), 300.0);
 		 

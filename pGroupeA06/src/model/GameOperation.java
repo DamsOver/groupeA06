@@ -6,19 +6,26 @@ import java.util.List;
 import application.SceneManager;
 import enumerations.CharAnswerRemoval;
 import exceptions.AlreadyPresentException;
+import exceptions.NotPresentException;
+import exceptions.TooLittleException;
 import javafx.animation.PauseTransition;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
 import util.Constants;
+import util.StringUtils;
 
 public class GameOperation {
 	private static Game game;
 	private BasicCard bc;
-	private ArrayList<BasicCard> oldCards;
+	private Deck oldCards;
 	
 	public GameOperation() {
 		this.game= new Game();
-		oldCards = new ArrayList<BasicCard>();
+		oldCards = new Deck();
 	}
 	
 	public static void addPlayers(List<String> playerNames) {
@@ -74,11 +81,27 @@ public class GameOperation {
 		//getting the question
 		Question q = bc.getQuestions().get(rating-1);
 		
+		
+		//QUESTION SIZE?????
+		String question=""; 
+		StringBuffer str = new StringBuffer(q.getChallenge());
+		for(int i = 0; i<(int)(q.getChallenge().length()/Constants.SIZE_MAX_QUESTION);i++) {
+			//verify where is the closest space
+			for(int x = (i+1)*Constants.SIZE_MAX_QUESTION+i;x>(i)*Constants.SIZE_MAX_QUESTION+i;x--) {
+				if(str.toString().charAt(x)==' ') {
+					str.deleteCharAt(x);
+					str.insert(x,'\n');
+					break;
+				}
+			}
+		}
+		Question newQuestion = new Question(bc.getAuthor(),bc.getTheme(),bc.getSubject(),str.toString(),q.getAnswer());
+		
 		//setting the player's name
 		SceneManager.getQuestion().setLbTurn(SceneManager.getGameOperation().getPlayerTurn().getName());
 		
 		//setting the question to the QuestionsAP
-		SceneManager.getQuestion().setLbQuestion(q);
+		SceneManager.getQuestion().setLbQuestion(newQuestion);
 		
 		//setting the answer to the QuestionAP
 		SceneManager.getQuestion().setLbAnswer(q);
@@ -114,8 +137,6 @@ public class GameOperation {
 			//enabling only the Green question mark
 			SceneManager.getQuestion().enableQuestionMark(3);
 			
-			
-			
 			//the player moves 
 			//need an implementation of the movement
 			p.going(game.movePlayer(rating,p.getSquare()));
@@ -133,7 +154,11 @@ public class GameOperation {
 		game.turnUp();
 		
 		//add the card to the old deck
-		oldCards.add(bc);
+		try {
+			oldCards.addBasicCard(bc);
+		} catch (AlreadyPresentException e) {
+			e.printStackTrace();
+		}
 		
 		
 		//animation nextTurn
@@ -143,8 +168,8 @@ public class GameOperation {
 	public boolean questionVerificationAlgorithm() {
 		int rating = SceneManager.getRating().getRating();	
 		Question q = bc.getQuestions().get(rating-1);
-		String answer = q.getAnswer();
-		String playerAnswer = SceneManager.getQuestion().getAnswer();
+		String answer = (q.getAnswer()!=null)?q.getAnswer():"";
+		String playerAnswer = (SceneManager.getQuestion().getAnswer()!=null)?SceneManager.getQuestion().getAnswer():"";
 		boolean modification = true,integer1 = true , integer2 = true;
 		
 		
@@ -190,13 +215,12 @@ public class GameOperation {
 			}
 		}
 		
+		//removing spaces
 		while(answer.contains(" ")) {
 			int index = answer.indexOf(" ");
 			StringBuffer sb = new StringBuffer(answer);
 			answer=sb.replace(index,index +1,"").toString();
 		}
-		
-		//removing spaces
 		while(playerAnswer.contains(" ")) {
 			int index = playerAnswer.indexOf(" ");
 			StringBuffer sb = new StringBuffer(playerAnswer);
@@ -208,6 +232,10 @@ public class GameOperation {
 			int index = playerAnswer.indexOf("/");
 			StringBuffer sb = new StringBuffer(playerAnswer);
 			playerAnswer=sb.replace(index,index +1,"").toString();
+		}
+		
+		if(playerAnswer.equals("")) {
+			return false;
 		}
 		
 		//verifying if it's a number
@@ -227,7 +255,7 @@ public class GameOperation {
 		//if both of them are integers
 		if(integer1&&integer2) {
 			
-			//replacing ,
+			//replacing ','
 			while(playerAnswer.contains(",")) {
 				int index = playerAnswer.indexOf(",");
 				StringBuffer sb = new StringBuffer(playerAnswer);
@@ -254,31 +282,22 @@ public class GameOperation {
 		else {
 			//same size
 			if(answer.length()>playerAnswer.length()) {
-				for(int i=0;i<answer.length()-playerAnswer.length();i++) {
+				for(int i=0;i<=answer.length()-playerAnswer.length();i++) {
 					playerAnswer=playerAnswer+" ";
 				}
 			}
 			if(answer.length()<playerAnswer.length()) {
-				for(int i=0;i<playerAnswer.length()-answer.length();i++) {
+				for(int i=0;i<=playerAnswer.length()-answer.length();i++) {
 					answer=answer+" ";
 				}
 			}
-			
-			System.out.println(playerAnswer.length());
-			System.out.println(answer.length());
-			
+		
 			//error margin
-			int errorSize= (int)(Constants.STRING_PERCENTAGE_ERROR_ANSWER*playerAnswer.length()*0.01)+1;
-			int actualError = 0;
-			
+			int errorSize= (int)(Constants.STRING_PERCENTAGE_ERROR_ANSWER*playerAnswer.length()*0.01);
+			String comparaison =StringUtils.diff(answer,playerAnswer);
+
 			//verifying the strings
-			for(int i = 0;i<answer.length();i++) {
-				if(answer.charAt(i)!=playerAnswer.charAt(i)){
-					actualError++;
-				}
-			}
-			
-			if(errorSize>=actualError) {
+			if(errorSize>=comparaison.length()) {
 				return true;
 			}
 			else {
@@ -286,7 +305,6 @@ public class GameOperation {
 			}
 		}
 	}
-	
 	
 	public PauseTransition animationTurn() {
 		
@@ -300,26 +318,41 @@ public class GameOperation {
 	
 	public BasicCard drawCard(Square sq) {
 		boolean alreadyPresent = false;
+		bc=null;
+		ArrayList<BasicCard> potentialCards = new ArrayList<BasicCard>();
 		//check if there is a card that has the same theme than the square
 		for(BasicCard b :game.getDeck().getBasicCards() ) {
 			if (b.getTheme().equals(sq.getTheme())){
 				//check if the card was not already used in this game
 				alreadyPresent = false;
-				for(BasicCard b2 : oldCards) {
+				for(BasicCard b2 : oldCards.getBasicCards()) {
 					if(b2.equals(b)) {
 						alreadyPresent =true;
 					}
 				}
 				if(!alreadyPresent) {
-					return b;
+					potentialCards.add(b);
 				}
 			}	
 		}
-		if(bc==null) {
+		if(potentialCards.size()==0) {
 				System.out.println("no more questions");
-				Deck q = new Deck();
-				bc=q.getBasicCards().get(0);
+				//remove all the questions with the same theme in the deck of oldCards
+				for(BasicCard b :oldCards.getBasicCards() ) {
+					if (b.getTheme().equals(sq.getTheme())){
+						try {
+							oldCards.removeBasicCard(b);
+						} catch (TooLittleException | NotPresentException e) {
+							e.printStackTrace();
+						}
+					}	
+				}
+				return drawCard(sq);
 			}
+		else {
+			int randomNumber = new Random().nextInt(potentialCards.size());
+			bc = potentialCards.get(randomNumber);
+		}
 		return bc;
 	}
 	

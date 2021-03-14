@@ -4,6 +4,7 @@ public interface Constants {
 	public static final double 	INITIAL_VOLUME = 0,
 								VOLUME_FACTOR = 0.001;
 	public static final int NB_QUESTIONS_MAX = 4,
+							SIZE_MAX_QUESTION = 65,
 							ANIMATION_TIME_START = 10, //3000
 							ANIMATION_TIME_RATING = 10,//2500
 							ANIMATION_TIME_ERROR = 1000, //3000

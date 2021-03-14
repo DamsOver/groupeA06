@@ -122,17 +122,11 @@ public class BasicCard {
 			return false;
 		if (theme != other.theme)
 			return false;
+		return true;
+	}
 
-		//A virer
-		for (Question q : questions) {
-			for (Question q2 : other.questions) {
-				if (q.equals(q2)) {
-					return true;
-				}
-			}
-		}
-
-		return false;
+	public String getAuthor() {
+		return author;
 	}
 
 	@Override

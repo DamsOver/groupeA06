@@ -28,6 +28,7 @@ public class Deck {
 		//scanning the list of cards to check if the BasicCard already exists
 		for(BasicCard bc : cards) {
 			if(bc.equals(newBasicCard)) {
+				System.out.println(bc.getSubject());
 				throw new AlreadyPresentException(1);
 			}
 		}
