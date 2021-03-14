@@ -62,6 +62,12 @@ public class Game {
 		if(!ok) {
 			return null;
 		}
+		
+		//if the player won
+		if(indice+next>board.getSquares().size()+1) {
+			return null;
+		}
+		
 		return board.getSquares().get(indice+next);
 	}
 	

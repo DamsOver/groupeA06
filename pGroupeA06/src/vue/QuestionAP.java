@@ -102,6 +102,8 @@ public class QuestionAP extends AnchorPane{
 		getLblTimer().getStyleClass().add("timer");
 		AnchorPane.setTopAnchor(getLblTimer(), 50.);
 		AnchorPane.setRightAnchor(getLblTimer(), 70.);
+		AnchorPane.setBottomAnchor(getLblTimer(), 900.);
+		AnchorPane.setLeftAnchor(getLblTimer(), 1700.);
 	}
 
 	public Label getLbTurn() {

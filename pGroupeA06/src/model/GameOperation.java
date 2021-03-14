@@ -137,9 +137,17 @@ public class GameOperation {
 			//enabling only the Green question mark
 			SceneManager.getQuestion().enableQuestionMark(3);
 			
+			
+			
+			
+			
+			
+			//if the player is further than the last card of the board :
+			if(game.movePlayer(rating,p.getSquare())==null) {
+				System.out.println("player " + p.getName() + " wins!");
+			}
 			//the player moves 
 			//need an implementation of the movement
-			p.going(game.movePlayer(rating,p.getSquare()));
 			
 		}
 		else {
