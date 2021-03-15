@@ -101,9 +101,9 @@ public class QuestionAP extends AnchorPane{
 		//timer
 		getLblTimer().getStyleClass().add("timer");
 		AnchorPane.setTopAnchor(getLblTimer(), 50.);
-		AnchorPane.setRightAnchor(getLblTimer(), 70.);
+		AnchorPane.setRightAnchor(getLblTimer(), 50.);
 		AnchorPane.setBottomAnchor(getLblTimer(), 900.);
-		AnchorPane.setLeftAnchor(getLblTimer(), 1700.);
+		AnchorPane.setLeftAnchor(getLblTimer(), 1720.);
 	}
 
 	public Label getLbTurn() {
@@ -142,13 +142,6 @@ public class QuestionAP extends AnchorPane{
 			btnOK =  new Button("OK");
 		}
 		btnOK.setOnAction(getClickBtn());
-		/*btnOK.setOnAction(new EventHandler<ActionEvent>(){
-	        public void handle(ActionEvent event) {
-	        	setAnswer();
-	        	SceneManager.getGameOperation().answerVerification();
-	        	getTfAnswer().clear();
-	           }
-			});*/
 		return btnOK;
 	}
 	
@@ -263,10 +256,8 @@ public class QuestionAP extends AnchorPane{
 		timeline.setCycleCount(Constants.TIMER_START);
         timeline.getKeyFrames().add(
                 new KeyFrame(Duration.seconds(1),
-                  new EventHandler() {
-                    // KeyFrame event handler
-                    @Override
-					public void handle(Event e) {
+                  new EventHandler<ActionEvent>() {
+					public void handle(ActionEvent e) {
 						// TODO Auto-generated method stub
 						timeSeconds.set(timeSeconds.get()-1);
                         // update timerLabel
@@ -286,11 +277,11 @@ public class QuestionAP extends AnchorPane{
 				public void handle(ActionEvent event) {
 					setAnswer();
 		        	SceneManager.getGameOperation().answerVerification();
-		        	getTfAnswer().clear();
 		        	timeline.stop();
 				}
 			};
 		}
+		getTfAnswer().clear();
 		return clickBtn;
 	}
 }	

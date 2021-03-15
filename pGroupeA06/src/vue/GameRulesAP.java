@@ -1,8 +1,8 @@
 package vue;
 
-import java.io.FileNotFoundException;
+import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.Scanner;
+import java.io.IOException;
 
 import application.SceneManager;
 import javafx.event.ActionEvent;
@@ -59,17 +59,18 @@ public class GameRulesAP extends AnchorPane {
 	
 	public Text getTxtRules() {
 		if (txtRules == null) {
-			/*try {
-				Scanner rule = new Scanner(new FileReader(Constants.GAME_RULE_PATH));
-				System.out.print(rule);
-				txtRules = new Text(rule.toString());
+		/*	try {
+				BufferedReader rule = new BufferedReader(new FileReader("./text/GameRule.txt"));
+				StringBuilder allText = new StringBuilder();
+				txtRules = new Text(rule.readLine());
+				rule.close();
 			}
-			catch(FileNotFoundException e) {
+			catch(IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}*/
+			}
 			
-			
+		}	*/
 			txtRules = new Text("\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 					+ "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\""
 					+ "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"");
