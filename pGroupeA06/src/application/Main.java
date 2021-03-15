@@ -48,7 +48,9 @@ public class Main extends Application {
 			
 			//Window appearance
 			primaryStage.setTitle("How much are you worth ?");
+//			Image i = new Image("/img/icon.png");
 			primaryStage.getIcons().add(new Image("/img/icon.png"));
+//			System.out.println(i.getUrl());
 			primaryStage.setResizable(false);
 			
 			// Main Scene set Scene

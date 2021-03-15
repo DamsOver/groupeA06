@@ -134,11 +134,12 @@
 }
 
 .timer{
-	-fx-background-color: transparent;
 	-fx-background-image: url("/img/Timer-01.png"); 
 	-fx-background-size: stretch,stretch;
+	-fx-background-position : center;
 	-fx-text-fill:white;
 	-fx-font-size : 100;
+	-fx-text-align : center;
 	
 }
 

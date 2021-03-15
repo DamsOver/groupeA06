@@ -169,8 +169,7 @@ public class SceneManager {
 	}
 	public static RatingAP getRating(){
 		return rating;
-	}
-	
+	}	
 	
 	//getterStackPanes
 	public static List<StackPane> getStackPanes(){
