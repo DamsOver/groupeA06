@@ -114,14 +114,19 @@ public class AddPlayersAP extends AnchorPane {
 	        public void handle(ActionEvent event) {
 	        	//getting the players names
 	        	setPlayerNames();
-	        	if(!checkTxtField()) {
+	        	if(!checkTxtFieldEmpty()) {
 	        		SceneManager.getTransitionAnimation().setTxtAnimation("Some fields are empty!");
 	        		 SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
 	        		PauseTransition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_ERROR,SceneManager.getStackAddPlayers(),null,null);
 	        		pause1.play();
 	        	}
+	        	else if(!checkTxtFieldDuplicate()){
+	        		SceneManager.getTransitionAnimation().setTxtAnimation("Each names \nmust be different!");
+	        		SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
+	        		PauseTransition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_ERROR,SceneManager.getStackAddPlayers(),null,null);
+	        		pause1.play();
+	        	}
 	        	else {
-	        		
 	        		//checking if it's the first turn off the game (if there are no players and it's turn 0)
 	        		if(SceneManager.getGameOperation().getGame().getPlayers().size()==0&&SceneManager.getGameOperation().getGame().getTurn()==0) {
 	        			GameOperation.addPlayers(getPlayerNames());
@@ -286,10 +291,27 @@ public class AddPlayersAP extends AnchorPane {
 			}
 		}
 	}
-	public boolean checkTxtField() {
+	public boolean checkTxtFieldEmpty() {
+		String trimName;
 		for(int i=MIN_PLAYER-2; i<getNbPl(); i++) {
-			if(getTextfds().get(i).getText().isEmpty()) {
+			if(getTextfds().get(i).getText().isBlank()) {
 				return false;
+			}
+			//remove blank
+			trimName = getTextfds().get(i).getText().trim();
+			getTextfds().get(i).setText(trimName);
+			getPlayerNames().remove(i);
+			getPlayerNames().add(i, trimName);
+		}
+		return true;
+	}
+	public boolean checkTxtFieldDuplicate(){
+		for(int i=MIN_PLAYER-2; i<getNbPl()-1; i++) {
+			for(int j = i+1; j<getNbPl(); j++) {
+				if(getTextfds().get(i).getText().equalsIgnoreCase(getTextfds().get(j).getText())) {
+					System.out.println();
+					return false;
+				}
 			}
 		}
 		return true;
