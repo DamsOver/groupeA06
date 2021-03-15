@@ -100,8 +100,8 @@ public class SceneManager {
 		stackRating = new StackPane(rating);	
 		stackQuestion = new StackPane(question);
 		
-//		sceneRoot = new Scene(stackRoot, 1920, 1080); // Original
-		sceneRoot = new Scene(stackGame, 1920, 1080); // Pour les tests
+		sceneRoot = new Scene(stackRoot, 1920, 1080); // Original
+//		sceneRoot = new Scene(stackGame, 1920, 1080); // Pour les tests
 	
 		//adding stackPane to the list
 		//no.clone() because the equals method is not redefined, so we need the real object
