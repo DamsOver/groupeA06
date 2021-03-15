@@ -50,29 +50,29 @@ public class GameAP extends AnchorPane {
 
 		// Position
 		// P01
-		getIvPlayer01().setX(Constants.PLAYER_01_SQUARE_01_X);
-		getIvPlayer01().setY(Constants.PLAYER_01_SQUARE_01_Y);
+		getIvPlayer01().setX(Constants.PLAYER_01_POSITIONS_X.get(0));
+		getIvPlayer01().setY(Constants.PLAYER_01_POSITIONS_Y.get(0));
 		// P02
-		getIvPlayer02().setX(Constants.PLAYER_02_SQUARE_01_X);
-		getIvPlayer02().setY(Constants.PLAYER_02_SQUARE_01_Y);
+		getIvPlayer02().setX(Constants.PLAYER_02_POSITIONS_X.get(0));
+		getIvPlayer02().setY(Constants.PLAYER_02_POSITIONS_Y.get(0));
 		// P03
-		getIvPlayer03().setX(Constants.PLAYER_03_SQUARE_01_X);
-		getIvPlayer03().setY(Constants.PLAYER_03_SQUARE_01_Y);
+		getIvPlayer03().setX(Constants.PLAYER_03_POSITIONS_X.get(0));
+		getIvPlayer03().setY(Constants.PLAYER_03_POSITIONS_Y.get(0));
 		// P04
-		getIvPlayer04().setX(Constants.PLAYER_04_SQUARE_01_X);
-		getIvPlayer04().setY(Constants.PLAYER_04_SQUARE_01_Y);
+		getIvPlayer04().setX(Constants.PLAYER_04_POSITIONS_X.get(0));
+		getIvPlayer04().setY(Constants.PLAYER_04_POSITIONS_Y.get(0));
 		// P05
-		getIvPlayer05().setX(Constants.PLAYER_05_SQUARE_01_X);
-		getIvPlayer05().setY(Constants.PLAYER_05_SQUARE_01_Y);
+		getIvPlayer05().setX(Constants.PLAYER_05_POSITIONS_X.get(0));
+		getIvPlayer05().setY(Constants.PLAYER_05_POSITIONS_Y.get(0));
 		// P06
-		getIvPlayer06().setX(Constants.PLAYER_06_SQUARE_01_X);
-		getIvPlayer06().setY(Constants.PLAYER_06_SQUARE_01_Y);
+		getIvPlayer06().setX(Constants.PLAYER_06_POSITIONS_X.get(0));
+		getIvPlayer06().setY(Constants.PLAYER_06_POSITIONS_Y.get(0));
 		// P07
-		getIvPlayer07().setX(Constants.PLAYER_07_SQUARE_01_X);
-		getIvPlayer07().setY(Constants.PLAYER_07_SQUARE_01_Y);
+		getIvPlayer07().setX(Constants.PLAYER_07_POSITIONS_X.get(0));
+		getIvPlayer07().setY(Constants.PLAYER_07_POSITIONS_Y.get(0));
 		// P08
-		getIvPlayer08().setX(Constants.PLAYER_08_SQUARE_01_X);
-		getIvPlayer08().setY(Constants.PLAYER_08_SQUARE_01_Y);
+		getIvPlayer08().setX(Constants.PLAYER_08_POSITIONS_X.get(0));
+		getIvPlayer08().setY(Constants.PLAYER_08_POSITIONS_Y.get(0));
 
 	}
 

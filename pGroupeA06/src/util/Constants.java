@@ -1,5 +1,9 @@
 package util;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public interface Constants {
 	public static final double 	INITIAL_VOLUME = 0,
 								VOLUME_FACTOR = 0.001;
@@ -22,20 +26,28 @@ public interface Constants {
 	public static final double 	PLAYER_HEIGHT = 100, PLAYER_WIDTH = 100;
 	
 	// Position Players
-	public static final double 	PLAYER_01_SQUARE_01_X = 91.,
-								PLAYER_01_SQUARE_01_Y = 150.,
-								PLAYER_02_SQUARE_01_X = 137.,
-								PLAYER_02_SQUARE_01_Y = 150.,
-								PLAYER_03_SQUARE_01_X = 183.,
-								PLAYER_03_SQUARE_01_Y = 150.,
-								PLAYER_04_SQUARE_01_X = 229.,
-								PLAYER_04_SQUARE_01_Y = 150.,
-								PLAYER_05_SQUARE_01_X = 91.,
-								PLAYER_05_SQUARE_01_Y = 200.,
-								PLAYER_06_SQUARE_01_X = 137.,
-								PLAYER_06_SQUARE_01_Y = 200.,
-								PLAYER_07_SQUARE_01_X = 183.,
-								PLAYER_07_SQUARE_01_Y = 200.,
-								PLAYER_08_SQUARE_01_X = 229.,
-								PLAYER_08_SQUARE_01_Y = 200.;
+	public static final List<Double> PLAYER_01_POSITIONS_X = new ArrayList<>(Arrays.asList(91.));
+	public static final List<Double> PLAYER_01_POSITIONS_Y = new ArrayList<>(Arrays.asList(150.));
+	
+	public static final List<Double> PLAYER_02_POSITIONS_X = new ArrayList<>(Arrays.asList(137.));
+	public static final List<Double> PLAYER_02_POSITIONS_Y = new ArrayList<>(Arrays.asList(150.));
+	
+	public static final List<Double> PLAYER_03_POSITIONS_X = new ArrayList<>(Arrays.asList(183.));
+	public static final List<Double> PLAYER_03_POSITIONS_Y = new ArrayList<>(Arrays.asList(150.));
+	
+	public static final List<Double> PLAYER_04_POSITIONS_X = new ArrayList<>(Arrays.asList(229.));
+	public static final List<Double> PLAYER_04_POSITIONS_Y = new ArrayList<>(Arrays.asList(150.));
+	
+	public static final List<Double> PLAYER_05_POSITIONS_X = new ArrayList<>(Arrays.asList(91.));
+	public static final List<Double> PLAYER_05_POSITIONS_Y = new ArrayList<>(Arrays.asList(200.));
+	
+	public static final List<Double> PLAYER_06_POSITIONS_X = new ArrayList<>(Arrays.asList(137.));
+	public static final List<Double> PLAYER_06_POSITIONS_Y = new ArrayList<>(Arrays.asList(200.));
+	
+	public static final List<Double> PLAYER_07_POSITIONS_X = new ArrayList<>(Arrays.asList(183.));
+	public static final List<Double> PLAYER_07_POSITIONS_Y = new ArrayList<>(Arrays.asList(200.));
+	
+	public static final List<Double> PLAYER_08_POSITIONS_X = new ArrayList<>(Arrays.asList(229.));
+	public static final List<Double> PLAYER_08_POSITIONS_Y = new ArrayList<>(Arrays.asList(200.));
+	
 }
