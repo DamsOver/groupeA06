@@ -696,7 +696,7 @@
 				"theme" : "INFORMATICS", 
 				"subject" : "String in java", 
 				"challenge" : "How many constructors count the Class String in Java 11?",
-				"answer": "15 constructors"
+				"answer": "15"
 			}
 		]	
 	},
