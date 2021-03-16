@@ -1,5 +1,5 @@
 package vue;
-
+import enumerations.Theme;
 import application.SceneManager;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -42,7 +42,6 @@ public class CardsManagementAP extends AnchorPane {
 		cbTheme.getStyleClass().add("cbbox");
 		AnchorPane.setTopAnchor(getCbTheme(), 350.0);
 		AnchorPane.setLeftAnchor(getCbTheme(), 380.0);
-		cbTheme.setItems(FXCollections.observableArrayList("IMPROBABLE", "PLEASURE", "INFORMATICS", "SCHOOL"));
 		cbTheme.getSelectionModel().selectFirst();
 		
 		// BtnModify
@@ -107,6 +106,10 @@ public class CardsManagementAP extends AnchorPane {
 	public ComboBox getCbTheme() {
 		if (cbTheme == null) {
 			cbTheme = new ComboBox();
+			cbTheme.getItems().add("ALL");
+			for(Theme t : Theme.values()) {
+				cbTheme.getItems().add(t.name());
+			}
 		}
 		return cbTheme;
 	}
