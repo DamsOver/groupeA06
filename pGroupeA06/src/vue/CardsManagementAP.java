@@ -15,9 +15,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import model.BasicCard;
 import model.Deck;
+import model.Game;
+import util.AddCards;
 import util.Constants;
 
 public class CardsManagementAP extends AnchorPane {
+	public static Game game;
 	private Deck deck;
 	
 	private Text txtTitle, txtTheme;
@@ -26,8 +29,6 @@ public class CardsManagementAP extends AnchorPane {
 	private ListView<String> lvCards;
 
 	public CardsManagementAP() {
-		deck = new Deck();
-		deck.fromJson(Constants.DECK_PATH);
 		this.getStyleClass().add("pane");
 
 		this.getChildren().addAll(getTxtTitle(), getBtnBack(), getTxtTheme(), getCbTheme(), getLvCards(), getBtnAdd(), getBtnDelete(), getBtnModify());
@@ -110,6 +111,9 @@ public class CardsManagementAP extends AnchorPane {
 	public ListView<String> getLvCards() {
 		if (lvCards == null) {
 			lvCards = new ListView<String>();
+			this.game= new Game();
+			deck = new Deck();
+			deck = game.getDeck();
 			fillListView();
 		}
 		return lvCards;
@@ -118,15 +122,16 @@ public class CardsManagementAP extends AnchorPane {
 	public void fillListView() {
 		lvCards.getItems().clear();
 		if(cbTheme.valueProperty().get().equals("ALL")) {
-			lvCards.getItems().addAll("Item 1", "Item 2", "Item 3");
 			for(BasicCard b : deck.getBasicCards()) {
-				lvCards.getItems().add(b.getTheme().toString());
+				lvCards.getItems().add(b.getSubject());
 			}
-			System.out.println(cbTheme.valueProperty().get());
 		}
 		else {
-			
-			System.out.println(cbTheme.valueProperty().get());
+			for(BasicCard b : deck.getBasicCards()) {
+				if(cbTheme.valueProperty().get().equals(b.getTheme().toString())) {
+					lvCards.getItems().add(b.getSubject());
+				}
+			}
 		}
 	}
 	

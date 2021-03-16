@@ -71,7 +71,7 @@ public class AddCards {
 
 		System.out.println(d.toString());
 
-		Serialisation.saveDeckClear(d, "deck.JSON");
+		Serialisation.saveDeckClear(d, Constants.DECK_PATH);
 
 	}
 
