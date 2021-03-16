@@ -1,5 +1,9 @@
 package vue;
 import enumerations.Theme;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import application.SceneManager;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -9,14 +13,21 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import model.BasicCard;
+import model.Deck;
+import util.Constants;
 
 public class CardsManagementAP extends AnchorPane {
+	private Deck deck;
+	
 	private Text txtTitle, txtTheme;
 	private Button btnBack, btnModify, btnDelete, btnAdd;
 	private ComboBox<String> cbTheme;
 	private ListView<String> lvCards;
 
 	public CardsManagementAP() {
+		deck = new Deck();
+		deck.fromJson(Constants.DECK_PATH);
 		this.getStyleClass().add("pane");
 
 		this.getChildren().addAll(getTxtTitle(), getBtnBack(), getTxtTheme(), getCbTheme(), getLvCards(), getBtnAdd(), getBtnDelete(), getBtnModify());
@@ -99,18 +110,40 @@ public class CardsManagementAP extends AnchorPane {
 	public ListView<String> getLvCards() {
 		if (lvCards == null) {
 			lvCards = new ListView<String>();
+			fillListView();
 		}
 		return lvCards;
 	}
 	
-	public ComboBox getCbTheme() {
+	public void fillListView() {
+		lvCards.getItems().clear();
+		if(cbTheme.valueProperty().get().equals("ALL")) {
+			lvCards.getItems().addAll("Item 1", "Item 2", "Item 3");
+			for(BasicCard b : deck.getBasicCards()) {
+				lvCards.getItems().add(b.getTheme().toString());
+			}
+			System.out.println(cbTheme.valueProperty().get());
+		}
+		else {
+			
+			System.out.println(cbTheme.valueProperty().get());
+		}
+	}
+	
+	public ComboBox<String> getCbTheme() {
 		if (cbTheme == null) {
-			cbTheme = new ComboBox();
+			cbTheme = new ComboBox<String>();
 			cbTheme.getItems().add("ALL");
 			for(Theme t : Theme.values()) {
 				cbTheme.getItems().add(t.name());
 			}
+			cbTheme.setValue("ALL");
 		}
+		cbTheme.setOnAction(new EventHandler<ActionEvent>(){
+			public void handle(ActionEvent event) {
+				fillListView();
+			}
+		});
 		return cbTheme;
 	}
 
