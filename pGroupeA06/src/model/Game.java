@@ -15,8 +15,8 @@ public class Game {
 	
 	public Game() {
 		board=new Board().fromJson(Constants.BOARD_PATH);
-		System.out.println(board);
-//		this.players = new ArrayList<Player>();
+//		System.out.println(board);
+		this.players = new ArrayList<Player>();
 		this.turn = 0;
 		this.deck = new Deck().fromJson(Constants.DECK_PATH);
 	}
