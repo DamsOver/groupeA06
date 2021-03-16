@@ -51,30 +51,30 @@ public class GameAP extends AnchorPane {
 		// Position
 		// P01
 			
-		int i = 35; // 36 Positions donc jusqu'à indice 35 maximum
-		getIvPlayer01().setX(Constants.PLAYER_01_POSITIONS_X.get(i));
-		getIvPlayer01().setY(Constants.PLAYER_01_POSITIONS_Y.get(i));
-		// P02
-		getIvPlayer02().setX(Constants.PLAYER_02_POSITIONS_X.get(i));
-		getIvPlayer02().setY(Constants.PLAYER_02_POSITIONS_Y.get(i));
-		// P03
-		getIvPlayer03().setX(Constants.PLAYER_03_POSITIONS_X.get(i));
-		getIvPlayer03().setY(Constants.PLAYER_03_POSITIONS_Y.get(i));
-		// P04
-		getIvPlayer04().setX(Constants.PLAYER_04_POSITIONS_X.get(i));
-		getIvPlayer04().setY(Constants.PLAYER_04_POSITIONS_Y.get(i));
-		// P05
-		getIvPlayer05().setX(Constants.PLAYER_05_POSITIONS_X.get(i));
-		getIvPlayer05().setY(Constants.PLAYER_05_POSITIONS_Y.get(i));
-		// P06
-		getIvPlayer06().setX(Constants.PLAYER_06_POSITIONS_X.get(i));
-		getIvPlayer06().setY(Constants.PLAYER_06_POSITIONS_Y.get(i));
-		// P07
-		getIvPlayer07().setX(Constants.PLAYER_07_POSITIONS_X.get(i));
-		getIvPlayer07().setY(Constants.PLAYER_07_POSITIONS_Y.get(i));
-		// P08
-		getIvPlayer08().setX(Constants.PLAYER_08_POSITIONS_X.get(i));
-		getIvPlayer08().setY(Constants.PLAYER_08_POSITIONS_Y.get(i));
+//		int i = 10; // 36 Positions donc jusqu'à indice 35 maximum
+//		getIvPlayer01().setX(Constants.PLAYER_01_POSITIONS_X.get(i));
+//		getIvPlayer01().setY(Constants.PLAYER_01_POSITIONS_Y.get(i));
+//		// P02
+//		getIvPlayer02().setX(Constants.PLAYER_02_POSITIONS_X.get(i));
+//		getIvPlayer02().setY(Constants.PLAYER_02_POSITIONS_Y.get(i));
+//		// P03
+//		getIvPlayer03().setX(Constants.PLAYER_03_POSITIONS_X.get(i));
+//		getIvPlayer03().setY(Constants.PLAYER_03_POSITIONS_Y.get(i));
+//		// P04
+//		getIvPlayer04().setX(Constants.PLAYER_04_POSITIONS_X.get(i));
+//		getIvPlayer04().setY(Constants.PLAYER_04_POSITIONS_Y.get(i));
+//		// P05
+//		getIvPlayer05().setX(Constants.PLAYER_05_POSITIONS_X.get(i));
+//		getIvPlayer05().setY(Constants.PLAYER_05_POSITIONS_Y.get(i));
+//		// P06
+//		getIvPlayer06().setX(Constants.PLAYER_06_POSITIONS_X.get(i));
+//		getIvPlayer06().setY(Constants.PLAYER_06_POSITIONS_Y.get(i));
+//		// P07
+//		getIvPlayer07().setX(Constants.PLAYER_07_POSITIONS_X.get(i));
+//		getIvPlayer07().setY(Constants.PLAYER_07_POSITIONS_Y.get(i));
+//		// P08
+//		getIvPlayer08().setX(Constants.PLAYER_08_POSITIONS_X.get(i));
+//		getIvPlayer08().setY(Constants.PLAYER_08_POSITIONS_Y.get(i));
 
 	}
 

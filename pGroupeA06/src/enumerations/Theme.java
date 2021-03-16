@@ -4,7 +4,10 @@ public enum Theme {
 	IMPROBABLE("Improbable"),
 	PLEASURE("Pleasure"),
 	INFORMATICS("Informatics"),
-	SCHOOL("School");
+	SCHOOL("School"),
+	SPECIAL("Special"),
+	START("Start"),
+	FINISH("FINISH");
 
 	private String theme;
 	
