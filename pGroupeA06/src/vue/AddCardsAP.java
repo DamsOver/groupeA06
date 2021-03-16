@@ -34,7 +34,7 @@ public class AddCardsAP extends AnchorPane {
 	private Label lblSubject;
 	private ComboBox<String> cbTheme;
 //	private TextField txtFAuthor;
-	private ComboBox<String> txtFAuthor;
+	private ComboBox<String> cbAuthor;
 	private TextField txtFSubject;
 
 	private Label lblChallenges;
@@ -70,7 +70,7 @@ public class AddCardsAP extends AnchorPane {
 
 		this.getStyleClass().add("pane");
 		this.getChildren().addAll(getTxtTitle(), getBtnBack(), getBtnErase(), getBtnSubmit(), getTxtTheme(),
-				getCbTheme(), getLblAuthor(), getTxtFAuthor(), getLblSubject(), getTxtFSubject(), getLblChallenges(), getLblAnswer()/*,
+				getCbTheme(), getLblAuthor(), getCbAuthor(), getLblSubject(), getTxtFSubject(), getLblChallenges(), getLblAnswer()/*,
 				getLblChallenges1(), getLblChallenges2(), getLblChallenges3(), getLblChallenges4(),
 				getTxtFChallenges1(), getTxtFChallenges2(), getTxtFChallenges3(), getTxtFChallenges4(),
 				getTxtFAnswer1(), getTxtFAnswer2(), getTxtFAnswer3(), getTxtFAnswer4(), getLblAnswer1(),
@@ -104,10 +104,10 @@ public class AddCardsAP extends AnchorPane {
 		AnchorPane.setLeftAnchor(getLblAuthor(), 600.0);
 
 		// txtFAuthor
-		txtFAuthor.getStyleClass().add("txtField");
-		AnchorPane.setTopAnchor(getTxtFAuthor(), 330.0);
-		AnchorPane.setLeftAnchor(getTxtFAuthor(), 760.0);
-		AnchorPane.setRightAnchor(getTxtFAuthor(), 800.0);
+		cbAuthor.getStyleClass().add("txtField");
+		AnchorPane.setTopAnchor(getCbAuthor(), 330.0);
+		AnchorPane.setLeftAnchor(getCbAuthor(), 760.0);
+		AnchorPane.setRightAnchor(getCbAuthor(), 800.0);
 
 		// lblSubject
 		lblSubject.getStyleClass().add("basicText");
@@ -401,19 +401,19 @@ public class AddCardsAP extends AnchorPane {
 		return txtFAuthor;
 	}*/
 
-	public ComboBox<String> getTxtFAuthor() {
-		if (txtFAuthor == null) {
-			txtFAuthor = new ComboBox<String>();
-			txtFAuthor.setEditable(true);
+	public ComboBox<String> getCbAuthor() {
+		if (cbAuthor == null) {
+			cbAuthor = new ComboBox<String>();
+			cbAuthor.setEditable(true);
 			game = new Game();
 			deck = game.getDeck();
 			for(BasicCard bc : deck.getBasicCards()) {
-				if(!txtFAuthor.getItems().contains(bc.getAuthor())) {
-					txtFAuthor.getItems().add(bc.getAuthor());
+				if(!cbAuthor.getItems().contains(bc.getAuthor())) {
+					cbAuthor.getItems().add(bc.getAuthor());
 				}
 			}
 		}
-		return txtFAuthor;
+		return cbAuthor;
 	}
 
 	public TextField getTxtFSubject() {
