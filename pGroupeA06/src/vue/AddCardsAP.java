@@ -129,7 +129,7 @@ public class AddCardsAP extends AnchorPane {
 		lblAnswer.getStyleClass().add("basicText");
 		AnchorPane.setTopAnchor(getLblAnswer(), 430.0);
 		AnchorPane.setLeftAnchor(getLblAnswer(), 1000.0);
-		
+		//use list of Nodes and form its
 		toForm();
 /*
 		// lblChallenges1
@@ -292,9 +292,9 @@ public class AddCardsAP extends AnchorPane {
 		}
 		return lblEachChallenges;
 	}
-	
+	//create each Label
 	public void setEachLabel(ArrayList<Label> list) {
-		for(int i= 0; i<= NB_QUESTION; i++) {
+		for(int i= 0; i< NB_QUESTION; i++) {
 			list.add(new Label((i+1)+" : "));
 		}
 	}
@@ -358,9 +358,9 @@ public class AddCardsAP extends AnchorPane {
 		}
 		return txtFEachChallenges;
 	}
-	
+	//create each textField
 	public void setEachTextField(ArrayList<TextField> list) {
-		for(int i= 0; i<= NB_QUESTION; i++){
+		for(int i= 0; i< NB_QUESTION; i++){
 			list.add(new TextField());
 		}
 	}
@@ -404,6 +404,7 @@ public class AddCardsAP extends AnchorPane {
 	public ComboBox<String> getCbAuthor() {
 		if (cbAuthor == null) {
 			cbAuthor = new ComboBox<String>();
+			//it's possible to add new Author
 			cbAuthor.setEditable(true);
 			game = new Game();
 			deck = game.getDeck();
@@ -506,6 +507,7 @@ public class AddCardsAP extends AnchorPane {
 	}
 	
 	public void toForm() {
+		//Basis position
 		double top = 510, addTop = 90;
 		double TFChallRight = 1000, TFAnsRight = 100;
 		double LBLChallLeft = 140, addChallToAnsLeft =900, addLblToTFLeft = 80;
@@ -527,7 +529,7 @@ public class AddCardsAP extends AnchorPane {
 			AnchorPane.setRightAnchor(getTxtFEachChallenges().get(i), TFChallRight);
 			AnchorPane.setRightAnchor(getTxtFEachAnswers().get(i), TFAnsRight);
 			
-			//for
+			//form
 			getLblEachChallenges().get(i).getStyleClass().add("basicText");
 			getLblEachAnswers().get(i).getStyleClass().add("basicText");
 			getTxtFEachAnswers().get(i).getStyleClass().add("txtField");
