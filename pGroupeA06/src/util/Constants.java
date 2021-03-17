@@ -20,7 +20,7 @@ public interface Constants {
 							NUMBER_PERCENTAGE_ERROR_ANSWER=2; 
 	
 	public static final String 	DECK_PATH = "deck.JSON",
-								BOARD_PATH= "board.JSON";
+								BOARD_PATH= "boardTest.JSON";
 	
 	// Size Players	
 	public static final double 	PLAYER_HEIGHT = 100, PLAYER_WIDTH = 100;

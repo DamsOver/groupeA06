@@ -329,6 +329,7 @@ public class GameOperation {
 		bc=null;
 		ArrayList<BasicCard> potentialCards = new ArrayList<BasicCard>();
 		//check if there is a card that has the same theme than the square
+		
 		for(BasicCard b :game.getDeck().getBasicCards() ) {
 			if (b.getTheme().equals(th)){
 				//check if the card was not already used in this game
