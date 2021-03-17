@@ -33,8 +33,7 @@ public class AddCardsAP extends AnchorPane {
 	private Label lblAuthor;
 	private Label lblSubject;
 	private ComboBox<String> cbTheme;
-//	private TextField txtFAuthor;
-	private ComboBox<String> cbAuthor;
+	private TextField txtFAuthor;
 	private TextField txtFSubject;
 
 	private Label lblChallenges;
@@ -44,23 +43,6 @@ public class AddCardsAP extends AnchorPane {
 	private ArrayList<TextField> txtFEachChallenges;
 	private ArrayList<Label>	lblEachAnswers;
 	private ArrayList<TextField> txtFEachAnswers;
-	/*private Label lblChallenges1;
-	private Label lblChallenges2;
-	private Label lblChallenges3;
-	private Label lblChallenges4;
-	private TextField txtFChallenges1;
-	private TextField txtFChallenges2;
-	private TextField txtFChallenges3;
-	private TextField txtFChallenges4;
-
-	private Label lblAnswer1;
-	private Label lblAnswer2;
-	private Label lblAnswer3;
-	private Label lblAnswer4;
-	private TextField txtFAnswer1;
-	private TextField txtFAnswer2;
-	private TextField txtFAnswer3;
-	private TextField txtFAnswer4;*/
 
 	private Button btnErase;
 	private Button btnSubmit;
@@ -70,11 +52,7 @@ public class AddCardsAP extends AnchorPane {
 
 		this.getStyleClass().add("pane");
 		this.getChildren().addAll(getTxtTitle(), getBtnBack(), getBtnErase(), getBtnSubmit(), getTxtTheme(),
-				getCbTheme(), getLblAuthor(), getCbAuthor(), getLblSubject(), getTxtFSubject(), getLblChallenges(), getLblAnswer()/*,
-				getLblChallenges1(), getLblChallenges2(), getLblChallenges3(), getLblChallenges4(),
-				getTxtFChallenges1(), getTxtFChallenges2(), getTxtFChallenges3(), getTxtFChallenges4(),
-				getTxtFAnswer1(), getTxtFAnswer2(), getTxtFAnswer3(), getTxtFAnswer4(), getLblAnswer1(),
-				getLblAnswer2(), getLblAnswer3(), getLblAnswer4()*/);
+				getCbTheme(), getLblAuthor(), getTxtFAuthor(), getLblSubject(), getTxtFSubject(), getLblChallenges(), getLblAnswer());
 		this.getChildren().addAll(getLblEachAnswers());
 		this.getChildren().addAll(getLblEachChallenges());
 		this.getChildren().addAll(getTxtFEachAnswers()); 
@@ -104,10 +82,10 @@ public class AddCardsAP extends AnchorPane {
 		AnchorPane.setLeftAnchor(getLblAuthor(), 600.0);
 
 		// txtFAuthor
-		cbAuthor.getStyleClass().add("txtField");
-		AnchorPane.setTopAnchor(getCbAuthor(), 330.0);
-		AnchorPane.setLeftAnchor(getCbAuthor(), 760.0);
-		AnchorPane.setRightAnchor(getCbAuthor(), 800.0);
+		txtFAuthor.getStyleClass().add("txtField");
+		AnchorPane.setTopAnchor(getTxtFAuthor(), 330.0);
+		AnchorPane.setLeftAnchor(getTxtFAuthor(), 760.0);
+		AnchorPane.setRightAnchor(getTxtFAuthor(), 800.0);
 
 		// lblSubject
 		lblSubject.getStyleClass().add("basicText");
@@ -131,95 +109,7 @@ public class AddCardsAP extends AnchorPane {
 		AnchorPane.setLeftAnchor(getLblAnswer(), 1000.0);
 		//use list of Nodes and form its
 		toForm();
-/*
-		// lblChallenges1
-		lblChallenges1.getStyleClass().add("basicText");
-		AnchorPane.setTopAnchor(getLblChallenges1(), 510.0);
-		AnchorPane.setLeftAnchor(getLblChallenges1(), 140.0);
 
-		// lblChallenges2
-		lblChallenges2.getStyleClass().add("basicText");
-		AnchorPane.setTopAnchor(getLblChallenges2(), 600.0);
-		AnchorPane.setLeftAnchor(getLblChallenges2(), 140.0);
-
-		// lblChallenges3
-		lblChallenges3.getStyleClass().add("basicText");
-		AnchorPane.setTopAnchor(getLblChallenges3(), 690.0);
-		AnchorPane.setLeftAnchor(getLblChallenges3(), 140.0);
-
-		// lblChallenges4
-		lblChallenges4.getStyleClass().add("basicText");
-		AnchorPane.setTopAnchor(getLblChallenges4(), 780.0);
-		AnchorPane.setLeftAnchor(getLblChallenges4(), 140.0);
-
-		// txtFChallenges1
-		txtFChallenges1.getStyleClass().add("txtField");
-		AnchorPane.setTopAnchor(getTxtFChallenges1(), 510.0);
-		AnchorPane.setLeftAnchor(getTxtFChallenges1(), 220.0);
-		AnchorPane.setRightAnchor(getTxtFChallenges1(), 1100.0);
-
-		// txtFChallenges2
-		txtFChallenges2.getStyleClass().add("txtField");
-		AnchorPane.setTopAnchor(getTxtFChallenges2(), 600.0);
-		AnchorPane.setLeftAnchor(getTxtFChallenges2(), 220.0);
-		AnchorPane.setRightAnchor(getTxtFChallenges2(), 1100.0);
-
-		// txtFChallenges3
-		txtFChallenges3.getStyleClass().add("txtField");
-		AnchorPane.setTopAnchor(getTxtFChallenges3(), 690.0);
-		AnchorPane.setLeftAnchor(getTxtFChallenges3(), 220.0);
-		AnchorPane.setRightAnchor(getTxtFChallenges3(), 1100.0);
-
-		// txtFChallenges4
-		txtFChallenges4.getStyleClass().add("txtField");
-		AnchorPane.setTopAnchor(getTxtFChallenges4(), 780.0);
-		AnchorPane.setLeftAnchor(getTxtFChallenges4(), 220.0);
-		AnchorPane.setRightAnchor(getTxtFChallenges4(), 1100.0);
-
-		// lblAnswer1
-		lblAnswer1.getStyleClass().add("basicText");
-		AnchorPane.setTopAnchor(getLblAnswer1(), 510.0);
-		AnchorPane.setLeftAnchor(getLblAnswer1(), 1040.0);
-
-		// lblAnswer2
-		lblAnswer2.getStyleClass().add("basicText");
-		AnchorPane.setTopAnchor(getLblAnswer2(), 600.0);
-		AnchorPane.setLeftAnchor(getLblAnswer2(), 1040.0);
-
-		// lblAnswer3
-		lblAnswer3.getStyleClass().add("basicText");
-		AnchorPane.setTopAnchor(getLblAnswer3(), 690.0);
-		AnchorPane.setLeftAnchor(getLblAnswer3(), 1040.0);
-
-		// lblChallenges4
-		lblAnswer4.getStyleClass().add("basicText");
-		AnchorPane.setTopAnchor(getLblAnswer4(), 780.0);
-		AnchorPane.setLeftAnchor(getLblAnswer4(), 1040.0);
-
-		// txtFAnswer1
-		txtFAnswer1.getStyleClass().add("txtField");
-		AnchorPane.setTopAnchor(getTxtFAnswer1(), 510.0);
-		AnchorPane.setLeftAnchor(getTxtFAnswer1(), 1120.0);
-		AnchorPane.setRightAnchor(getTxtFAnswer1(), 100.0);
-
-		// txtFAnswer2
-		txtFAnswer2.getStyleClass().add("txtField");
-		AnchorPane.setTopAnchor(getTxtFAnswer2(), 600.0);
-		AnchorPane.setLeftAnchor(getTxtFAnswer2(), 1120.0);
-		AnchorPane.setRightAnchor(getTxtFAnswer2(), 100.0);
-
-		// txtFAnswer3
-		txtFAnswer3.getStyleClass().add("txtField");
-		AnchorPane.setTopAnchor(getTxtFAnswer3(), 690.0);
-		AnchorPane.setLeftAnchor(getTxtFAnswer3(), 1120.0);
-		AnchorPane.setRightAnchor(getTxtFAnswer3(), 100.0);
-
-		// txtFAnswer4
-		txtFAnswer4.getStyleClass().add("txtField");
-		AnchorPane.setTopAnchor(getTxtFAnswer4(), 780.0);
-		AnchorPane.setLeftAnchor(getTxtFAnswer4(), 1120.0);
-		AnchorPane.setRightAnchor(getTxtFAnswer4(), 100.0);
-*/
 		// BtnErase
 		btnSubmit.getStyleClass().add("btn-style");
 		AnchorPane.setTopAnchor(getBtnSubmit(), 900.0);
@@ -285,9 +175,6 @@ public class AddCardsAP extends AnchorPane {
 	public ArrayList<Label> getLblEachChallenges() {
 		if (lblEachChallenges == null) {
 			lblEachChallenges = new ArrayList<>();
-			/*for(int i= 0; i<= NB_QUESTION; i++) {
-				lblEachChallenges.add(new Label((i+1)+" : "));
-			}*/
 			setEachLabel(lblEachChallenges);
 		}
 		return lblEachChallenges;
@@ -298,34 +185,7 @@ public class AddCardsAP extends AnchorPane {
 			list.add(new Label((i+1)+" : "));
 		}
 	}
-/*	public Label getLblAnswer1() {
-		if (lblAnswer1 == null) {
-			lblAnswer1 = new Label("1 : ");
-		}
-		return lblAnswer1;
-	}
 
-	public Label getLblAnswer2() {
-		if (lblAnswer2 == null) {
-			lblAnswer2 = new Label("2 : ");
-		}
-		return lblAnswer2;
-	}
-
-	public Label getLblAnswer3() {
-		if (lblAnswer3 == null) {
-			lblAnswer3 = new Label("3 : ");
-		}
-		return lblAnswer3;
-	}
-
-	public Label getLblAnswer4() {
-		if (lblAnswer4 == null) {
-			lblAnswer4 = new Label("4 : ");
-		}
-		return lblAnswer4;
-	}
-*/
 	public Label getLblChallenges() {
 		if (lblChallenges == null) {
 			lblChallenges = new Label("Challenges : ");
@@ -365,56 +225,11 @@ public class AddCardsAP extends AnchorPane {
 		}
 	}
 	
-/*
-	public Label getLblChallenges1() {
-		if (lblChallenges1 == null) {
-			lblChallenges1 = new Label("1 : ");
-		}
-		return lblChallenges1;
-	}
-
-	public Label getLblChallenges2() {
-		if (lblChallenges2 == null) {
-			lblChallenges2 = new Label("2 : ");
-		}
-		return lblChallenges2;
-	}
-
-	public Label getLblChallenges3() {
-		if (lblChallenges3 == null) {
-			lblChallenges3 = new Label("3 : ");
-		}
-		return lblChallenges3;
-	}
-
-	public Label getLblChallenges4() {
-		if (lblChallenges4 == null) {
-			lblChallenges4 = new Label("4 : ");
-		}
-		return lblChallenges4;
-	}
-*/
-	/*public TextField getTxtFAuthor() {
+	public TextField getTxtFAuthor() {
 		if (txtFAuthor == null) {
 			txtFAuthor = new TextField();
 		}
 		return txtFAuthor;
-	}*/
-
-	public ComboBox<String> getCbAuthor() {
-		if (cbAuthor == null) {
-			cbAuthor = new ComboBox<String>();
-			//it's possible to add new Author
-			cbAuthor.setEditable(true);
-			game = new Game();
-			deck = game.getDeck();
-			for(BasicCard bc : deck.getBasicCards()) {
-				if(!cbAuthor.getItems().contains(bc.getAuthor())) {
-					cbAuthor.getItems().add(bc.getAuthor());
-				}
-			}
-		}
-		return cbAuthor;
 	}
 
 	public TextField getTxtFSubject() {
@@ -423,63 +238,7 @@ public class AddCardsAP extends AnchorPane {
 		}
 		return txtFSubject;
 	}
-/*
-	public TextField getTxtFChallenges1() {
-		if (txtFChallenges1 == null) {
-			txtFChallenges1 = new TextField();
-		}
-		return txtFChallenges1;
-	}
 
-	public TextField getTxtFChallenges2() {
-		if (txtFChallenges2 == null) {
-			txtFChallenges2 = new TextField();
-		}
-		return txtFChallenges2;
-	}
-
-	public TextField getTxtFChallenges3() {
-		if (txtFChallenges3 == null) {
-			txtFChallenges3 = new TextField();
-		}
-		return txtFChallenges3;
-	}
-
-	public TextField getTxtFChallenges4() {
-		if (txtFChallenges4 == null) {
-			txtFChallenges4 = new TextField();
-		}
-		return txtFChallenges4;
-	}
-
-	public TextField getTxtFAnswer1() {
-		if (txtFAnswer1 == null) {
-			txtFAnswer1 = new TextField();
-		}
-		return txtFAnswer1;
-	}
-
-	public TextField getTxtFAnswer2() {
-		if (txtFAnswer2 == null) {
-			txtFAnswer2 = new TextField();
-		}
-		return txtFAnswer2;
-	}
-
-	public TextField getTxtFAnswer3() {
-		if (txtFAnswer3 == null) {
-			txtFAnswer3 = new TextField();
-		}
-		return txtFAnswer3;
-	}
-
-	public TextField getTxtFAnswer4() {
-		if (txtFAnswer4 == null) {
-			txtFAnswer4 = new TextField();
-		}
-		return txtFAnswer4;
-	}
-*/
 	public Button getBtnErase() {
 		if (btnErase == null) {
 			btnErase = new Button("Erase");
