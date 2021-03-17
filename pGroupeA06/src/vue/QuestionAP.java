@@ -23,7 +23,7 @@ import util.Constants;
 public class QuestionAP extends AnchorPane{
 
 	private Label lbTurn, lbQuestion, lbCorrectAS, lblTimer;
-	private Button btnOK, btnQuestionMark1,btnQuestionMark2,btnQuestionMark3;
+	private Button btnOK, btnQuestionMark/*,btnQuestionMark2,btnQuestionMark3*/;
 	private TextField tfAnswer;
 	
 	private String answer;
@@ -36,9 +36,9 @@ public class QuestionAP extends AnchorPane{
 	public QuestionAP() {
 		this.getStyleClass().add("paneQuestion");
 		this.getChildren().addAll(getLbTurn(),
-				getBtnQuestionMark1(),
-				getBtnQuestionMark2(),
-				getBtnQuestionMark3(),
+				getBtnQuestionMark(),
+				/*getBtnQuestionMark2(),
+				getBtnQuestionMark3(),*/
 				getLbQuestion(),
 				getBtnOK(),
 				getTfAnswer(),
@@ -51,13 +51,14 @@ public class QuestionAP extends AnchorPane{
 		AnchorPane.setLeftAnchor(getLbTurn(), 150.0);
 		
 		//btnQuestionMark1
-		btnQuestionMark1.getStyleClass().add("qm1");
-		AnchorPane.setTopAnchor(getBtnQuestionMark1(), 150.0);
-		AnchorPane.setBottomAnchor(getBtnQuestionMark1(), 500.0);
-		AnchorPane.setLeftAnchor(getBtnQuestionMark1(), 800.0);
-		AnchorPane.setRightAnchor(getBtnQuestionMark1(), 800.0);
+		btnQuestionMark.getStyleClass().add("qm1");
+		enableQuestionMark(1);
+		AnchorPane.setTopAnchor(getBtnQuestionMark(), 150.0);
+		AnchorPane.setBottomAnchor(getBtnQuestionMark(), 500.0);
+		AnchorPane.setLeftAnchor(getBtnQuestionMark(), 800.0);
+		AnchorPane.setRightAnchor(getBtnQuestionMark(), 800.0);
 		//btnQuestionMark1.setVisible(false);
-		
+/*		
 		//btnQuestionMark2
 		btnQuestionMark2.getStyleClass().add("qm2");
 		AnchorPane.setTopAnchor(getBtnQuestionMark2(), 150.0);
@@ -73,7 +74,7 @@ public class QuestionAP extends AnchorPane{
 		AnchorPane.setLeftAnchor(getBtnQuestionMark3(), 800.0);
 		AnchorPane.setRightAnchor(getBtnQuestionMark3(), 800.0);
 		btnQuestionMark3.setVisible(false);
-		
+*/	
 		// Question
 		lbQuestion.getStyleClass().add("question");
 		AnchorPane.setTopAnchor(getLbQuestion(), 600.0);
@@ -151,13 +152,13 @@ public class QuestionAP extends AnchorPane{
 	}
 	
 
-	public Button getBtnQuestionMark1() {
-		if (btnQuestionMark1 == null) {
-			btnQuestionMark1 = new Button();
+	public Button getBtnQuestionMark() {
+		if (btnQuestionMark == null) {
+			btnQuestionMark = new Button();
 		}
-		return btnQuestionMark1;
+		return btnQuestionMark;
 	}
-	public Button getBtnQuestionMark2() {
+/*	public Button getBtnQuestionMark2() {
 		if (btnQuestionMark2 == null) {
 			btnQuestionMark2 = new Button();
 		}
@@ -170,7 +171,7 @@ public class QuestionAP extends AnchorPane{
 		}
 		return btnQuestionMark3;
 	}
-
+*/
 	public TextField getTfAnswer() {
 		if(tfAnswer == null) {
 			tfAnswer = new TextField();
@@ -213,7 +214,7 @@ public class QuestionAP extends AnchorPane{
 	}
 	
 	public void enableQuestionMark(int choice) {
-		if(choice==1) {
+		/*if(choice==1) {
 			btnQuestionMark1.setVisible(true);
 			btnQuestionMark2.setVisible(false);
 			btnQuestionMark3.setVisible(false);
@@ -227,8 +228,10 @@ public class QuestionAP extends AnchorPane{
 			btnQuestionMark1.setVisible(false);
 			btnQuestionMark2.setVisible(false);
 			btnQuestionMark3.setVisible(true);
-		}
-		
+		}*/
+		String path ="/img/interrogation_"+choice+".png";
+		String style = "-fx-background-image: url(\""+path+"\");";
+		btnQuestionMark.setStyle(style);
 	}
 	
 	
