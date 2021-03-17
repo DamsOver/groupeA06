@@ -5,6 +5,7 @@ import java.util.List;
 
 import application.SceneManager;
 import enumerations.CharAnswerRemoval;
+import enumerations.Theme;
 import exceptions.AlreadyPresentException;
 import exceptions.NotPresentException;
 import exceptions.TooLittleException;
@@ -50,7 +51,7 @@ public class GameOperation {
 		Player p = getPlayerTurn();
 		
 		//drawing a card
-		bc = drawCard(p.getSquare());
+		bc = drawCard(p.getSquare().getTheme());
 		
 		//change the ratingAP labels
 		SceneManager.getRating().setLbSubject(bc.getSubject());
@@ -323,13 +324,13 @@ public class GameOperation {
 		return pause2;
 	}
 	
-	public BasicCard drawCard(Square sq) {
+	public BasicCard drawCard(Theme th) {
 		boolean alreadyPresent = false;
 		bc=null;
 		ArrayList<BasicCard> potentialCards = new ArrayList<BasicCard>();
 		//check if there is a card that has the same theme than the square
 		for(BasicCard b :game.getDeck().getBasicCards() ) {
-			if (b.getTheme().equals(sq.getTheme())){
+			if (b.getTheme().equals(th)){
 				//check if the card was not already used in this game
 				alreadyPresent = false;
 				for(BasicCard b2 : oldCards.getBasicCards()) {
@@ -346,7 +347,7 @@ public class GameOperation {
 				System.out.println("no more questions");
 				//remove all the questions with the same theme in the deck of oldCards
 				for(BasicCard b :oldCards.getBasicCards() ) {
-					if (b.getTheme().equals(sq.getTheme())){
+					if (b.getTheme().equals(th)){
 						try {
 							oldCards.removeBasicCard(b);
 						} catch (TooLittleException | NotPresentException e) {
@@ -354,7 +355,7 @@ public class GameOperation {
 						}
 					}	
 				}
-				return drawCard(sq);
+				return drawCard(th);
 			}
 		else {
 			int randomNumber = new Random().nextInt(potentialCards.size());
