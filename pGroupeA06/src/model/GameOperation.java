@@ -50,16 +50,9 @@ public class GameOperation {
 		//getting the player that will play the turn
 		Player p = getPlayerTurn();
 		
-		//drawing a card
-		bc = drawCard(p.getSquare().getTheme());
-		
-		//change the ratingAP labels
-		SceneManager.getRating().setLbSubject(bc.getSubject());
-		SceneManager.getRating().setLbTheme(bc.getTheme());
-		
-		//displaying animations
 		if(first) {
-			//first turn
+			StartCard sc = new StartCard("Damien",Theme.START);
+			sc.action();
 			PauseTransition p2= SceneManager.getGameOperation().animationTurn();
     		PauseTransition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,SceneManager.getStackGame(),null,p2);	  
     		SceneManager.getTransitionAnimation().setTxtAnimation("The game starts!");
@@ -67,7 +60,25 @@ public class GameOperation {
     		pause1.play();
 		}
 		else {
-			//not the first turn
+			//verify if it's a special theme
+		switch (p.getSquare().getTheme()) {
+			case START : 
+				StartCard sc = new StartCard("Damien",Theme.START);
+				sc.action();
+				break;
+			case FINISH :
+				break;
+			case SPECIAL :
+				break;
+			default :
+				//drawing a card
+				bc = drawCard(p.getSquare().getTheme());
+				
+				//change the ratingAP labels
+				SceneManager.getRating().setLbSubject(bc.getSubject());
+				SceneManager.getRating().setLbTheme(bc.getTheme());
+				break;
+			}
 			animationTurn().play();
 		}
 	}

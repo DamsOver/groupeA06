@@ -8,8 +8,13 @@ import java.util.List;
 import java.util.Random;
 
 public enum Theme {
-	IMPROBABLE("Improbable"), PLEASURE("Pleasure"), INFORMATICS("Informatics"), SCHOOL("School"), SPECIAL("Special"),
-	START("Start"), FINISH("FINISH");
+	IMPROBABLE("Improbable"), 
+	PLEASURE("Pleasure"), 
+	INFORMATICS("Informatics"), 
+	SCHOOL("School"), 
+	SPECIAL("Special"),
+	START("Start"), 
+	FINISH("FINISH");
 
 	private String theme;
 
@@ -35,7 +40,6 @@ public enum Theme {
 				tmp.add(t);
 			}
 		}
-
 		return tmp.get(rand.nextInt(tmp.size()));
 	}
 
