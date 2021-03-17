@@ -16,7 +16,7 @@ import util.UnlockAdmin;
 
 public class AdminAP extends AnchorPane {
 
-	private Text txtTitle, txtLogin, txtPassword;
+	private Text txtTitle, txtLogin, txtPassword, txtMessage;
 	private TextField txtFLogin;
 	private PasswordField pwdFPassword;
 
@@ -25,13 +25,18 @@ public class AdminAP extends AnchorPane {
 	public AdminAP() {
 		this.getStyleClass().add("pane");
 		this.getChildren().addAll(getTxtTitle(), getBtnBack(), getBtnUnlock(), getTxtPassword(), getTxtLogin(),
-				getTxtFLogin(), getPwdFPassword());
+				getTxtFLogin(), getPwdFPassword(), getTxtMessage());
 
 		// title
 		txtTitle.getStyleClass().add("title-style");
 		AnchorPane.setTopAnchor(getTxtTitle(), 100.0);
 		AnchorPane.setLeftAnchor(getTxtTitle(), 700.0);
 
+		//message
+		txtMessage.getStyleClass().add("basicText");
+		AnchorPane.setTopAnchor(getTxtMessage(), 350.);
+		AnchorPane.setLeftAnchor(txtMessage, 200.);
+		
 		// Login
 		txtLogin.getStyleClass().add("basicText");
 		AnchorPane.setTopAnchor(getTxtLogin(), 450.0);
@@ -127,11 +132,17 @@ public class AdminAP extends AnchorPane {
 					txtFLogin.clear();
 					pwdFPassword.clear();
 				}
-
+				getTxtMessage().setText(unlockAdmin.getMessage());
 			}
 		});
 
 		return btnUnlock;
 	}
 
+	public Text getTxtMessage() {
+		if(txtMessage == null) {
+			txtMessage = new Text("");
+		}
+		return txtMessage;
+	}
 }

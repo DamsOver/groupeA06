@@ -21,5 +21,10 @@ public class UnlockAdmin {
 		return false;
 	}
 
-
+	public String getMessage() {
+		if(message == null) {
+			return "";
+		}
+		return message;
+	}
 }
