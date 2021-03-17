@@ -331,8 +331,8 @@ public class GameOperation {
 		PauseTransition pause3 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_RATING,SceneManager.getStackRating(),null,null);
 		PauseTransition pause2 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,SceneManager.getStackTransititionAnimation(),
 				"It's "+ SceneManager.getGameOperation().getPlayerTurn().getName() +"'s turn!",pause3);
-		
-		return pause2;
+		PauseTransition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,SceneManager.getStackGame(),null,pause2);	
+		return pause1;
 	}
 	
 	public BasicCard drawCard(Theme th) {
