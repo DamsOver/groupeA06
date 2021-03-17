@@ -67,6 +67,8 @@ public class GameOperation {
 				sc.action();
 				break;
 			case FINISH :
+				FinishCard fc = new FinishCard();
+				fc.action();
 				break;
 			case SPECIAL :
 				break;
@@ -92,7 +94,12 @@ public class GameOperation {
 		//getting the question
 		Question q = bc.getQuestions().get(rating-1);
 		
+		//setting the question
+		setQuestion(q);
 		
+	}
+	
+	public void setQuestion(Question q) {
 		//QUESTION SIZE?????
 		String question=""; 
 		StringBuffer str = new StringBuffer(q.getChallenge());
@@ -334,6 +341,17 @@ public class GameOperation {
 		PauseTransition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,SceneManager.getStackGame(),null,pause2);	
 		return pause1;
 	}
+	
+	public PauseTransition LastTurn() {
+		SceneManager.getRating().setLbTurn(SceneManager.getGameOperation().getPlayerTurn().getName());
+		PauseTransition pause3 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_RATING,SceneManager.getStackQuestion(),null,null);
+		PauseTransition pause2 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,SceneManager.getStackTransititionAnimation(),
+				"Last Turn for "+ SceneManager.getGameOperation().getPlayerTurn().getName() +"!",pause3);
+		PauseTransition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,SceneManager.getStackGame(),null,pause2);	
+		return pause1;
+	}
+	
+	
 	
 	public BasicCard drawCard(Theme th) {
 		boolean alreadyPresent = false;
