@@ -42,7 +42,6 @@ public class GameOperation {
 		}
 	}
 	
-	
 	public void turnRating(boolean first) {
 		
 		//getting the current turn
