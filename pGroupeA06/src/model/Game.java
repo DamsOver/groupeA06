@@ -14,7 +14,6 @@ public class Game {
 	private static Board board;
 	private int turn;
 	private Deck deck;
-	private List<SpecialCard> specialCards;
 	
 	public Game() {
 		board=new Board().fromJson(Constants.BOARD_PATH);
@@ -22,7 +21,6 @@ public class Game {
 		this.players = new ArrayList<Player>();
 		this.turn = 0;
 		this.deck = new Deck().fromJson(Constants.DECK_PATH);
-		this.specialCards = new ArrayList<SpecialCard>(Arrays.asList((SpecialCard)(new StartCard("Damien",Theme.START))));
 	}
 	
 	public boolean addPlayer(String name, int number) throws AlreadyPresentException {

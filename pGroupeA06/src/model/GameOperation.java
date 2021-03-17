@@ -51,7 +51,7 @@ public class GameOperation {
 		Player p = getPlayerTurn();
 		
 		if(first) {
-			StartCard sc = new StartCard("Damien",Theme.START);
+			StartCard sc = new StartCard();
 			sc.action();
 			PauseTransition p2= SceneManager.getGameOperation().animationTurn();
     		PauseTransition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,SceneManager.getStackGame(),null,p2);	  
@@ -63,7 +63,7 @@ public class GameOperation {
 			//verify if it's a special theme
 		switch (p.getSquare().getTheme()) {
 			case START : 
-				StartCard sc = new StartCard("Damien",Theme.START);
+				StartCard sc = new StartCard();
 				sc.action();
 				break;
 			case FINISH :

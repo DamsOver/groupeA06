@@ -1,6 +1,6 @@
 package model;
 
-public abstract class SpecialCard extends Card {
+public abstract class SpecialCard {
 	
 	public abstract void action();
 		
