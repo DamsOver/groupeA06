@@ -12,25 +12,25 @@ import exceptions.TooLittleException;
 import exceptions.TooManyException;
 import util.Constants;
 
-public class BasicCard {
+public class BasicCard extends Card{
 
-	private String author;
-	private Theme theme;
 	private String subject;
 	private List<Question> questions;
 
 	// constructor
 	public BasicCard(String author, Theme theme, String subject) {
-		this.author = author;
-		this.theme = theme;
+		this.setAuthor(author);
+		this.setTheme(theme);
 		this.subject = subject;
 		this.questions = new ArrayList<Question>();
 	}
 
+	
+
 	// constructor
 	public BasicCard(String author, Theme theme, String subject, List<Question> questions) {
-		this.author = author;
-		this.theme = theme;
+		this.setAuthor(author);
+		this.setTheme(theme);
 		this.subject = subject;
 
 		// new objects because a question can only be accessed by one card
@@ -44,7 +44,7 @@ public class BasicCard {
 	public boolean addQuestion(String challenge, String answer) throws AlreadyPresentException, TooManyException {
 
 		// creation of a question
-		Question newQuestion = new Question(this.author, this.theme, this.subject, challenge, answer);
+		Question newQuestion = new Question(this.getAuthor(), this.getTheme(), this.subject, challenge, answer);
 
 		// scanning the list of questions to check if the question already exists
 		for (Question q : questions) {
@@ -61,10 +61,6 @@ public class BasicCard {
 		// if everything is ok, adding the question
 		questions.add(newQuestion);
 		return true;
-	}
-
-	public Theme getTheme() {
-		return theme;
 	}
 
 	public String getSubject() {
@@ -84,7 +80,7 @@ public class BasicCard {
 	public boolean removeQuestion(String challenge, String answer) throws NotPresentException, TooLittleException {
 
 		// creation of a question
-		Question newQuestion = new Question(this.author, this.theme, this.subject, challenge, answer);
+		Question newQuestion = new Question(this.getAuthor(), this.getTheme(), this.subject, challenge, answer);
 
 		// verification if the number of question is not 0
 		if (0 == questions.size()) {
@@ -120,23 +116,15 @@ public class BasicCard {
 		BasicCard other = (BasicCard) obj;
 		if (!subject.equals(other.subject))
 			return false;
-		if (theme != other.theme)
+		if (getTheme() != other.getTheme())
 			return false;
 		return true;
 	}
 
-	public String getAuthor() {
-		return author;
-	}
-
 	@Override
 	public String toString() {
-		return "\nBasicCard [author=" + author + ", theme=" + theme + ", subject=" + subject + ", questions="
+		return "\nBasicCard [author=" + getAuthor() + ", theme=" + getTheme() + ", subject=" + subject + ", questions="
 				+ questions + "]\n";
-	}
-
-	public String toJson() {
-		return new Gson().toJson(this);
 	}
 
 	public BasicCard fromJson(String json) {
@@ -145,6 +133,6 @@ public class BasicCard {
 
 	public BasicCard clone() {
 		// the clone of the questions is done in the constructor
-		return new BasicCard(this.author, this.theme, this.subject, questions);
+		return new BasicCard(this.getAuthor(), this.getTheme(), this.subject, questions);
 	}
 }
