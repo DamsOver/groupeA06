@@ -27,6 +27,7 @@ public class GameOperation {
 	public GameOperation() {
 		this.game= new Game();
 		oldCards = new Deck();
+
 	}
 	
 	public static void addPlayers(List<String> playerNames) {
@@ -381,7 +382,7 @@ public class GameOperation {
 	}
 	
 	
-	public Player getPlayerTurn() {
+	public static Player getPlayerTurn() {
 		return game.getPlayers().get(game.getTurn()%game.getPlayers().size());
 	}
 	

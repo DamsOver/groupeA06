@@ -4,18 +4,19 @@ import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import model.Game;
 import util.Constants;
 
 public class GameAP extends AnchorPane {
 
-	private ImageView ivPlayer01;
-	private ImageView ivPlayer02;
-	private ImageView ivPlayer03;
-	private ImageView ivPlayer04;
-	private ImageView ivPlayer05;
-	private ImageView ivPlayer06;
-	private ImageView ivPlayer07;
-	private ImageView ivPlayer08;
+	private static ImageView ivPlayer01;
+	private static ImageView ivPlayer02;
+	private static ImageView ivPlayer03;
+	private static ImageView ivPlayer04;
+	private static ImageView ivPlayer05;
+	private static ImageView ivPlayer06;
+	private static ImageView ivPlayer07;
+	private static ImageView ivPlayer08;
 
 	public GameAP() {
 		this.getStyleClass().add("gameBoard");
@@ -52,29 +53,30 @@ public class GameAP extends AnchorPane {
 		// P01
 			
 //		int i = 10; // 36 Positions donc jusqu'à indice 35 maximum
-//		getIvPlayer01().setX(Constants.PLAYER_01_POSITIONS_X.get(i));
-//		getIvPlayer01().setY(Constants.PLAYER_01_POSITIONS_Y.get(i));
-//		// P02
-//		getIvPlayer02().setX(Constants.PLAYER_02_POSITIONS_X.get(i));
-//		getIvPlayer02().setY(Constants.PLAYER_02_POSITIONS_Y.get(i));
-//		// P03
-//		getIvPlayer03().setX(Constants.PLAYER_03_POSITIONS_X.get(i));
-//		getIvPlayer03().setY(Constants.PLAYER_03_POSITIONS_Y.get(i));
-//		// P04
-//		getIvPlayer04().setX(Constants.PLAYER_04_POSITIONS_X.get(i));
-//		getIvPlayer04().setY(Constants.PLAYER_04_POSITIONS_Y.get(i));
-//		// P05
-//		getIvPlayer05().setX(Constants.PLAYER_05_POSITIONS_X.get(i));
-//		getIvPlayer05().setY(Constants.PLAYER_05_POSITIONS_Y.get(i));
-//		// P06
-//		getIvPlayer06().setX(Constants.PLAYER_06_POSITIONS_X.get(i));
-//		getIvPlayer06().setY(Constants.PLAYER_06_POSITIONS_Y.get(i));
-//		// P07
-//		getIvPlayer07().setX(Constants.PLAYER_07_POSITIONS_X.get(i));
-//		getIvPlayer07().setY(Constants.PLAYER_07_POSITIONS_Y.get(i));
-//		// P08
-//		getIvPlayer08().setX(Constants.PLAYER_08_POSITIONS_X.get(i));
-//		getIvPlayer08().setY(Constants.PLAYER_08_POSITIONS_Y.get(i));
+		int indexSquare=0;
+		getIvPlayer01().setX(Game.getBoard().getSquares().get(indexSquare).getPlayersPosition().get(0).getX());
+		getIvPlayer01().setY(Game.getBoard().getSquares().get(indexSquare).getPlayersPosition().get(0).getY());
+		// P02
+		getIvPlayer02().setX(Game.getBoard().getSquares().get(indexSquare).getPlayersPosition().get(1).getX());
+		getIvPlayer02().setY(Game.getBoard().getSquares().get(indexSquare).getPlayersPosition().get(1).getY());
+		// P03
+		getIvPlayer03().setX(Game.getBoard().getSquares().get(indexSquare).getPlayersPosition().get(2).getX());
+		getIvPlayer03().setY(Game.getBoard().getSquares().get(indexSquare).getPlayersPosition().get(2).getY());
+		// P04
+		getIvPlayer04().setX(Game.getBoard().getSquares().get(indexSquare).getPlayersPosition().get(3).getX());
+		getIvPlayer04().setY(Game.getBoard().getSquares().get(indexSquare).getPlayersPosition().get(3).getY());
+		// P05
+		getIvPlayer05().setX(Game.getBoard().getSquares().get(indexSquare).getPlayersPosition().get(4).getX());
+		getIvPlayer05().setY(Game.getBoard().getSquares().get(indexSquare).getPlayersPosition().get(4).getY());
+		// P06
+		getIvPlayer06().setX(Game.getBoard().getSquares().get(indexSquare).getPlayersPosition().get(5).getX());
+		getIvPlayer06().setY(Game.getBoard().getSquares().get(indexSquare).getPlayersPosition().get(5).getY());
+		// P07
+		getIvPlayer07().setX(Game.getBoard().getSquares().get(indexSquare).getPlayersPosition().get(6).getX());
+		getIvPlayer07().setY(Game.getBoard().getSquares().get(indexSquare).getPlayersPosition().get(6).getY());
+		// P08
+		getIvPlayer08().setX(Game.getBoard().getSquares().get(indexSquare).getPlayersPosition().get(7).getX());
+		getIvPlayer08().setY(Game.getBoard().getSquares().get(indexSquare).getPlayersPosition().get(7).getY());
 
 	}
 
@@ -140,6 +142,46 @@ public class GameAP extends AnchorPane {
 			ivPlayer08 = new ImageView(tmp);
 		}
 		return ivPlayer08;
+	}
+	
+	public static void setIvPlayer01(double x, double y) {
+		GameAP.ivPlayer01.setX(x);
+		GameAP.ivPlayer01.setY(y);
+	}
+
+	public static void setIvPlayer02(double x, double y) {
+		GameAP.ivPlayer02.setX(x);
+		GameAP.ivPlayer02.setY(y);
+	}
+
+	public static void setIvPlayer03(double x, double y) {
+		GameAP.ivPlayer03.setX(x);
+		GameAP.ivPlayer03.setY(y);
+	}
+
+	public static void setIvPlayer04(double x, double y) {
+		GameAP.ivPlayer04.setX(x);
+		GameAP.ivPlayer04.setY(y);
+	}
+
+	public static void setIvPlayer05(double x, double y) {
+		GameAP.ivPlayer05.setX(x);
+		GameAP.ivPlayer05.setY(y);
+	}
+
+	public static void setIvPlayer06(double x, double y) {
+		GameAP.ivPlayer06.setX(x);
+		GameAP.ivPlayer06.setY(y);
+	}
+
+	public static void setIvPlayer07(double x, double y) {
+		GameAP.ivPlayer07.setX(x);
+		GameAP.ivPlayer07.setY(y);
+	}
+
+	public static void setIvPlayer08(double x, double y) {
+		GameAP.ivPlayer08.setX(x);
+		GameAP.ivPlayer08.setY(y);
 	}
 
 }
