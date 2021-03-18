@@ -12,10 +12,13 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import model.Game;
 import model.GameOperation;
 import util.Constants;
 
@@ -34,6 +37,7 @@ public class AddPlayersAP extends AnchorPane {
 	private List<Text> texts ;
 	private List<TextField> textfds;
 	
+	private static List<ImageView> listImageView;
 
 	public AddPlayersAP() {
 		setNbPl(MIN_PLAYER);
@@ -41,6 +45,7 @@ public class AddPlayersAP extends AnchorPane {
 		this.getChildren().addAll(getTxtTitle(), getBtnBack(),getBtnStart(),getTxtNbPlayer(),getArrowUp(),getArrowDown());
 		this.getChildren().addAll(getTexts());
 		this.getChildren().addAll(getTextfds());
+		this.getChildren().addAll(getIvPlayer());
 		// title
 		txtTitle.getStyleClass().add("title-style");
 		AnchorPane.setTopAnchor(getTxtTitle(), 80.0);
@@ -239,9 +244,13 @@ public class AddPlayersAP extends AnchorPane {
 	}
 	
 	public void toForm() {
-		double topfp = 315.0;
-		double toptxt = 320.;
-		double topAdd = 110.;
+		//basis positions 
+		double topfp = 315.0, toptxt = 320., topImg = 290., topAdd = 110.;
+		double leftTxt = 100., addLeftTxtToTF = 250.;
+		double rightTF = 200., addRightTFToTxt= 400.;
+		double leftTxtToImg = addLeftTxtToTF - leftTxt; // 150.
+		double addLeftToRight = 1000. ;
+		
 		for(int i=MIN_PLAYER-2; i<MAX_PLAYER; i++) {
 			//ajout des fonctionnalité
 			getTexts().get(i).getStyleClass().add("txtAddPlayer");
@@ -250,32 +259,35 @@ public class AddPlayersAP extends AnchorPane {
 			getTextfds().get(i).getStyleClass().add("txtField");
 			getTextfds().get(i).opacityProperty().bind(Bindings.when(getTextfds().get(i).disabledProperty()).then(0.4).otherwise(1));
 			
-			//mise ne forme
+			//form
 			if((i+1)%2==0) {
-				//nb joueur pair : right anchor = 200 pour textfield
-				AnchorPane.setRightAnchor(getTextfds().get(i), 200.0);
-				//left anchor = 1350 pour txtfield
-				AnchorPane.setLeftAnchor(getTextfds().get(i), 1350.0);
-				//left anchor = 1100 pour text
-				AnchorPane.setLeftAnchor(getTexts().get(i), 1100.0);
-				AnchorPane.setRightAnchor(getTexts().get(i),600.0);
+				//Right column
+				AnchorPane.setRightAnchor(getTextfds().get(i), rightTF);
+				AnchorPane.setLeftAnchor(getTextfds().get(i), leftTxt +addLeftToRight + addLeftTxtToTF);
+				
+				AnchorPane.setLeftAnchor(getTexts().get(i), leftTxt +addLeftToRight);
+				AnchorPane.setRightAnchor(getTexts().get(i),rightTF + addRightTFToTxt);
+				
+				AnchorPane.setLeftAnchor(getIvPlayer().get(i), leftTxt+leftTxtToImg + addLeftToRight);
 			}
 			else {
-				//nbJoueur impaire : right anchor = 1200 pour textfield
-				AnchorPane.setRightAnchor(getTextfds().get(i), 1200.0);
-				//left anchor = 350 pour txtfield
-				AnchorPane.setLeftAnchor(getTextfds().get(i),350.0);
+				//Left column
+				AnchorPane.setRightAnchor(getTextfds().get(i), rightTF + addLeftToRight);
+				AnchorPane.setLeftAnchor(getTextfds().get(i), leftTxt+addLeftTxtToTF);
 
-				//left anchor = 100 pour text
-				AnchorPane.setLeftAnchor(getTexts().get(i), 100.0);
-				AnchorPane.setRightAnchor(getTexts().get(i),1600.0);
-				//top selon la regle des plus 110
+				AnchorPane.setLeftAnchor(getTexts().get(i), leftTxt);
+				AnchorPane.setRightAnchor(getTexts().get(i), rightTF + addRightTFToTxt + addLeftToRight);
+				
+				AnchorPane.setLeftAnchor(getIvPlayer().get(i), leftTxt+leftTxtToImg );
+				//Top 
 				topfp+=topAdd;
 				toptxt+=topAdd;
+				topImg+=topAdd;
 			}
-			//tous ont le meme top (selon leur type) qui augmente de 110 à chaque ligne
+			//Top
 			AnchorPane.setTopAnchor(getTexts().get(i), toptxt);
-			AnchorPane.setTopAnchor(getTextfds().get(i), topfp);		
+			AnchorPane.setTopAnchor(getTextfds().get(i), topfp);	
+			AnchorPane.setTopAnchor(getIvPlayer().get(i), topImg);
 		}
 	}
 	public void hideOrShowPlayer() {
@@ -284,10 +296,12 @@ public class AddPlayersAP extends AnchorPane {
 			if(i< getNbPl()) {
 				getTexts().get(i).setDisable(false);
 				getTextfds().get(i).setDisable(false);
+				getIvPlayer().get(i).setVisible(true);
 			}
 			else {
 				getTexts().get(i).setDisable(true);
 				getTextfds().get(i).setDisable(true);
+				getIvPlayer().get(i).setVisible(false);
 			}
 		}
 	}
@@ -309,11 +323,23 @@ public class AddPlayersAP extends AnchorPane {
 		for(int i=MIN_PLAYER-2; i<getNbPl()-1; i++) {
 			for(int j = i+1; j<getNbPl(); j++) {
 				if(getTextfds().get(i).getText().equalsIgnoreCase(getTextfds().get(j).getText())) {
-					System.out.println();
 					return false;
 				}
 			}
 		}
 		return true;
+	}
+	public List<ImageView> getIvPlayer() {
+		
+		if (listImageView==null) {
+			listImageView = new ArrayList<ImageView>();
+			for(int i = 0;i<=7;i++) {
+				Image tmp = new Image(getClass().getResourceAsStream("/img/Player_0"+(i+1)+".png"));
+				listImageView.add(new ImageView(tmp));
+				listImageView.get(i).setFitHeight(Constants.PLAYER_HEIGHT);
+				listImageView.get(i).setFitWidth(Constants.PLAYER_WIDTH);
+			}
+		}
+		return listImageView;
 	}
 }
