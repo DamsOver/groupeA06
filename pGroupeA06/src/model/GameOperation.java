@@ -102,18 +102,22 @@ public class GameOperation {
 	
 	public void setQuestion(Question q) {
 		//QUESTION SIZE?????
-		String question=""; 
-		StringBuffer str = new StringBuffer(q.getChallenge());
-		for(int i = 0; i<(int)(q.getChallenge().length()/Constants.SIZE_MAX_QUESTION);i++) {
-			//verify where is the closest space
-			for(int x = (i+1)*Constants.SIZE_MAX_QUESTION+i;x>(i)*Constants.SIZE_MAX_QUESTION+i;x--) {
-				if(str.toString().charAt(x)==' ') {
-					str.deleteCharAt(x);
-					str.insert(x,'\n');
-					break;
-				}
-			}
+		String question=q.getChallenge(); 
+		StringBuffer str = new StringBuffer();
+		
+		
+		List<String> strings = new ArrayList<String>();
+		int index = 0;
+		while (index < q.getChallenge().length()) {
+		    strings.add(question.substring(index, Math.min(index + Constants.SIZE_MAX_QUESTION,question.length())));
+		    index += Constants.SIZE_MAX_QUESTION;
 		}
+		
+		for(String s : strings) {
+			str.append(s);
+			str.append("\n");
+		}
+		
 		Question newQuestion = new Question(bc.getAuthor(),bc.getTheme(),bc.getSubject(),str.toString(),q.getAnswer());
 		
 		//setting the player's name

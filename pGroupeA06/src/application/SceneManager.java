@@ -51,8 +51,6 @@ public class SceneManager {
 								stackAnimation,
 								stackRating,
 								stackQuestion;
-	
-	private static List<StackPane> stackPanes;
 
 	private static HomeAP root;
 	private static AddCardsAP addCards;
@@ -103,13 +101,6 @@ public class SceneManager {
 		sceneRoot = new Scene(stackRoot, 1920, 1080); // Original
 //		sceneRoot = new Scene(stackGame, 1920, 1080); // Pour les tests
 	
-		//adding stackPane to the list
-		//no.clone() because the equals method is not redefined, so we need the real object
-		//we only add the two panes that are important a this point.
-		//used in settingsAP
-		stackPanes = new ArrayList<StackPane>();
-		stackPanes.add(stackQuestion);
-		stackPanes.add(stackRating);
 	}
 	
 	public static void volumeInitialization() {
@@ -170,11 +161,6 @@ public class SceneManager {
 	public static RatingAP getRating(){
 		return rating;
 	}	
-	
-	//getterStackPanes
-	public static List<StackPane> getStackPanes(){
-		return stackPanes;
-	}
 	
 	
 	//getter GameOperation

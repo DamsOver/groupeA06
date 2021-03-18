@@ -69,14 +69,7 @@ public class SettingsAP extends AnchorPane {
 		}
 		btnBack.setOnAction(new EventHandler<ActionEvent>(){
 	        public void handle(ActionEvent event) {
-	        	//verify the collection of StackPane from SceneManager, 
-	        	//and if the StackPane is the same, come back to it
-	        	
-	        	for(StackPane p : SceneManager.getStackPanes()) {
-	        		if(p.equals(sp)) {
-	        			SceneManager.getSceneRoot().setRoot(p);
-	        		}
-	        	}
+	        	SceneManager.getSceneRoot().setRoot(sp);  	
 	        }
 		});
 		return btnBack;
