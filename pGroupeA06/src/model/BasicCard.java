@@ -14,23 +14,25 @@ import util.Constants;
 
 public class BasicCard {
 
-	private String author;
-	private Theme theme;
 	private String subject;
 	private List<Question> questions;
+	private String author;
+	private Theme theme;
 
 	// constructor
 	public BasicCard(String author, Theme theme, String subject) {
-		this.author = author;
-		this.theme = theme;
+		this.author=author;
+		this.theme=theme;
 		this.subject = subject;
 		this.questions = new ArrayList<Question>();
 	}
 
+	
+
 	// constructor
 	public BasicCard(String author, Theme theme, String subject, List<Question> questions) {
-		this.author = author;
-		this.theme = theme;
+		this.author=author;
+		this.theme=theme;
 		this.subject = subject;
 
 		// new objects because a question can only be accessed by one card
@@ -61,10 +63,6 @@ public class BasicCard {
 		// if everything is ok, adding the question
 		questions.add(newQuestion);
 		return true;
-	}
-
-	public Theme getTheme() {
-		return theme;
 	}
 
 	public String getSubject() {
@@ -129,22 +127,48 @@ public class BasicCard {
 		return author;
 	}
 
-	@Override
-	public String toString() {
-		return "\nBasicCard [author=" + author + ", theme=" + theme + ", subject=" + subject + ", questions="
-				+ questions + "]\n";
+
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
-	public String toJson() {
-		return new Gson().toJson(this);
+
+
+	public Theme getTheme() {
+		return theme;
+	}
+
+
+
+	public void setTheme(Theme theme) {
+		this.theme = theme;
+	}
+
+
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "\nBasicCard [author=" + author + ", theme=" + getTheme() + ", subject=" + subject + ", questions="
+				+ questions + "]\n";
 	}
 
 	public BasicCard fromJson(String json) {
 		return new Gson().fromJson(json, BasicCard.class);
 	}
+	
+	public String toJson(){
+		return new Gson().toJson(this);
+	}
 
 	public BasicCard clone() {
 		// the clone of the questions is done in the constructor
-		return new BasicCard(this.author, this.theme, this.subject, questions);
+		return new BasicCard(this.getAuthor(), this.getTheme(), this.subject, questions);
 	}
 }
