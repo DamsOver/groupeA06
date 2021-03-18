@@ -15,7 +15,7 @@ public interface Constants {
 							ANIMATION_TIME_ERROR = 1000, //3000
 							ANIMATION_TIME_TURN = 2000,
 							TIMER_START = 35,
-							TIMER_LIMIT = 5,
+							TIMER_LIMIT = 10,
 							STRING_PERCENTAGE_ERROR_ANSWER=20,
 							NUMBER_PERCENTAGE_ERROR_ANSWER=2; 
 	

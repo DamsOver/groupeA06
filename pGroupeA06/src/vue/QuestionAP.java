@@ -1,22 +1,19 @@
 package vue;
 
 import application.SceneManager;
-import enumerations.Theme;
 import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-import model.GameOperation;
 import model.Question;
 import util.Constants;
 
@@ -42,7 +39,7 @@ public class QuestionAP extends AnchorPane{
 				getTfAnswer(),
 				getLbCorrectAS(),
 				getLblTimer());
-		
+
 		// lbTurn
 		lbTurn.getStyleClass().add("title3-style");
 		AnchorPane.setTopAnchor(getLbTurn(), 50.0);
@@ -82,11 +79,11 @@ public class QuestionAP extends AnchorPane{
 		
 		//timer
 		getLblTimer().getStyleClass().add("timer");
-		AnchorPane.setTopAnchor(getLblTimer(), 50.);
-		AnchorPane.setRightAnchor(getLblTimer(), 50.);
-		AnchorPane.setBottomAnchor(getLblTimer(), 900.);
+		AnchorPane.setTopAnchor(getLblTimer(), 40.);
+		AnchorPane.setRightAnchor(getLblTimer(), 40.);
 		AnchorPane.setLeftAnchor(getLblTimer(), 1720.);
 	}
+
 
 	public Label getLbTurn() {
 		if (lbTurn == null) {
@@ -195,6 +192,8 @@ public class QuestionAP extends AnchorPane{
 	public Label getLblTimer() {
 		if(lblTimer == null) {
 			lblTimer = new Label(""+Constants.TIMER_START);
+			getLblTimer().setMaxWidth(Double.MAX_VALUE);
+	        getLblTimer().setAlignment(Pos.CENTER);
 		}
 		return lblTimer;
 	}
