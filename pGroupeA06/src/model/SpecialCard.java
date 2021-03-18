@@ -1,5 +1,7 @@
 package model;
 
-public class SpecialCard {
-
+public abstract class SpecialCard {
+	
+	public abstract void action();
+		
 }

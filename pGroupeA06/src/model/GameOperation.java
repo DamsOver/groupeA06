@@ -5,6 +5,7 @@ import java.util.List;
 
 import application.SceneManager;
 import enumerations.CharAnswerRemoval;
+import enumerations.Theme;
 import exceptions.AlreadyPresentException;
 import exceptions.NotPresentException;
 import exceptions.TooLittleException;
@@ -26,6 +27,7 @@ public class GameOperation {
 	public GameOperation() {
 		this.game= new Game();
 		oldCards = new Deck();
+
 	}
 	
 	public static void addPlayers(List<String> playerNames) {
@@ -41,7 +43,6 @@ public class GameOperation {
 		}
 	}
 	
-	
 	public void turnRating(boolean first) {
 		
 		//getting the current turn
@@ -50,16 +51,9 @@ public class GameOperation {
 		//getting the player that will play the turn
 		Player p = getPlayerTurn();
 		
-		//drawing a card
-		bc = drawCard(p.getSquare());
-		
-		//change the ratingAP labels
-		SceneManager.getRating().setLbSubject(bc.getSubject());
-		SceneManager.getRating().setLbTheme(bc.getTheme());
-		
-		//displaying animations
 		if(first) {
-			//first turn
+			StartCard sc = new StartCard();
+			sc.action();
 			PauseTransition p2= SceneManager.getGameOperation().animationTurn();
     		PauseTransition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,SceneManager.getStackGame(),null,p2);	  
     		SceneManager.getTransitionAnimation().setTxtAnimation("The game starts!");
@@ -67,7 +61,27 @@ public class GameOperation {
     		pause1.play();
 		}
 		else {
-			//not the first turn
+			//verify if it's a special theme
+		switch (p.getSquare().getTheme()) {
+			case START : 
+				StartCard sc = new StartCard();
+				sc.action();
+				break;
+			case FINISH :
+				FinishCard fc = new FinishCard();
+				fc.action();
+				break;
+			case SPECIAL :
+				break;
+			default :
+				//drawing a card
+				bc = drawCard(p.getSquare().getTheme());
+				
+				//change the ratingAP labels
+				SceneManager.getRating().setLbSubject(bc.getSubject());
+				SceneManager.getRating().setLbTheme(bc.getTheme());
+				break;
+			}
 			animationTurn().play();
 		}
 	}
@@ -81,7 +95,12 @@ public class GameOperation {
 		//getting the question
 		Question q = bc.getQuestions().get(rating-1);
 		
+		//setting the question
+		setQuestion(q);
 		
+	}
+	
+	public void setQuestion(Question q) {
 		//QUESTION SIZE?????
 		String question=""; 
 		StringBuffer str = new StringBuffer(q.getChallenge());
@@ -320,17 +339,29 @@ public class GameOperation {
 		PauseTransition pause3 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_RATING,SceneManager.getStackRating(),null,null);
 		PauseTransition pause2 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,SceneManager.getStackTransititionAnimation(),
 				"It's "+ SceneManager.getGameOperation().getPlayerTurn().getName() +"'s turn!",pause3);
-		
-		return pause2;
+		PauseTransition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,SceneManager.getStackGame(),null,pause2);	
+		return pause1;
 	}
 	
-	public BasicCard drawCard(Square sq) {
+	public PauseTransition LastTurn() {
+		SceneManager.getRating().setLbTurn(SceneManager.getGameOperation().getPlayerTurn().getName());
+		PauseTransition pause3 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_RATING,SceneManager.getStackQuestion(),null,null);
+		PauseTransition pause2 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,SceneManager.getStackTransititionAnimation(),
+				"Last Turn for "+ SceneManager.getGameOperation().getPlayerTurn().getName() +"!",pause3);
+		PauseTransition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,SceneManager.getStackGame(),null,pause2);	
+		return pause1;
+	}
+	
+	
+	
+	public BasicCard drawCard(Theme th) {
 		boolean alreadyPresent = false;
 		bc=null;
 		ArrayList<BasicCard> potentialCards = new ArrayList<BasicCard>();
 		//check if there is a card that has the same theme than the square
+		
 		for(BasicCard b :game.getDeck().getBasicCards() ) {
-			if (b.getTheme().equals(sq.getTheme())){
+			if (b.getTheme().equals(th)){
 				//check if the card was not already used in this game
 				alreadyPresent = false;
 				for(BasicCard b2 : oldCards.getBasicCards()) {
@@ -347,7 +378,7 @@ public class GameOperation {
 				System.out.println("no more questions");
 				//remove all the questions with the same theme in the deck of oldCards
 				for(BasicCard b :oldCards.getBasicCards() ) {
-					if (b.getTheme().equals(sq.getTheme())){
+					if (b.getTheme().equals(th)){
 						try {
 							oldCards.removeBasicCard(b);
 						} catch (TooLittleException | NotPresentException e) {
@@ -355,7 +386,7 @@ public class GameOperation {
 						}
 					}	
 				}
-				return drawCard(sq);
+				return drawCard(th);
 			}
 		else {
 			int randomNumber = new Random().nextInt(potentialCards.size());
@@ -369,7 +400,7 @@ public class GameOperation {
 	}
 	
 	
-	public Player getPlayerTurn() {
+	public static Player getPlayerTurn() {
 		return game.getPlayers().get(game.getTurn()%game.getPlayers().size());
 	}
 	

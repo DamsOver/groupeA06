@@ -23,7 +23,7 @@ import util.Constants;
 public class QuestionAP extends AnchorPane{
 
 	private Label lbTurn, lbQuestion, lbCorrectAS, lblTimer;
-	private Button btnOK, btnQuestionMark/*,btnQuestionMark2,btnQuestionMark3*/;
+	private Button btnOK, btnQuestionMark;
 	private TextField tfAnswer;
 	
 	private String answer;
@@ -37,8 +37,6 @@ public class QuestionAP extends AnchorPane{
 		this.getStyleClass().add("paneQuestion");
 		this.getChildren().addAll(getLbTurn(),
 				getBtnQuestionMark(),
-				/*getBtnQuestionMark2(),
-				getBtnQuestionMark3(),*/
 				getLbQuestion(),
 				getBtnOK(),
 				getTfAnswer(),
@@ -57,24 +55,7 @@ public class QuestionAP extends AnchorPane{
 		AnchorPane.setBottomAnchor(getBtnQuestionMark(), 500.0);
 		AnchorPane.setLeftAnchor(getBtnQuestionMark(), 800.0);
 		AnchorPane.setRightAnchor(getBtnQuestionMark(), 800.0);
-		//btnQuestionMark1.setVisible(false);
-/*		
-		//btnQuestionMark2
-		btnQuestionMark2.getStyleClass().add("qm2");
-		AnchorPane.setTopAnchor(getBtnQuestionMark2(), 150.0);
-		AnchorPane.setBottomAnchor(getBtnQuestionMark2(), 500.0);
-		AnchorPane.setLeftAnchor(getBtnQuestionMark2(), 800.0);
-		AnchorPane.setRightAnchor(getBtnQuestionMark2(), 800.0);
-		btnQuestionMark2.setVisible(false);
-		
-		//btnQuestionMark3
-		btnQuestionMark3.getStyleClass().add("qm3");
-		AnchorPane.setTopAnchor(getBtnQuestionMark3(), 150.0);
-		AnchorPane.setBottomAnchor(getBtnQuestionMark3(), 500.0);
-		AnchorPane.setLeftAnchor(getBtnQuestionMark3(), 800.0);
-		AnchorPane.setRightAnchor(getBtnQuestionMark3(), 800.0);
-		btnQuestionMark3.setVisible(false);
-*/	
+
 		// Question
 		lbQuestion.getStyleClass().add("question");
 		AnchorPane.setTopAnchor(getLbQuestion(), 600.0);
@@ -130,8 +111,6 @@ public class QuestionAP extends AnchorPane{
 		}
 	}
 	
-	
-	
 	public void setLbTurn(String name) {
 		if (lbTurn != null) {
 			lbTurn.setText(name+"'s turn");
@@ -158,20 +137,6 @@ public class QuestionAP extends AnchorPane{
 		}
 		return btnQuestionMark;
 	}
-/*	public Button getBtnQuestionMark2() {
-		if (btnQuestionMark2 == null) {
-			btnQuestionMark2 = new Button();
-		}
-
-		return btnQuestionMark2;
-	}
-	public Button getBtnQuestionMark3() {
-		if (btnQuestionMark3 == null) {
-			btnQuestionMark3 = new Button();
-		}
-		return btnQuestionMark3;
-	}
-*/
 	public TextField getTfAnswer() {
 		if(tfAnswer == null) {
 			tfAnswer = new TextField();
@@ -214,21 +179,6 @@ public class QuestionAP extends AnchorPane{
 	}
 	
 	public void enableQuestionMark(int choice) {
-		/*if(choice==1) {
-			btnQuestionMark1.setVisible(true);
-			btnQuestionMark2.setVisible(false);
-			btnQuestionMark3.setVisible(false);
-		}
-		else if(choice==2){
-			btnQuestionMark1.setVisible(false);
-			btnQuestionMark2.setVisible(true);
-			btnQuestionMark3.setVisible(false);
-		}
-		else if(choice==3) {
-			btnQuestionMark1.setVisible(false);
-			btnQuestionMark2.setVisible(false);
-			btnQuestionMark3.setVisible(true);
-		}*/
 		String path ="/img/interrogation_"+choice+".png";
 		String style = "-fx-background-image: url(\""+path+"\");";
 		btnQuestionMark.setStyle(style);
@@ -261,7 +211,6 @@ public class QuestionAP extends AnchorPane{
                 new KeyFrame(Duration.seconds(1),
                   new EventHandler<ActionEvent>() {
 					public void handle(ActionEvent e) {
-						// TODO Auto-generated method stub
 						timeSeconds.set(timeSeconds.get()-1);
                         // update timerLabel
                         lblTimer.setText(""+timeSeconds.get());
