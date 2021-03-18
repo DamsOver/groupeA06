@@ -156,18 +156,22 @@ public class GameOperation {
 			//enabling only the Green question mark
 			SceneManager.getQuestion().enableQuestionMark(3);
 			
+			Square sq = game.movePlayer(rating,p.getSquare(),p);
+			
+			p.setSquare(sq);
 			
 			
 			
 			
 			
+			/*
 			//if the player is further than the last card of the board :
 			if(game.movePlayer(rating,p.getSquare())==null) {
 				System.out.println("player " + p.getName() + " wins!");
 			}
 			//the player moves 
 			//need an implementation of the movement
-			
+			*/
 		}
 		else {
 			//the anwser was wrong

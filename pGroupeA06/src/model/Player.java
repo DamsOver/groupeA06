@@ -1,6 +1,7 @@
 package model;
 
 import enumerations.PlayerColors;
+import vue.GameAP;
 
 public class Player {
 	private String name;
@@ -31,9 +32,19 @@ public class Player {
 		return square;
 	}
 
-	public void going(Square square) {
+	public void setSquare(Square square) {
 		this.square = square;
 	}
+	
+	public void setSquare(Square square,Game g,Player p, int indexPlayer) {
+		this.square = square;
+		GameAP.setIvPlayer(
+				Game.getBoard().getSquares().get(g.getBoard().getSquares().indexOf(p.getSquare())).getPlayersPosition().get(indexPlayer).getX(),
+				Game.getBoard().getSquares().get(g.getBoard().getSquares().indexOf(p.getSquare())).getPlayersPosition().get(indexPlayer).getY(),
+				indexPlayer);
+	}
+	
+	
 	
 	public Player clone() {
 		return new Player(name,PlayerColors.getValue(color),square);
