@@ -1,9 +1,13 @@
 package vue;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URISyntaxException;
 
 import application.SceneManager;
 import javafx.event.ActionEvent;
@@ -61,7 +65,7 @@ public class GameRulesAP extends AnchorPane {
 	public Text getTxtRules() {
 		if (txtRules == null) {
 			txtRules = new Text();
-			try(BufferedReader rule = new BufferedReader(new FileReader("src/text/GameRule.txt"))) {
+			try(BufferedReader rule = new BufferedReader(new InputStreamReader(GameRulesAP.class.getResourceAsStream("/text/GameRule.txt")))) {			
 				StringBuilder allText = new StringBuilder();
 				String tmp = new String();
 				while((tmp=rule.readLine())!= null){
