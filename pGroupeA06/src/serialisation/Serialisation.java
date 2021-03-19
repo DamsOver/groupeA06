@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.Scanner;
 
@@ -15,6 +16,7 @@ import java.io.FileWriter;
 
 import model.Board;
 import model.Deck;
+import util.Constants;
 
 public class Serialisation implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -37,12 +39,7 @@ public class Serialisation implements Serializable {
 
 	public static Deck loadDeckClear(String nom) {
 		BufferedReader bufferedReader = null;
-		try {
-			bufferedReader = new BufferedReader(new FileReader(nom));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		bufferedReader = new BufferedReader(new InputStreamReader(Board.class.getResourceAsStream(nom)));
 		
 		return new Gson().fromJson(bufferedReader,Deck.class);
 	}
@@ -64,12 +61,7 @@ public class Serialisation implements Serializable {
 	
 	public static Board loadBoardClear(String nom) {
 		BufferedReader bufferedReader = null;
-		try {
-			bufferedReader = new BufferedReader(new FileReader(nom));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		bufferedReader = new BufferedReader(new InputStreamReader(Board.class.getResourceAsStream(nom)));
 		
 		return new Gson().fromJson(bufferedReader,Board.class);
 	}

@@ -18,10 +18,10 @@ public class Game {
 	private Deck deck;
 
 	public Game() {
-		board = new Board().fromJson(Constants.BOARD_PATH);
+		board = new Board().fromJson();
 		this.players = new ArrayList<Player>();
 		this.turn = 0;
-		this.deck = new Deck().fromJson(Constants.DECK_PATH);
+		this.deck = new Deck().fromJson();
 	}
 
 	public boolean addPlayer(String name, int number) throws AlreadyPresentException {

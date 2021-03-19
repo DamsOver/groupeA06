@@ -11,7 +11,7 @@ public class BoardCreator {
 
 	public static void main(String[] args) {
 		Board bd = new Board();
-		bd= bd.fromJson("board.JSON");
+		bd= bd.fromJson();
 		
 		
 		System.out.println(bd.toString());

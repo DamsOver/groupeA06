@@ -85,7 +85,7 @@ class TestDeck {
 		deck.addBasicCard(bc);
 		
 		assertEquals(deck.toJson(),"{\"deck\":[{\"author\":\"Martin\",\"theme\":\"IMPROBABLE\",\"subject\":\"Nature\",\"questions\":[{\"author\":\"Martin\",\"theme\":\"IMPROBABLE\",\"subject\":\"Nature\",\"challenge\":\"What is the only flying mammal?\",\"answer\":\"The bat\"}]}]}");
-		assertEquals(deck.fromJson(deck.toJson()),deck);
+		assertEquals(deck.fromJson(),deck);
 	}
 	
 	@Test

@@ -1,11 +1,17 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
 
 import serialisation.Serialisation;
+import util.Constants;
+import vue.GameRulesAP;
 
 public class Board {
 	private List<Square> squares;
@@ -34,8 +40,9 @@ public class Board {
 		return new Gson().toJson(this);
 	}
 	
-	public Board fromJson(String nom) {
-		return Serialisation.loadBoardClear(nom);
+	public Board fromJson() {
+		
+		return Serialisation.loadBoardClear(Constants.BOARD_PATH);
 	}
 	
 	public String toString() {

@@ -16,7 +16,7 @@ public class AddCards {
 	public static void main(String[] args) {
 		Deck d = new Deck();
 
-		d = d.fromJson("deck.JSON");
+		d = d.fromJson();
 
 		System.out.println(d.toString());
 		int x = 1;

@@ -19,8 +19,8 @@ public interface Constants {
 							STRING_PERCENTAGE_ERROR_ANSWER=20,
 							NUMBER_PERCENTAGE_ERROR_ANSWER=2; 
 	
-	public static final String 	DECK_PATH = "deck.JSON",
-								BOARD_PATH= "board.JSON",
+	public static final String 	DECK_PATH = "/text/deck.JSON",
+								BOARD_PATH= "/text/board.JSON",
 								RULE_PATH= "/text/GameRule.txt";
 	
 	// Size Players	

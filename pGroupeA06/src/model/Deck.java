@@ -12,6 +12,7 @@ import exceptions.AlreadyPresentException;
 import exceptions.NotPresentException;
 import exceptions.TooLittleException;
 import serialisation.Serialisation;
+import util.Constants;
 
 public class Deck {
 	
@@ -80,8 +81,8 @@ public class Deck {
 		return new Gson().toJson(this);
 	}
 	
-	public Deck fromJson(String nom) {
-		return Serialisation.loadDeckClear(nom);
+	public Deck fromJson() {
+		return Serialisation.loadDeckClear(Constants.DECK_PATH);
 	}
 
 
