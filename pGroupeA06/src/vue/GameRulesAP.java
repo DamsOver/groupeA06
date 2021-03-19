@@ -65,7 +65,7 @@ public class GameRulesAP extends AnchorPane {
 	public Text getTxtRules() {
 		if (txtRules == null) {
 			txtRules = new Text();
-			try(BufferedReader rule = new BufferedReader(new InputStreamReader(GameRulesAP.class.getResourceAsStream("/text/GameRule.txt")))) {			
+			try(BufferedReader rule = new BufferedReader(new InputStreamReader(GameRulesAP.class.getResourceAsStream(Constants.RULE_PATH)))) {			
 				StringBuilder allText = new StringBuilder();
 				String tmp = new String();
 				while((tmp=rule.readLine())!= null){
