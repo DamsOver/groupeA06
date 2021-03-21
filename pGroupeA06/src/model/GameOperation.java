@@ -161,13 +161,7 @@ public class GameOperation {
 			SceneManager.getQuestion().enableQuestionMark(3);
 			
 			Square sq = game.movePlayer(rating,p.getSquare(),p);
-			
-			p.setSquare(sq);
-			
-			
-			
-			
-			
+					
 			/*
 			//if the player is further than the last card of the board :
 			if(game.movePlayer(rating,p.getSquare())==null) {

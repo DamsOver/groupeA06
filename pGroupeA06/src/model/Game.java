@@ -58,7 +58,7 @@ public class Game {
 		int playerSquare=board.getSquares().indexOf(p.getSquare());
 		
 		tmp = playerSquare + next;
-		p.setSquare(board.getSquares().get(tmp),this,p, indexPlayer);
+		p.setSquare(board.getSquares().get(tmp),this,p, indexPlayer, board.getSquares().get(playerSquare));
 
 		return board.getSquares().get(next);
 	}

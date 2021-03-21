@@ -13,7 +13,6 @@ import util.Constants;
 public class GameAP extends AnchorPane {
 
 	private static List<ImageView> listImageView;
-	
 
 	public GameAP() {
 		this.getStyleClass().add("gameBoard");
@@ -21,11 +20,11 @@ public class GameAP extends AnchorPane {
 	}
 
 	public List<ImageView> getIvPlayer() {
-		
-		if (listImageView==null) {
+
+		if (listImageView == null) {
 			listImageView = new ArrayList<ImageView>();
-			for(int i = 0;i<=7;i++) {
-				Image tmp = new Image(getClass().getResourceAsStream("/img/Player_0"+(i+1)+".png"));
+			for (int i = 0; i <= 7; i++) {
+				Image tmp = new Image(getClass().getResourceAsStream("/img/Player_0" + (i + 1) + ".png"));
 				listImageView.add(new ImageView(tmp));
 				listImageView.get(i).setFitHeight(Constants.PLAYER_HEIGHT);
 				listImageView.get(i).setFitWidth(Constants.PLAYER_WIDTH);
@@ -41,5 +40,8 @@ public class GameAP extends AnchorPane {
 		listImageView.get(indice).setY(y);
 	}
 
+	public static List<ImageView> getListImageView() {
+		return listImageView;
+	}
 
 }
