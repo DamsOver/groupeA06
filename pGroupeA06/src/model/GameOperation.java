@@ -66,12 +66,16 @@ public class GameOperation {
 			case START : 
 				StartCard sc = new StartCard();
 				sc.action();
+				animationTurn().play();
 				break;
 			case FINISH :
 				FinishCard fc = new FinishCard();
 				fc.action();
+				animationTurn().play();
 				break;
 			case SPECIAL :
+				BasicSpecialCard bsc = new BasicSpecialCard();
+				bsc.action();
 				break;
 			default :
 				//drawing a card
@@ -80,9 +84,9 @@ public class GameOperation {
 				//change the ratingAP labels
 				SceneManager.getRating().setLbSubject(bc.getSubject());
 				SceneManager.getRating().setLbTheme(bc.getTheme());
+				animationTurn().play();
 				break;
 			}
-			animationTurn().play();
 		}
 	}
 	
@@ -160,7 +164,7 @@ public class GameOperation {
 			//enabling only the Green question mark
 			SceneManager.getQuestion().enableQuestionMark(3);
 			
-			Square sq = game.movePlayer(rating,p.getSquare(),p);
+			game.movePlayer(rating,p.getSquare(),p);
 					
 			/*
 			//if the player is further than the last card of the board :

@@ -51,16 +51,16 @@ public class Game {
 		players.add(p);
 	}
 
-	public Square movePlayer(int next, Square sq, Player p) {
+	public void movePlayer(int next, Square sq, Player p) {
 
 		int tmp;
 		int indexPlayer = players.indexOf(p);
 		int playerSquare=board.getSquares().indexOf(p.getSquare());
 		
 		tmp = playerSquare + next;
+		
 		p.setSquare(board.getSquares().get(tmp),this,p, indexPlayer, board.getSquares().get(playerSquare));
 
-		return board.getSquares().get(next);
 	}
 
 	public static Board getBoard() {

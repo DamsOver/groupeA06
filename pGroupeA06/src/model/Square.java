@@ -53,6 +53,4 @@ public class Square {
 			return false;
 		return true;
 	}
-
-
 }

@@ -45,7 +45,7 @@
           "theme": "IMPROBABLE",
           "subject": "The Earth",
           "challenge": "What is the highest mountain of the world?",
-          "answer": "Mount Everest"
+          "answer": "Everest"
         },
         {
           "author": "Martin",
@@ -136,7 +136,7 @@
           "theme": "PLEASURE",
           "subject": "Holidays",
           "challenge": "How much money spend French vacationers per day? (€)",
-          "answer": "Around 80"
+          "answer": "80"
         }
       ]
     },
@@ -227,7 +227,7 @@
           "theme": "SCHOOL",
           "subject": "History",
           "challenge": "In Belgium, since when elementary school is mandatory?",
-          "answer": "In 1914"
+          "answer": "1914"
         },
         {
           "author": "Martin",
@@ -241,7 +241,7 @@
           "theme": "SCHOOL",
           "subject": "History",
           "challenge": "When was the first girl school founded in Belgium?",
-          "answer": "In 1864"
+          "answer": "1864"
         }
       ]
     },
@@ -430,7 +430,7 @@
           "theme": "INFORMATICS",
           "subject": "OOP Concept",
           "challenge": "What is the name of the process that takes care of automatic memory management ?",
-          "answer": "Garbage Collectors"
+          "answer": "Garbage Collector"
         },
         {
           "author": "Damien",
@@ -479,7 +479,7 @@
           "theme": "INFORMATICS",
           "subject": "Elements in a class",
           "challenge": "What type of attribute shares its value with all the objects in its class ?",
-          "answer": "Class variables"
+          "answer": "Class variable"
         },
         {
           "author": "Damien",
