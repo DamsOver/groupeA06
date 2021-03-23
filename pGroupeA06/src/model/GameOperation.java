@@ -100,6 +100,7 @@ public class GameOperation {
 			case SPECIAL:
 				BasicSpecialCard bsc = new BasicSpecialCard();
 				bsc.action();
+				game.turnUp();
 				break;
 			default:
 				//on recoit la transition précédente
