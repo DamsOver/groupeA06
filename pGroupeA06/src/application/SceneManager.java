@@ -65,6 +65,7 @@ public class SceneManager {
 	private static RatingAP rating;
 	private static QuestionAP question;
 	
+	//retirer static
 	private static GameOperation go;
 	
 	public static void initialize() {
@@ -138,7 +139,8 @@ public class SceneManager {
 			}
 		});
 	}
-		
+	
+	//a remplacer par getCHildren
 	//getters AnchorPane
 	public static OptionsAP getOptions() {
 		return options;

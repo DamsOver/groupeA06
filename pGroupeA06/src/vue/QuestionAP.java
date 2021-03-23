@@ -3,6 +3,7 @@ package vue;
 import application.SceneManager;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.animation.Transition;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
@@ -122,6 +123,24 @@ public class QuestionAP extends AnchorPane{
 		return btnOK;
 	}
 	
+	public EventHandler<ActionEvent> getClickBtn() {
+		if(clickBtn == null) {
+			clickBtn = new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent event) {
+					
+					setAnswer();
+					
+					//verification
+		        	SceneManager.getGameOperation().answerVerification();
+		        	timeline.stop();
+				}
+			};
+		}
+		getTfAnswer().clear();
+		return clickBtn;
+	}
+	
+	
 	
 	public void enableBtnOK(boolean choice) {
 		btnOK.setVisible(choice);
@@ -222,18 +241,6 @@ public class QuestionAP extends AnchorPane{
 		timeline.setOnFinished(getClickBtn());
 	}
 	
-	public EventHandler<ActionEvent> getClickBtn() {
-		if(clickBtn == null) {
-			clickBtn = new EventHandler<ActionEvent>() {
-				public void handle(ActionEvent event) {
-					setAnswer();
-		        	SceneManager.getGameOperation().answerVerification();
-		        	timeline.stop();
-				}
-			};
-		}
-		getTfAnswer().clear();
-		return clickBtn;
-	}
+	
 }	
 

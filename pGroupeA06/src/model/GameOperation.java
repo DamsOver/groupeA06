@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import application.SceneManager;
@@ -9,7 +10,11 @@ import enumerations.Theme;
 import exceptions.AlreadyPresentException;
 import exceptions.NotPresentException;
 import exceptions.TooLittleException;
+import javafx.animation.Animation;
 import javafx.animation.PauseTransition;
+import javafx.animation.SequentialTransition;
+import javafx.animation.Transition;
+import javafx.animation.TranslateTransition;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -59,8 +64,8 @@ public class GameOperation {
 		}
 	}
 
-	public void turnRating(boolean first) {
-
+	public void turnRating(boolean first,Animation[] transitions) {
+		
 		// getting the current turn
 		int turn = game.getTurn();
 
@@ -70,37 +75,44 @@ public class GameOperation {
 		if (first) {
 			StartCard sc = new StartCard();
 			sc.action();
-			PauseTransition p2 = SceneManager.getGameOperation().animationTurn();
-			PauseTransition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,
-					SceneManager.getStackGame(), null, p2);
+			Transition p2 = SceneManager.getGameOperation().animationTurn(null);
+			Transition p1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,
+					SceneManager.getStackGame(), null);
 			SceneManager.getTransitionAnimation().setTxtAnimation("The game starts!");
 			SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
-			pause1.play();
+
+			SequentialTransition initialTransition = new SequentialTransition(p1,p2);
+			initialTransition.play();
+			
 		} else {
 			// verify if it's a special theme
 			switch (p.getSquare().getTheme()) {
 			case START:
 				StartCard sc = new StartCard();
 				sc.action();
-				animationTurn().play();
+				animationTurn(transitions).play();
 				break;
 			case FINISH:
 				FinishCard fc = new FinishCard();
 				fc.action();
-				animationTurn().play();
+				animationTurn(transitions).play();
 				break;
 			case SPECIAL:
 				BasicSpecialCard bsc = new BasicSpecialCard();
 				bsc.action();
 				break;
 			default:
+				//on recoit la transition précédente
+				//on appelle une fct qui va jouer toute la transition
+				
+				
 				// drawing a card
 				bc = drawCard(p.getSquare().getTheme());
 
 				// change the ratingAP labels
 				SceneManager.getRating().setLbSubject(bc.getSubject());
 				SceneManager.getRating().setLbTheme(bc.getTheme());
-				animationTurn().play();
+				animationTurn(transitions).play();
 				break;
 			}
 		}
@@ -163,6 +175,9 @@ public class GameOperation {
 	}
 
 	public void answerVerification() {
+		
+		Animation[] tab = null;
+		Animation[] tempTab = null;
 		// getting the rating
 		int rating = SceneManager.getRating().getRating();
 
@@ -180,9 +195,15 @@ public class GameOperation {
 			mediaPlayerCorrect.seek(Duration.ZERO);
 			// enabling only the Green question mark
 			SceneManager.getQuestion().enableQuestionMark(3);
-
-			game.movePlayer(rating, p.getSquare(), p);
-
+			
+			tempTab=game.movePlayer(rating, p.getSquare(), p);
+			tab = new Animation[tempTab.length+1];
+			tab[0]=SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_ANSWER,
+					SceneManager.getStackQuestion(), null);
+			for(int i = 0;i<tempTab.length;i++) {
+				tab[i+1]=tempTab[i];
+			}
+			
 			/*
 			 * //if the player is further than the last card of the board :
 			 * if(game.movePlayer(rating,p.getSquare())==null) {
@@ -198,6 +219,9 @@ public class GameOperation {
 			SceneManager.getQuestion().enableQuestionMark(2);
 			// disabling the answer
 			SceneManager.getQuestion().enableLbAnswer(true);
+			tab = new Animation[1];
+			tab[0]=SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_ANSWER,
+					SceneManager.getStackQuestion(), null);
 		}
 
 		// next turn
@@ -211,7 +235,7 @@ public class GameOperation {
 		}
 
 		// animation nextTurn
-		turnRating(false);
+		turnRating(false,tab);
 	}
 
 	public boolean questionVerificationAlgorithm() {
@@ -352,28 +376,49 @@ public class GameOperation {
 		}
 	}
 
-	public PauseTransition animationTurn() {
-
-		SceneManager.getRating().setLbTurn(SceneManager.getGameOperation().getPlayerTurn().getName());
-		PauseTransition pause3 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_RATING,
-				SceneManager.getStackRating(), null, null);
-		PauseTransition pause2 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,
+	public SequentialTransition animationTurn(Animation[] before) {
+		//first, player before moves
+		//then, message it's player's turn
+		//then turn rating or .. depends on the square
+		Animation[] tab = new Animation[(before==null)?3:before.length+3];
+		Animation[] tabTemp = new Animation[3];
+		
+		SceneManager.getRating().setLbTurn(GameOperation.getPlayerTurn().getName());
+		tabTemp[2]= SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_RATING,
+				SceneManager.getStackRating(), null);
+		tabTemp[1] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,
 				SceneManager.getStackTransititionAnimation(),
-				"It's " + SceneManager.getGameOperation().getPlayerTurn().getName() + "'s turn!", pause3);
-		PauseTransition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,
-				SceneManager.getStackGame(), null, pause2);
-		return pause1;
+				"It's " + GameOperation.getPlayerTurn().getName() + "'s turn!");
+		tabTemp[0] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,
+				SceneManager.getStackGame(), null);
+		
+		
+		if(before!=null) {
+			for(int i = 0;i<before.length;i++) {
+				tab[i]=before[i];
+			}
+			
+			for(int i = before.length;i<before.length+3;i++) {
+				tab[i]=tabTemp[i-before.length];
+			}
+			
+			return new SequentialTransition (tab);
+		}
+		else {
+			
+			return new SequentialTransition (tabTemp);
+		}
 	}
 
-	public PauseTransition LastTurn() {
-		SceneManager.getRating().setLbTurn(SceneManager.getGameOperation().getPlayerTurn().getName());
-		PauseTransition pause3 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_RATING,
-				SceneManager.getStackQuestion(), null, null);
-		PauseTransition pause2 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,
+	public Transition LastTurn() {
+		SceneManager.getRating().setLbTurn(GameOperation.getPlayerTurn().getName());
+		Transition pause3 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_RATING,
+				SceneManager.getStackQuestion(), null);
+		Transition pause2 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,
 				SceneManager.getStackTransititionAnimation(),
-				"Last Turn for " + SceneManager.getGameOperation().getPlayerTurn().getName() + "!", pause3);
-		PauseTransition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,
-				SceneManager.getStackGame(), null, pause2);
+				"Last Turn for " + GameOperation.getPlayerTurn().getName() + "!");
+		Transition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,
+				SceneManager.getStackGame(), null);
 		return pause1;
 	}
 
@@ -426,19 +471,17 @@ public class GameOperation {
 	}
 
 	// begin from the last animation
-	public PauseTransition animation(Integer pauses, Pane scene, String txtAnimation, PauseTransition pt) {
+	public Transition animation(Integer pauses, Pane scene, String txtAnimation) {
 
 		PauseTransition pauseTransition = new PauseTransition(Duration.millis(pauses));
 		pauseTransition.setOnFinished(e -> {
+			
 			// If it is a transitionAnimation, we have to set a new text to him, contained
 			// in txtAnimation
 			if (scene == SceneManager.getStackTransititionAnimation()) {
 				SceneManager.getTransitionAnimation().setTxtAnimation(txtAnimation);
 			}
 			SceneManager.getSceneRoot().setRoot(scene);
-			if (pt != null) {
-				pt.play();
-			}
 		});
 		return pauseTransition;
 	}

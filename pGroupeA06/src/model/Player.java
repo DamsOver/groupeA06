@@ -1,8 +1,12 @@
 package model;
 
+import application.SceneManager;
 import enumerations.PlayerColors;
+import javafx.animation.Animation;
+import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
+import util.Constants;
 import vue.GameAP;
 
 public class Player {
@@ -83,7 +87,7 @@ public class Player {
 		this.square = square;
 	}
 
-	public void setSquare(Square square, Game g, Player p, int indexPlayer, Square oldSquare) {
+	public Animation[] setSquare(Square square, Game g, Player p, int indexPlayer, Square oldSquare) {
 
 		this.square = square;
 		this.oldSquare = oldSquare;
@@ -91,8 +95,8 @@ public class Player {
 		double distX = 0;
 		double distY = 0;
 
-		int indexOfSquare = g.getBoard().getSquares().indexOf(p.getSquare());
-		int indexOfOldSquare = g.getBoard().getSquares().indexOf(p.getOldSquare());
+		int indexOfSquare = Game.getBoard().getSquares().indexOf(p.getSquare());
+		int indexOfOldSquare = Game.getBoard().getSquares().indexOf(p.getOldSquare());
 		
 		double currentPosX = Game.getBoard().getSquares().get(indexOfOldSquare).getPlayersPosition().get(indexPlayer)
 				.getX();
@@ -113,13 +117,18 @@ public class Player {
 		translate.setByX(distX);
 		translate.setByY(distY);
 		
-		translate.setDuration(Duration.millis(2000));
+		translate.setDuration(Duration.millis(Constants.ANIMATION_TIME_TURN));
 
 		translate.setNode(GameAP.getListImageView().get(indexPlayer));
-		translate.play();
+		//translate.play();
 
 //		GameAP.setIvPlayer(nextPosX, nextPosY, indexPlayer);
-
+		Animation[] a = new Animation[2];
+		a[0]=SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,
+				SceneManager.getStackGame(), null);
+		a[1]=translate;
+		
+		return a;
 	}
 
 	public Player clone() {

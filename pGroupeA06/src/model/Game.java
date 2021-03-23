@@ -8,6 +8,8 @@ import application.SceneManager;
 import enumerations.PlayerColors;
 import enumerations.Theme;
 import exceptions.AlreadyPresentException;
+import javafx.animation.Animation;
+import javafx.animation.Transition;
 import util.Constants;
 import vue.GameAP;
 
@@ -51,7 +53,7 @@ public class Game {
 		players.add(p);
 	}
 
-	public void movePlayer(int next, Square sq, Player p) {
+	public Animation[] movePlayer(int next, Square sq, Player p) {
 
 		int tmp;
 		int indexPlayer = players.indexOf(p);
@@ -59,8 +61,7 @@ public class Game {
 		
 		tmp = playerSquare + next;
 		
-		p.setSquare(board.getSquares().get(tmp),this,p, indexPlayer, board.getSquares().get(playerSquare));
-
+		return p.setSquare(board.getSquares().get(tmp),this,p, indexPlayer, board.getSquares().get(playerSquare));
 	}
 
 	public static Board getBoard() {
