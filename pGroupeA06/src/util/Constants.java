@@ -22,7 +22,7 @@ public interface Constants {
 							NUMBER_PERCENTAGE_ERROR_ANSWER=2; 
 	
 	public static final String 	DECK_PATH = "/res/deck.JSON",
-								BOARD_PATH= "/res/boardTest.JSON",
+								BOARD_PATH= "/res/board.JSON",
 								RULE_PATH= "/res/GameRule.txt";
 	
 	// Size Players	
