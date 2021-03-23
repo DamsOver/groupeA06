@@ -5,8 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public interface Constants {
-	public static final double 	INITIAL_VOLUME = 0,
-								VOLUME_FACTOR = 0.001;
+	public static final double 	INITIAL_VOLUME = 50,
+								VOLUME_FACTOR = 0.001,
+								INITIAL_VOLUME_EFFECTS = 50,
+								VOLUME_EFFECTS_FACTOR = 0.004;
 	
 	public static final int NB_QUESTIONS_MAX = 4,
 							SIZE_MAX_QUESTION = 65,
@@ -23,7 +25,10 @@ public interface Constants {
 	
 	public static final String 	DECK_PATH = "/res/deck.JSON",
 								BOARD_PATH= "/res/board.JSON",
-								RULE_PATH= "/res/GameRule.txt";
+								RULE_PATH= "/res/GameRule.txt",
+								MUSIC_1_PATH= "musics/bensound-hipjazz.wav",
+								CORRECT_ANSWER= "musics/CorrectAnswer.wav",
+								INCORRECT_ANSWER= "musics/InCorrectAnswer.wav";
 	
 	// Size Players	
 	public static final double 	PLAYER_HEIGHT = 100, PLAYER_WIDTH = 100;
