@@ -100,7 +100,7 @@ public class GameOperation {
 			case SPECIAL:
 				BasicSpecialCard bsc = new BasicSpecialCard();
 				bsc.action();
-				game.turnUp();
+				
 				break;
 			default:
 				//on recoit la transition précédente
@@ -129,6 +129,7 @@ public class GameOperation {
 
 		// setting the question
 		setQuestion(q);
+		SceneManager.getQuestion().getBtnOK().setDisable(false);;
 
 	}
 
@@ -488,6 +489,6 @@ public class GameOperation {
 	}
 
 	public static Game getGame() {
-		return game.clone();
+		return game;
 	}
 }

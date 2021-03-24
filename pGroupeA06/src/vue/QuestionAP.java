@@ -133,6 +133,7 @@ public class QuestionAP extends AnchorPane{
 					//verification
 		        	SceneManager.getGameOperation().answerVerification();
 		        	timeline.stop();
+		        	getBtnOK().setDisable(true);
 				}
 			};
 		}
