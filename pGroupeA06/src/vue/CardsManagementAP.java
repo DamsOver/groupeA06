@@ -6,6 +6,7 @@ import java.util.List;
 
 import application.SceneManager;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -28,6 +29,7 @@ public class CardsManagementAP extends AnchorPane {
 	private ComboBox<String> cbTheme;
 	private ListView<String> lvCards;
 
+	private ObservableList<String> listIgnore = FXCollections.observableArrayList("START", "FINISH", "SPECIAL");
 	public CardsManagementAP() {
 		this.getStyleClass().add("pane");
 
@@ -140,9 +142,11 @@ public class CardsManagementAP extends AnchorPane {
 			cbTheme = new ComboBox<String>();
 			cbTheme.getItems().add("ALL");
 			for(Theme t : Theme.values()) {
-				cbTheme.getItems().add(t.name());
+				if(!listIgnore.contains(t.name())) {
+					cbTheme.getItems().add(t.name());
+				}
 			}
-			cbTheme.setValue("ALL");
+			cbTheme.setValue(cbTheme.getItems().get(0).toString());
 		}
 		cbTheme.setOnAction(new EventHandler<ActionEvent>(){
 			public void handle(ActionEvent event) {
@@ -156,6 +160,7 @@ public class CardsManagementAP extends AnchorPane {
 		if (btnModify == null) {
 			btnModify = new Button("Modify");
 		}
+		
 		return btnModify;
 	}
 
@@ -163,6 +168,14 @@ public class CardsManagementAP extends AnchorPane {
 		if (btnDelete == null) {
 			btnDelete = new Button("Delete");
 		}
+		btnDelete.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				ObservableList<Integer> toRemove = getLvCards().getSelectionModel().getSelectedIndices();
+				//remove String
+				
+				//remove
+			}
+		});
 		return btnDelete;
 	}
 

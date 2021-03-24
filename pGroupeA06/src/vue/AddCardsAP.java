@@ -1,10 +1,19 @@
 package vue;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.JsonParser;
+
 import application.SceneManager;
+import enumerations.Theme;
+import exceptions.AlreadyPresentException;
+import exceptions.TooManyException;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -20,6 +29,9 @@ import javafx.scene.text.Text;
 import model.BasicCard;
 import model.Deck;
 import model.Game;
+import model.Question;
+import serialisation.Serialisation;
+import util.Constants;
 
 public class AddCardsAP extends AnchorPane {
 	private final int NB_QUESTION = 4;
@@ -48,6 +60,7 @@ public class AddCardsAP extends AnchorPane {
 	private Button btnSubmit;
 	private Button btnBack;
 
+	private ObservableList<String> listIgnore = FXCollections.observableArrayList("START", "FINISH", "SPECIAL");
 	public AddCardsAP() {
 
 		this.getStyleClass().add("pane");
@@ -73,7 +86,7 @@ public class AddCardsAP extends AnchorPane {
 		cbTheme.getStyleClass().add("cbbox");
 		AnchorPane.setTopAnchor(getCbTheme(), 325.0);
 		AnchorPane.setLeftAnchor(getCbTheme(), 280.0);
-		cbTheme.setItems(FXCollections.observableArrayList("IMPROBABLE", "PLEASURE", "INFORMATICS", "SCHOOL"));
+//		cbTheme.setItems(FXCollections.observableArrayList("IMPROBABLE", "PLEASURE", "INFORMATICS", "SCHOOL"));
 		cbTheme.getSelectionModel().selectFirst();
 
 		// lblAuthor
@@ -144,6 +157,12 @@ public class AddCardsAP extends AnchorPane {
 	public ComboBox<String> getCbTheme() {
 		if (cbTheme == null) {
 			cbTheme = new ComboBox<String>();
+			for(Theme t : Theme.values()) {
+			if(!listIgnore.contains(t.name())) {
+					cbTheme.getItems().add(t.name());
+				}
+			}
+			cbTheme.setValue(cbTheme.getItems().get(0).toString());
 		}
 		return cbTheme;
 	}
@@ -165,9 +184,6 @@ public class AddCardsAP extends AnchorPane {
 	public ArrayList<Label> getLblEachAnswers(){
 		if(lblEachAnswers == null) {
 			lblEachAnswers = new ArrayList<>();
-			/*for(int i= 0; i<= NB_QUESTION; i++) {
-				lblEachAnswers.add(new Label((i+1)+" : "));
-			}*/
 			setEachLabel(lblEachAnswers);
 		}
 		return lblEachAnswers;
@@ -204,9 +220,6 @@ public class AddCardsAP extends AnchorPane {
 		if (txtFEachAnswers == null) {
 			txtFEachAnswers = new ArrayList<>();
 			setEachTextField(txtFEachAnswers);
-			/*for(int i= 0; i<= NB_QUESTION; i++){
-				txtFEachAnswers.add(new TextField());
-			}*/
 		}
 		return txtFEachAnswers;
 	}
@@ -243,6 +256,11 @@ public class AddCardsAP extends AnchorPane {
 		if (btnErase == null) {
 			btnErase = new Button("Erase");
 		}
+		btnErase.setOnAction(new EventHandler<ActionEvent>(){
+			public void handle(ActionEvent event) {
+				removeText();
+			}
+		});
 		return btnErase;
 	}
 
@@ -250,16 +268,54 @@ public class AddCardsAP extends AnchorPane {
 		if (btnSubmit == null) {
 			btnSubmit = new Button("Submit");
 		}
-		return btnSubmit;
+		btnSubmit.setOnAction(new EventHandler<ActionEvent>(){
+			public void handle(ActionEvent event) {
+				if(checkTextField()) {
+					//create new Basic card
+					System.out.println("textfield pleines");
+					BasicCard bc = new BasicCard(getTxtFAuthor().getText(), 
+												Theme.getTheme(cbTheme.getValue()), 
+												getTxtFSubject().getText());
+					//get questions
+					for(int i= 0; i< NB_QUESTION; i++) {
+						//add and create questions
+						try {
+							bc.addQuestion(getTxtFEachChallenges().get(i).getText(), getTxtFEachAnswers().get(i).getText());
+						} catch (AlreadyPresentException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (TooManyException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+					}
+					Deck deck = new Deck();
+					deck.fromJson();
+					try {
+						deck.addBasicCard(bc);						
+					} catch (AlreadyPresentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					System.out.println(deck.toString());
+					Serialisation.saveDeckClear(deck, Constants.DECK_PATH);
+					removeText();
+				
+			}
+		}
+	});
+	return btnSubmit;
 	}
 
-	public Button getBtnBack() {
+public Button getBtnBack() {
 		if (btnBack == null) {
 			btnBack = new Button("Back");
 		}
 		btnBack.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				SceneManager.getSceneRoot().setRoot(SceneManager.getStackCardsManager());
+				removeText();
 			}
 		});
 		return btnBack;
@@ -294,5 +350,25 @@ public class AddCardsAP extends AnchorPane {
 			getTxtFEachAnswers().get(i).getStyleClass().add("txtField");
 			getTxtFEachChallenges().get(i).getStyleClass().add("txtField");
 		}
+	}
+	
+	public boolean checkTextField() {
+		for(int i= 0; i< NB_QUESTION; i++) {
+			if(getTxtFEachAnswers().get(i).getText().isBlank() || getTxtFEachChallenges().get(i).getText().isBlank()) {
+				return false;
+			}
+		}
+		if(getTxtFAuthor().getText().isBlank() || getTxtFSubject().getText().isBlank()) {
+			return false;
+		}
+		return true;
+	}
+	public void removeText() {
+		for(int i= 0; i< NB_QUESTION; i++) {
+			getTxtFEachAnswers().get(i).setText("");
+			getTxtFEachChallenges().get(i).setText("");
+		}
+		getTxtFAuthor().setText("");
+		getTxtFSubject().setText("");
 	}
 }
