@@ -35,14 +35,14 @@ public class GameOperation {
 
 	public GameOperation() {
 		mediaPlayerCorrect = new MediaPlayer(
-				new Media(ClassLoader.getSystemResource("musics/CorrectAnswer.wav").toExternalForm()));
-		mediaPlayerCorrect.setVolume(0.4);
+				new Media(ClassLoader.getSystemResource(Constants.CORRECT_ANSWER).toExternalForm()));
+		mediaPlayerCorrect.setVolume(Constants.INITIAL_VOLUME_EFFECTS * Constants.VOLUME_EFFECTS_FACTOR);
 		mediaPlayerCorrect.setStartTime(Duration.seconds(0));
 		mediaPlayerCorrect.setStopTime(Duration.seconds(2));
 
 		mediaPlayerInCorrect = new MediaPlayer(
-				new Media(ClassLoader.getSystemResource("musics/InCorrectAnswer.wav").toExternalForm()));
-		mediaPlayerInCorrect.setVolume(1);
+				new Media(ClassLoader.getSystemResource(Constants.INCORRECT_ANSWER).toExternalForm()));
+		mediaPlayerInCorrect.setVolume(Constants.INITIAL_VOLUME_EFFECTS * Constants.VOLUME_EFFECTS_FACTOR *3.5);
 		mediaPlayerInCorrect.setStartTime(Duration.seconds(0));
 		mediaPlayerInCorrect.setStopTime(Duration.seconds(2));
 
