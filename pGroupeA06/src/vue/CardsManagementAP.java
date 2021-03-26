@@ -1,5 +1,7 @@
 package vue;
 import enumerations.Theme;
+import exceptions.NotPresentException;
+import exceptions.TooLittleException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +14,13 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import model.BasicCard;
 import model.Deck;
 import model.Game;
+import serialisation.Serialisation;
 import util.AddCards;
 import util.Constants;
 
@@ -117,6 +121,7 @@ public class CardsManagementAP extends AnchorPane {
 			deck = new Deck();
 			deck = game.getDeck();
 			fillListView();
+			lvCards.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);;
 		}
 		return lvCards;
 	}
@@ -160,7 +165,17 @@ public class CardsManagementAP extends AnchorPane {
 		if (btnModify == null) {
 			btnModify = new Button("Modify");
 		}
-		
+		btnModify.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				String toRemove = getLvCards().getSelectionModel().getSelectedItem();
+				for(BasicCard b : deck.getBasicCards()) {
+					if(toRemove.contains(b.getSubject())) {
+						SceneManager.getSceneRoot().setRoot(SceneManager.getStackAddCards());
+						SceneManager.getAddCards().loadCard(b);
+					}
+				}
+			}
+		});
 		return btnModify;
 	}
 
@@ -170,10 +185,20 @@ public class CardsManagementAP extends AnchorPane {
 		}
 		btnDelete.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				ObservableList<Integer> toRemove = getLvCards().getSelectionModel().getSelectedIndices();
+				ObservableList<String> toRemove = getLvCards().getSelectionModel().getSelectedItems();
 				//remove String
-				
-				//remove
+				for(BasicCard b : deck.getBasicCards()) {
+					if(toRemove.contains(b.getSubject())) {
+						try {
+							deck.removeBasicCard(b);
+						} catch (TooLittleException | NotPresentException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
+				Serialisation.saveDeckClear(deck, Constants.DECK_PATH);
+				getLvCards().getItems().removeAll(toRemove);
 			}
 		});
 		return btnDelete;

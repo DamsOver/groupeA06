@@ -35,9 +35,8 @@ import util.Constants;
 
 public class AddCardsAP extends AnchorPane {
 	private final int NB_QUESTION = 4;
-
-	private static Game game;
-	private static Deck deck;
+	private Boolean modification = false;
+	private BasicCard bc;
 	
 	private Text txtTitle;
 
@@ -138,6 +137,18 @@ public class AddCardsAP extends AnchorPane {
 		AnchorPane.setTopAnchor(getBtnBack(), 900.0);
 		AnchorPane.setRightAnchor(getBtnBack(), 100.0);
 
+	}
+	
+	public void loadCard(BasicCard b) {
+		bc = b;
+		getTxtFAuthor().setText(bc.getAuthor());
+		getTxtFSubject().setText(bc.getSubject());
+		getCbTheme().setValue(bc.getTheme().toString());
+		for(int i =0; i<NB_QUESTION; i++) {
+			getTxtFEachChallenges().get(i).setText(bc.getQuestions().get(i).getChallenge());
+			getTxtFEachAnswers().get(i).setText(bc.getQuestions().get(i).getAnswer());
+		}
+		modification= true;
 	}
 
 	public Text getTxtTitle() {
@@ -272,7 +283,6 @@ public class AddCardsAP extends AnchorPane {
 			public void handle(ActionEvent event) {
 				if(checkTextField()) {
 					//create new Basic card
-					System.out.println("textfield pleines");
 					BasicCard bc = new BasicCard(getTxtFAuthor().getText(), 
 												Theme.getTheme(cbTheme.getValue()), 
 												getTxtFSubject().getText());
@@ -290,15 +300,24 @@ public class AddCardsAP extends AnchorPane {
 						}
 						
 					}
-					Deck deck = new Deck();
-					deck.fromJson();
-					try {
-						deck.addBasicCard(bc);						
-					} catch (AlreadyPresentException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+					Deck deck = new Deck().fromJson();
+					//System.out.println(deck.toString());
+					if(modification) {
+						//update
+						int index= deck.getBasicCards().indexOf(bc);
+						deck.getBasicCards().remove(index);
+						deck.getBasicCards().add(index, bc);
+						System.out.println("Modification");
 					}
-					System.out.println(deck.toString());
+					else {
+						try {
+							deck.addBasicCard(bc);						
+						} catch (AlreadyPresentException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					//System.out.println(deck.toString());
 					Serialisation.saveDeckClear(deck, Constants.DECK_PATH);
 					removeText();
 				

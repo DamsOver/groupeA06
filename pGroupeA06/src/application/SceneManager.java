@@ -163,6 +163,9 @@ public class SceneManager {
 	public static RatingAP getRating(){
 		return rating;
 	}	
+	public static AddCardsAP getAddCards() {
+		return addCards;
+	}
 	
 	
 	//getter GameOperation
@@ -216,5 +219,6 @@ public class SceneManager {
 	public static StackPane getStackQuestion() {
 		return stackQuestion;
 	}
+	
 	
 }
