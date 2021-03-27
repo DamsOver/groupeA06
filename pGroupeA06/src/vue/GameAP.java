@@ -3,6 +3,7 @@ package vue;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.SceneManager;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,7 +24,7 @@ public class GameAP extends AnchorPane {
 
 		if (listImageView == null) {
 			listImageView = new ArrayList<ImageView>();
-			for (int i = 0; i <= 7; i++) {
+			for (int i = 0; i < Constants.NB_PLAYER; i++) {
 				Image tmp = new Image(getClass().getResourceAsStream("/img/Player_0" + (i + 1) + ".png"));
 				listImageView.add(new ImageView(tmp));
 				listImageView.get(i).setFitHeight(Constants.PLAYER_HEIGHT);

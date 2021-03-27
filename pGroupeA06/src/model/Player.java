@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 import application.SceneManager;
 import enumerations.PlayerColors;
 import javafx.animation.Animation;
@@ -86,48 +88,117 @@ public class Player {
 	public void setSquare(Square square) {
 		this.square = square;
 	}
+	
+	public void setOldSquare(Square square) {
+		this.oldSquare = square;
+	}
 
 	public Animation[] setSquare(Square square, Game g, Player p, int indexPlayer, Square oldSquare) {
-
+		
 		this.square = square;
 		this.oldSquare = oldSquare;
+		List<Square> squares = Game.getBoard().getSquares();
 
+		int indexOfSquare = squares.indexOf(p.getSquare());
+		int indexOfOldSquare = squares.indexOf(p.getOldSquare());
+		
+		Square currentSquare = oldSquare;
+		Square targetSquare;
+		
+		
+		Animation[] a = new Animation[Math.abs(indexOfSquare-indexOfOldSquare)+1];
+		a[0]=SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,
+				SceneManager.getStackGame(), null);
+		
+		for(int i = 0 ; i <Math.abs(indexOfSquare-indexOfOldSquare);i++) {
+			double distX = 0;
+			double distY = 0;
+			
+			int indexOfCurrentSquare = squares.indexOf(currentSquare);
+			targetSquare = (indexOfSquare-indexOfOldSquare>0)?squares.get(indexOfCurrentSquare+1):squares.get(indexOfCurrentSquare-1);
+			
+			double currentPosX = squares.get(indexOfCurrentSquare).getPlayersPosition().get(indexPlayer).getX();
+			double currentPosY = squares.get(indexOfCurrentSquare).getPlayersPosition().get(indexPlayer).getY();
+			
+			int indexOfNextSquare = squares.indexOf(targetSquare);
+			double nextPosX = squares.get(indexOfNextSquare).getPlayersPosition().get(indexPlayer).getX();
+			double nextPosY = squares.get(indexOfNextSquare).getPlayersPosition().get(indexPlayer).getY();
+			
+			distX = nextPosX - currentPosX;
+			distY = nextPosY - currentPosY;
+			
+			TranslateTransition translate = new TranslateTransition();
+			
+			translate.setByX(distX);
+			translate.setByY(distY);
+			
+			translate.setDuration(Duration.millis(Constants.ANIMATION_MOVEMENT));
+
+			translate.setNode(GameAP.getListImageView().get(indexPlayer));
+			
+			a[i+1]=translate;
+			currentSquare=targetSquare;
+		}
+		return a;
+	}
+	
+	public Animation[] switchSquares(Player p) {
+		
+		Animation[] a = new Animation[3];
+		a[0]=SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,SceneManager.getStackGame(), null);
+		
+		this.oldSquare = this.square;
+		this.square = p.getSquare();
+		p.setOldSquare(p.getSquare());
+		p.setSquare(this.oldSquare);
+		
+		List<Square> squares = Game.getBoard().getSquares();
+
+		int indexOfSquare1 = squares.indexOf(p.getSquare());
+		int indexOfOldSquare1 = squares.indexOf(p.getOldSquare());
+		int indexOfSquare2 = squares.indexOf(p.getSquare());
+		int indexOfOldSquare2 = squares.indexOf(p.getOldSquare());
+		
+		int indexPlayer1 = SceneManager.getGameOperation().getGame().getPlayers().indexOf(this);
+		int indexPlayer2 = SceneManager.getGameOperation().getGame().getPlayers().indexOf(p);
+		
 		double distX = 0;
 		double distY = 0;
-
-		int indexOfSquare = Game.getBoard().getSquares().indexOf(p.getSquare());
-		int indexOfOldSquare = Game.getBoard().getSquares().indexOf(p.getOldSquare());
 		
-		double currentPosX = Game.getBoard().getSquares().get(indexOfOldSquare).getPlayersPosition().get(indexPlayer)
-				.getX();
-		double currentPosY = Game.getBoard().getSquares().get(indexOfOldSquare).getPlayersPosition().get(indexPlayer)
-				.getY();
-
-		double nextPosX = Game.getBoard().getSquares().get(indexOfSquare).getPlayersPosition().get(indexPlayer).getX();
-		double nextPosY = Game.getBoard().getSquares().get(indexOfSquare).getPlayersPosition().get(indexPlayer).getY();
-
-		TranslateTransition translate = new TranslateTransition();
-
+		double currentPosX = squares.get(indexOfOldSquare1).getPlayersPosition().get(indexPlayer1).getX();
+		double currentPosY = squares.get(indexOfOldSquare1).getPlayersPosition().get(indexPlayer1).getY();
+		double nextPosX = squares.get(indexOfSquare1).getPlayersPosition().get(indexPlayer1).getX();
+		double nextPosY = squares.get(indexOfSquare1).getPlayersPosition().get(indexPlayer1).getY();
+		
 		distX = nextPosX - currentPosX;
 		distY = nextPosY - currentPosY;
 		
-//		System.out.println("nextX : " + nextPosX + ", currentX : " + currentPosX + ", nextY : " + nextPosY
-//				+ ", currentY : " + currentPosY);
-		
+		TranslateTransition translate = new TranslateTransition();
 		translate.setByX(distX);
 		translate.setByY(distY);
+		translate.setDuration(Duration.millis(Constants.ANIMATION_MOVEMENT));
+		translate.setNode(GameAP.getListImageView().get(indexPlayer1));
 		
-		translate.setDuration(Duration.millis(Constants.ANIMATION_TIME_TURN));
-
-		translate.setNode(GameAP.getListImageView().get(indexPlayer));
-		//translate.play();
-
-//		GameAP.setIvPlayer(nextPosX, nextPosY, indexPlayer);
-		Animation[] a = new Animation[2];
-		a[0]=SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,
-				SceneManager.getStackGame(), null);
 		a[1]=translate;
 		
+		distX = 0;
+		distY = 0;
+		
+		currentPosX = squares.get(indexOfOldSquare2).getPlayersPosition().get(indexPlayer2).getX();
+		currentPosY = squares.get(indexOfOldSquare2).getPlayersPosition().get(indexPlayer2).getY();
+		nextPosX = squares.get(indexOfSquare2).getPlayersPosition().get(indexPlayer2).getX();
+		nextPosY = squares.get(indexOfSquare2).getPlayersPosition().get(indexPlayer2).getY();
+		
+		distX = nextPosX - currentPosX;
+		distY = nextPosY - currentPosY;
+		
+		TranslateTransition translate2 = new TranslateTransition();
+		translate2.setByX(distX);
+		translate2.setByY(distY);
+		translate2.setDuration(Duration.millis(Constants.ANIMATION_MOVEMENT));
+		translate2.setNode(GameAP.getListImageView().get(indexPlayer2));
+		
+		a[2]=translate2;
 		return a;
 	}
 

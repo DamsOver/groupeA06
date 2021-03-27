@@ -13,14 +13,15 @@ import util.Constants;
 public class BasicSpecialCard extends SpecialCard{
 	@Override
 	public void action() {
-		int randomNumber = new Random().nextInt(1) + 1;
+		int randomNumber = new Random().nextInt(2) + 1;
 		Transition p1=null,p2,p3;
 		Animation[] a = null,temp=null;
 		String message = "";
 		int backwards,squares;
 		
 		
-		switch(1) {//randomNumber
+		switch(randomNumber) {//randomNumber
+		//switch(3) {//randomNumber
 		case 1 :
 			//move the player forward or backwards 1,2 or 3 squares on the board
 			backwards= new Random().nextInt(2); //2
@@ -49,7 +50,6 @@ public class BasicSpecialCard extends SpecialCard{
 			SceneManager.getGameOperation().turnRating(false,a);
 			break;
 		case 2 :	
-			
 			//skip your next turn
 			message = "SPECIAL CARD!\nYou skip your turn!";
 			p3 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,SceneManager.getStackGame(), null);
@@ -66,6 +66,33 @@ public class BasicSpecialCard extends SpecialCard{
 			break;
 			
 		case 3 :
+			//switch square
+			int randomPlayerIndex;
+			Player playerA = SceneManager.getGameOperation().getPlayerTurn(),playerB;
+			do {
+				randomPlayerIndex= new Random().nextInt(SceneManager.getGameOperation().getGame().getPlayers().size());
+			}while(randomPlayerIndex == SceneManager.getGameOperation().getGame().getPlayers().indexOf(playerA));
+			
+			playerB=SceneManager.getGameOperation().getGame().getPlayers().get(randomPlayerIndex);
+			
+			
+			message = "SPECIAL CARD!\nYou and "+playerB.getName()+"\nswitch squares!";
+
+			Animation[] anim= playerA.switchSquares(playerB);
+			p3 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,SceneManager.getStackGame(), null);
+			p2 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_MESSAGE, SceneManager.getStackTransititionAnimation(), message);
+			p1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN, SceneManager.getStackTransititionAnimation(), "It's "+ GameOperation.getPlayerTurn().getName() +"'s turn!");
+			a = new Animation[6];
+			a[0]=p1;
+			a[1]=p2;
+			a[2]=p3;
+			a[3]=anim[0];
+			a[4]=anim[1];
+			a[5]=anim[2];
+			
+			//show next turn
+			GameOperation.getGame().turnUp();
+			SceneManager.getGameOperation().turnRating(false,a);
 			break;
 			
 		case 4 :

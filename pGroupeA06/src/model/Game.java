@@ -99,4 +99,10 @@ public class Game {
 		}
 		return p;
 	}
+	
+	public void setPlayerVisible() {
+		for(int i = Constants.NB_PLAYER-1; i>=players.size();i--) {
+			SceneManager.getGame().getListImageView().get(i).setVisible(false);
+		}
+	}
 }

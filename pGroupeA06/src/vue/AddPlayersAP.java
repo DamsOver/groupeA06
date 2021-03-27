@@ -136,10 +136,12 @@ public class AddPlayersAP extends AnchorPane {
 	        		//checking if it's the first turn off the game (if there are no players and it's turn 0)
 	        		if(SceneManager.getGameOperation().getGame().getPlayers().size()==0&&SceneManager.getGameOperation().getGame().getTurn()==0) {
 	        			GameOperation.addPlayers(getPlayerNames());
+	        			SceneManager.getGameOperation().getGame().setPlayerVisible();
 	        			SceneManager.getGameOperation().turnRating(true,null);
 		        		
 	        		}
 	        		else {
+	        			SceneManager.getGameOperation().getGame().setPlayerVisible();
 	        			SceneManager.getGameOperation().turnRating(false,null);
 	        		}
 	        		

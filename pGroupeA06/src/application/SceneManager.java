@@ -166,6 +166,11 @@ public class SceneManager {
 	public static AddCardsAP getAddCards() {
 		return addCards;
 	}
+	public static GameAP getGame() {
+		return game;
+	}
+	
+	
 	
 	
 	//getter GameOperation
