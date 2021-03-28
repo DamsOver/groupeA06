@@ -127,6 +127,7 @@ public class QuestionAP extends AnchorPane {
 					SceneManager.getGameOperation().answerVerification();
 					timeline.stop();
 					getBtnOK().setDisable(true);
+
 				}
 			};
 		}
