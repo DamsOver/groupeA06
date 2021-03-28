@@ -73,7 +73,7 @@ public class BasicSpecialCard extends SpecialCard{
 				randomPlayerIndex= new Random().nextInt(SceneManager.getGameOperation().getGame().getPlayers().size());
 			}while(randomPlayerIndex == SceneManager.getGameOperation().getGame().getPlayers().indexOf(playerA));
 			
-			playerB=SceneManager.getGameOperation().getGame().getPlayers().get(randomPlayerIndex);
+			playerB= SceneManager.getGameOperation().getGame().getPlayers().get(randomPlayerIndex);
 			
 			
 			message = "SPECIAL CARD!\nYou and "+playerB.getName()+"\nswitch squares!";

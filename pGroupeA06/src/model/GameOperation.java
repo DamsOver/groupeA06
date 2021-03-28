@@ -95,18 +95,13 @@ public class GameOperation {
 			case FINISH:
 				FinishCard fc = new FinishCard();
 				fc.action();
-				animationTurn(transitions).play();
+				animationLastTurn(transitions);
 				break;
 			case SPECIAL:
 				BasicSpecialCard bsc = new BasicSpecialCard();
 				bsc.action();
-				
 				break;
-			default:
-				//on recoit la transition précédente
-				//on appelle une fct qui va jouer toute la transition
-				
-				
+			default:	
 				// drawing a card
 				bc = drawCard(p.getSquare().getTheme());
 
@@ -188,7 +183,7 @@ public class GameOperation {
 
 		// getting the player that will play the turn
 		Player p = getPlayerTurn();
-
+		
 		// verification of the answer
 		if (questionVerificationAlgorithm()) {
 			// the answer was correct
@@ -206,12 +201,6 @@ public class GameOperation {
 				tab[i+1]=tempTab[i];
 			}
 			
-			/*
-			 * //if the player is further than the last card of the board :
-			 * if(game.movePlayer(rating,p.getSquare())==null) {
-			 * System.out.println("player " + p.getName() + " wins!"); } //the player moves
-			 * //need an implementation of the movement
-			 */
 		} else {
 			// the anwser was wrong
 
@@ -308,7 +297,13 @@ public class GameOperation {
 			StringBuffer sb = new StringBuffer(playerAnswer);
 			playerAnswer = sb.replace(index, index + 1, "").toString();
 		}
-
+		
+		while (answer.contains("/")) {
+			int index = answer.indexOf("/");
+			StringBuffer sb = new StringBuffer(answer);
+			answer = sb.replace(index, index + 1, "").toString();
+		}
+		
 		if (playerAnswer.equals("")) {
 			return false;
 		}
@@ -412,17 +407,48 @@ public class GameOperation {
 		}
 	}
 
-	public Transition LastTurn() {
+	public SequentialTransition animationLastTurn(Animation[] before) {
+		//first, player before moves
+		//then, message it's player's turn
+		//then turn rating or .. depends on the square
+		Animation[] tab = new Animation[(before==null)?4:before.length+4];
+		Animation[] tabTemp = new Animation[4];
+		
 		SceneManager.getRating().setLbTurn(GameOperation.getPlayerTurn().getName());
-		Transition pause3 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_RATING,
+		tabTemp[3]= SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_RATING,
 				SceneManager.getStackQuestion(), null);
-		Transition pause2 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,
+		tabTemp[2] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,
 				SceneManager.getStackTransititionAnimation(),
-				"Last Turn for " + GameOperation.getPlayerTurn().getName() + "!");
-		Transition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,
+				"You have to answer\ncorrectly to this\ndifficult question to win");
+		tabTemp[1] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,
+				SceneManager.getStackTransititionAnimation(),
+				"It's " + GameOperation.getPlayerTurn().getName() + "'s \nlast turn!");
+		tabTemp[0] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,
 				SceneManager.getStackGame(), null);
-		return pause1;
+		
+		if(before!=null) {
+			for(int i = 0;i<before.length;i++) {
+				tab[i]=before[i];
+			}
+			
+			for(int i = before.length;i<before.length+4;i++) {
+				tab[i]=tabTemp[i-before.length];
+			}
+			
+			return new SequentialTransition (tab);
+		}
+		else {
+			
+			return new SequentialTransition (tabTemp);
+		}
 	}
+	
+	public SequentialTransition LastTurn(BasicCard bc) {
+		return null;
+	}
+	
+	
+	
 
 	public BasicCard drawCard(Theme th) {
 		boolean alreadyPresent = false;
@@ -472,7 +498,6 @@ public class GameOperation {
 		return game.getPlayers().get(game.getTurn() % game.getPlayers().size());
 	}
 
-	// begin from the last animation
 	public Transition animation(Integer pauses, Pane scene, String txtAnimation) {
 
 		PauseTransition pauseTransition = new PauseTransition(Duration.millis(pauses));
