@@ -1,8 +1,6 @@
 {
   "cards": [
     {
-      "author": "Martin",
-      "theme": "IMPROBABLE",
       "subject": "Nature",
       "questions": [
         {
@@ -33,11 +31,11 @@
           "challenge": "How many times does a bee flap his wings per second?",
           "answer": "200"
         }
-      ]
+      ],
+      "author": "Martin",
+      "theme": "IMPROBABLE"
     },
     {
-      "author": "Martin",
-      "theme": "IMPROBABLE",
       "subject": "The Earth",
       "questions": [
         {
@@ -68,11 +66,11 @@
           "challenge": "What is the circumference of the earth? (in km)",
           "answer": "40000"
         }
-      ]
+      ],
+      "author": "Martin",
+      "theme": "IMPROBABLE"
     },
     {
-      "author": "Martin",
-      "theme": "PLEASURE",
       "subject": "Music",
       "questions": [
         {
@@ -103,11 +101,11 @@
           "challenge": "Who sang \"La Tactique du gendarme\"?",
           "answer": "Bourvil"
         }
-      ]
+      ],
+      "author": "Martin",
+      "theme": "PLEASURE"
     },
     {
-      "author": "Martin",
-      "theme": "PLEASURE",
       "subject": "Holidays",
       "questions": [
         {
@@ -138,11 +136,11 @@
           "challenge": "How much money spend French vacationers per day? (€)",
           "answer": "80"
         }
-      ]
+      ],
+      "author": "Martin",
+      "theme": "PLEASURE"
     },
     {
-      "author": "Martin",
-      "theme": "INFORMATICS",
       "subject": "Social Network",
       "questions": [
         {
@@ -173,11 +171,11 @@
           "challenge": "Who has the most followers on Instagram? Cristiano Ronaldo, Lionel Messi or The Rock",
           "answer": "Cristiano Ronaldo"
         }
-      ]
+      ],
+      "author": "Martin",
+      "theme": "INFORMATICS"
     },
     {
-      "author": "Martin",
-      "theme": "INFORMATICS",
       "subject": "Hardware",
       "questions": [
         {
@@ -208,11 +206,11 @@
           "challenge": "What is the abreviation of NAS?",
           "answer": "Network attached storage"
         }
-      ]
+      ],
+      "author": "Martin",
+      "theme": "INFORMATICS"
     },
     {
-      "author": "Martin",
-      "theme": "SCHOOL",
       "subject": "History",
       "questions": [
         {
@@ -243,11 +241,11 @@
           "challenge": "When was the first girl school founded in Belgium?",
           "answer": "1864"
         }
-      ]
+      ],
+      "author": "Martin",
+      "theme": "SCHOOL"
     },
     {
-      "author": "Martin",
-      "theme": "SCHOOL",
       "subject": "Mathematics",
       "questions": [
         {
@@ -278,11 +276,11 @@
           "challenge": "Give the 7 first digits of pi.",
           "answer": "3.141592"
         }
-      ]
+      ],
+      "author": "Martin",
+      "theme": "SCHOOL"
     },
     {
-      "author": "Damien",
-      "theme": "IMPROBABLE",
       "subject": "Animals",
       "questions": [
         {
@@ -313,11 +311,11 @@
           "challenge": "What does the torpedo fish produces?",
           "answer": "electricity"
         }
-      ]
+      ],
+      "author": "Damien",
+      "theme": "IMPROBABLE"
     },
     {
-      "author": "Damien",
-      "theme": "IMPROBABLE",
       "subject": "Food",
       "questions": [
         {
@@ -348,11 +346,11 @@
           "challenge": "How much does the largest packet of crisps in the world weigh ?(kg)",
           "answer": "130"
         }
-      ]
+      ],
+      "author": "Damien",
+      "theme": "IMPROBABLE"
     },
     {
-      "author": "Damien",
-      "theme": "PLEASURE",
       "subject": "Video Games",
       "questions": [
         {
@@ -383,11 +381,11 @@
           "challenge": "When was the first virtual reality headset created ?",
           "answer": "1995"
         }
-      ]
+      ],
+      "author": "Damien",
+      "theme": "PLEASURE"
     },
     {
-      "author": "Damien",
-      "theme": "PLEASURE",
       "subject": "Astronomy",
       "questions": [
         {
@@ -418,11 +416,11 @@
           "challenge": "What is the name of the visible surface of the stars ?",
           "answer": "Photosphere"
         }
-      ]
+      ],
+      "author": "Damien",
+      "theme": "PLEASURE"
     },
     {
-      "author": "Damien",
-      "theme": "INFORMATICS",
       "subject": "OOP Concept",
       "questions": [
         {
@@ -453,11 +451,11 @@
           "challenge": "What is the principle that relates to the protection of information contained in an object ?",
           "answer": "Encapsulation"
         }
-      ]
+      ],
+      "author": "Damien",
+      "theme": "INFORMATICS"
     },
     {
-      "author": "Damien",
-      "theme": "INFORMATICS",
       "subject": "Elements in a class",
       "questions": [
         {
@@ -488,11 +486,11 @@
           "challenge": "What element is made up of the name of the method as well as the list and type of its arguments ?",
           "answer": "Signature"
         }
-      ]
+      ],
+      "author": "Damien",
+      "theme": "INFORMATICS"
     },
     {
-      "author": "Damien",
-      "theme": "SCHOOL",
       "subject": "Maths",
       "questions": [
         {
@@ -513,7 +511,7 @@
           "author": "Damien",
           "theme": "SCHOOL",
           "subject": "Mathematics",
-          "challenge": "Solve this : 32 + 12 % 5² = ?",
+          "challenge": "Solve this : 32 + 12 % 5² \u003d ?",
           "answer": "44"
         },
         {
@@ -523,11 +521,11 @@
           "challenge": "What is the cube root of 64 ?",
           "answer": "4"
         }
-      ]
+      ],
+      "author": "Damien",
+      "theme": "SCHOOL"
     },
     {
-      "author": "Damien",
-      "theme": "SCHOOL",
       "subject": "Geography",
       "questions": [
         {
@@ -558,285 +556,289 @@
           "challenge": "Which country shares Everest with China ?",
           "answer": "Nepal"
         }
-      ]
+      ],
+      "author": "Damien",
+      "theme": "SCHOOL"
     },
     {
-		"author" : "Chiara", 
-		"theme" : "IMPROBABLE",
-		"subject" : "The chocolate", 
-		"questions":[
-			{
-				"author" : "Chiara", 
-				"theme" : "IMPROBABLE",
-				"subject" : "The chocolate",
-				"challenge" : "What's the name of the chocolate tree?",
-				"answer": "cacao tree"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "IMPROBABLE",
-				"subject" : "The chocolate", 
-				"challenge" : "What compagny is the greater producter of chocolate?",
-				"answer": "Mars"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "IMPROBABLE",
-				"subject" : "The chocolate", 
-				"challenge" : "What action consist of cooking cacao been in an oven or over an open fire?",
-				"answer": "roasting"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "IMPROBABLE",
-				"subject" : "The chocolate", 
-				"challenge" : "What action allows a glossy chocolate?",
-				"answer": "tempering"
-			}
-		]
-	},
-	{
-		"author" : "Chiara",
-		"theme" : "IMPROBABLE",
-		"subject" : "Alphabet over the world",
-		"questions":[
-			{
-				"author" : "Chiara", 
-				"theme" : "IMPROBABLE",
-				"subject" : "Alphabet over the world", 
-				"challenge" : "How many letters count the French alphabet?",
-				"answer": "26"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "IMPROBABLE",
-				"subject" : "Alphabet over the world", 
-				"challenge" : "What language use only the sinogram?",
-				"answer": "Chinese"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "IMPROBABLE",
-				"subject" : "Alphabet over the world", 
-				"challenge" : "What old alphabet is composed by picture?",
-				"answer": "Hieroglyph"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "IMPROBABLE",
-				"subject" : "Alphabet over the world", 
-				"challenge" : "What language has the most simply and scientific alphabet?",
-				"answer": "Korean"
-			}
-		]
-	},
-	{
-		"author" : "Chiara",
-		"theme" : "INFORMATICS", 
-		"subject" : "Collection in java",
-		"questions":[
-			{
-				"author" : "Chiara", 
-				"theme" : "INFORMATICS", 
-				"subject" : "Collection in java", 
-				"challenge" : "Complete this sentence : 'List, Set and Queue ....... from Collection?",
-				"answer": "inherit"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "INFORMATICS", 
-				"subject" : "Collection in java", 
-				"challenge" : "Which interface doesn't allow duplicate? Set, List, Map or nothing of these?",
-				"answer": "Set"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "INFORMATICS", 
-				"subject" : "Collection in java", 
-				"challenge" : "Which interface isn't part of Collection Framework? Queue, Stack, Array or Map?",
-				"answer": "Map"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "INFORMATICS", 
-				"subject" : "Collection in java", 
-				"challenge" : "What iterator allows the programmer to traverse the list in either direction?",
-				"answer": "ListIterator"
-			}
-		]	
-	},
-	{
-		"author" : "Chiara",
-		"theme" : "INFORMATICS", 
-		"subject" : "String in java",
-		"questions":[
-			{
-				"author" : "Chiara", 
-				"theme" : "INFORMATICS", 
-				"subject" : "String in java", 
-				"challenge" : "What's 'String' in OOP?",
-				"answer": "Class"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "INFORMATICS", 
-				"subject" : "String in java", 
-				"challenge" : "What class allows String modification?",
-				"answer": "StringBuffer"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "INFORMATICS", 
-				"subject" : "String in java", 
-				"challenge" : "What method allows empty character sequence initialization?",
-				"answer": "String()"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "INFORMATICS", 
-				"subject" : "String in java", 
-				"challenge" : "How many constructors count the Class String in Java 11?",
-				"answer": "15"
-			}
-		]	
-	},
-	{
-		"author" : "Chiara",
-		"theme" : "PLEASURE", 
-		"subject" : "The piano",
-		"questions":[
-			{
-				"author" : "Chiara", 
-				"theme" : "PLEASURE",
-				"subject" : "The piano", 
-				"challenge" : "How many pedals has the Grand Piano?",
-				"answer": "3"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "PLEASURE",
-				"subject" : "The piano", 
-				"challenge" : "Which piano’s keys there’s not black key between C and D, D and E, E and F or F and G?",
-				"answer": "E and F"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "PLEASURE",
-				"subject" : "The piano", 
-				"challenge" : "How many keys does Piano contain usually?",
-				"answer": "88"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "PLEASURE",
-				"subject" : "The piano", 
-				"challenge" : "What’s the name of piano possessed pinched strings?",
-				"answer": "harpsichords"
-			}
-		]
-	},
-	{
-		"author" : "Chiara",
-		"theme" : "PLEASURE",
-		"subject" : "The painting",
-		"questions":[
-			{
-				"author" : "Chiara", 
-				"theme" : "PLEASURE",
-				"subject" : "The painting", 
-				"challenge" : "When you mix pigments that are complementary colors, what color do you get?",
-				"answer": "Brown"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "PLEASURE",
-				"subject" : "The painting", 
-				"challenge" : "What’s the name of a mural painting?",
-				"answer": "fresco"
-			},
-			{ 
-				"author" : "Chiara", 
-				"theme" : "PLEASURE",
-				"subject" : "The painting", 
-				"challenge" : "What artistic current did “Impression, Sunrise” by Claude Monet initialize?",
-				"answer": "Impressionnism"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "PLEASURE",
-				"subject" : "The painting", 
-				"challenge" : "What type of paint did European artists use during the 15th through 19th centuries?",
-				"answer": "oil paint"
-			}
-		]
-	},
-	{
-		"author" : "Chiara",
-		"theme" : "SCHOOL",
-		"subject" : "The great Explorers",
-		"questions":[
-			{
-				"author" : "Chiara", 
-				"theme" : "SCHOOL",
-				"subject" : "The great Explorers", 
-				"challenge" : "Who made the first circumnavigation of the Earth?",
-				"answer": "Magellan"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "SCHOOL",
-				"subject" : "The great Explorers", "challenge" : "What great explorer gives his name to America?",
-				"answer": "Amerigo Vespucci"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "SCHOOL",
-				"subject" : "The great Explorers", "challenge" : "Who mode the first circumnavigation of the Antarctic?",
-				"answer": "James Cook"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "SCHOOL",
-				"subject" : "The great Explorers", 
-				"challenge" : "What are the three names of Christopher Columbus caravel?",
-				"answer": "Santa Maria, Nina and Pinta"
-			}
-		]
-	},
-	{
-		"author" : "Chiara",
-		"theme" : "SCHOOL",
-		"subject" : "The Atoms",
-		"questions":[
-			{
-				"author" : "Chiara", 
-				"theme" : "SCHOOL",
-				"subject" : "The Atoms", 
-				"challenge" : "What's the most lightweight gas?",
-				"answer": "Hydrogen"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "SCHOOL",
-				"subject" : "The Atoms", 
-				"challenge" : "What's the chemical symbol for the nitrogen?",
-				"answer": "N"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "SCHOOL",
-				"subject" : "The Atoms", 
-				"challenge" : "What's the name of this atom : Sn",
-				"answer": "Tin"
-			},
-			{
-				"author" : "Chiara", 
-				"theme" : "SCHOOL",
-				"subject" : "The Atoms", 
-				"challenge" : "What's the chemical name of spirits of salt?",
-				"answer": "Hydrochloric acid"
-			}
-		]
-	}
+      "subject": "The chocolate",
+      "questions": [
+        {
+          "author": "Chiara",
+          "theme": "IMPROBABLE",
+          "subject": "The chocolate",
+          "challenge": "What\u0027s the name of the chocolate tree?",
+          "answer": "cacao tree"
+        },
+        {
+          "author": "Chiara",
+          "theme": "IMPROBABLE",
+          "subject": "The chocolate",
+          "challenge": "What compagny is the greater producter of chocolate?",
+          "answer": "Mars"
+        },
+        {
+          "author": "Chiara",
+          "theme": "IMPROBABLE",
+          "subject": "The chocolate",
+          "challenge": "What action consist of cooking cacao been in an oven or over an open fire?",
+          "answer": "roasting"
+        },
+        {
+          "author": "Chiara",
+          "theme": "IMPROBABLE",
+          "subject": "The chocolate",
+          "challenge": "What action allows a glossy chocolate?",
+          "answer": "tempering"
+        }
+      ],
+      "author": "Chiara",
+      "theme": "IMPROBABLE"
+    },
+    {
+      "subject": "Alphabet over the world",
+      "questions": [
+        {
+          "author": "Chiara",
+          "theme": "IMPROBABLE",
+          "subject": "Alphabet over the world",
+          "challenge": "How many letters count the French alphabet?",
+          "answer": "26"
+        },
+        {
+          "author": "Chiara",
+          "theme": "IMPROBABLE",
+          "subject": "Alphabet over the world",
+          "challenge": "What language use only the sinogram?",
+          "answer": "Chinese"
+        },
+        {
+          "author": "Chiara",
+          "theme": "IMPROBABLE",
+          "subject": "Alphabet over the world",
+          "challenge": "What old alphabet is composed by picture?",
+          "answer": "Hieroglyph"
+        },
+        {
+          "author": "Chiara",
+          "theme": "IMPROBABLE",
+          "subject": "Alphabet over the world",
+          "challenge": "What language has the most simply and scientific alphabet?",
+          "answer": "Korean"
+        }
+      ],
+      "author": "Chiara",
+      "theme": "IMPROBABLE"
+    },
+    {
+      "subject": "Collection in java",
+      "questions": [
+        {
+          "author": "Chiara",
+          "theme": "INFORMATICS",
+          "subject": "Collection in java",
+          "challenge": "Complete this sentence : \u0027List, Set and Queue ....... from Collection?",
+          "answer": "inherit"
+        },
+        {
+          "author": "Chiara",
+          "theme": "INFORMATICS",
+          "subject": "Collection in java",
+          "challenge": "Which interface doesn\u0027t allow duplicate? Set, List, Map or nothing of these?",
+          "answer": "Set"
+        },
+        {
+          "author": "Chiara",
+          "theme": "INFORMATICS",
+          "subject": "Collection in java",
+          "challenge": "Which interface isn\u0027t part of Collection Framework? Queue, Stack, Array or Map?",
+          "answer": "Map"
+        },
+        {
+          "author": "Chiara",
+          "theme": "INFORMATICS",
+          "subject": "Collection in java",
+          "challenge": "What iterator allows the programmer to traverse the list in either direction?",
+          "answer": "ListIterator"
+        }
+      ],
+      "author": "Chiara",
+      "theme": "INFORMATICS"
+    },
+    {
+      "subject": "String in java",
+      "questions": [
+        {
+          "author": "Chiara",
+          "theme": "INFORMATICS",
+          "subject": "String in java",
+          "challenge": "What\u0027s \u0027String\u0027 in OOP?",
+          "answer": "Class"
+        },
+        {
+          "author": "Chiara",
+          "theme": "INFORMATICS",
+          "subject": "String in java",
+          "challenge": "What class allows String modification?",
+          "answer": "StringBuffer"
+        },
+        {
+          "author": "Chiara",
+          "theme": "INFORMATICS",
+          "subject": "String in java",
+          "challenge": "What method allows empty character sequence initialization?",
+          "answer": "String()"
+        },
+        {
+          "author": "Chiara",
+          "theme": "INFORMATICS",
+          "subject": "String in java",
+          "challenge": "How many constructors count the Class String in Java 11?",
+          "answer": "15"
+        }
+      ],
+      "author": "Chiara",
+      "theme": "INFORMATICS"
+    },
+    {
+      "subject": "The piano",
+      "questions": [
+        {
+          "author": "Chiara",
+          "theme": "PLEASURE",
+          "subject": "The piano",
+          "challenge": "How many pedals has the Grand Piano?",
+          "answer": "3"
+        },
+        {
+          "author": "Chiara",
+          "theme": "PLEASURE",
+          "subject": "The piano",
+          "challenge": "Which piano’s keys there’s not black key between C and D, D and E, E and F or F and G?",
+          "answer": "E and F"
+        },
+        {
+          "author": "Chiara",
+          "theme": "PLEASURE",
+          "subject": "The piano",
+          "challenge": "How many keys does Piano contain usually?",
+          "answer": "88"
+        },
+        {
+          "author": "Chiara",
+          "theme": "PLEASURE",
+          "subject": "The piano",
+          "challenge": "What’s the name of piano possessed pinched strings?",
+          "answer": "harpsichords"
+        }
+      ],
+      "author": "Chiara",
+      "theme": "PLEASURE"
+    },
+    {
+      "subject": "The painting",
+      "questions": [
+        {
+          "author": "Chiara",
+          "theme": "PLEASURE",
+          "subject": "The painting",
+          "challenge": "When you mix pigments that are complementary colors, what color do you get?",
+          "answer": "Brown"
+        },
+        {
+          "author": "Chiara",
+          "theme": "PLEASURE",
+          "subject": "The painting",
+          "challenge": "What’s the name of a mural painting?",
+          "answer": "fresco"
+        },
+        {
+          "author": "Chiara",
+          "theme": "PLEASURE",
+          "subject": "The painting",
+          "challenge": "What artistic current did “Impression, Sunrise” by Claude Monet initialize?",
+          "answer": "Impressionnism"
+        },
+        {
+          "author": "Chiara",
+          "theme": "PLEASURE",
+          "subject": "The painting",
+          "challenge": "What type of paint did European artists use during the 15th through 19th centuries?",
+          "answer": "oil paint"
+        }
+      ],
+      "author": "Chiara",
+      "theme": "PLEASURE"
+    },
+    {
+      "subject": "The great Explorers",
+      "questions": [
+        {
+          "author": "Chiara",
+          "theme": "SCHOOL",
+          "subject": "The great Explorers",
+          "challenge": "Who made the first circumnavigation of the Earth?",
+          "answer": "Magellan"
+        },
+        {
+          "author": "Chiara",
+          "theme": "SCHOOL",
+          "subject": "The great Explorers",
+          "challenge": "What great explorer gives his name to America?",
+          "answer": "Amerigo Vespucci"
+        },
+        {
+          "author": "Chiara",
+          "theme": "SCHOOL",
+          "subject": "The great Explorers",
+          "challenge": "Who mode the first circumnavigation of the Antarctic?",
+          "answer": "James Cook"
+        },
+        {
+          "author": "Chiara",
+          "theme": "SCHOOL",
+          "subject": "The great Explorers",
+          "challenge": "What are the three names of Christopher Columbus caravel?",
+          "answer": "Santa Maria, Nina and Pinta"
+        }
+      ],
+      "author": "Chiara",
+      "theme": "SCHOOL"
+    },
+    {
+      "subject": "The Atoms",
+      "questions": [
+        {
+          "author": "Chiara",
+          "theme": "SCHOOL",
+          "subject": "The Atoms",
+          "challenge": "What\u0027s the most lightweight gas?",
+          "answer": "Hydrogen"
+        },
+        {
+          "author": "Chiara",
+          "theme": "SCHOOL",
+          "subject": "The Atoms",
+          "challenge": "What\u0027s the chemical symbol for the nitrogen?",
+          "answer": "N"
+        },
+        {
+          "author": "Chiara",
+          "theme": "SCHOOL",
+          "subject": "The Atoms",
+          "challenge": "What\u0027s the name of this atom : Sn",
+          "answer": "Tin"
+        },
+        {
+          "author": "Chiara",
+          "theme": "SCHOOL",
+          "subject": "The Atoms",
+          "challenge": "What\u0027s the chemical name of spirits of salt?",
+          "answer": "Hydrochloric acid"
+        }
+      ],
+      "author": "Chiara",
+      "theme": "SCHOOL"
+    }
   ]
 }
