@@ -127,9 +127,7 @@ public class QuestionAP extends AnchorPane{
 		if(clickBtn == null) {
 			clickBtn = new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent event) {
-					
 					setAnswer();
-					
 					//verification
 		        	SceneManager.getGameOperation().answerVerification();
 		        	timeline.stop();

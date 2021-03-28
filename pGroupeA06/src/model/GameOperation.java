@@ -81,8 +81,8 @@ public class GameOperation {
 				break;
 			case FINISH:
 				FinishCard fc = new FinishCard();
+				animationLastTurn(transitions).play();
 				fc.action();
-				animationLastTurn(transitions);
 				break;
 			case SPECIAL:
 				BasicSpecialCard bsc = new BasicSpecialCard();
@@ -116,7 +116,7 @@ public class GameOperation {
 	}
 
 	public void setQuestion(Question q) {
-		// QUESTION SIZE?????
+		
 		String question = q.getChallenge();
 		StringBuffer str = new StringBuffer();
 
@@ -172,7 +172,10 @@ public class GameOperation {
 		Player p = getPlayerTurn();
 		
 		// verification of the answer
-		if (questionVerificationAlgorithm()) {
+		if (questionVerificationAlgorithm(p.getSquare().getTheme()==Theme.FINISH)) {
+			
+			
+			
 			// the answer was correct
 
 			SceneManager.getMediaPlayerCorrect().play();
@@ -181,12 +184,18 @@ public class GameOperation {
 			// enabling only the Green question mark
 			SceneManager.getQuestion().enableQuestionMark(3);
 			
-			tempTab=game.movePlayer(rating, p.getSquare(), p);
-			tab = new Animation[tempTab.length+1];
-			tab[0]=SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_ANSWER,
-					SceneManager.getStackQuestion(), null);
-			for(int i = 0;i<tempTab.length;i++) {
-				tab[i+1]=tempTab[i];
+			if(p.getSquare().getTheme()==Theme.FINISH){
+				LastTurn().play();
+				return;
+			}
+			else {
+				tempTab=game.movePlayer(rating, p.getSquare(), p);
+				tab = new Animation[tempTab.length+1];
+				tab[0]=SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_ANSWER,
+						SceneManager.getStackQuestion(), null);
+				for(int i = 0;i<tempTab.length;i++) {
+					tab[i+1]=tempTab[i];
+				}
 			}
 			
 		} else {
@@ -212,13 +221,12 @@ public class GameOperation {
 		} catch (AlreadyPresentException e) {
 			e.printStackTrace();
 		}
-
 		// animation nextTurn
 		turnRating(false,tab);
 	}
 
-	public boolean questionVerificationAlgorithm() {
-		int rating = SceneManager.getRating().getRating();
+	public boolean questionVerificationAlgorithm(boolean last) {
+		int rating = (last)?4:SceneManager.getRating().getRating();
 		Question q = bc.getQuestions().get(rating - 1);
 		String answer = (q.getAnswer() != null) ? q.getAnswer() : "";
 		String playerAnswer = (SceneManager.getQuestion().getAnswer() != null) ? SceneManager.getQuestion().getAnswer()
@@ -394,17 +402,25 @@ public class GameOperation {
 			return new SequentialTransition (tabTemp);
 		}
 	}
+	
 
 	public SequentialTransition animationLastTurn(Animation[] before) {
-		//first, player before moves
-		//then, message it's player's turn
-		//then turn rating or .. depends on the square
+		
 		Animation[] tab = new Animation[(before==null)?4:before.length+4];
 		Animation[] tabTemp = new Animation[4];
 		
+		//SceneManager.getSceneRoot().setRoot(SceneManager.getStackGame());
 		SceneManager.getRating().setLbTurn(GameOperation.getPlayerTurn().getName());
-		tabTemp[3]= SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_RATING,
-				SceneManager.getStackQuestion(), null);
+		
+		PauseTransition pauseTransition = new PauseTransition(Duration.millis(Constants.ANIMATION_TIME_TURN));
+		pauseTransition.setOnFinished(e -> {
+			BasicCard tempBasicCard = SceneManager.getGameOperation().drawCard(Theme.getRandomTheme());
+			SceneManager.getGameOperation().setQuestion(tempBasicCard.getQuestions().get(3));
+			SceneManager.getQuestion().getBtnOK().setDisable(false);
+			SceneManager.getSceneRoot().setRoot(SceneManager.getStackQuestion());
+		});
+		
+		tabTemp[3]= pauseTransition;
 		tabTemp[2] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,
 				SceneManager.getStackTransititionAnimation(),
 				"You have to answer\ncorrectly to this\ndifficult question to win");
@@ -413,7 +429,6 @@ public class GameOperation {
 				"It's " + GameOperation.getPlayerTurn().getName() + "'s \nlast turn!");
 		tabTemp[0] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,
 				SceneManager.getStackGame(), null);
-		
 		if(before!=null) {
 			for(int i = 0;i<before.length;i++) {
 				tab[i]=before[i];
@@ -431,12 +446,18 @@ public class GameOperation {
 		}
 	}
 	
-	public SequentialTransition LastTurn(BasicCard bc) {
-		return null;
+	public SequentialTransition LastTurn() {
+		Animation[] tabTemp = new Animation[2];
+		
+		
+		tabTemp[1] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,
+				SceneManager.getStackRoot(), null);
+		tabTemp[0] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,
+				SceneManager.getStackTransititionAnimation(),
+				GameOperation.getPlayerTurn().getName() + " won!");
+
+		return new SequentialTransition (tabTemp);
 	}
-	
-	
-	
 
 	public BasicCard drawCard(Theme th) {
 		boolean alreadyPresent = false;
