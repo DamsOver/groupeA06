@@ -35,22 +35,14 @@ import vue.SettingsAP;
 import vue.TransitionAnimationAP;
 
 public class SceneManager {
-	
-	private static Scene sceneRoot; 
-	
-	private static StackPane 	stackOptions,
-								stackRoot,
-								stackAddCards,
-								stackAdmin,
-								stackGame,
-								stackAddPlayers,
-								stackGameRule,
-								stackCardsManagement,
-								stackTransitionAnimation,
-								stackSettings,
-								stackAnimation,
-								stackRating,
-								stackQuestion;
+
+	private static Scene sceneRoot;
+	private static MediaPlayer mediaPlayerCorrect;
+	private static MediaPlayer mediaPlayerInCorrect;
+
+	private static StackPane stackOptions, stackRoot, stackAddCards, stackAdmin, stackGame, stackAddPlayers,
+			stackGameRule, stackCardsManagement, stackTransitionAnimation, stackSettings, stackAnimation, stackRating,
+			stackQuestion;
 
 	private static HomeAP root;
 	private static AddCardsAP addCards;
@@ -58,19 +50,19 @@ public class SceneManager {
 	private static GameAP game;
 	private static AddPlayersAP addPlayers;
 	private static OptionsAP options;
-	private static GameRulesAP gameRule;	
+	private static GameRulesAP gameRule;
 	private static CardsManagementAP cardsManagement;
 	private static TransitionAnimationAP ta;
 	private static SettingsAP settings;
 	private static RatingAP rating;
 	private static QuestionAP question;
-	
-	//retirer static
+
+	// retirer static
 	private static GameOperation go;
-	
+
 	public static void initialize() {
 		go = new GameOperation();
-		
+
 		// AnchorPane Creation
 		root = new HomeAP();
 		addCards = new AddCardsAP();
@@ -84,29 +76,43 @@ public class SceneManager {
 		rating = new RatingAP();
 		addPlayers = new AddPlayersAP();
 		question = new QuestionAP();
-		
+
 		// StackPane Creation
 		stackRoot = new StackPane(root);
 		stackAddCards = new StackPane(addCards);
 		stackAdmin = new StackPane(admin);
 		stackGame = new StackPane(game);
 		stackAddPlayers = new StackPane(addPlayers);
-		stackOptions = new StackPane(options);	
-		stackGameRule = new StackPane(gameRule);	
+		stackOptions = new StackPane(options);
+		stackGameRule = new StackPane(gameRule);
 		stackCardsManagement = new StackPane(cardsManagement);
 		stackTransitionAnimation = new StackPane(ta);
-		stackSettings = new StackPane(settings);		
-		stackRating = new StackPane(rating);	
+		stackSettings = new StackPane(settings);
+		stackRating = new StackPane(rating);
 		stackQuestion = new StackPane(question);
-		
+
 		sceneRoot = new Scene(stackRoot, 1920, 1080); // Original
 //		sceneRoot = new Scene(stackGame, 1920, 1080); // Pour les tests
-	
+
 	}
-	
+
 	public static void volumeInitialization() {
-		
-		//creation of a MediaPlayer
+
+		// creation of a mediaPlayerCorrect
+		mediaPlayerCorrect = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource(Constants.CORRECT_ANSWER).toExternalForm()));
+		mediaPlayerCorrect.setVolume(Constants.INITIAL_VOLUME_EFFECTS * Constants.VOLUME_EFFECTS_FACTOR);
+		mediaPlayerCorrect.setStartTime(Duration.seconds(0));
+		mediaPlayerCorrect.setStopTime(Duration.seconds(2));
+
+		// creation of a mediaPlayerInCorrect
+		mediaPlayerInCorrect = new MediaPlayer(
+				new Media(ClassLoader.getSystemResource(Constants.INCORRECT_ANSWER).toExternalForm()));
+		mediaPlayerInCorrect.setVolume(Constants.INITIAL_VOLUME_EFFECTS * Constants.VOLUME_EFFECTS_FACTOR * 3.5);
+		mediaPlayerInCorrect.setStartTime(Duration.seconds(0));
+		mediaPlayerInCorrect.setStopTime(Duration.seconds(2));
+
+		// creation of a MediaPlayer
 		MediaPlayer mediaPlayer = new MediaPlayer(
 				new Media(ClassLoader.getSystemResource(Constants.MUSIC_1_PATH).toExternalForm()));
 		mediaPlayer.play();
@@ -114,70 +120,120 @@ public class SceneManager {
 		mediaPlayer.setStartTime(Duration.seconds(0));
 		mediaPlayer.setStopTime(Duration.seconds(160));
 		mediaPlayer.setOnEndOfMedia(new Runnable() {
-				@Override
-				public void run() {
-					mediaPlayer.seek(Duration.ZERO);
-					mediaPlayer.play();
-				}
-			});
+			@Override
+			public void run() {
+				mediaPlayer.seek(Duration.ZERO);
+				mediaPlayer.play();
+			}
+		});
 
-		//Slider that change the volume
-		//Not in the OptionsAP or SettingsAP to make it easier to change
-			// in options
+		// Slider that change the volume
+		// Not in the OptionsAP or SettingsAP to make it easier to change
+		// in options
 		SceneManager.getOptions().getSlVolume().valueProperty().addListener(new ChangeListener<Number>() {
 			public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
 				mediaPlayer.setVolume((double) new_val * Constants.VOLUME_FACTOR);
 				SceneManager.getSettings().getSlVolume().setValue((double) new_val);
 			}
 		});
-		
-			// in settings
+
+		// in settings
 		SceneManager.getSettings().getSlVolume().valueProperty().addListener(new ChangeListener<Number>() {
 			public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
 				mediaPlayer.setVolume((double) new_val * Constants.VOLUME_FACTOR);
 				SceneManager.getOptions().getSlVolume().setValue((double) new_val);
 			}
 		});
+		
+		// Slider that change the volume Effects Correct
+		// Not in the OptionsAP or SettingsAP to make it easier to change
+		// in options
+		SceneManager.getOptions().getSlVolumeEffects().valueProperty().addListener(new ChangeListener<Number>() {
+			public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+				mediaPlayerCorrect.setVolume((double) new_val * Constants.VOLUME_EFFECTS_FACTOR);
+				SceneManager.getSettings().getSlVolumeEffects().setValue((double) new_val);
+			}
+		});
+
+		// in settings
+		SceneManager.getSettings().getSlVolumeEffects().valueProperty().addListener(new ChangeListener<Number>() {
+			public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+				mediaPlayerCorrect.setVolume((double) new_val * Constants.VOLUME_EFFECTS_FACTOR);
+				SceneManager.getOptions().getSlVolumeEffects().setValue((double) new_val);
+			}
+		});
+		
+		// Slider that change the volume Effects InCorrect
+		// Not in the OptionsAP or SettingsAP to make it easier to change
+		// in options
+		SceneManager.getOptions().getSlVolumeEffects().valueProperty().addListener(new ChangeListener<Number>() {
+			public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+				mediaPlayerInCorrect.setVolume((double) new_val * Constants.VOLUME_EFFECTS_FACTOR);
+				SceneManager.getSettings().getSlVolumeEffects().setValue((double) new_val);
+			}
+		});
+
+		// in settings
+		SceneManager.getSettings().getSlVolumeEffects().valueProperty().addListener(new ChangeListener<Number>() {
+			public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+				mediaPlayerInCorrect.setVolume((double) new_val * Constants.VOLUME_EFFECTS_FACTOR);
+				SceneManager.getOptions().getSlVolumeEffects().setValue((double) new_val);
+			}
+		});
+		
 	}
-	
-	//a remplacer par getCHildren
-	//getters AnchorPane
+
+	public static MediaPlayer getMediaPlayerCorrect() {
+		return mediaPlayerCorrect;
+	}
+
+	public static MediaPlayer getMediaPlayerInCorrect() {
+		return mediaPlayerInCorrect;
+	}
+
+	// a remplacer par getCHildren
+	// getters AnchorPane
 	public static OptionsAP getOptions() {
 		return options;
 	}
+
 	public static HomeAP getRoot() {
 		return root;
 	}
+
 	public static TransitionAnimationAP getTransitionAnimation() {
 		return ta;
 	}
+
 	public static SettingsAP getSettings() {
 		return settings;
 	}
+
 	public static AddPlayersAP getAddPlayers() {
 		return addPlayers;
 	}
+
 	public static QuestionAP getQuestion() {
 		return question;
 	}
-	public static RatingAP getRating(){
+
+	public static RatingAP getRating() {
 		return rating;
-	}	
+	}
+
 	public static AddCardsAP getAddCards() {
 		return addCards;
 	}
+
 	public static GameAP getGame() {
 		return game;
 	}
-	
-	
-	
-	
-	//getter GameOperation
+
+	// getter GameOperation
 	public static GameOperation getGameOperation() {
 		return go;
 	}
-	
+
 	public static Scene getSceneRoot() {
 		return sceneRoot;
 	}
@@ -209,21 +265,25 @@ public class SceneManager {
 	public static StackPane getStackGameRule() {
 		return stackGameRule;
 	}
+
 	public static StackPane getStackCardsManager() {
 		return stackCardsManagement;
 	}
+
 	public static StackPane getStackTransititionAnimation() {
 		return stackTransitionAnimation;
 	}
+
 	public static StackPane getStackSettings() {
 		return stackSettings;
 	}
+
 	public static StackPane getStackRating() {
 		return stackRating;
 	}
+
 	public static StackPane getStackQuestion() {
 		return stackQuestion;
 	}
-	
-	
+
 }

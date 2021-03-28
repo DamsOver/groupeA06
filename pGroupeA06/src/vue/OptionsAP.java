@@ -15,15 +15,15 @@ import util.Constants;
 
 public class OptionsAP extends AnchorPane {
 
-	private Slider slVolume;
-	private Text txtTitle, txtVolume;
-	private Button btnBack,btnCards;
+	private Slider slVolume, slVolumeEffects;
+	private Text txtTitle, txtVolume, txtVolumeEffects;
+	private Button btnBack, btnCards;
 
 	public OptionsAP() {
 
-		
 		this.getStyleClass().add("pane");
-		this.getChildren().addAll(getTxtTitle(), getBtnBack(), getTxtVolume(), getSlVolume(),getBtnCards());
+		this.getChildren().addAll(getTxtTitle(), getBtnBack(), getTxtVolume(), getSlVolume(), getBtnCards(),
+				getTxtVolumeEffects(), getSlVolumeEffects());
 
 		// title
 		txtTitle.getStyleClass().add("title-style");
@@ -44,15 +44,28 @@ public class OptionsAP extends AnchorPane {
 		AnchorPane.setRightAnchor(getSlVolume(), 550.0);
 		AnchorPane.setLeftAnchor(getSlVolume(), 600.0);
 
+		// SlVolumeEffects
+		slVolumeEffects.setValue(Constants.INITIAL_VOLUME_EFFECTS);
+		slVolumeEffects.getStyleClass().add("slider-style");
+		AnchorPane.setTopAnchor(getSlVolumeEffects(), 560.0);
+		AnchorPane.setRightAnchor(getSlVolumeEffects(), 550.0);
+		AnchorPane.setLeftAnchor(getSlVolumeEffects(), 600.0);
+
 		// TxtVolume
 		txtVolume.getStyleClass().add("h1");
 		AnchorPane.setTopAnchor(getTxtVolume(), 400.0);
 		AnchorPane.setRightAnchor(getTxtVolume(), 1400.0);
-		AnchorPane.setLeftAnchor(getTxtVolume(), 200.0);	
-		
+		AnchorPane.setLeftAnchor(getTxtVolume(), 200.0);
+
+		// TxtVolumeEffects
+		txtVolumeEffects.getStyleClass().add("h1");
+		AnchorPane.setTopAnchor(getTxtVolumeEffects(), 550.0);
+		AnchorPane.setRightAnchor(getTxtVolumeEffects(), 1400.0);
+		AnchorPane.setLeftAnchor(getTxtVolumeEffects(), 200.0);
+
 		// BtnCards
 		btnCards.getStyleClass().add("btn-style");
-		AnchorPane.setTopAnchor(getBtnCards(),625.0);
+		AnchorPane.setTopAnchor(getBtnCards(), 725.0);
 		AnchorPane.setRightAnchor(getBtnCards(), 1050.0);
 		AnchorPane.setLeftAnchor(getBtnCards(), 200.0);
 
@@ -69,22 +82,22 @@ public class OptionsAP extends AnchorPane {
 		if (btnBack == null) {
 			btnBack = new Button("Back");
 		}
-		btnBack.setOnAction(new EventHandler<ActionEvent>(){
-	        public void handle(ActionEvent event) {
-	            SceneManager.getSceneRoot().setRoot(SceneManager.getStackRoot());
-	            }
-			});
+		btnBack.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				SceneManager.getSceneRoot().setRoot(SceneManager.getStackRoot());
+			}
+		});
 		return btnBack;
 	}
-	
+
 	public Button getBtnCards() {
 		if (btnCards == null) {
 			btnCards = new Button("Card Management");
 		}
-		btnCards.setOnAction(new EventHandler<ActionEvent>(){
-	        public void handle(ActionEvent event) {
-	            SceneManager.getSceneRoot().setRoot(SceneManager.getStackAdmin());
-	            }
+		btnCards.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				SceneManager.getSceneRoot().setRoot(SceneManager.getStackAdmin());
+			}
 		});
 		return btnCards;
 	}
@@ -101,6 +114,20 @@ public class OptionsAP extends AnchorPane {
 			slVolume = new Slider();
 		}
 		return slVolume;
+	}
+
+	public Text getTxtVolumeEffects() {
+		if (txtVolumeEffects == null) {
+			txtVolumeEffects = new Text("Effects : ");
+		}
+		return txtVolumeEffects;
+	}
+
+	public Slider getSlVolumeEffects() {
+		if (slVolumeEffects == null) {
+			slVolumeEffects = new Slider();
+		}
+		return slVolumeEffects;
 	}
 
 }
