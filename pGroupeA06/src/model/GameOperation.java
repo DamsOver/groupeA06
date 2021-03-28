@@ -30,12 +30,11 @@ public class GameOperation {
 	private static Game game;
 	private BasicCard bc;
 	private Deck oldCards;
+	private Animation[] tempTransitions;
 
 	public GameOperation() {
-
 		this.game = new Game();
 		oldCards = new Deck();
-
 	}
 
 	public static void addPlayers(List<String> playerNames) {
@@ -52,9 +51,6 @@ public class GameOperation {
 	}
 
 	public void turnRating(boolean first,Animation[] transitions) {
-		
-		// getting the current turn
-		int turn = game.getTurn();
 
 		// getting the player that will play the turn
 		Player p = getPlayerTurn();
@@ -81,7 +77,7 @@ public class GameOperation {
 				break;
 			case FINISH:
 				FinishCard fc = new FinishCard();
-				animationLastTurn(transitions).play();
+				tempTransitions=transitions;
 				fc.action();
 				break;
 			case SPECIAL:
@@ -404,9 +400,8 @@ public class GameOperation {
 	}
 	
 
-	public SequentialTransition animationLastTurn(Animation[] before) {
-		
-		Animation[] tab = new Animation[(before==null)?4:before.length+4];
+	public SequentialTransition animationLastTurn() {
+		Animation[] tab = new Animation[(tempTransitions==null)?4:tempTransitions.length+4];
 		Animation[] tabTemp = new Animation[4];
 		
 		//SceneManager.getSceneRoot().setRoot(SceneManager.getStackGame());
@@ -429,13 +424,13 @@ public class GameOperation {
 				"It's " + GameOperation.getPlayerTurn().getName() + "'s \nlast turn!");
 		tabTemp[0] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,
 				SceneManager.getStackGame(), null);
-		if(before!=null) {
-			for(int i = 0;i<before.length;i++) {
-				tab[i]=before[i];
+		if(tempTransitions!=null) {
+			for(int i = 0;i<tempTransitions.length;i++) {
+				tab[i]=tempTransitions[i];
 			}
 			
-			for(int i = before.length;i<before.length+4;i++) {
-				tab[i]=tabTemp[i-before.length];
+			for(int i = tempTransitions.length;i<tempTransitions.length+4;i++) {
+				tab[i]=tabTemp[i-tempTransitions.length];
 			}
 			
 			return new SequentialTransition (tab);
