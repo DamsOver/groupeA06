@@ -55,21 +55,6 @@ public class Serialisation implements Serializable {
 		return new Gson().fromJson(bufferedReader, Deck.class);
 	}
 
-	public static void saveBoardClear(Board q, String nom) {
-
-		try (FileWriter writer = new FileWriter(nom); BufferedWriter bw = new BufferedWriter(writer)) {
-
-			Gson gson = new GsonBuilder().setPrettyPrinting().create();
-			String json = gson.toJson(q);
-
-			bw.write(json);
-			bw.close();
-
-		} catch (IOException e) {
-			System.err.println(e);
-		}
-	}
-
 	public static Board loadBoardClear(String nom) {
 		
 		BufferedReader bufferedReader = null;

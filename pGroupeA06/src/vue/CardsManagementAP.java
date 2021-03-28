@@ -21,7 +21,6 @@ import model.BasicCard;
 import model.Deck;
 import model.Game;
 import serialisation.Serialisation;
-import util.AddCards;
 import util.Constants;
 
 public class CardsManagementAP extends AnchorPane {
