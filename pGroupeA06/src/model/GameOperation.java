@@ -181,7 +181,7 @@ public class GameOperation {
 			SceneManager.getQuestion().enableQuestionMark(3);
 			
 			if(p.getSquare().getTheme()==Theme.FINISH){
-				LastTurn().play();
+				lastTurn().play();
 				return;
 			}
 			else {
@@ -399,7 +399,6 @@ public class GameOperation {
 		}
 	}
 	
-
 	public SequentialTransition animationLastTurn() {
 		Animation[] tab = new Animation[(tempTransitions==null)?4:tempTransitions.length+4];
 		Animation[] tabTemp = new Animation[4];
@@ -441,7 +440,7 @@ public class GameOperation {
 		}
 	}
 	
-	public SequentialTransition LastTurn() {
+	public SequentialTransition lastTurn() {
 		Animation[] tabTemp = new Animation[2];
 		
 		
