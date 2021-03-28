@@ -37,7 +37,7 @@ public class AddCardsAP extends AnchorPane {
 	private final int NB_QUESTION = 4;
 	private Boolean modification = false;
 	private BasicCard bc;
-	
+
 	private Text txtTitle;
 
 	private Text txtTheme;
@@ -50,24 +50,26 @@ public class AddCardsAP extends AnchorPane {
 	private Label lblChallenges;
 	private Label lblAnswer;
 
-	private ArrayList<Label> lblEachChallenges;
-	private ArrayList<TextField> txtFEachChallenges;
-	private ArrayList<Label>	lblEachAnswers;
-	private ArrayList<TextField> txtFEachAnswers;
+	private List<Label> lblEachChallenges;
+	private List<TextField> txtFEachChallenges;
+	private List<Label> lblEachAnswers;
+	private List<TextField> txtFEachAnswers;
 
 	private Button btnErase;
 	private Button btnSubmit;
 	private Button btnBack;
 
 	private ObservableList<String> listIgnore = FXCollections.observableArrayList("START", "FINISH", "SPECIAL");
+
 	public AddCardsAP() {
 
 		this.getStyleClass().add("pane");
 		this.getChildren().addAll(getTxtTitle(), getBtnBack(), getBtnErase(), getBtnSubmit(), getTxtTheme(),
-				getCbTheme(), getLblAuthor(), getTxtFAuthor(), getLblSubject(), getTxtFSubject(), getLblChallenges(), getLblAnswer());
+				getCbTheme(), getLblAuthor(), getTxtFAuthor(), getLblSubject(), getTxtFSubject(), getLblChallenges(),
+				getLblAnswer());
 		this.getChildren().addAll(getLblEachAnswers());
 		this.getChildren().addAll(getLblEachChallenges());
-		this.getChildren().addAll(getTxtFEachAnswers()); 
+		this.getChildren().addAll(getTxtFEachAnswers());
 		this.getChildren().addAll(getTxtFEachChallenges());
 
 		// Title
@@ -114,12 +116,12 @@ public class AddCardsAP extends AnchorPane {
 		lblChallenges.getStyleClass().add("basicText");
 		AnchorPane.setTopAnchor(getLblChallenges(), 430.0);
 		AnchorPane.setLeftAnchor(getLblChallenges(), 100.0);
-		
+
 		// lblanswer
 		lblAnswer.getStyleClass().add("basicText");
 		AnchorPane.setTopAnchor(getLblAnswer(), 430.0);
 		AnchorPane.setLeftAnchor(getLblAnswer(), 1000.0);
-		//use list of Nodes and form its
+		// use list of Nodes and form its
 		toForm();
 
 		// BtnErase
@@ -138,17 +140,17 @@ public class AddCardsAP extends AnchorPane {
 		AnchorPane.setRightAnchor(getBtnBack(), 100.0);
 
 	}
-	
+
 	public void loadCard(BasicCard b) {
 		bc = b;
 		getTxtFAuthor().setText(bc.getAuthor());
 		getTxtFSubject().setText(bc.getSubject());
 		getCbTheme().setValue(bc.getTheme().toString());
-		for(int i =0; i<NB_QUESTION; i++) {
+		for (int i = 0; i < NB_QUESTION; i++) {
 			getTxtFEachChallenges().get(i).setText(bc.getQuestions().get(i).getChallenge());
 			getTxtFEachAnswers().get(i).setText(bc.getQuestions().get(i).getAnswer());
 		}
-		modification= true;
+		modification = true;
 	}
 
 	public Text getTxtTitle() {
@@ -168,8 +170,8 @@ public class AddCardsAP extends AnchorPane {
 	public ComboBox<String> getCbTheme() {
 		if (cbTheme == null) {
 			cbTheme = new ComboBox<String>();
-			for(Theme t : Theme.values()) {
-			if(!listIgnore.contains(t.name())) {
+			for (Theme t : Theme.values()) {
+				if (!listIgnore.contains(t.name())) {
 					cbTheme.getItems().add(t.name());
 				}
 			}
@@ -192,24 +194,26 @@ public class AddCardsAP extends AnchorPane {
 		return lblSubject;
 	}
 
-	public ArrayList<Label> getLblEachAnswers(){
-		if(lblEachAnswers == null) {
+	public List<Label> getLblEachAnswers() {
+		if (lblEachAnswers == null) {
 			lblEachAnswers = new ArrayList<>();
 			setEachLabel(lblEachAnswers);
 		}
 		return lblEachAnswers;
 	}
-	public ArrayList<Label> getLblEachChallenges() {
+
+	public List<Label> getLblEachChallenges() {
 		if (lblEachChallenges == null) {
 			lblEachChallenges = new ArrayList<>();
 			setEachLabel(lblEachChallenges);
 		}
 		return lblEachChallenges;
 	}
-	//create each Label
-	public void setEachLabel(ArrayList<Label> list) {
-		for(int i= 0; i< NB_QUESTION; i++) {
-			list.add(new Label((i+1)+" : "));
+
+	// create each Label
+	public void setEachLabel(List<Label> list) {
+		for (int i = 0; i < NB_QUESTION; i++) {
+			list.add(new Label((i + 1) + " : "));
 		}
 	}
 
@@ -226,29 +230,30 @@ public class AddCardsAP extends AnchorPane {
 		}
 		return lblAnswer;
 	}
-	
-	public ArrayList<TextField> getTxtFEachAnswers() {
+
+	public List<TextField> getTxtFEachAnswers() {
 		if (txtFEachAnswers == null) {
 			txtFEachAnswers = new ArrayList<>();
 			setEachTextField(txtFEachAnswers);
 		}
 		return txtFEachAnswers;
 	}
-	
-	public ArrayList<TextField> getTxtFEachChallenges() {
+
+	public List<TextField> getTxtFEachChallenges() {
 		if (txtFEachChallenges == null) {
 			txtFEachChallenges = new ArrayList<>();
 			setEachTextField(txtFEachChallenges);
 		}
 		return txtFEachChallenges;
 	}
-	//create each textField
-	public void setEachTextField(ArrayList<TextField> list) {
-		for(int i= 0; i< NB_QUESTION; i++){
+
+	// create each textField
+	public void setEachTextField(List<TextField> list) {
+		for (int i = 0; i < NB_QUESTION; i++) {
 			list.add(new TextField());
 		}
 	}
-	
+
 	public TextField getTxtFAuthor() {
 		if (txtFAuthor == null) {
 			txtFAuthor = new TextField();
@@ -267,7 +272,7 @@ public class AddCardsAP extends AnchorPane {
 		if (btnErase == null) {
 			btnErase = new Button("Erase");
 		}
-		btnErase.setOnAction(new EventHandler<ActionEvent>(){
+		btnErase.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				removeText();
 			}
@@ -279,18 +284,18 @@ public class AddCardsAP extends AnchorPane {
 		if (btnSubmit == null) {
 			btnSubmit = new Button("Submit");
 		}
-		btnSubmit.setOnAction(new EventHandler<ActionEvent>(){
+		btnSubmit.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				if(checkTextField()) {
-					//create new Basic card
-					BasicCard bc = new BasicCard(getTxtFAuthor().getText(), 
-												Theme.getTheme(cbTheme.getValue()), 
-												getTxtFSubject().getText());
-					//get questions
-					for(int i= 0; i< NB_QUESTION; i++) {
-						//add and create questions
+				if (checkTextField()) {
+					// create new Basic card
+					BasicCard bc = new BasicCard(getTxtFAuthor().getText(), Theme.getTheme(cbTheme.getValue()),
+							getTxtFSubject().getText());
+					// get questions
+					for (int i = 0; i < NB_QUESTION; i++) {
+						// add and create questions
 						try {
-							bc.addQuestion(getTxtFEachChallenges().get(i).getText(), getTxtFEachAnswers().get(i).getText());
+							bc.addQuestion(getTxtFEachChallenges().get(i).getText(),
+									getTxtFEachAnswers().get(i).getText());
 						} catch (AlreadyPresentException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -298,36 +303,35 @@ public class AddCardsAP extends AnchorPane {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						
+
 					}
 					Deck deck = new Deck().fromJson();
-					//System.out.println(deck.toString());
-					if(modification) {
-						//update
-						int index= deck.getBasicCards().indexOf(bc);
+					// System.out.println(deck.toString());
+					if (modification) {
+						// update
+						int index = deck.getBasicCards().indexOf(bc);
 						deck.getBasicCards().remove(index);
 						deck.getBasicCards().add(index, bc);
 						System.out.println("Modification");
-					}
-					else {
+					} else {
 						try {
-							deck.addBasicCard(bc);						
+							deck.addBasicCard(bc);
 						} catch (AlreadyPresentException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
-					//System.out.println(deck.toString());
+					// System.out.println(deck.toString());
 					Serialisation.saveDeckClear(deck, Constants.DECK_PATH);
 					removeText();
-				
+
+				}
 			}
-		}
-	});
-	return btnSubmit;
+		});
+		return btnSubmit;
 	}
 
-public Button getBtnBack() {
+	public Button getBtnBack() {
 		if (btnBack == null) {
 			btnBack = new Button("Back");
 		}
@@ -339,51 +343,52 @@ public Button getBtnBack() {
 		});
 		return btnBack;
 	}
-	
+
 	public void toForm() {
-		//Basis position
+		// Basis position
 		double top = 510, addTop = 90;
 		double TFChallRight = 1000, TFAnsRight = 100;
-		double LBLChallLeft = 140, addChallToAnsLeft =900, addLblToTFLeft = 80;
-		for(int i= 0; i< NB_QUESTION; i++) {
-			//top
+		double LBLChallLeft = 140, addChallToAnsLeft = 900, addLblToTFLeft = 80;
+		for (int i = 0; i < NB_QUESTION; i++) {
+			// top
 			AnchorPane.setTopAnchor(getLblEachAnswers().get(i), top);
 			AnchorPane.setTopAnchor(getLblEachChallenges().get(i), top);
 			AnchorPane.setTopAnchor(getTxtFEachAnswers().get(i), top);
 			AnchorPane.setTopAnchor(getTxtFEachChallenges().get(i), top);
-			top+=addTop;
-			
-			//Left
-			AnchorPane.setLeftAnchor(getLblEachChallenges().get(i), LBLChallLeft );
-			AnchorPane.setLeftAnchor(getTxtFEachChallenges().get(i), LBLChallLeft + addLblToTFLeft );
-			AnchorPane.setLeftAnchor(getLblEachAnswers().get(i), LBLChallLeft  + addChallToAnsLeft);
+			top += addTop;
+
+			// Left
+			AnchorPane.setLeftAnchor(getLblEachChallenges().get(i), LBLChallLeft);
+			AnchorPane.setLeftAnchor(getTxtFEachChallenges().get(i), LBLChallLeft + addLblToTFLeft);
+			AnchorPane.setLeftAnchor(getLblEachAnswers().get(i), LBLChallLeft + addChallToAnsLeft);
 			AnchorPane.setLeftAnchor(getTxtFEachAnswers().get(i), LBLChallLeft + addChallToAnsLeft + addLblToTFLeft);
-			
-			//right
+
+			// right
 			AnchorPane.setRightAnchor(getTxtFEachChallenges().get(i), TFChallRight);
 			AnchorPane.setRightAnchor(getTxtFEachAnswers().get(i), TFAnsRight);
-			
-			//form
+
+			// form
 			getLblEachChallenges().get(i).getStyleClass().add("basicText");
 			getLblEachAnswers().get(i).getStyleClass().add("basicText");
 			getTxtFEachAnswers().get(i).getStyleClass().add("txtField");
 			getTxtFEachChallenges().get(i).getStyleClass().add("txtField");
 		}
 	}
-	
+
 	public boolean checkTextField() {
-		for(int i= 0; i< NB_QUESTION; i++) {
-			if(getTxtFEachAnswers().get(i).getText().isBlank() || getTxtFEachChallenges().get(i).getText().isBlank()) {
+		for (int i = 0; i < NB_QUESTION; i++) {
+			if (getTxtFEachAnswers().get(i).getText().isBlank() || getTxtFEachChallenges().get(i).getText().isBlank()) {
 				return false;
 			}
 		}
-		if(getTxtFAuthor().getText().isBlank() || getTxtFSubject().getText().isBlank()) {
+		if (getTxtFAuthor().getText().isBlank() || getTxtFSubject().getText().isBlank()) {
 			return false;
 		}
 		return true;
 	}
+
 	public void removeText() {
-		for(int i= 0; i< NB_QUESTION; i++) {
+		for (int i = 0; i < NB_QUESTION; i++) {
 			getTxtFEachAnswers().get(i).setText("");
 			getTxtFEachChallenges().get(i).setText("");
 		}

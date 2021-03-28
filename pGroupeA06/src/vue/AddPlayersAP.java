@@ -293,6 +293,7 @@ public class AddPlayersAP extends AnchorPane {
 			AnchorPane.setTopAnchor(getIvPlayer().get(i), topImg);
 		}
 	}
+	
 	public void hideOrShowPlayer() {
 		for(int i=MIN_PLAYER-1; i<MAX_PLAYER; i++) {
 			
