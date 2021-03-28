@@ -30,21 +30,8 @@ public class GameOperation {
 	private static Game game;
 	private BasicCard bc;
 	private Deck oldCards;
-	private MediaPlayer mediaPlayerCorrect;
-	private MediaPlayer mediaPlayerInCorrect;
 
 	public GameOperation() {
-		mediaPlayerCorrect = new MediaPlayer(
-				new Media(ClassLoader.getSystemResource(Constants.CORRECT_ANSWER).toExternalForm()));
-		mediaPlayerCorrect.setVolume(Constants.INITIAL_VOLUME_EFFECTS * Constants.VOLUME_EFFECTS_FACTOR);
-		mediaPlayerCorrect.setStartTime(Duration.seconds(0));
-		mediaPlayerCorrect.setStopTime(Duration.seconds(2));
-
-		mediaPlayerInCorrect = new MediaPlayer(
-				new Media(ClassLoader.getSystemResource(Constants.INCORRECT_ANSWER).toExternalForm()));
-		mediaPlayerInCorrect.setVolume(Constants.INITIAL_VOLUME_EFFECTS * Constants.VOLUME_EFFECTS_FACTOR *3.5);
-		mediaPlayerInCorrect.setStartTime(Duration.seconds(0));
-		mediaPlayerInCorrect.setStopTime(Duration.seconds(2));
 
 		this.game = new Game();
 		oldCards = new Deck();
@@ -193,8 +180,9 @@ public class GameOperation {
 		if (questionVerificationAlgorithm()) {
 			// the answer was correct
 
-			mediaPlayerCorrect.play();
-			mediaPlayerCorrect.seek(Duration.ZERO);
+			SceneManager.getMediaPlayerCorrect().play();
+			SceneManager.getMediaPlayerCorrect().seek(Duration.ZERO);
+
 			// enabling only the Green question mark
 			SceneManager.getQuestion().enableQuestionMark(3);
 			
@@ -215,8 +203,8 @@ public class GameOperation {
 		} else {
 			// the anwser was wrong
 
-			mediaPlayerInCorrect.play();
-			mediaPlayerInCorrect.seek(Duration.ZERO);
+			SceneManager.getMediaPlayerInCorrect().play();
+			SceneManager.getMediaPlayerInCorrect().seek(Duration.ZERO);
 			// enabling only the Red question mark
 			SceneManager.getQuestion().enableQuestionMark(2);
 			// disabling the answer

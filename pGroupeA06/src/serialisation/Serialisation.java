@@ -1,12 +1,17 @@
 package serialisation;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Serializable;
+import java.net.URISyntaxException;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
@@ -23,14 +28,19 @@ public class Serialisation implements Serializable {
 
 	public static void saveDeckClear(Deck q, String nom) {
 
-		FileWriter fileWriter;
-		try {
+		//"res/deckTest.JSON"
+		try(FileWriter writer = new FileWriter("src/res/deckTest.JSON");
+		         BufferedWriter bw = new BufferedWriter(writer)) {
+			
 			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 			String json = gson.toJson(q);
 
-			fileWriter = new FileWriter(nom);
-			fileWriter.write(json);
-			fileWriter.close();
+			bw.write(json);
+			bw.close();
+			
+//			fileWriter = new FileWriter(nom);
+//			fileWriter.write(json);
+//			fileWriter.close();
 		} catch (IOException e) {
 		System.err.println(e);
 		}
@@ -46,14 +56,19 @@ public class Serialisation implements Serializable {
 	
 	public static void saveBoardClear(Board q, String nom) {
 
-		FileWriter fileWriter;
-		try {
+		try(FileWriter writer = new FileWriter("src/res/board.JSON");
+		         BufferedWriter bw = new BufferedWriter(writer)) {
+			
 			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 			String json = gson.toJson(q);
 
-			fileWriter = new FileWriter(nom);
-			fileWriter.write(json);
-			fileWriter.close();
+
+			bw.write(json);
+			bw.close();
+			
+//			fileWriter = new FileWriter(nom);
+//			fileWriter.write(json);
+//			fileWriter.close();
 		} catch (IOException e) {
 		System.err.println(e);
 		}
