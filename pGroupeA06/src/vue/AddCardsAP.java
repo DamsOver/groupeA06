@@ -316,6 +316,7 @@ public class AddCardsAP extends AnchorPane {
 					} else {
 						try {
 							deck.addBasicCard(bc);
+							SceneManager.getCardsManagement().getLvCards().getItems().add(bc.getSubject());
 						} catch (AlreadyPresentException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();

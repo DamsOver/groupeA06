@@ -228,6 +228,10 @@ public class SceneManager {
 	public static GameAP getGame() {
 		return game;
 	}
+	
+	public static CardsManagementAP getCardsManagement() {
+		return cardsManagement;
+	}
 
 	// getter GameOperation
 	public static GameOperation getGameOperation() {
