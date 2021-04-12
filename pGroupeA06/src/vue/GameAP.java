@@ -39,7 +39,7 @@ public class GameAP extends AnchorPane {
 		listImageView.get(indice).setY(y);
 	}
 
-	public static List<ImageView> getListImageView() {
+	public List<ImageView> getListImageView() {
 		return listImageView;
 	}
 

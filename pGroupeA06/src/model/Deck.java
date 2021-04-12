@@ -1,13 +1,8 @@
 package model;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.google.gson.Gson;
-
 import exceptions.AlreadyPresentException;
 import exceptions.NotPresentException;
 import exceptions.TooLittleException;

@@ -1,9 +1,5 @@
 package util;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public interface Constants {
 	public static final double 	INITIAL_VOLUME = 50,
 								VOLUME_FACTOR = 0.001,

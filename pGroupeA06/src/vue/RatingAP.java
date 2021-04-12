@@ -136,9 +136,9 @@ public class RatingAP extends AnchorPane {
 		return btnGo;
 	}
 
-	public ComboBox getCbbRating() {
+	public ComboBox<String> getCbbRating() {
 		if (cbbRating == null) {
-			cbbRating = new ComboBox();
+			cbbRating = new ComboBox<String>();
 		}
 		return cbbRating;
 	}

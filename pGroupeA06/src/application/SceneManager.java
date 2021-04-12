@@ -45,7 +45,6 @@ public class SceneManager {
 	private static RatingAP rating;
 	private static QuestionAP question;
 
-	// retirer static
 	private static GameOperation go;
 	
 

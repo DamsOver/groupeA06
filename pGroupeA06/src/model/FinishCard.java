@@ -1,7 +1,6 @@
 package model;
 
 import application.SceneManager;
-import enumerations.Theme;
 
 public class FinishCard extends SpecialCard{
 
@@ -9,5 +8,4 @@ public class FinishCard extends SpecialCard{
 	public void action() {
 		SceneManager.getGameOperation().animationLastTurn().play();
 	}
-	
 }

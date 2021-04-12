@@ -5,11 +5,9 @@ import java.util.List;
 import application.SceneManager;
 import enumerations.PlayerColors;
 import javafx.animation.Animation;
-import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
 import util.Constants;
-import vue.GameAP;
 
 public class Player {
 	@Override
@@ -134,7 +132,7 @@ public class Player {
 			
 			translate.setDuration(Duration.millis(Constants.ANIMATION_MOVEMENT));
 
-			translate.setNode(GameAP.getListImageView().get(indexPlayer));
+			translate.setNode(SceneManager.getGame().getListImageView().get(indexPlayer));
 			
 			a[i+1]=translate;
 			currentSquare=targetSquare;
@@ -177,7 +175,7 @@ public class Player {
 		translate.setByX(distX);
 		translate.setByY(distY);
 		translate.setDuration(Duration.millis(Constants.ANIMATION_MOVEMENT));
-		translate.setNode(GameAP.getListImageView().get(indexPlayer1));
+		translate.setNode(SceneManager.getGame().getListImageView().get(indexPlayer1));
 		
 		a[1]=translate;
 		
@@ -196,7 +194,7 @@ public class Player {
 		translate2.setByX(distX);
 		translate2.setByY(distY);
 		translate2.setDuration(Duration.millis(Constants.ANIMATION_MOVEMENT));
-		translate2.setNode(GameAP.getListImageView().get(indexPlayer2));
+		translate2.setNode(SceneManager.getGame().getListImageView().get(indexPlayer2));
 		
 		a[2]=translate2;
 		return a;

@@ -1,12 +1,8 @@
 package model;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
-
 import application.SceneManager;
 import javafx.animation.Animation;
-import javafx.animation.PauseTransition;
 import javafx.animation.Transition;
 import util.Constants;
 
