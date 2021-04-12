@@ -1,21 +1,17 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import application.SceneManager;
 import enumerations.PlayerColors;
-import enumerations.Theme;
 import exceptions.AlreadyPresentException;
 import javafx.animation.Animation;
-import javafx.animation.Transition;
 import util.Constants;
-import vue.GameAP;
 
 public class Game {
 	private List<Player> players;
-	private static Board board;
+	private Board board;
 	private int turn;
 	private Deck deck;
 
@@ -64,8 +60,8 @@ public class Game {
 		return p.setSquare(board.getSquares().get(tmp),this,p, indexPlayer, board.getSquares().get(playerSquare));
 	}
 
-	public static Board getBoard() {
-		return board;
+	public Board getBoard() {
+		return this.board;
 	}
 
 	public void turnUp() {

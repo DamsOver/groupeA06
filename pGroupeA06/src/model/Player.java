@@ -25,7 +25,7 @@ public class Player {
 	public Player(String name, int number) {
 		this.name = name;
 		this.color = PlayerColors.getColor(number);
-		this.square = Game.getBoard().getSquares().get(0);
+		this.square = SceneManager.getGameOperation().getGame().getBoard().getSquares().get(0);
 	}
 
 	public Player(String name, int number, Square sq) {
@@ -97,7 +97,7 @@ public class Player {
 		
 		this.square = square;
 		this.oldSquare = oldSquare;
-		List<Square> squares = Game.getBoard().getSquares();
+		List<Square> squares = SceneManager.getGameOperation().getGame().getBoard().getSquares();
 
 		int indexOfSquare = squares.indexOf(p.getSquare());
 		int indexOfOldSquare = squares.indexOf(p.getOldSquare());
@@ -152,7 +152,7 @@ public class Player {
 		p.setOldSquare(p.getSquare());
 		p.setSquare(this.oldSquare);
 		
-		List<Square> squares = Game.getBoard().getSquares();
+		List<Square> squares = SceneManager.getGameOperation().getGame().getBoard().getSquares();
 
 		int indexOfSquare1 = squares.indexOf(p.getSquare());
 		int indexOfOldSquare1 = squares.indexOf(p.getOldSquare());

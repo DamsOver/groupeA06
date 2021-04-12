@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import application.SceneManager;
@@ -14,20 +13,15 @@ import javafx.animation.Animation;
 import javafx.animation.PauseTransition;
 import javafx.animation.SequentialTransition;
 import javafx.animation.Transition;
-import javafx.animation.TranslateTransition;
 import javafx.scene.layout.Pane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 import util.Constants;
 import util.StringUtils;
 
 public class GameOperation {
-	private static Game game;
+	private Game game;
 	private BasicCard bc;
 	private Deck oldCards;
 	private Animation[] tempTransitions;
@@ -37,12 +31,12 @@ public class GameOperation {
 		oldCards = new Deck();
 	}
 
-	public static void addPlayers(List<String> playerNames) {
+	public void addPlayers(List<String> playerNames) {
 		// adding the players to the list of players from the Game Class
 		int i = 0;
 		for (String s : playerNames) {
 			try {
-				game.addPlayer(s, i);
+				this.game.addPlayer(s, i);
 			} catch (AlreadyPresentException e) {
 				e.printStackTrace();
 			}
@@ -160,9 +154,6 @@ public class GameOperation {
 		Animation[] tempTab = null;
 		// getting the rating
 		int rating = SceneManager.getRating().getRating();
-
-		// getting the current turn
-		int turn = game.getTurn();
 
 		// getting the player that will play the turn
 		Player p = getPlayerTurn();
@@ -372,12 +363,12 @@ public class GameOperation {
 		Animation[] tab = new Animation[(before==null)?3:before.length+3];
 		Animation[] tabTemp = new Animation[3];
 		
-		SceneManager.getRating().setLbTurn(GameOperation.getPlayerTurn().getName());
+		SceneManager.getRating().setLbTurn(this.getPlayerTurn().getName());
 		tabTemp[2]= SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_RATING,
 				SceneManager.getStackRating(), null);
 		tabTemp[1] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,
 				SceneManager.getStackTransititionAnimation(),
-				"It's " + GameOperation.getPlayerTurn().getName() + "'s turn!");
+				"It's " + this.getPlayerTurn().getName() + "'s turn!");
 		tabTemp[0] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,
 				SceneManager.getStackGame(), null);
 		
@@ -404,7 +395,7 @@ public class GameOperation {
 		Animation[] tabTemp = new Animation[4];
 		
 		//SceneManager.getSceneRoot().setRoot(SceneManager.getStackGame());
-		SceneManager.getRating().setLbTurn(GameOperation.getPlayerTurn().getName());
+		SceneManager.getRating().setLbTurn(this.getPlayerTurn().getName());
 		
 		PauseTransition pauseTransition = new PauseTransition(Duration.millis(Constants.ANIMATION_TIME_TURN));
 		pauseTransition.setOnFinished(e -> {
@@ -420,7 +411,7 @@ public class GameOperation {
 				"You have to answer\ncorrectly to this\ndifficult question to win");
 		tabTemp[1] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,
 				SceneManager.getStackTransititionAnimation(),
-				"It's " + GameOperation.getPlayerTurn().getName() + "'s \nlast turn!");
+				"It's " + this.getPlayerTurn().getName() + "'s \nlast turn!");
 		tabTemp[0] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,
 				SceneManager.getStackGame(), null);
 		if(tempTransitions!=null) {
@@ -448,7 +439,7 @@ public class GameOperation {
 				SceneManager.getStackRoot(), null);
 		tabTemp[0] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,
 				SceneManager.getStackTransititionAnimation(),
-				GameOperation.getPlayerTurn().getName() + " won!");
+				this.getPlayerTurn().getName() + " won!");
 
 		return new SequentialTransition (tabTemp);
 	}
@@ -497,8 +488,8 @@ public class GameOperation {
 		return bc.clone();
 	}
 
-	public static Player getPlayerTurn() {
-		return game.getPlayers().get(game.getTurn() % game.getPlayers().size());
+	public Player getPlayerTurn() {
+		return this.game.getPlayers().get(this.game.getTurn() % this.game.getPlayers().size());
 	}
 
 	public Transition animation(Integer pauses, Pane scene, String txtAnimation) {
@@ -516,7 +507,7 @@ public class GameOperation {
 		return pauseTransition;
 	}
 
-	public static Game getGame() {
+	public Game getGame() {
 		return game;
 	}
 }

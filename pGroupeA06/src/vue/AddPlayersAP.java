@@ -1,11 +1,8 @@
 package vue;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
 import application.SceneManager;
-import javafx.animation.PauseTransition;
 import javafx.animation.Transition;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -16,11 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
-import model.Game;
-import model.GameOperation;
 import util.Constants;
 
 
@@ -135,7 +128,7 @@ public class AddPlayersAP extends AnchorPane {
 	        	else {
 	        		//checking if it's the first turn off the game (if there are no players and it's turn 0)
 	        		if(SceneManager.getGameOperation().getGame().getPlayers().size()==0&&SceneManager.getGameOperation().getGame().getTurn()==0) {
-	        			GameOperation.addPlayers(getPlayerNames());
+	        			SceneManager.getGameOperation().addPlayers(getPlayerNames());
 	        			SceneManager.getGameOperation().getGame().setPlayerVisible();
 	        			SceneManager.getGameOperation().turnRating(true,null);
 		        		

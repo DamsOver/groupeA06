@@ -1,11 +1,8 @@
 package vue;
+
 import enumerations.Theme;
 import exceptions.NotPresentException;
 import exceptions.TooLittleException;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import application.SceneManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,7 +21,7 @@ import serialisation.Serialisation;
 import util.Constants;
 
 public class CardsManagementAP extends AnchorPane {
-	public static Game game;
+	public Game game;
 	private Deck deck;
 	
 	private Text txtTitle, txtTheme;
@@ -116,7 +113,7 @@ public class CardsManagementAP extends AnchorPane {
 	public ListView<String> getLvCards() {
 		if (lvCards == null) {
 			lvCards = new ListView<String>();
-			this.game= new Game();
+			game= new Game();
 			deck = new Deck();
 			deck = game.getDeck();
 			fillListView();

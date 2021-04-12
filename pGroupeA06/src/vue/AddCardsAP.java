@@ -1,13 +1,7 @@
 package vue;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.google.gson.JsonParser;
-
 import application.SceneManager;
 import enumerations.Theme;
 import exceptions.AlreadyPresentException;
@@ -16,20 +10,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import model.BasicCard;
 import model.Deck;
-import model.Game;
-import model.Question;
 import serialisation.Serialisation;
 import util.Constants;
 

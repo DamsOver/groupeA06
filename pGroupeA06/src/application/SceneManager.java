@@ -1,23 +1,11 @@
 package application;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.Media;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.GameOperation;
 import util.Constants;
@@ -41,7 +29,7 @@ public class SceneManager {
 	private static MediaPlayer mediaPlayerInCorrect;
 
 	private static StackPane stackOptions, stackRoot, stackAddCards, stackAdmin, stackGame, stackAddPlayers,
-			stackGameRule, stackCardsManagement, stackTransitionAnimation, stackSettings, stackAnimation, stackRating,
+			stackGameRule, stackCardsManagement, stackTransitionAnimation, stackSettings, stackRating,
 			stackQuestion;
 
 	private static HomeAP root;
@@ -59,10 +47,11 @@ public class SceneManager {
 
 	// retirer static
 	private static GameOperation go;
+	
 
-	public static void initialize() {
-		go = new GameOperation();
-
+	public void initialize() {
+		
+		go=new GameOperation();
 		// AnchorPane Creation
 		root = new HomeAP();
 		addCards = new AddCardsAP();
@@ -96,7 +85,7 @@ public class SceneManager {
 
 	}
 
-	public static void volumeInitialization() {
+	public void volumeInitialization() {
 
 		// creation of a mediaPlayerCorrect
 		mediaPlayerCorrect = new MediaPlayer(
