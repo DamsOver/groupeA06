@@ -22,7 +22,7 @@ public interface Constants {
 							NUMBER_PERCENTAGE_ERROR_ANSWER=2; 
 	
 	public static final String 	DECK_PATH = "deck.JSON",
-								BOARD_PATH= "boardTest.JSON",
+								BOARD_PATH= "board.JSON",
 								RULE_PATH= "/res/GameRule.txt",
 								MUSIC_1_PATH= "musics/bensound-hipjazz.wav",
 								CORRECT_ANSWER= "musics/CorrectAnswer.wav",
