@@ -51,7 +51,7 @@ public class GameOperation {
 
 		if (first) {
 			StartCard sc = new StartCard();
-			sc.action();
+			sc.action(transitions);
 			Transition p2 = SceneManager.getGameOperation().animationTurn(null);
 			Transition p1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,
 					SceneManager.getStackGame(), null);
@@ -66,17 +66,17 @@ public class GameOperation {
 			switch (p.getSquare().getTheme()) {
 			case START:
 				StartCard sc = new StartCard();
-				sc.action();
+				sc.action(transitions);
 				animationTurn(transitions).play();
 				break;
 			case FINISH:
 				FinishCard fc = new FinishCard();
 				tempTransitions=transitions;
-				fc.action();
+				fc.action(transitions);
 				break;
 			case SPECIAL:
 				BasicSpecialCard bsc = new BasicSpecialCard();
-				bsc.action();
+				bsc.action(transitions);
 				break;
 			default:	
 				// drawing a card
