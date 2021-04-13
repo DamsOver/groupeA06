@@ -16,7 +16,7 @@ public class BasicSpecialCard extends SpecialCard{
 		int backwards,squares;
 		
 		
-		switch(randomNumber) {//randomNumber
+		switch(1) {//randomNumber
 		//switch(3) {//randomNumber
 		case 1 :
 			//move the player forward or backwards 1,2 or 3 squares on the board
@@ -40,8 +40,9 @@ public class BasicSpecialCard extends SpecialCard{
 			for(int i=0;i<temp.length;i++) {
 				a[i+2]=temp[i];
 			}
-			
+			System.out.println(1);
 			SceneManager.getGameOperation().getGame().turnUp();
+			System.out.println(2);
 			//show next turn
 			SceneManager.getGameOperation().turnRating(false,a);
 			break;
