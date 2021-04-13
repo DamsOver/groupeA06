@@ -80,7 +80,7 @@ public class SceneManager {
 		stackQuestion = new StackPane(question);
 
 		sceneRoot = new Scene(stackRoot, 1920, 1080); // Original
-//		sceneRoot = new Scene(stackGame, 1920, 1080); // Pour les tests
+//		sceneRoot = new Scene(stackRating, 1920, 1080); // Pour les tests
 
 	}
 

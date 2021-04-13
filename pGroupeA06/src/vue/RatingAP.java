@@ -1,5 +1,9 @@
 package vue;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import application.SceneManager;
 import enumerations.Theme;
 import javafx.collections.FXCollections;
@@ -10,17 +14,25 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 
 public class RatingAP extends AnchorPane {
 	private Text txtTitle, txtAnswer;
 	private Label lbTheme, lbSubject, lbTurn;
-	private Button btnGo, btnSettings;
+	private Button btnGo, btnSettings;	
+	
 	private ComboBox<String> cbbRating;
+	
+	private ToggleGroup tgrRating;
+	private List<RadioButton> rdbRating;
 
 	public RatingAP() {
 		this.getStyleClass().add("paneQuestion");
-		this.getChildren().addAll(getTxtTitle(), getLbTurn(), getCbbRating(), getLbTheme(), getLbSubject(), getBtnGo(),
+		this.getChildren().addAll(getTxtTitle(), getLbTurn(), getLbTheme(), getLbSubject(), getBtnGo(),
 				getTxtAnswer(), getBtnSettings());
+		
+		this.getChildren().addAll(getRdbRating());
 
 		// title
 		txtTitle.getStyleClass().add("title2-style");
@@ -43,14 +55,21 @@ public class RatingAP extends AnchorPane {
 		AnchorPane.setTopAnchor(getLbSubject(), 500.0);
 		AnchorPane.setRightAnchor(getLbSubject(), 500.0);
 		AnchorPane.setLeftAnchor(getLbSubject(), 500.0);
-
-		// CbbRating
-		cbbRating.getStyleClass().add("cbbox");
-		AnchorPane.setTopAnchor(getCbbRating(), 730.0);
-		AnchorPane.setLeftAnchor(getCbbRating(), 1075.0);
-		cbbRating.setItems(FXCollections.observableArrayList("1", "2", "3", "4"));
-		cbbRating.getSelectionModel().selectFirst();
-
+		
+		// Rdb
+		AnchorPane.setTopAnchor(getRdbRating().get(0), 730.0);
+		AnchorPane.setLeftAnchor(getRdbRating().get(0), 1000.0);
+		
+		AnchorPane.setTopAnchor(getRdbRating().get(1), 730.0);
+		AnchorPane.setLeftAnchor(getRdbRating().get(1), 1100.0);
+		
+		AnchorPane.setTopAnchor(getRdbRating().get(2), 730.0);
+		AnchorPane.setLeftAnchor(getRdbRating().get(2), 1200.0);
+		
+		AnchorPane.setTopAnchor(getRdbRating().get(3), 730.0);
+		AnchorPane.setLeftAnchor(getRdbRating().get(3), 1300.0);
+		tgrRating.getToggles().get(0).setSelected(true);
+		
 		// txtAnswer
 		txtAnswer.getStyleClass().add("h1");
 		AnchorPane.setTopAnchor(getTxtAnswer(), 720.0);
@@ -136,15 +155,10 @@ public class RatingAP extends AnchorPane {
 		return btnGo;
 	}
 
-	public ComboBox<String> getCbbRating() {
-		if (cbbRating == null) {
-			cbbRating = new ComboBox<String>();
-		}
-		return cbbRating;
-	}
-
 	public int getRating() {
-		int x = Integer.parseInt(cbbRating.getValue());
+		RadioButton selectedRadioButton = (RadioButton) tgrRating.getSelectedToggle();
+		String toogleGroupValue = selectedRadioButton.getText();
+		int x = Integer.parseInt(toogleGroupValue);
 		return x;
 	}
 
@@ -169,6 +183,25 @@ public class RatingAP extends AnchorPane {
 			}
 		});
 		return btnSettings;
+	}
+
+	public List<RadioButton> getRdbRating() {
+		if (rdbRating == null) {
+			rdbRating = new ArrayList<>();
+			tgrRating = new ToggleGroup();
+
+			for (Integer i = 1; i <= 4; i++) {
+				RadioButton rd = new RadioButton(i.toString());
+				rdbRating.add(rd);
+				rd.setToggleGroup(tgrRating);
+			}
+
+			if (!rdbRating.isEmpty()) {
+				rdbRating.get(0).setSelected(true);
+			}
+
+		}
+		return rdbRating;
 	}
 
 }
