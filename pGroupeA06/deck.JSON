@@ -567,7 +567,7 @@
           "author": "Chiara",
           "theme": "IMPROBABLE",
           "subject": "The chocolate",
-          "challenge": "What\u0027s the name of the chocolate tree?",
+          "challenge": "What's the name of the chocolate tree?",
           "answer": "cacao tree"
         },
         {
@@ -581,7 +581,7 @@
           "author": "Chiara",
           "theme": "IMPROBABLE",
           "subject": "The chocolate",
-          "challenge": "What action consist of cooking cacao been in an oven or over an open fire?",
+          "challenge": "What action consists of cooking cacao beens in an oven or over an open fire?",
           "answer": "roasting"
         },
         {
@@ -602,14 +602,14 @@
           "author": "Chiara",
           "theme": "IMPROBABLE",
           "subject": "Alphabet over the world",
-          "challenge": "How many letters count the French alphabet?",
+          "challenge": "How many letters are in the french alphabet?",
           "answer": "26"
         },
         {
           "author": "Chiara",
           "theme": "IMPROBABLE",
           "subject": "Alphabet over the world",
-          "challenge": "What language use only the sinogram?",
+          "challenge": "What language uses only the sinogram?",
           "answer": "Chinese"
         },
         {
@@ -623,7 +623,7 @@
           "author": "Chiara",
           "theme": "IMPROBABLE",
           "subject": "Alphabet over the world",
-          "challenge": "What language has the most simply and scientific alphabet?",
+          "challenge": "What language has the most simple and scientific alphabet?",
           "answer": "Korean"
         }
       ],
@@ -637,21 +637,21 @@
           "author": "Chiara",
           "theme": "INFORMATICS",
           "subject": "Collection in java",
-          "challenge": "Complete this sentence : \u0027List, Set and Queue ....... from Collection?",
+          "challenge": "Complete this sentence : List, Set and Queue ....... from Collection?",
           "answer": "inherit"
         },
         {
           "author": "Chiara",
           "theme": "INFORMATICS",
           "subject": "Collection in java",
-          "challenge": "Which interface doesn\u0027t allow duplicate? Set, List, Map or nothing of these?",
+          "challenge": "Which interface doesn't allow duplicate? Set, List, Map or nothing of these?",
           "answer": "Set"
         },
         {
           "author": "Chiara",
           "theme": "INFORMATICS",
           "subject": "Collection in java",
-          "challenge": "Which interface isn\u0027t part of Collection Framework? Queue, Stack, Array or Map?",
+          "challenge": "Which interface isn't part of Collection Framework? Queue, Stack, Array or Map?",
           "answer": "Map"
         },
         {
@@ -672,7 +672,7 @@
           "author": "Chiara",
           "theme": "INFORMATICS",
           "subject": "String in java",
-          "challenge": "What\u0027s \u0027String\u0027 in OOP?",
+          "challenge": "What's 'String' in OOP?",
           "answer": "Class"
         },
         {
@@ -693,7 +693,7 @@
           "author": "Chiara",
           "theme": "INFORMATICS",
           "subject": "String in java",
-          "challenge": "How many constructors count the Class String in Java 11?",
+          "challenge": "How many constructors does the Class String in Java 11 count?",
           "answer": "15"
         }
       ],
@@ -707,21 +707,21 @@
           "author": "Chiara",
           "theme": "PLEASURE",
           "subject": "The piano",
-          "challenge": "How many pedals has the Grand Piano?",
+          "challenge": "How many pedals the Grand Piano has ?",
           "answer": "3"
         },
         {
           "author": "Chiara",
           "theme": "PLEASURE",
           "subject": "The piano",
-          "challenge": "Which piano’s keys there’s not black key between C and D, D and E, E and F or F and G?",
+          "challenge": "Which piano keys there’s not black key between ? C and D, D and E, E and F or F and G",
           "answer": "E and F"
         },
         {
           "author": "Chiara",
           "theme": "PLEASURE",
           "subject": "The piano",
-          "challenge": "How many keys does Piano contain usually?",
+          "challenge": "How many keys are usually on a Piano keyborad?",
           "answer": "88"
         },
         {
@@ -791,7 +791,7 @@
           "author": "Chiara",
           "theme": "SCHOOL",
           "subject": "The great Explorers",
-          "challenge": "Who mode the first circumnavigation of the Antarctic?",
+          "challenge": "Who made the first circumnavigation of the Antarctic?",
           "answer": "James Cook"
         },
         {
@@ -812,28 +812,28 @@
           "author": "Chiara",
           "theme": "SCHOOL",
           "subject": "The Atoms",
-          "challenge": "What\u0027s the most lightweight gas?",
+          "challenge": "What's the most lightweight gas?",
           "answer": "Hydrogen"
         },
         {
           "author": "Chiara",
           "theme": "SCHOOL",
           "subject": "The Atoms",
-          "challenge": "What\u0027s the chemical symbol for the nitrogen?",
+          "challenge": "What's the chemical symbol for nitrogen?",
           "answer": "N"
         },
         {
           "author": "Chiara",
           "theme": "SCHOOL",
           "subject": "The Atoms",
-          "challenge": "What\u0027s the name of this atom : Sn",
+          "challenge": "What's the name of this atom : Sn",
           "answer": "Tin"
         },
         {
           "author": "Chiara",
           "theme": "SCHOOL",
           "subject": "The Atoms",
-          "challenge": "What\u0027s the chemical name of spirits of salt?",
+          "challenge": "What's the chemical name of spirits of salt?",
           "answer": "Hydrochloric acid"
         }
       ],
