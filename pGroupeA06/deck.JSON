@@ -119,21 +119,21 @@
           "author": "Martin",
           "theme": "PLEASURE",
           "subject": "Holidays",
-          "challenge": "How many pictures do vacationers taker per day?",
+          "challenge": "In 2019, how many pictures did vacationers take per day?",
           "answer": "55"
         },
         {
           "author": "Martin",
           "theme": "PLEASURE",
           "subject": "Holidays",
-          "challenge": "How many times do vacationers apply sunscreen per day?",
+          "challenge": "In 2019, how many times did vacationers apply sunscreen per day?",
           "answer": "3"
         },
         {
           "author": "Martin",
           "theme": "PLEASURE",
           "subject": "Holidays",
-          "challenge": "How much money spend French vacationers per day? (€)",
+          "challenge": "In 2019, how much money did French vacationers spend per day? (€)",
           "answer": "80"
         }
       ],
@@ -217,21 +217,21 @@
           "author": "Martin",
           "theme": "SCHOOL",
           "subject": "History",
-          "challenge": "According to the song \"Qui a eu cette idÃ©e folle, un jour d\u0027inventer l\u0027Ã©cole\", who inventend shool?",
+          "challenge": "According to the song \"Qui a eu cette idée folle, un jour d\u0027inventer l\u0027école\", who inventend school?",
           "answer": "Charlemagne"
         },
         {
           "author": "Martin",
           "theme": "SCHOOL",
           "subject": "History",
-          "challenge": "In Belgium, since when elementary school is mandatory?",
+          "challenge": "In Belgium, since when elementary school is compulsory?",
           "answer": "1914"
         },
         {
           "author": "Martin",
           "theme": "SCHOOL",
           "subject": "History",
-          "challenge": "In wich century was calculus invented? (only the number)",
+          "challenge": "In wich century was calculus invented? (number of the century)",
           "answer": "17"
         },
         {
@@ -273,8 +273,8 @@
           "author": "Martin",
           "theme": "SCHOOL",
           "subject": "Mathematics",
-          "challenge": "Give the 7 first digits of pi.",
-          "answer": "3.141592"
+          "challenge": "Give the 4 first digits of pi.",
+          "answer": "3.141"
         }
       ],
       "author": "Martin",
@@ -287,14 +287,14 @@
           "author": "Damien",
           "theme": "IMPROBABLE",
           "subject": "Animals",
-          "challenge": "What is the deadliest animals ?",
+          "challenge": "What is the deadliest animal ?",
           "answer": "Mosquito"
         },
         {
           "author": "Damien",
           "theme": "IMPROBABLE",
           "subject": "Animals",
-          "challenge": "What Are Elephant Tusks Really ?",
+          "challenge": "What are Elephant tusks really ?",
           "answer": "Teeth"
         },
         {
@@ -322,7 +322,7 @@
           "author": "Damien",
           "theme": "IMPROBABLE",
           "subject": "Food",
-          "challenge": "What size is the world\u0027s largest pizza ?(mÂ²)",
+          "challenge": "What size is the world\u0027s largest pizza ?(m²)",
           "answer": "1261"
         },
         {
@@ -364,7 +364,7 @@
           "author": "Damien",
           "theme": "PLEASURE",
           "subject": "Jeuxvideo",
-          "challenge": "What was the name of pac-man before changing it ?",
+          "challenge": "What was the name of Pac-Man before changing it ?",
           "answer": "Puck-Man"
         },
         {
@@ -392,7 +392,7 @@
           "author": "Damien",
           "theme": "PLEASURE",
           "subject": "Astronomy",
-          "challenge": "With which American spacecraft did Neil Armstrong and Edwin Aldrin land on the moon ?",
+          "challenge": "During which mission did Neil Armstrong land on the moon ?",
           "answer": "Apollo 11"
         },
         {
@@ -567,21 +567,21 @@
           "author": "Chiara",
           "theme": "IMPROBABLE",
           "subject": "The chocolate",
-          "challenge": "What's the name of the chocolate tree?",
+          "challenge": "What is the name of the chocolate tree?",
           "answer": "cacao tree"
         },
         {
           "author": "Chiara",
           "theme": "IMPROBABLE",
           "subject": "The chocolate",
-          "challenge": "What compagny is the greater producter of chocolate?",
+          "challenge": "What company is the greatest producer of chocolate?",
           "answer": "Mars"
         },
         {
           "author": "Chiara",
           "theme": "IMPROBABLE",
           "subject": "The chocolate",
-          "challenge": "What action consists of cooking cacao beens in an oven or over an open fire?",
+          "challenge": "What action consists of cooking cacao beans in an oven or over an open fire?",
           "answer": "roasting"
         },
         {
@@ -609,14 +609,14 @@
           "author": "Chiara",
           "theme": "IMPROBABLE",
           "subject": "Alphabet over the world",
-          "challenge": "What language uses only the sinogram?",
+          "challenge": "What language uses only sinograms?",
           "answer": "Chinese"
         },
         {
           "author": "Chiara",
           "theme": "IMPROBABLE",
           "subject": "Alphabet over the world",
-          "challenge": "What old alphabet is composed by picture?",
+          "challenge": "What old alphabet is composed by pictures?",
           "answer": "Hieroglyph"
         },
         {
@@ -644,14 +644,14 @@
           "author": "Chiara",
           "theme": "INFORMATICS",
           "subject": "Collection in java",
-          "challenge": "Which interface doesn't allow duplicate? Set, List, Map or nothing of these?",
+          "challenge": "Which interface does not allow duplication? Set, List, Map or none of these?",
           "answer": "Set"
         },
         {
           "author": "Chiara",
           "theme": "INFORMATICS",
           "subject": "Collection in java",
-          "challenge": "Which interface isn't part of Collection Framework? Queue, Stack, Array or Map?",
+          "challenge": "Which interface is not part of Collection Framework? Queue, Stack, Array or Map?",
           "answer": "Map"
         },
         {
@@ -672,7 +672,7 @@
           "author": "Chiara",
           "theme": "INFORMATICS",
           "subject": "String in java",
-          "challenge": "What's 'String' in OOP?",
+          "challenge": "What is 'String' in OOP?",
           "answer": "Class"
         },
         {
@@ -707,28 +707,28 @@
           "author": "Chiara",
           "theme": "PLEASURE",
           "subject": "The piano",
-          "challenge": "How many pedals the Grand Piano has ?",
+          "challenge": "How many pedals does the Grand Piano have ?",
           "answer": "3"
         },
         {
           "author": "Chiara",
           "theme": "PLEASURE",
           "subject": "The piano",
-          "challenge": "Which piano keys there’s not black key between ? C and D, D and E, E and F or F and G",
+          "challenge": "Between which keys of the piano are there no black keys? C and D, D and E, E and F or F and G",
           "answer": "E and F"
         },
         {
           "author": "Chiara",
           "theme": "PLEASURE",
           "subject": "The piano",
-          "challenge": "How many keys are usually on a Piano keyborad?",
+          "challenge": "How many keys are there usually on a Piano keyboard?",
           "answer": "88"
         },
         {
           "author": "Chiara",
           "theme": "PLEASURE",
           "subject": "The piano",
-          "challenge": "What’s the name of piano possessed pinched strings?",
+          "challenge": "What is the name of the piano possessing pinched strings?",
           "answer": "harpsichords"
         }
       ],
@@ -784,7 +784,7 @@
           "author": "Chiara",
           "theme": "SCHOOL",
           "subject": "The great Explorers",
-          "challenge": "What great explorer gives his name to America?",
+          "challenge": "What great explorer gave his name to America?",
           "answer": "Amerigo Vespucci"
         },
         {
@@ -812,28 +812,28 @@
           "author": "Chiara",
           "theme": "SCHOOL",
           "subject": "The Atoms",
-          "challenge": "What's the most lightweight gas?",
+          "challenge": "What is the most lightweight gas?",
           "answer": "Hydrogen"
         },
         {
           "author": "Chiara",
           "theme": "SCHOOL",
           "subject": "The Atoms",
-          "challenge": "What's the chemical symbol for nitrogen?",
+          "challenge": "What is the chemical symbol for nitrogen?",
           "answer": "N"
         },
         {
           "author": "Chiara",
           "theme": "SCHOOL",
           "subject": "The Atoms",
-          "challenge": "What's the name of this atom : Sn",
+          "challenge": "What is the name of this atom : Sn",
           "answer": "Tin"
         },
         {
           "author": "Chiara",
           "theme": "SCHOOL",
           "subject": "The Atoms",
-          "challenge": "What's the chemical name of spirits of salt?",
+          "challenge": "What is the chemical name of spirits of salt?",
           "answer": "Hydrochloric acid"
         }
       ],
