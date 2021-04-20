@@ -147,7 +147,7 @@
           "author": "Martin",
           "theme": "INFORMATICS",
           "subject": "Social Network",
-          "challenge": "How many facebook accounts are there?(in billions)",
+          "challenge": "How many Facebook accounts are there? (in billions)",
           "answer": "2.8"
         },
         {
@@ -203,7 +203,7 @@
           "author": "Martin",
           "theme": "INFORMATICS",
           "subject": "Hardware",
-          "challenge": "What is the abreviation of NAS?",
+          "challenge": "What is the abbreviation of NAS?",
           "answer": "Network attached storage"
         }
       ],
@@ -217,7 +217,7 @@
           "author": "Martin",
           "theme": "SCHOOL",
           "subject": "History",
-          "challenge": "According to the song \"Qui a eu cette idée folle, un jour d\u0027inventer l\u0027école\", who inventend school?",
+          "challenge": "According to the song \"Qui a eu cette idée folle, un jour d\u0027inventer l\u0027école\", who invented school?",
           "answer": "Charlemagne"
         },
         {
@@ -231,7 +231,7 @@
           "author": "Martin",
           "theme": "SCHOOL",
           "subject": "History",
-          "challenge": "In wich century was calculus invented? (number of the century)",
+          "challenge": "In which century was calculus invented? (number of the century)",
           "answer": "17"
         },
         {
@@ -287,21 +287,21 @@
           "author": "Damien",
           "theme": "IMPROBABLE",
           "subject": "Animals",
-          "challenge": "What is the deadliest animal ?",
+          "challenge": "What is the deadliest animal?",
           "answer": "Mosquito"
         },
         {
           "author": "Damien",
           "theme": "IMPROBABLE",
           "subject": "Animals",
-          "challenge": "What are Elephant tusks really ?",
+          "challenge": "What are Elephant tusks really?",
           "answer": "Teeth"
         },
         {
           "author": "Damien",
           "theme": "IMPROBABLE",
           "subject": "Animals",
-          "challenge": "Which fungus is able to control insects by parasitizing them ?",
+          "challenge": "Which fungus is able to control insects by parasitizing them?",
           "answer": "Cordyceps"
         },
         {
@@ -322,28 +322,28 @@
           "author": "Damien",
           "theme": "IMPROBABLE",
           "subject": "Food",
-          "challenge": "What size is the world\u0027s largest pizza ?(m²)",
+          "challenge": "What size is the world\u0027s largest pizza? (m²)",
           "answer": "1261"
         },
         {
           "author": "Damien",
           "theme": "IMPROBABLE",
           "subject": "Food",
-          "challenge": "What is the maximum number of grapes eaten in 3 minutes ?",
+          "challenge": "What is the maximum number of grapes eaten in 3 minutes?",
           "answer": "205"
         },
         {
           "author": "Damien",
           "theme": "IMPROBABLE",
           "subject": "Food",
-          "challenge": "What size is the longest sandwich in the world ?(m)",
+          "challenge": "What size is the longest sandwich in the world? (m)",
           "answer": "735"
         },
         {
           "author": "Damien",
           "theme": "IMPROBABLE",
           "subject": "Food",
-          "challenge": "How much does the largest packet of crisps in the world weigh ?(kg)",
+          "challenge": "How much does the largest packet of crisps in the world weigh? (kg)",
           "answer": "130"
         }
       ],
@@ -356,29 +356,29 @@
         {
           "author": "Damien",
           "theme": "PLEASURE",
-          "subject": "Jeuxvideo",
-          "challenge": "What was the name of Mario before changing it ?",
+          "subject": "Video games",
+          "challenge": "What was the name of Mario before changing it?",
           "answer": "Jumpman"
         },
         {
           "author": "Damien",
           "theme": "PLEASURE",
-          "subject": "Jeuxvideo",
-          "challenge": "What was the name of Pac-Man before changing it ?",
+          "subject": "Video games",
+          "challenge": "What was the name of Pac-Man before changing it?",
           "answer": "Puck-Man"
         },
         {
           "author": "Damien",
           "theme": "PLEASURE",
-          "subject": "Jeuxvideo",
-          "challenge": "What is the first thing sold by Nintendo ?",
+          "subject": "Video games",
+          "challenge": "What is the first thing sold by Nintendo?",
           "answer": "Playing cards"
         },
         {
           "author": "Damien",
           "theme": "PLEASURE",
-          "subject": "Jeuxvideo",
-          "challenge": "When was the first virtual reality headset created ?",
+          "subject": "Video games",
+          "challenge": "When was the first virtual reality headset created?",
           "answer": "1995"
         }
       ],
@@ -392,28 +392,28 @@
           "author": "Damien",
           "theme": "PLEASURE",
           "subject": "Astronomy",
-          "challenge": "During which mission did Neil Armstrong land on the moon ?",
+          "challenge": "During which mission did Neil Armstrong land on the moon?",
           "answer": "Apollo 11"
         },
         {
           "author": "Damien",
           "theme": "PLEASURE",
           "subject": "Astronomy",
-          "challenge": "Which planet is the farthest from the solar system ?",
+          "challenge": "Which planet is the farthest from the solar system?",
           "answer": "Neptune"
         },
         {
           "author": "Damien",
           "theme": "PLEASURE",
           "subject": "Astronomy",
-          "challenge": "What is Sagittarius a* ?",
+          "challenge": "What is Sagittarius a*?",
           "answer": "Black hole"
         },
         {
           "author": "Damien",
           "theme": "PLEASURE",
           "subject": "Astronomy",
-          "challenge": "What is the name of the visible surface of the stars ?",
+          "challenge": "What is the name of the visible surface of the stars?",
           "answer": "Photosphere"
         }
       ],
@@ -427,28 +427,28 @@
           "author": "Damien",
           "theme": "INFORMATICS",
           "subject": "OOP Concept",
-          "challenge": "What is the name of the process that takes care of automatic memory management ?",
+          "challenge": "What is the name of the process that takes care of automatic memory management?",
           "answer": "Garbage Collector"
         },
         {
           "author": "Damien",
           "theme": "INFORMATICS",
           "subject": "OOP Concept",
-          "challenge": "What mechanism allows you to define the same method several times with different arguments ?",
+          "challenge": "What mechanism allows you to define the same method several times with different arguments?",
           "answer": "Overloading"
         },
         {
           "author": "Damien",
           "theme": "INFORMATICS",
           "subject": "OOP Concept",
-          "challenge": "What is the relationship in which the destruction of a composite object does not lead to the destruction of the component object ?",
+          "challenge": "What is the relationship in which the destruction of a composite object does not lead to the destruction of the component object?",
           "answer": "Aggregation"
         },
         {
           "author": "Damien",
           "theme": "INFORMATICS",
           "subject": "OOP Concept",
-          "challenge": "What is the principle that relates to the protection of information contained in an object ?",
+          "challenge": "What is the principle that relates to the protection of information contained in an object?",
           "answer": "Encapsulation"
         }
       ],
@@ -462,28 +462,28 @@
           "author": "Damien",
           "theme": "INFORMATICS",
           "subject": "Elements in a class",
-          "challenge": "What are the basic methods used to change the value of attributes ?",
+          "challenge": "What are the basic methods used to change the value of attributes?",
           "answer": "Setters"
         },
         {
           "author": "Damien",
           "theme": "INFORMATICS",
           "subject": "Elements in a class",
-          "challenge": "What is the name of the method with the same name as its class in java ?",
+          "challenge": "What is the name of the method with the same name as its class in java?",
           "answer": "Constructor"
         },
         {
           "author": "Damien",
           "theme": "INFORMATICS",
           "subject": "Elements in a class",
-          "challenge": "What type of attribute shares its value with all the objects in its class ?",
+          "challenge": "What type of attribute shares its value with all the objects in its class?",
           "answer": "Class variable"
         },
         {
           "author": "Damien",
           "theme": "INFORMATICS",
           "subject": "Elements in a class",
-          "challenge": "What element is made up of the name of the method as well as the list and type of its arguments ?",
+          "challenge": "What element is made up of the name of the method as well as the list and type of its arguments?",
           "answer": "Signature"
         }
       ],
@@ -491,34 +491,34 @@
       "theme": "INFORMATICS"
     },
     {
-      "subject": "Maths",
+      "subject": "Mathematics",
       "questions": [
         {
           "author": "Damien",
           "theme": "SCHOOL",
           "subject": "Mathematics",
-          "challenge": "What is the probability of getting two 6s by rolling a dice twice in a row ? (in fractions)",
+          "challenge": "What is the probability of getting two 6s by rolling a dice twice in a row? (in fractions)",
           "answer": "1/36"
         },
         {
           "author": "Damien",
           "theme": "SCHOOL",
           "subject": "Mathematics",
-          "challenge": "What is the 6th prime number ?",
+          "challenge": "What is the 6th prime number?",
           "answer": "13"
         },
         {
           "author": "Damien",
           "theme": "SCHOOL",
           "subject": "Mathematics",
-          "challenge": "Solve this : 32 + 12 % 5² \u003d ?",
+          "challenge": "Solve this : 32 + 12 % 5² \u003d?",
           "answer": "44"
         },
         {
           "author": "Damien",
           "theme": "SCHOOL",
           "subject": "Mathematics",
-          "challenge": "What is the cube root of 64 ?",
+          "challenge": "What is the cube root of 64?",
           "answer": "4"
         }
       ],
@@ -532,28 +532,28 @@
           "author": "Damien",
           "theme": "SCHOOL",
           "subject": "Geography",
-          "challenge": "What is the capital of Finland ?",
+          "challenge": "What is the capital of Finland?",
           "answer": "Helsinki"
         },
         {
           "author": "Damien",
           "theme": "SCHOOL",
           "subject": "Geography",
-          "challenge": "Where were the Nazis tried ?",
+          "challenge": "Where were the Nazis tried?",
           "answer": "Nuremberg"
         },
         {
           "author": "Damien",
           "theme": "SCHOOL",
           "subject": "Geography",
-          "challenge": "In which country is Machu Picchu located ?",
+          "challenge": "In which country is Machu Picchu located?",
           "answer": "Peru"
         },
         {
           "author": "Damien",
           "theme": "SCHOOL",
           "subject": "Geography",
-          "challenge": "Which country shares Everest with China ?",
+          "challenge": "Which country shares Everest with China?",
           "answer": "Nepal"
         }
       ],
@@ -602,7 +602,7 @@
           "author": "Chiara",
           "theme": "IMPROBABLE",
           "subject": "Alphabet over the world",
-          "challenge": "How many letters are in the french alphabet?",
+          "challenge": "How many letters are in the French alphabet?",
           "answer": "26"
         },
         {
@@ -707,7 +707,7 @@
           "author": "Chiara",
           "theme": "PLEASURE",
           "subject": "The piano",
-          "challenge": "How many pedals does the Grand Piano have ?",
+          "challenge": "How many pedals does the Grand Piano have?",
           "answer": "3"
         },
         {
@@ -757,7 +757,7 @@
           "theme": "PLEASURE",
           "subject": "The painting",
           "challenge": "What artistic current did “Impression, Sunrise” by Claude Monet initialize?",
-          "answer": "Impressionnism"
+          "answer": "Impressionism"
         },
         {
           "author": "Chiara",
