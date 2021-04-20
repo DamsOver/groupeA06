@@ -491,33 +491,33 @@
       "theme": "INFORMATICS"
     },
     {
-      "subject": "Mathematics",
+      "subject": "Maths",
       "questions": [
         {
           "author": "Damien",
           "theme": "SCHOOL",
-          "subject": "Mathematics",
+          "subject": "Maths",
           "challenge": "What is the probability of getting two 6s by rolling a dice twice in a row? (in fractions)",
           "answer": "1/36"
         },
         {
           "author": "Damien",
           "theme": "SCHOOL",
-          "subject": "Mathematics",
+          "subject": "Maths",
           "challenge": "What is the 6th prime number?",
           "answer": "13"
         },
         {
           "author": "Damien",
           "theme": "SCHOOL",
-          "subject": "Mathematics",
+          "subject": "Maths",
           "challenge": "Solve this : 32 + 12 % 5² \u003d?",
           "answer": "44"
         },
         {
           "author": "Damien",
           "theme": "SCHOOL",
-          "subject": "Mathematics",
+          "subject": "Maths",
           "challenge": "What is the cube root of 64?",
           "answer": "4"
         }
