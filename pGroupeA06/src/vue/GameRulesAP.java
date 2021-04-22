@@ -31,10 +31,12 @@ public class GameRulesAP extends AnchorPane {
 		AnchorPane.setLeftAnchor(getTxtTitle(), 550.0);
 
 		getSP().getStyleClass().add("scroll-pane");
+		getSP().setFitToWidth(true);
 		AnchorPane.setTopAnchor(getSP(), 300.0);
-		AnchorPane.setRightAnchor(getSP(), 150.0);
-		AnchorPane.setLeftAnchor(getSP(), 150.0);
+		AnchorPane.setRightAnchor(getSP(), 390.0);
+		AnchorPane.setLeftAnchor(getSP(), 390.0);
 		AnchorPane.setBottomAnchor(getSP(), 250.0);
+		
 
 		getTxtRules().getStyleClass().add("txtAddPlayer");
 
@@ -61,7 +63,7 @@ public class GameRulesAP extends AnchorPane {
 				StringBuilder allText = new StringBuilder();
 				String tmp = new String();
 				while ((tmp = rule.readLine()) != null) {
-					allText.append(tmp);
+					allText.append(tmp+"\n");
 				}
 				txtRules.setText(allText.toString());
 				rule.close();
@@ -71,7 +73,7 @@ public class GameRulesAP extends AnchorPane {
 			}
 
 		}
-		txtRules.setWrappingWidth(1600);
+		txtRules.setWrappingWidth(1120);
 		txtRules.setTextAlignment(TextAlignment.JUSTIFY);
 		return txtRules;
 	}

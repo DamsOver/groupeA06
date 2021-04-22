@@ -1,1 +1,9 @@
-DamienTestLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The objective of the game is to be the first to cross the whole board by answering the questions asked.
+
+The originality is on the principle of self-evaluation of his knowledge from 1 to 4 on a multitude of subjects.
+
+Each note corresponds to a question, more or less complex.
+
+If the answer is correct, the player will advance the number of boxes corresponding to his self-assessed score.
+
+If the answer is incorrect, the player stays on the same square until the next turn.
