@@ -43,7 +43,11 @@ public class Square {
 	 * returns the list of Position of the players
 	 * @return a list of Position*/
 	public List<Position> getPlayersPosition() {
-		return playersPosition;
+		List<Position> p = new ArrayList<Position>();
+		for(Position position : playersPosition) {
+			p.add(position);
+		}
+		return p;
 	}
 
 	/**
@@ -53,7 +57,16 @@ public class Square {
 	public String toString() {
 		return theme.toString() + ", [" + playersPosition + "]";
 	}
-
+	
+	/**
+	 * Returns a Square with the fields having the exact same value as this Square.
+	 * @return a Square Cloned
+	 * */
+	public Square clone() {
+		Square sq =new Square(this.theme);
+		sq.playersPosition=this.getPlayersPosition();
+		return sq;
+	}
 	
 	/**
 	 * Checks if two objects are equals.

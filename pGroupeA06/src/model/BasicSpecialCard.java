@@ -33,8 +33,7 @@ public class BasicSpecialCard extends SpecialCard{
 			//move the player forward or backwards 1,2 or 3 squares on the board
 			backwards= new Random().nextInt(2); //2
 			squares = new Random().nextInt(2)+1; //3
-			
-		
+
 			//display the message
 			message=(backwards==0)?"SPECIAL CARD!\n You move "+squares+"\nsquares forward!":"SPECIAL CARD!\nYou move "+squares+"\nsquares backwards!";
 			p2 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_MESSAGE, SceneManager.getStackTransititionAnimation(), message);
@@ -74,9 +73,7 @@ public class BasicSpecialCard extends SpecialCard{
 				a[i]=transitions[i];
 			}
 			
-			a[transitions.length+0]=p1;
-			a[transitions.length+1]=p2;
-			a[transitions.length+2]=p3;
+			a[transitions.length+0]=p1;a[transitions.length+1]=p2;a[transitions.length+2]=p3;
 			
 			//show next turn
 			SceneManager.getGameOperation().getGame().turnUp();

@@ -248,7 +248,7 @@ public class GameOperation {
 		// lowercase
 		answer = answer.toLowerCase();
 		playerAnswer = playerAnswer.toLowerCase();
-
+		
 		// the, a, an, and , in suppression
 		while (modification) {
 			modification = false;
@@ -380,7 +380,7 @@ public class GameOperation {
 			}
 		}
 	}
-
+	
 	/** Creates an animation for a turn
 	 * @param before 	The animations that needs to be played before the one this method adds
 	 * @return A table containing SequentialTransitions of the whole turn*/

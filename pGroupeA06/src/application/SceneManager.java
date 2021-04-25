@@ -49,7 +49,7 @@ public class SceneManager {
 	
 
 	public void initialize() {
-		
+
 		go=new GameOperation();
 		// AnchorPane Creation
 		root = new HomeAP();

@@ -43,7 +43,7 @@ public class Player {
 		this.color = PlayerColors.getColor(number);
 		this.square = SceneManager.getGameOperation().getGame().getBoard().getSquares().get(0);
 	}
-
+	
 	/**
 	 * Constructor with a previous square
 	 * @param name		The name of the player

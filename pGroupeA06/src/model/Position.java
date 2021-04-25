@@ -71,5 +71,14 @@ public class Position {
 	public String toString() {
 		return "Position [x=" + x + ", y=" + y + "]";
 	}
+	
+	
+	/**
+	 * Returns a Position with the fields having the exact same value as this Position.
+	 * @return a Position Cloned
+	 * */
+	public Position clone() {
+		return new Position(this.x,this.y);
+	}
 
 }

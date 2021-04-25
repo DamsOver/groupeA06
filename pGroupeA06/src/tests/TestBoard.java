@@ -32,15 +32,6 @@ class TestBoard {
 		squares = null;
 	}
 
-	@Test
-	void testAddSquare() {
-		Square square1 = new Square(Theme.INFORMATICS);
-		Square square2 = new Square(Theme.IMPROBABLE);
-		board.addSquare(square1);
-		board.addSquare(square2);
-		assertEquals(board.getSquares().size(), 2);
-//		fail("Not yet implemented");
-	}
 
 	@Test
 	void testGetSquares() {
@@ -51,8 +42,8 @@ class TestBoard {
 	void testToJson() {
 		Square square1 = new Square(Theme.INFORMATICS);
 		Square square2 = new Square(Theme.IMPROBABLE);
-		assertTrue(board.addSquare(square1));
-		assertTrue(board.addSquare(square2));
+		//assertTrue(board.addSquare(square1));
+		//assertTrue(board.addSquare(square2));
 		assertEquals(board.toJson(), "{\"squares\":[{\"theme\":\"INFORMATICS\",\"playersPosition\":[]},{\"theme\":\"IMPROBABLE\",\"playersPosition\":[]}]}");
 	}
 
@@ -65,8 +56,8 @@ class TestBoard {
 	void testToString() {
 		Square square1 = new Square(Theme.INFORMATICS);
 		Square square2 = new Square(Theme.IMPROBABLE);
-		assertTrue(board.addSquare(square1));
-		assertTrue(board.addSquare(square2));
+		//assertTrue(board.addSquare(square1));
+		//assertTrue(board.addSquare(square2));
 		assertEquals(board.toString(),"Board [Board=[INFORMATICS, [[]], IMPROBABLE, [[]]]]");
 	}
 

@@ -25,27 +25,16 @@ public class Board {
 		squares = new ArrayList<Square>();
 	}
 	
-	/**
-	 * Adds a square to the Board
-	 * @param sq	Square to add to the board
-	 * @return true if the square is successfully added*/
-	public boolean addSquare(Square sq) {
-		if(sq==null) {
-			return false;
-		}
-		
-		//no verification needed, 
-		//the Square Objects are not Unique 
-		//and can be modified inside and outside the class
-		squares.add(sq);
-		return true;
-	}
 	
 	/**
 	 * Returns the list of Square
 	 * @return List of Square*/
 	public List<Square> getSquares(){
-		return this.squares;
+		List<Square> listSquare = new ArrayList<Square>();
+		for(Square sq : squares) {
+			listSquare.add(sq.clone());
+		}
+		return listSquare;
 	}
 	
 	/**
