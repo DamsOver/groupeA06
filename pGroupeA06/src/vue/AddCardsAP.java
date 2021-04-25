@@ -67,7 +67,7 @@ public class AddCardsAP extends AnchorPane {
 		txtTitle.getStyleClass().add("title-style");
 		AnchorPane.setTopAnchor(getTxtTitle(), 80.0);
 		AnchorPane.setRightAnchor(getTxtTitle(), 600.0);
-		AnchorPane.setLeftAnchor(getTxtTitle(), 600.0);
+//		AnchorPane.setLeftAnchor(getTxtTitle(), 600.0);
 
 		// txtTheme
 		txtTheme.getStyleClass().add("basicText");
@@ -146,7 +146,9 @@ public class AddCardsAP extends AnchorPane {
 
 	public Text getTxtTitle() {
 		if (txtTitle == null) {
-			txtTitle = new Text("Add Cards");
+			//txtTitle = new Text("Add Cards");
+			txtTitle = new Text();
+			setModification(modification);
 		}
 		return txtTitle;
 	}
@@ -266,8 +268,6 @@ public class AddCardsAP extends AnchorPane {
 		btnErase.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				removeText();
-				//impossible to modify after erase text of a card
-				setModification(false);
 			}
 		});
 		return btnErase;
@@ -299,7 +299,6 @@ public class AddCardsAP extends AnchorPane {
 							e.printStackTrace();
 						}
 					}
-					System.out.println("so :\n"+ newCard.toString());
 					Deck deck = new Deck().fromJson();
 					
 					if (modification) {
@@ -390,6 +389,12 @@ public class AddCardsAP extends AnchorPane {
 	
 	public void setModification(Boolean mod) {
 		modification = mod;
+		if(modification) {
+			getTxtTitle().setText("Modify Card");
+		}
+		else {
+			getTxtTitle().setText("Add Cards");
+		}
 	}
 	
 	

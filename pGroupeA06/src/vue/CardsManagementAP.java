@@ -163,11 +163,13 @@ public class CardsManagementAP extends AnchorPane {
 		}
 		btnModify.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				String toRemove = getLvCards().getSelectionModel().getSelectedItem();
-				for(BasicCard b : deck.getBasicCards()) {
-					if(toRemove.contains(b.getSubject())) {
-						SceneManager.getSceneRoot().setRoot(SceneManager.getStackAddCards());
-						SceneManager.getAddCards().loadCard(b);
+				String toModify = getLvCards().getSelectionModel().getSelectedItem();
+				if(toModify != null) {
+					for(BasicCard b : deck.getBasicCards()) {
+						if(toModify.contains(b.getSubject())) {
+							SceneManager.getSceneRoot().setRoot(SceneManager.getStackAddCards());
+							SceneManager.getAddCards().loadCard(b);
+						}
 					}
 				}
 			}
