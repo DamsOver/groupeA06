@@ -60,7 +60,7 @@ public class Question {
 	public String getChallenge() {
 		return challenge;
 	}
-
+	
 	/**
 	 * returns the answer
 	 * @return the answer of the challenge
