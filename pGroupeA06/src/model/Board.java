@@ -56,12 +56,12 @@ public class Board {
 		return new Gson().toJson(this);
 	}
 	
+
 	/**
 	 * Transforms a String (Json) into a Board Object
 	 * @return A new Board described by the String
 	 * */
-	public Board fromJson() {
-		
+	public Board fromJson() {		
 		return Serialisation.loadBoardClear(Constants.BOARD_PATH);
 	}
 	

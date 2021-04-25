@@ -137,8 +137,6 @@ public class AddPlayersAP extends AnchorPane {
 	        			SceneManager.getGameOperation().getGame().setPlayerVisible();
 	        			SceneManager.getGameOperation().turnRating(false,null);
 	        		}
-	        		
-	                	      
 		        }
 	        }
 		});

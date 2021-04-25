@@ -8,7 +8,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JFX11"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="Library/explorer.jar"/>
 	<classpathentry kind="lib" path="Library/gson-2.8.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

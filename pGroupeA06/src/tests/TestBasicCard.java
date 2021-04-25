@@ -64,13 +64,9 @@ class TestBasicCard {
 	}
 
 	@Test
-	void testGetSubject() {
-//		fail("Not yet implemented");
-	}
-
-	@Test
 	void testGetQuestions() {
-//		fail("Not yet implemented");
+		assertEquals(questions.size(), bc.getQuestions().size());
+		assertEquals(questions, bc.getQuestions());
 	}
 
 	@Test
@@ -106,31 +102,6 @@ class TestBasicCard {
 	}
 
 	@Test
-	void testGetAuthor() {
-//		fail("Not yet implemented");
-	}
-
-	@Test
-	void testSetAuthor() {
-//		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetTheme() {
-//		fail("Not yet implemented");
-	}
-
-	@Test
-	void testSetTheme() {
-//		fail("Not yet implemented");
-	}
-
-	@Test
-	void testSetSubject() {
-//		fail("Not yet implemented");
-	}
-
-	@Test
 	void testToString() throws AlreadyPresentException, TooManyException {
 		assertTrue(bc.addQuestion("What is the only flying mammal?", "The bat"));
 		assertEquals(bc.toString(),"\nBasicCard [author=Martin, theme=IMPROBABLE, subject=Nature, questions=[\nQuestion [author=Martin, theme=IMPROBABLE, subject=Nature, challenge=What is the only flying mammal?, answer=The bat]]]\n");
@@ -138,19 +109,25 @@ class TestBasicCard {
 
 	@Test
 	void testFromJson() throws AlreadyPresentException, TooManyException {
-		//add a question
-		assertTrue(bc.addQuestion("What is the only flying mammal?", "The bat"));	
-		assertEquals(bc.toJson(),"{\"subject\":\"Nature\",\"questions\":[{\"author\":\"Martin\",\"theme\":\"IMPROBABLE\",\"subject\":\"Nature\",\"challenge\":\"What is the only flying mammal?\",\"answer\":\"The bat\"}],\"author\":\"Martin\",\"theme\":\"IMPROBABLE\"}");	
+		String test = "{\"subject\":\"Nature\",\"questions\":[{\"author\":\"Martin\",\"theme\":\"IMPROBABLE\",\"subject\":\"Nature\",\"challenge\":\"What is the only flying mammal?\",\"answer\":\"The bat\"}],\"author\":\"Martin\",\"theme\":\"IMPROBABLE\"}";
+		bc.addQuestion("What is the only flying mammal?", "The bat");
+		BasicCard bcTest = bc.fromJson(test);
+		assertEquals(bc,bcTest);
 	}
 
 	@Test
-	void testToJson() {
-//		fail("Not yet implemented");
+	void testToJson() throws AlreadyPresentException, TooManyException {
+		bc.addQuestion("What is the only flying mammal?", "The bat");
+		assertEquals(bc.toJson(), "{\"subject\":\"Nature\",\"questions\":[{\"author\":\"Martin\",\"theme\":\"IMPROBABLE\",\"subject\":\"Nature\",\"challenge\":\"What is the only flying mammal?\",\"answer\":\"The bat\"}],\"author\":\"Martin\",\"theme\":\"IMPROBABLE\"}");
 	}
 
 	@Test
-	void testClone() {
-//		fail("Not yet implemented");
+	void testClone() throws AlreadyPresentException, TooManyException, NotPresentException, TooLittleException {
+		bc.addQuestion("What is the only flying mammal?", "The bat");
+		BasicCard copyBc = bc.clone();
+		assertEquals(bc, copyBc);
+		copyBc.removeQuestion("What is the only flying mammal?", "The bat");
+		assertFalse(bc.getQuestions().size() == copyBc.getQuestions().size(), "The list of bc does'nt have the same size as the list of copyBc");
 	}
 
 }

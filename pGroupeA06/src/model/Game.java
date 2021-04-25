@@ -69,14 +69,6 @@ public class Game {
 	}
 
 	/**
-	 * Adds a Player to the list of players, only used in a clone, and the verification are made in the calling method
-	 * @param p		The Player to add
-	 * */
-	private void addPlayer(Player p) {
-		players.add(p);
-	}
-
-	/**
 	 * Calls the setSquare method from Player, which returns an animation of the player movement
 	 * @params next The number of square you need to move
 	 * @param p 	The Player that need to move
@@ -127,7 +119,7 @@ public class Game {
 	public Game clone() {
 		Game g = new Game();
 		for (Player p : players) {
-			g.addPlayer(p.clone());
+			g.getPlayers().add(p.clone());
 		}
 		g.turn = this.turn;
 		g.deck = this.deck.clone();

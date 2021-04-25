@@ -10,7 +10,7 @@ import enumerations.Theme;
  * @author Martin
  * */
 public class Question {
-	
+
 	/**
 	 * The author of the Question
 	 * */
@@ -35,8 +35,7 @@ public class Question {
 	 * The answer of the Question
 	 * */
 	private String answer;
-	
-	
+
 	/**
 	 * Constructor of a Question
 	 * @param author	The author of the Question
@@ -53,7 +52,6 @@ public class Question {
 		this.answer = answer;
 	}
 
-
 	/**
 	 * returns the challenge
 	 * @return the challenge of the Question
@@ -61,7 +59,6 @@ public class Question {
 	public String getChallenge() {
 		return challenge;
 	}
-
 
 	/**
 	 * returns the answer
@@ -71,6 +68,13 @@ public class Question {
 		return answer;
 	}
 
+	/**
+	 * sets the answer of the Question
+	 * @param the answer of the challenge
+	 * */
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
 
 	/**
 	 * Transforms a Question Object into a String
@@ -79,18 +83,16 @@ public class Question {
 	public String toJson() {
 		return new Gson().toJson(this);
 	}
-	
-	
+
 	/**
 	 * Transforms a String (Json) into a Question Object
 	 * @param json 	The String to convert
 	 * @return A new Question described by the String
 	 * */
 	public Question fromJson(String json) {
-		return new Gson().fromJson(json,Question.class);
+		return new Gson().fromJson(json, Question.class);
 	}
-	
-	
+
 	/**
 	 * Converts the Question Object and his fields into a String
 	 * @return The String describing the Object
@@ -100,6 +102,7 @@ public class Question {
 		return "\nQuestion [author=" + author + ", theme=" + theme + ", subject=" + subject + ", challenge=" + challenge
 				+ ", answer=" + answer + "]";
 	}
+
 
 	/**
 	 * Checks if two objects are equals.
@@ -128,14 +131,14 @@ public class Question {
 			return false;
 		return true;
 	}
+
 	
 	/**
 	 * Returns a Question with the fields having the exact same value as this Question.
 	 * @return a Question Cloned
 	 * */
 	public Question clone() {
-		return new Question(this.author,this.theme,this.subject,this.challenge,this.answer);
+		return new Question(this.author, this.theme, this.subject, this.challenge, this.answer);
 	}
-	
-	
+
 }
