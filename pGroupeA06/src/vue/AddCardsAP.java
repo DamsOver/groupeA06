@@ -308,6 +308,7 @@ public class AddCardsAP extends AnchorPane {
 					} else {
 						Serialisation.addCard(newCard, deck);
 					}
+				//	SceneManager.getCardsManagement().setDeck(deck);
 					removeText();
 						
 				}
