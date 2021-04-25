@@ -5,14 +5,13 @@ import com.google.gson.Gson;
 import enumerations.Theme;
 
 public class Question {
-	
+
 	private String author;
 	private Theme theme;
 	private String subject;
 	private String challenge;
 	private String answer;
-	
-	
+
 	public Question(String author, Theme theme, String subject, String challenge, String answer) {
 		this.author = author;
 		this.theme = theme;
@@ -21,29 +20,25 @@ public class Question {
 		this.answer = answer;
 	}
 
-
-
 	public String getChallenge() {
 		return challenge;
 	}
-
-
 
 	public String getAnswer() {
 		return answer;
 	}
 
-
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
 
 	public String toJson() {
 		return new Gson().toJson(this);
 	}
-	
+
 	public Question fromJson(String json) {
-		return new Gson().fromJson(json,Question.class);
+		return new Gson().fromJson(json, Question.class);
 	}
-	
-	
 
 	@Override
 	public String toString() {
@@ -51,7 +46,6 @@ public class Question {
 				+ ", answer=" + answer + "]";
 	}
 
-	
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -74,10 +68,9 @@ public class Question {
 			return false;
 		return true;
 	}
-	
+
 	public Question clone() {
-		return new Question(this.author,this.theme,this.subject,this.challenge,this.answer);
+		return new Question(this.author, this.theme, this.subject, this.challenge, this.answer);
 	}
-	
-	
+
 }

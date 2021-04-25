@@ -35,8 +35,7 @@ public class Board {
 		return new Gson().toJson(this);
 	}
 	
-	public Board fromJson() {
-		
+	public Board fromJson() {		
 		return Serialisation.loadBoardClear(Constants.BOARD_PATH);
 	}
 	

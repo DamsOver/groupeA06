@@ -99,7 +99,6 @@ class TestDeck {
 		// Check if the deletion of an element does not affect basicCards and copyDeck
 		deck.removeBasicCard(bc2);
 		assertFalse(basicCards.size() == copyDeck.size());
-
 	}
 
 	@Test
@@ -108,7 +107,6 @@ class TestDeck {
 		deck.addBasicCard(bc);
 		assertEquals(deck.toJson(),
 				"{\"cards\":[{\"subject\":\"Nature\",\"questions\":[{\"author\":\"Martin\",\"theme\":\"IMPROBABLE\",\"subject\":\"Nature\",\"challenge\":\"What is the only flying mammal?\",\"answer\":\"The bat\"}],\"author\":\"Martin\",\"theme\":\"IMPROBABLE\"}]}");
-
 	}
 
 	@Test
@@ -138,8 +136,12 @@ class TestDeck {
 	}
 
 	@Test
-	void testClone() {
-//		fail("Not yet implemented");
+	void testClone() throws AlreadyPresentException, TooLittleException, NotPresentException {
+		deck.addBasicCard(bc);
+		Deck copyDeck = deck.clone();
+		assertEquals(deck, copyDeck);
+		copyDeck.removeBasicCard(bc);
+		assertTrue(deck!=copyDeck);
 	}
 
 }
