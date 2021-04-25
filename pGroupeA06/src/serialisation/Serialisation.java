@@ -68,12 +68,19 @@ public class Serialisation implements Serializable {
 	}
 
 	public static void uptadeDeck(BasicCard oldbc, BasicCard newbc, Deck deck) {
-		int index = deck.getBasicCards().indexOf(oldbc);
-		System.out.println("index : " + index);
 		System.out.println(deck.toString());
-		deck.getBasicCards().remove(oldbc);
-		//deck.getBasicCards().set(index, newbc);
-		System.out.println("so :"+ deck.toString());
+		try {
+			deck.removeBasicCard(oldbc);
+		} catch (TooLittleException | NotPresentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			deck.addBasicCard(newbc);
+		} catch (AlreadyPresentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		saveDeckClear(deck, Constants.DECK_PATH);
 	}
 	
