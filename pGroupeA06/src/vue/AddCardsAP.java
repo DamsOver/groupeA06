@@ -304,7 +304,7 @@ public class AddCardsAP extends AnchorPane {
 					
 					if (modification) {
 						// update
-						Serialisation.uptadeDeck(toModify, newCard, deck);
+						Serialisation.updateDeck(toModify, newCard, deck);
 						SceneManager.getSceneRoot().setRoot(SceneManager.getStackCardsManager());
 					} else {
 						Serialisation.addCard(newCard, deck);

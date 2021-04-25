@@ -67,7 +67,7 @@ public class Serialisation implements Serializable {
 		return new Gson().fromJson(bufferedReader, Board.class);
 	}
 
-	public static void uptadeDeck(BasicCard oldbc, BasicCard newbc, Deck deck) {
+	public static void updateDeck(BasicCard oldbc, BasicCard newbc, Deck deck) {
 		System.out.println(deck.toString());
 		try {
 			deck.removeBasicCard(oldbc);
