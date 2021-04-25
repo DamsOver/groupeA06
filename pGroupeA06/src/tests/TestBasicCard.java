@@ -119,7 +119,9 @@ class TestBasicCard {
 	void testToJson() throws AlreadyPresentException, TooManyException {
 		bc.addQuestion("What is the only flying mammal?", "The bat");
 		assertEquals(bc.toJson(), "{\"subject\":\"Nature\",\"questions\":[{\"author\":\"Martin\",\"theme\":\"IMPROBABLE\",\"subject\":\"Nature\",\"challenge\":\"What is the only flying mammal?\",\"answer\":\"The bat\"}],\"author\":\"Martin\",\"theme\":\"IMPROBABLE\"}");
+
 	}
+
 
 	@Test
 	void testClone() throws AlreadyPresentException, TooManyException, NotPresentException, TooLittleException {

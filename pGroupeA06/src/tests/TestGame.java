@@ -34,6 +34,19 @@ class TestGame {
 	}
 
 	@Test
+	void testClone() {
+//		fail("Not yet implemented");
+	}
+
+	@Test
+	void testGetPlayers() throws AlreadyPresentException {
+		Player p1 = new Player("Player1",1,new Square(Theme.INFORMATICS));
+		Player p2 = new Player("Player2",2,new Square(Theme.PLEASURE));
+		game.addPlayer("Player1",1);
+		game.addPlayer("Player2",2);
+	}
+
+	@Test
 	void testMovePlayer() {
 //		fail("Not yet implemented");
 	}
@@ -60,19 +73,6 @@ class TestGame {
 		assertEquals(game.getTurn(), 1);
 	}
 
-	@Test
-	void testClone() {
-//		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetPlayers() throws AlreadyPresentException {
-		Player p1 = new Player("Player1",1,new Square(Theme.INFORMATICS));
-		Player p2 = new Player("Player2",2,new Square(Theme.PLEASURE));
-		game.addPlayer("Player1",1);
-		game.addPlayer("Player2",2);
-		assertEquals(game.getPlayers().size(), 2);
-	}
 
 	@Test
 	void testSetPlayerVisible() {

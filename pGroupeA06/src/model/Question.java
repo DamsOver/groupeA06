@@ -52,6 +52,7 @@ public class Question {
 		this.answer = answer;
 	}
 
+
 	/**
 	 * returns the challenge
 	 * @return the challenge of the Question
@@ -68,6 +69,7 @@ public class Question {
 		return answer;
 	}
 
+
 	/**
 	 * sets the answer of the Question
 	 * @param the answer of the challenge
@@ -83,6 +85,7 @@ public class Question {
 	public String toJson() {
 		return new Gson().toJson(this);
 	}
+
 
 	/**
 	 * Transforms a String (Json) into a Question Object
@@ -102,7 +105,6 @@ public class Question {
 		return "\nQuestion [author=" + author + ", theme=" + theme + ", subject=" + subject + ", challenge=" + challenge
 				+ ", answer=" + answer + "]";
 	}
-
 
 	/**
 	 * Checks if two objects are equals.
@@ -131,6 +133,7 @@ public class Question {
 			return false;
 		return true;
 	}
+
 
 	
 	/**
