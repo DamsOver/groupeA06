@@ -72,7 +72,7 @@ public class Question {
 
 	/**
 	 * sets the answer of the Question
-	 * @param the answer of the challenge
+	 * @param answer the answer of the challenge
 	 * */
 	public void setAnswer(String answer) {
 		this.answer = answer;

@@ -31,6 +31,7 @@ public class Deck {
 	/**
 	 * Adds a BasicCard to the Deck
 	 * @param newBasicCard	BasicCard to add to the board
+	 * @throws AlreadyPresentException error if the basic card is already present
 	 * @return true if the BasicCard is successfully added*/
 	public boolean addBasicCard(BasicCard newBasicCard)throws AlreadyPresentException {
 		if(newBasicCard==null)
@@ -53,7 +54,8 @@ public class Deck {
 	/**
 	 * removes a BasicCard from the Deck
 	 * @param basicCard	The BasicCard to remove
-	 * @throws NotPresentException, TooLittleException
+	 * @throws NotPresentException error if the BasicCard is not present
+	 * @throws TooLittleException error if there is no BasicCard
 	 * @return true if the BasicCard has been successfully removed from the Deck
 	 * */
 	public boolean removeBasicCard(BasicCard basicCard)throws TooLittleException,NotPresentException {

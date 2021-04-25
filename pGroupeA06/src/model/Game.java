@@ -43,7 +43,7 @@ public class Game {
 	 * Adds a Player to the list of players
 	 * @param name		The name of the Player
 	 * @param number 	The number of the Player
-	 * @throws AlreadyPresentException
+	 * @throws AlreadyPresentException error if the player is already present
 	 * @return true if the Player has been successfully added to the list of questions
 	 * */
 	public boolean addPlayer(String name, int number) throws AlreadyPresentException {
@@ -70,7 +70,7 @@ public class Game {
 
 	/**
 	 * Calls the setSquare method from Player, which returns an animation of the player movement
-	 * @params next The number of square you need to move
+	 * @param next The number of square you need to move
 	 * @param p 	The Player that need to move
 	 * @return A table containing the Animation of the movement of the player*/
 	public Animation[] movePlayer(int next, Player p) {

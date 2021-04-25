@@ -461,7 +461,8 @@ public class GameOperation {
 		}
 	}
 	
-	/**creates the animations of a player victory*/
+	/**creates the animations of a player victory
+	 * @return The SequentialTransition corresponding to the last animation*/
 	public SequentialTransition lastTurn() {
 		Animation[] tabTemp = new Animation[2];
 		tabTemp[1] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,

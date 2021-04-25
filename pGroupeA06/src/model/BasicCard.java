@@ -81,7 +81,8 @@ public class BasicCard {
 	 * Adds a question to the list of questions
 	 * @param challenge	The question of the Question Object
 	 * @param answer 	The answer of the challenge
-	 * @throws AlreadyPresentException, TooManyException
+	 * @throws AlreadyPresentException	error if the Question is already present
+	 * @throws TooManyException		error if there is too many Question
 	 * @return true if the Question has been successfully added to the list of questions
 	 * */
 	public boolean addQuestion(String challenge, String answer) throws AlreadyPresentException, TooManyException {
@@ -133,7 +134,8 @@ public class BasicCard {
 	 * removes a question from the list of questions
 	 * @param challenge	The question of the Question Object
 	 * @param answer 	The answer of the challenge
-	 * @throws NotPresentException, TooLittleException
+	 * @throws NotPresentException	error if the Question is not present
+	 * @throws TooLittleException	error if there is no question
 	 * @return true if the Question has been successfully removed from the list of questions
 	 * */
 	public boolean removeQuestion(String challenge, String answer) throws NotPresentException, TooLittleException {
@@ -198,7 +200,7 @@ public class BasicCard {
 
 	/**
 	 * sets the author
-	 * @param The new author of the Card
+	 * @param author The new author of the Card
 	 * */
 	public void setAuthor(String author) {
 		this.author = author;
@@ -216,7 +218,7 @@ public class BasicCard {
 
 	/**
 	 * sets the Theme
-	 * @param The new Theme of the Card
+	 * @param theme The new Theme of the Card
 	 * */
 	public void setTheme(Theme theme) {
 		this.theme = theme;
@@ -225,7 +227,7 @@ public class BasicCard {
 
 	/**
 	 * sets the subject
-	 * @param The new subject of the Card
+	 * @param subject The new subject of the Card
 	 * */
 	public void setSubject(String subject) {
 		this.subject = subject;

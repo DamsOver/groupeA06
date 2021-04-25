@@ -9,7 +9,7 @@ import javafx.animation.Animation;
 public abstract class SpecialCard {
 	
 	/**activates the animation of the specialCard
-	 * @param a table containing the previous animations*/
+	 * @param transitions a table containing the previous animations*/
 	public abstract void action(Animation[] transitions);
 		
 }
