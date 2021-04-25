@@ -12,14 +12,42 @@ import exceptions.TooLittleException;
 import exceptions.TooManyException;
 import util.Constants;
 
-public class BasicCard {
 
+/**
+ * An object representing a card, containing different Question object
+ * @author Martin
+ * */
+
+public class BasicCard {
+	
+	/**
+	 * The subject of the card
+	 */
 	private String subject;
+	
+	/**
+	 * The list of Questions
+	 */
 	private List<Question> questions;
+	
+	/**
+	 * The author of the card
+	 */
 	private String author;
+	
+	/**
+	 * The Theme of the card
+	 */
 	private Theme theme;
 
-	// constructor
+	
+	
+	/**
+	 * Constructor without any questions
+	 * @param author	The author of the card
+	 * @param theme		The Theme of the card 
+	 * @param subject	The subject of the card
+	 * */
 	public BasicCard(String author, Theme theme, String subject) {
 		this.author=author;
 		this.theme=theme;
@@ -29,7 +57,13 @@ public class BasicCard {
 
 	
 
-	// constructor
+	/**
+	 * Constructor with already existing questions 
+	 * @param author	The author of the card
+	 * @param theme		The Theme of the card 
+	 * @param subject	The subject of the card
+	 * @param questions	The list of Questions
+	 * */
 	public BasicCard(String author, Theme theme, String subject, List<Question> questions) {
 		this.author=author;
 		this.theme=theme;
@@ -42,7 +76,14 @@ public class BasicCard {
 		}
 	}
 
-	// to add a question
+	
+	/**
+	 * Adds a question to the list of questions
+	 * @param challenge	The question of the Question Object
+	 * @param answer 	The answer of the challenge
+	 * @throws AlreadyPresentException, TooManyException
+	 * @return true if the Question has been successfully added to the list of questions
+	 * */
 	public boolean addQuestion(String challenge, String answer) throws AlreadyPresentException, TooManyException {
 
 		// creation of a question
@@ -65,10 +106,19 @@ public class BasicCard {
 		return true;
 	}
 
+	
+	/**
+	 * returns the subject
+	 * @return the subject of the BasicCard
+	 * */
 	public String getSubject() {
 		return subject;
 	}
 
+	/**
+	 * returns the list of Question cloned
+	 * @return the list of Question of the BasicCard
+	 * */
 	public ArrayList<Question> getQuestions() {
 		ArrayList<Question> q = new ArrayList<Question>();
 
@@ -78,7 +128,14 @@ public class BasicCard {
 		return q;
 	}
 
-	// to remove a question
+	
+	/**
+	 * removes a question from the list of questions
+	 * @param challenge	The question of the Question Object
+	 * @param answer 	The answer of the challenge
+	 * @throws NotPresentException, TooLittleException
+	 * @return true if the Question has been successfully removed from the list of questions
+	 * */
 	public boolean removeQuestion(String challenge, String answer) throws NotPresentException, TooLittleException {
 
 		// creation of a question
@@ -107,6 +164,12 @@ public class BasicCard {
 		return true;
 	}
 
+	/**
+	 * Checks if two objects are equals.
+	 * Here only the subject and the theme are compared
+	 * @param obj 	The Object the method compares to
+	 * @return True if this is equal to the Object obj
+	 * */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -123,49 +186,83 @@ public class BasicCard {
 		return true;
 	}
 
+	
+	/**
+	 * returns the author
+	 * @return the author of the Card
+	 * */
 	public String getAuthor() {
 		return author;
 	}
 
 
-
+	/**
+	 * sets the author
+	 * @param The new author of the Card
+	 * */
 	public void setAuthor(String author) {
 		this.author = author;
 	}
 
 
-
+	/**
+	 * returns the Theme
+	 * @return the Theme of the Card
+	 * */
 	public Theme getTheme() {
 		return theme;
 	}
 
 
-
+	/**
+	 * sets the Theme
+	 * @param The new Theme of the Card
+	 * */
 	public void setTheme(Theme theme) {
 		this.theme = theme;
 	}
 
 
-
+	/**
+	 * sets the subject
+	 * @param The new subject of the Card
+	 * */
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
 
-
+	/**
+	 * Converts the BasicCard Object and his fields into a String
+	 * @return The String describing the Object
+	 * */
 	@Override
 	public String toString() {
 		return "\nBasicCard [author=" + author + ", theme=" + getTheme() + ", subject=" + subject + ", questions="
 				+ questions + "]\n";
 	}
 
+	
+	/**
+	 * Transforms a String (Json) into a BasicCard Object
+	 * @param json 	The String to convert
+	 * @return A new BasicCard described by the String
+	 * */
 	public BasicCard fromJson(String json) {
 		return new Gson().fromJson(json, BasicCard.class);
 	}
 	
+	/**
+	 * Transforms a BasicCard Object into a String
+	 * @return A Json String describing the BasicCard
+	 * */
 	public String toJson(){
 		return new Gson().toJson(this);
 	}
 
+	/**
+	 * Returns a BasicCard with the fields having the exact same value as this BasicCard.
+	 * @return a BasicCard Cloned
+	 * */
 	public BasicCard clone() {
 		// the clone of the questions is done in the constructor
 		return new BasicCard(this.getAuthor(), this.getTheme(), this.subject, questions);

@@ -5,36 +5,61 @@ import java.util.List;
 
 import enumerations.Theme;
 
+
+/**
+ * An representation of a square, a small part of a Board
+ * @author Damien
+ * */
 public class Square {
+	
+	/**
+	 * The Theme of the Square
+	 */
 	private Theme theme;
+	
+	/**
+	 * The List of Position of the Players
+	 */
 	private List<Position> playersPosition;
 
+	/**
+	 * Constructor
+	 * @param theme	The theme of the Square
+	 * */
 	public Square(Theme theme) {
 		this.theme = theme;
 		this.playersPosition = new ArrayList<>();
 	}
 
+	/**
+	 * returns the Theme
+	 * @return the Theme of the Square
+	 * */
 	public Theme getTheme() {
 		return theme;
 	}
-
+	
+	/**
+	 * returns the list of Position of the players
+	 * @return a list of Position*/
 	public List<Position> getPlayersPosition() {
 		return playersPosition;
 	}
 
+	/**
+	 * Converts the Square Object and his fields into a String
+	 * @return The String describing the Object
+	 * */
 	public String toString() {
 		return theme.toString() + ", [" + playersPosition + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((playersPosition == null) ? 0 : playersPosition.hashCode());
-		result = prime * result + ((theme == null) ? 0 : theme.hashCode());
-		return result;
-	}
-
+	
+	/**
+	 * Checks if two objects are equals.
+	 * @param obj 	The Object the method compares to
+	 * @return True if this is equal to the Object obj
+	 * */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

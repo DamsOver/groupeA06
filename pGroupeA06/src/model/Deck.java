@@ -9,14 +9,29 @@ import exceptions.TooLittleException;
 import serialisation.Serialisation;
 import util.Constants;
 
+/**
+ * An object representing a Deck, containing different BasicCard object
+ * @author Martin
+ * */
+
 public class Deck {
 	
+	/**
+	 * The List of BasicCard
+	 */
 	private List<BasicCard> cards;
 	
+	/**
+	 * Constructor of a Deck
+	 * */
 	public Deck() {
 		this.cards= new ArrayList<BasicCard>();
 	}
 	
+	/**
+	 * Adds a BasicCard to the Deck
+	 * @param newBasicCard	BasicCard to add to the board
+	 * @return true if the BasicCard is successfully added*/
 	public boolean addBasicCard(BasicCard newBasicCard)throws AlreadyPresentException {
 		if(newBasicCard==null)
 			return false;
@@ -35,7 +50,12 @@ public class Deck {
 	}
 	
 	
-	//to remove a Basiccard
+	/**
+	 * removes a BasicCard from the Deck
+	 * @param basicCard	The BasicCard to remove
+	 * @throws NotPresentException, TooLittleException
+	 * @return true if the BasicCard has been successfully removed from the Deck
+	 * */
 	public boolean removeBasicCard(BasicCard basicCard)throws TooLittleException,NotPresentException {
 
 		//verification if the number of cards is not 0
@@ -61,6 +81,11 @@ public class Deck {
 		return true;
 	}
 	
+	
+	/**
+	 * returns the list of BasicCard cloned
+	 * @return the list of BasicCard of the Deck
+	 * */
 	public List<BasicCard> getBasicCards(){
 		ArrayList<BasicCard> newCards = new ArrayList<BasicCard>();
 		for(BasicCard bc : cards) {
@@ -70,21 +95,37 @@ public class Deck {
 		return newCards;
 	}
 	
-	
+	/**
+	 * Transforms a Deck Object into a String
+	 * @return A Json String describing the Deck
+	 * */
 	public String toJson() {
 		return new Gson().toJson(this);
 	}
 	
+	
+	/**
+	 * Transforms a String (Json) into a Deck Object
+	 * @return A new Deck described by the String
+	 * */
 	public Deck fromJson() {
 		return Serialisation.loadDeckClear(Constants.DECK_PATH);
 	}
 
-
+	/**
+	 * Convert the Deck and his fields into a String
+	 * @return The String describing the object
+	 * */
 	public String toString() {
 		return "Deck [cards=" + cards + "]";
 	}
 
 
+	/**
+	 * Checks if two objects are equals
+	 * @param obj 	The Object the method compares to
+	 * @return True if this is equal to the Object obj
+	 * */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -99,6 +140,10 @@ public class Deck {
 		return true;
 	}	
 	
+	/**
+	 * Returns a Deck with the fields having the exact same value as this Deck.
+	 * @return a Deck Cloned
+	 * */
 	public Deck clone() {
 		Deck newDeck = new Deck();
 		for(BasicCard bc : cards) {

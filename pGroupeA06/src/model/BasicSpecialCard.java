@@ -6,9 +6,21 @@ import javafx.animation.Animation;
 import javafx.animation.Transition;
 import util.Constants;
 
+/**
+ * A Basic SpecialCard, which is not used only once in the board.
+ * The type of action depends on a random number
+ * @author Martin*/
+
 public class BasicSpecialCard extends SpecialCard{
+	
+	/**
+	 * Chooses an action thanks to a random number and create an animation linked to the action
+	 * @param transitions	A table containing the previous animations which needs to be played before the ones this method creates
+	 * */
 	@Override
 	public void action(Animation[] transitions) {
+		
+		//create a random number between 1 and 2.99999
 		int randomNumber = new Random().nextInt(2) + 1;
 		Transition p1=null,p2,p3;
 		Animation[] a = null,temp=null;
@@ -16,8 +28,7 @@ public class BasicSpecialCard extends SpecialCard{
 		int backwards,squares;
 		
 		
-		switch(randomNumber) {//randomNumber
-		//switch(3) {//randomNumber
+		switch(randomNumber) {
 		case 1 :
 			//move the player forward or backwards 1,2 or 3 squares on the board
 			backwards= new Random().nextInt(2); //2
@@ -31,7 +42,6 @@ public class BasicSpecialCard extends SpecialCard{
 			
 			squares=(backwards==0)?squares:-squares;
 			temp=SceneManager.getGameOperation().getGame().movePlayer(squares,
-					SceneManager.getGameOperation().getPlayerTurn().getSquare(),
 					SceneManager.getGameOperation().getPlayerTurn());
 			a = new Animation[transitions.length+temp.length+2];
 			
@@ -45,10 +55,11 @@ public class BasicSpecialCard extends SpecialCard{
 			for(int i=0;i<temp.length;i++) {
 				a[i+2+transitions.length]=temp[i];
 			}
-			System.out.println(1);
+			
+			//next turn
 			SceneManager.getGameOperation().getGame().turnUp();
-			System.out.println(2);
-			//show next turn
+			
+			//shows next turn
 			SceneManager.getGameOperation().turnRating(false,a);
 			break;
 		case 2 :	
@@ -71,40 +82,6 @@ public class BasicSpecialCard extends SpecialCard{
 			SceneManager.getGameOperation().getGame().turnUp();
 			SceneManager.getGameOperation().turnRating(false,a);
 			break;
-			
-		case 3 :
-			//switch square
-			int randomPlayerIndex;
-			Player playerA = SceneManager.getGameOperation().getPlayerTurn(),playerB;
-			do {
-				randomPlayerIndex= new Random().nextInt(SceneManager.getGameOperation().getGame().getPlayers().size());
-			}while(randomPlayerIndex == SceneManager.getGameOperation().getGame().getPlayers().indexOf(playerA));
-			
-			playerB= SceneManager.getGameOperation().getGame().getPlayers().get(randomPlayerIndex);
-			
-			
-			message = "SPECIAL CARD!\nYou and "+playerB.getName()+"\nswitch squares!";
-
-			Animation[] anim= playerA.switchSquares(playerB);
-			p3 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,SceneManager.getStackGame(), null);
-			p2 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_MESSAGE, SceneManager.getStackTransititionAnimation(), message);
-			p1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN, SceneManager.getStackTransititionAnimation(), "It's "+ SceneManager.getGameOperation().getPlayerTurn().getName() +"'s turn!");
-			a = new Animation[6];
-			a[0]=p1;
-			a[1]=p2;
-			a[2]=p3;
-			a[3]=anim[0];
-			a[4]=anim[1];
-			a[5]=anim[2];
-			
-			//show next turn
-			SceneManager.getGameOperation().getGame().turnUp();
-			SceneManager.getGameOperation().turnRating(false,a);
-			break;
-			
-		case 4 :
-			break;
-			
 		}
 	}	
 }

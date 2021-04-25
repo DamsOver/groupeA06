@@ -1,35 +1,52 @@
 package model;
 
+/**
+ * An object representing a position in a 2D plane
+ * @author Damien
+ * */
 public class Position {
-
+	
+	/**
+	 * The x coordinate
+	 */
 	private double x;
+	
+	/**
+	 * The y coordinate
+	 */
 	private double y;
 
+	/**
+	 * Constructor
+	 * @param x	The x coordinate
+	 * @param y	The y coordinate
+	 * */
 	public Position(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}
 
+	/**
+	 * returns x coordinate
+	 * @return the x coordinate
+	 * */
 	public double getX() {
 		return x;
 	}
-
+	
+	/**
+	 * returns y coordinate
+	 * @return the y coordinate
+	 * */
 	public double getY() {
 		return y;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(x);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(y);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
-	}
-
+	/**
+	 * Checks if two objects are equals.
+	 * @param obj 	The Object the method compares to
+	 * @return True if this is equal to the Object obj
+	 * */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -46,6 +63,10 @@ public class Position {
 		return true;
 	}
 
+	/**
+	 * Converts the Position Object and his fields into a String
+	 * @return The String describing the Object
+	 * */
 	@Override
 	public String toString() {
 		return "Position [x=" + x + ", y=" + y + "]";

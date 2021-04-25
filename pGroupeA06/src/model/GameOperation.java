@@ -20,19 +20,34 @@ import java.util.Random;
 import util.Constants;
 import util.StringUtils;
 
+/**
+ * A class in charge of the conduct of a game and of it's animations
+ * @author Martin
+ * */
 public class GameOperation {
+	
+	/**The game used for the animations*/
 	private Game game;
-	private BasicCard bc;
+	
+	/**The current Card used to set the questions */
+	private BasicCard currentBC;
+	
+	/**The deck containing all the used cards*/
 	private Deck oldCards;
+	
+	/**The table of animation used in the last turn*/
 	private Animation[] tempTransitions;
 
+	/** Constructor of a GameOperation*/
 	public GameOperation() {
 		this.game = new Game();
 		oldCards = new Deck();
 	}
 
+	/** Adds the players to the list of players from the Class Game
+	 * @param playerNames 	The List of the names*/
 	public void addPlayers(List<String> playerNames) {
-		// adding the players to the list of players from the Game Class
+		
 		int i = 0;
 		for (String s : playerNames) {
 			try {
@@ -43,7 +58,10 @@ public class GameOperation {
 			i++;
 		}
 	}
-
+	
+	/** Decides what animation to play and what action to make depending on the square and the first turn
+	 * @param first 		True if it's the first turn
+	 * @param transitions 	The table of previous Animations*/
 	public void turnRating(boolean first,Animation[] transitions) {
 
 		// getting the player that will play the turn
@@ -53,11 +71,9 @@ public class GameOperation {
 			StartCard sc = new StartCard();
 			sc.action(transitions);
 			Transition p2 = SceneManager.getGameOperation().animationTurn(null);
-			Transition p1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,
-					SceneManager.getStackGame(), null);
+			Transition p1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_START,SceneManager.getStackGame(), null);
 			SceneManager.getTransitionAnimation().setTxtAnimation("The game starts!");
 			SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
-
 			SequentialTransition initialTransition = new SequentialTransition(p1,p2);
 			initialTransition.play();
 			
@@ -80,24 +96,27 @@ public class GameOperation {
 				break;
 			default:	
 				// drawing a card
-				bc = drawCard(p.getSquare().getTheme());
+				currentBC = drawCard(p.getSquare().getTheme());
 
 				// change the ratingAP labels
-				SceneManager.getRating().setLbSubject(bc.getSubject());
-				SceneManager.getRating().setLbTheme(bc.getTheme());
+				SceneManager.getRating().setLbSubject(currentBC.getSubject());
+				SceneManager.getRating().setLbTheme(currentBC.getTheme());
 				animationTurn(transitions).play();
 				break;
 			}
 		}
 	}
 
+	/**
+	 * Sets the question and the answer and enable the ok button
+	 * */
 	public void turnQuestion() {
 
 		// getting the rating
 		int rating = SceneManager.getRating().getRating();
 
 		// getting the question
-		Question q = bc.getQuestions().get(rating - 1);
+		Question q = currentBC.getQuestions().get(rating - 1);
 
 		// setting the question
 		setQuestion(q);
@@ -105,6 +124,8 @@ public class GameOperation {
 
 	}
 
+	/**sets the question and the answer to the QuestionView
+	 * @param q	The question to set*/
 	public void setQuestion(Question q) {
 		
 		String question = q.getChallenge();
@@ -122,7 +143,7 @@ public class GameOperation {
 			str.append("\n");
 		}
 
-		Question newQuestion = new Question(bc.getAuthor(), bc.getTheme(), bc.getSubject(), str.toString(),
+		Question newQuestion = new Question(currentBC.getAuthor(), currentBC.getTheme(), currentBC.getSubject(), str.toString(),
 				q.getAnswer());
 
 		// setting the player's name
@@ -148,6 +169,9 @@ public class GameOperation {
 		SceneManager.getQuestion().goTimer();
 	}
 
+	/**
+	 * Checks if the answer of the player was correct and sets animations for the next Turn
+	 * */
 	public void answerVerification() {
 		
 		Animation[] tab = null;
@@ -160,8 +184,6 @@ public class GameOperation {
 		
 		// verification of the answer
 		if (questionVerificationAlgorithm(p.getSquare().getTheme()==Theme.FINISH)) {
-			
-			
 			
 			// the answer was correct
 
@@ -176,7 +198,7 @@ public class GameOperation {
 				return;
 			}
 			else {
-				tempTab=game.movePlayer(rating, p.getSquare(), p);
+				tempTab=game.movePlayer(rating, p);
 				tab = new Animation[tempTab.length+1];
 				tab[0]=SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_ANSWER,
 						SceneManager.getStackQuestion(), null);
@@ -204,7 +226,7 @@ public class GameOperation {
 
 		// add the card to the old deck
 		try {
-			oldCards.addBasicCard(bc);
+			oldCards.addBasicCard(currentBC);
 		} catch (AlreadyPresentException e) {
 			e.printStackTrace();
 		}
@@ -212,9 +234,12 @@ public class GameOperation {
 		turnRating(false,tab);
 	}
 
+	/** Checks the difference between the answer of the player and the real answer. A small percentage of error is admitted
+	 * @param last If it's true, the last Question of the BasicCard if the one that was asked
+	 * @return True if there's no significant difference*/
 	public boolean questionVerificationAlgorithm(boolean last) {
 		int rating = (last)?4:SceneManager.getRating().getRating();
-		Question q = bc.getQuestions().get(rating - 1);
+		Question q = currentBC.getQuestions().get(rating - 1);
 		String answer = (q.getAnswer() != null) ? q.getAnswer() : "";
 		String playerAnswer = (SceneManager.getQuestion().getAnswer() != null) ? SceneManager.getQuestion().getAnswer()
 				: "";
@@ -356,6 +381,9 @@ public class GameOperation {
 		}
 	}
 
+	/** Creates an animation for a turn
+	 * @param before 	The animations that needs to be played before the one this method adds
+	 * @return A table containing SequentialTransitions of the whole turn*/
 	public SequentialTransition animationTurn(Animation[] before) {
 		//first, player before moves
 		//then, message it's player's turn
@@ -390,6 +418,8 @@ public class GameOperation {
 		}
 	}
 	
+	/** Creates an animation for the last turn
+	 * @return A table containing SequentialTransitions of the whole turn*/
 	public SequentialTransition animationLastTurn() {
 		Animation[] tab = new Animation[(tempTransitions==null)?4:tempTransitions.length+4];
 		Animation[] tabTemp = new Animation[4];
@@ -431,10 +461,9 @@ public class GameOperation {
 		}
 	}
 	
+	/**creates the animations of a player victory*/
 	public SequentialTransition lastTurn() {
 		Animation[] tabTemp = new Animation[2];
-		
-		
 		tabTemp[1] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,
 				SceneManager.getStackRoot(), null);
 		tabTemp[0] = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,
@@ -444,9 +473,12 @@ public class GameOperation {
 		return new SequentialTransition (tabTemp);
 	}
 
+	/**draws a card from the deck and check if it's a correct one
+	 * @param th 	The theme that the BasicCard drawed should have
+	 * @return The BasicCard drawed*/
 	public BasicCard drawCard(Theme th) {
 		boolean alreadyPresent = false;
-		bc = null;
+		currentBC = null;
 		ArrayList<BasicCard> potentialCards = new ArrayList<BasicCard>();
 		// check if there is a card that has the same theme than the square
 
@@ -479,24 +511,34 @@ public class GameOperation {
 			return drawCard(th);
 		} else {
 			int randomNumber = new Random().nextInt(potentialCards.size());
-			bc = potentialCards.get(randomNumber);
+			currentBC = potentialCards.get(randomNumber);
 		}
-		return bc;
+		return currentBC;
 	}
 
+	/**
+	 * returns the current BasicCard
+	 * @return current BasicCard*/
 	public BasicCard getBasicCard() {
-		return bc.clone();
+		return currentBC.clone();
 	}
 
+	/**
+	 * gets the Player that has to play the turn
+	 * @return the player that has to play*/
 	public Player getPlayerTurn() {
 		return this.game.getPlayers().get(this.game.getTurn() % this.game.getPlayers().size());
 	}
 
+	/**Produces a Transition used for all the animations of the turns
+	 * @param pauses 	the duration of the pause
+	 * @param scene		The next Scene that needs to be shown
+	 * @param txtAnimation	The Text to display
+	 * @return the animation */
 	public Transition animation(Integer pauses, Pane scene, String txtAnimation) {
 
 		PauseTransition pauseTransition = new PauseTransition(Duration.millis(pauses));
 		pauseTransition.setOnFinished(e -> {
-			
 			// If it is a transitionAnimation, we have to set a new text to him, contained
 			// in txtAnimation
 			if (scene == SceneManager.getStackTransititionAnimation()) {
@@ -506,7 +548,10 @@ public class GameOperation {
 		});
 		return pauseTransition;
 	}
-
+	
+	/**
+	 * returns the Game
+	 * @return current Game*/
 	public Game getGame() {
 		return game;
 	}
