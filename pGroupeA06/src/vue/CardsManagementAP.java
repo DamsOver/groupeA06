@@ -182,18 +182,6 @@ public class CardsManagementAP extends AnchorPane {
 		btnDelete.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				ObservableList<String> toRemove = getLvCards().getSelectionModel().getSelectedItems();
-				//remove String
-				for(BasicCard b : deck.getBasicCards()) {
-					if(toRemove.contains(b.getSubject())) {
-						try {
-							deck.removeBasicCard(b);
-						} catch (TooLittleException | NotPresentException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-				}
-				Serialisation.saveDeckClear(deck, Constants.DECK_PATH);
 				getLvCards().getItems().removeAll(toRemove);
 			}
 		});
@@ -206,6 +194,7 @@ public class CardsManagementAP extends AnchorPane {
 		}
 		btnAdd.setOnAction(new EventHandler<ActionEvent>(){
 	        public void handle(ActionEvent event) {
+	        	SceneManager.getAddCards().setModification(false);
 	            SceneManager.getSceneRoot().setRoot(SceneManager.getStackAddCards());
 	            }
 			});

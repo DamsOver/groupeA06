@@ -8,9 +8,19 @@ import java.io.IOException;
 import java.io.Serializable;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import application.SceneManager;
+import exceptions.AlreadyPresentException;
+import exceptions.NotPresentException;
+import exceptions.TooLittleException;
+import javafx.collections.ObservableList;
+
 import java.io.FileWriter;
+
+import model.BasicCard;
 import model.Board;
 import model.Deck;
+import util.Constants;
 
 public class Serialisation implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -57,4 +67,40 @@ public class Serialisation implements Serializable {
 		return new Gson().fromJson(bufferedReader, Board.class);
 	}
 
+	public static void uptadeDeck(BasicCard oldbc, BasicCard newbc, Deck deck) {
+		int index = deck.getBasicCards().indexOf(oldbc);
+		System.out.println("index : " + index);
+		System.out.println(deck.toString());
+		deck.getBasicCards().remove(oldbc);
+		//deck.getBasicCards().set(index, newbc);
+		System.out.println("so :"+ deck.toString());
+		saveDeckClear(deck, Constants.DECK_PATH);
+	}
+	
+	public static void addCard(BasicCard bc, Deck deck) {
+		try {
+			deck.addBasicCard(bc);
+			System.out.println(bc.getSubject());
+			SceneManager.getCardsManagement().getLvCards().getItems().add(bc.getSubject());
+		} catch (AlreadyPresentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		saveDeckClear(deck, Constants.DECK_PATH);
+	}
+	
+	public static void removeCard(ObservableList<String> toRemove, Deck deck) {
+		//remove String
+		for(BasicCard b : deck.getBasicCards()) {
+			if(toRemove.contains(b.getSubject())) {
+				try {
+					deck.removeBasicCard(b);
+				} catch (TooLittleException | NotPresentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		Serialisation.saveDeckClear(deck, Constants.DECK_PATH);
+	}
 }
