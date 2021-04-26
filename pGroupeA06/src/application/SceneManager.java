@@ -7,7 +7,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.Media;
 import javafx.util.Duration;
-import model.GameOperation;
+import model.Game;
 import util.Constants;
 import vue.AddCardsAP;
 import vue.AddPlayersAP;
@@ -45,12 +45,13 @@ public class SceneManager {
 	private static RatingAP rating;
 	private static QuestionAP question;
 
-	private static GameOperation go;
+	private static Game g;
 	
 
 	public void initialize() {
 
-		go=new GameOperation();
+		g=new Game();
+		
 		// AnchorPane Creation
 		root = new HomeAP();
 		addCards = new AddCardsAP();
@@ -179,7 +180,6 @@ public class SceneManager {
 		return mediaPlayerInCorrect;
 	}
 
-	// a remplacer par getCHildren
 	// getters AnchorPane
 	public static OptionsAP getOptions() {
 		return options;
@@ -221,9 +221,15 @@ public class SceneManager {
 		return cardsManagement;
 	}
 
-	// getter GameOperation
-	public static GameOperation getGameOperation() {
-		return go;
+	public static Game getCurrentGame() {
+		return g;
+	}
+	
+	public static void newGame() {
+		g=new Game();
+		game.resetIvPlayer();
+		game= new GameAP();
+		stackGame = new StackPane(game);
 	}
 
 	public static Scene getSceneRoot() {

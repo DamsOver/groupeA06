@@ -1,8 +1,6 @@
 package vue;
 
 import enumerations.Theme;
-import exceptions.NotPresentException;
-import exceptions.TooLittleException;
 import application.SceneManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,8 +15,6 @@ import javafx.scene.text.Text;
 import model.BasicCard;
 import model.Deck;
 import model.Game;
-import serialisation.Serialisation;
-import util.Constants;
 
 public class CardsManagementAP extends AnchorPane {
 	public Game game;

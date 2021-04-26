@@ -1,6 +1,5 @@
 package vue;
 
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import application.SceneManager;
@@ -315,7 +314,7 @@ public class AddCardsAP extends AnchorPane {
 				else {
 					SceneManager.getTransitionAnimation().setTxtAnimation("Some fields are empty!");
 	        		 SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
-	        		Transition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_ERROR,SceneManager.getStackAddCards(),null);
+	        		Transition pause1 = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_ERROR,SceneManager.getStackAddCards(),null);
 	        		pause1.play();
 				}
 			}

@@ -116,26 +116,26 @@ public class AddPlayersAP extends AnchorPane {
 	        	if(!checkTxtFieldEmpty()) {
 	        		SceneManager.getTransitionAnimation().setTxtAnimation("Some fields are empty!");
 	        		 SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
-	        		Transition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_ERROR,SceneManager.getStackAddPlayers(),null);
+	        		Transition pause1 = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_ERROR,SceneManager.getStackAddPlayers(),null);
 	        		pause1.play();
 	        	}
 	        	else if(!checkTxtFieldDuplicate()){
 	        		SceneManager.getTransitionAnimation().setTxtAnimation("Each names \nmust be different!");
 	        		SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
-	        		Transition pause1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_ERROR,SceneManager.getStackAddPlayers(),null);
+	        		Transition pause1 = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_ERROR,SceneManager.getStackAddPlayers(),null);
 	        		pause1.play();
 	        	}
 	        	else {
 	        		//checking if it's the first turn off the game (if there are no players and it's turn 0)
-	        		if(SceneManager.getGameOperation().getGame().getPlayers().size()==0&&SceneManager.getGameOperation().getGame().getTurn()==0) {
-	        			SceneManager.getGameOperation().addPlayers(getPlayerNames());
-	        			SceneManager.getGameOperation().getGame().setPlayerVisible();
-	        			SceneManager.getGameOperation().turnRating(true,null);
+	        		if(SceneManager.getCurrentGame().getPlayers().size()==0&&SceneManager.getCurrentGame().getTurn()==0) {
+	        			SceneManager.getCurrentGame().addPlayers(getPlayerNames());
+	        			SceneManager.getCurrentGame().setPlayerVisible();
+	        			SceneManager.getCurrentGame().turnRating(true,null);
 		        		
 	        		}
 	        		else {
-	        			SceneManager.getGameOperation().getGame().setPlayerVisible();
-	        			SceneManager.getGameOperation().turnRating(false,null);
+	        			SceneManager.getCurrentGame().setPlayerVisible();
+	        			SceneManager.getCurrentGame().turnRating(false,null);
 	        		}
 		        }
 	        }

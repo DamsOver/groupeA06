@@ -36,12 +36,12 @@ public class BasicSpecialCard extends SpecialCard{
 
 			//display the message
 			message=(backwards==0)?"SPECIAL CARD!\n You move "+squares+"\nsquares forward!":"SPECIAL CARD!\nYou move "+squares+"\nsquares backwards!";
-			p2 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_MESSAGE, SceneManager.getStackTransititionAnimation(), message);
-			p1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN, SceneManager.getStackTransititionAnimation(), "It's "+ SceneManager.getGameOperation().getPlayerTurn().getName() +"'s turn!");
+			p2 = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_MESSAGE, SceneManager.getStackTransititionAnimation(), message);
+			p1 = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_TURN, SceneManager.getStackTransititionAnimation(), "It's "+ SceneManager.getCurrentGame().getPlayerTurn().getName() +"'s turn!");
 			
 			squares=(backwards==0)?squares:-squares;
-			temp=SceneManager.getGameOperation().getGame().movePlayer(squares,
-					SceneManager.getGameOperation().getPlayerTurn());
+			temp=SceneManager.getCurrentGame().movePlayer(squares,
+					SceneManager.getCurrentGame().getPlayerTurn());
 			a = new Animation[transitions.length+temp.length+2];
 			
 			for(int i=0;i<transitions.length;i++) {
@@ -56,17 +56,17 @@ public class BasicSpecialCard extends SpecialCard{
 			}
 			
 			//next turn
-			SceneManager.getGameOperation().getGame().turnUp();
+			SceneManager.getCurrentGame().turnUp();
 			
 			//shows next turn
-			SceneManager.getGameOperation().turnRating(false,a);
+			SceneManager.getCurrentGame().turnRating(false,a);
 			break;
 		case 2 :	
 			//skip your next turn
 			message = "SPECIAL CARD!\nYou skip your turn!";
-			p3 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN,SceneManager.getStackGame(), null);
-			p2 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_MESSAGE, SceneManager.getStackTransititionAnimation(), message);
-			p1 = SceneManager.getGameOperation().animation(Constants.ANIMATION_TIME_TURN, SceneManager.getStackTransititionAnimation(), "It's "+ SceneManager.getGameOperation().getPlayerTurn().getName() +"'s turn!");
+			p3 = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_TURN,SceneManager.getStackGame(), null);
+			p2 = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_MESSAGE, SceneManager.getStackTransititionAnimation(), message);
+			p1 = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_TURN, SceneManager.getStackTransititionAnimation(), "It's "+ SceneManager.getCurrentGame().getPlayerTurn().getName() +"'s turn!");
 			a = new Animation[transitions.length+3];
 			
 			for(int i=0;i<transitions.length;i++) {
@@ -76,8 +76,8 @@ public class BasicSpecialCard extends SpecialCard{
 			a[transitions.length+0]=p1;a[transitions.length+1]=p2;a[transitions.length+2]=p3;
 			
 			//show next turn
-			SceneManager.getGameOperation().getGame().turnUp();
-			SceneManager.getGameOperation().turnRating(false,a);
+			SceneManager.getCurrentGame().turnUp();
+			SceneManager.getCurrentGame().turnRating(false,a);
 			break;
 		}
 	}	

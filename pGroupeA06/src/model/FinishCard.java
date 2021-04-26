@@ -16,6 +16,6 @@ public class FinishCard extends SpecialCard{
 	 * */
 	@Override
 	public void action(Animation[] transitions) {
-		SceneManager.getGameOperation().animationLastTurn().play();
+		SceneManager.getCurrentGame().animationLastTurn(transitions).play();
 	}
 }

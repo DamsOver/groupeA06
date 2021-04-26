@@ -1,16 +1,12 @@
 package vue;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
 import application.SceneManager;
 import enumerations.Theme;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -22,7 +18,6 @@ public class RatingAP extends AnchorPane {
 	private Label lbTheme, lbSubject, lbTurn;
 	private Button btnGo, btnSettings;	
 	
-	private ComboBox<String> cbbRating;
 	
 	private ToggleGroup tgrRating;
 	private List<RadioButton> rdbRating;
@@ -147,7 +142,7 @@ public class RatingAP extends AnchorPane {
 		}
 		btnGo.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				SceneManager.getGameOperation().turnQuestion();
+				SceneManager.getCurrentGame().turnQuestion();
 
 			}
 		});

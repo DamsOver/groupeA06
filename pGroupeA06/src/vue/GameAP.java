@@ -11,7 +11,7 @@ import util.Constants;
 
 public class GameAP extends AnchorPane {
 
-	private static List<ImageView> listImageView;
+	private List<ImageView> listImageView;
 
 	public GameAP() {
 		this.getStyleClass().add("gameBoard");
@@ -27,20 +27,26 @@ public class GameAP extends AnchorPane {
 				listImageView.add(new ImageView(tmp));
 				listImageView.get(i).setFitHeight(Constants.PLAYER_HEIGHT);
 				listImageView.get(i).setFitWidth(Constants.PLAYER_WIDTH);
-				listImageView.get(i).setX(SceneManager.getGameOperation().getGame().getBoard().getSquares().get(0).getPlayersPosition().get(i).getX());
-				listImageView.get(i).setY(SceneManager.getGameOperation().getGame().getBoard().getSquares().get(0).getPlayersPosition().get(i).getY());
-			}
+				}
+			resetIvPlayer();
 		}
 		return listImageView;
 	}
 
-	public static void setIvPlayer(double x, double y, int indice) {
-		listImageView.get(indice).setX(x);
+	public void setIvPlayer(double x, double y, int indice) {
+		this.listImageView.get(indice).setX(x);
 		listImageView.get(indice).setY(y);
 	}
 
 	public List<ImageView> getListImageView() {
 		return listImageView;
+	}
+	
+	public void resetIvPlayer() {
+		for (int i = 0; i < Constants.NB_PLAYER; i++) {
+			listImageView.get(i).setX(SceneManager.getCurrentGame().getBoard().getSquares().get(0).getPlayersPosition().get(i).getX());
+			listImageView.get(i).setY(SceneManager.getCurrentGame().getBoard().getSquares().get(0).getPlayersPosition().get(i).getY());
+			}
 	}
 
 }
