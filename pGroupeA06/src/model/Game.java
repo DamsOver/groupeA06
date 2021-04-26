@@ -193,14 +193,15 @@ public class Game {
 		Player p = getPlayerTurn();
 
 		if (first) {
-			StartCard sc = new StartCard();
-			sc.action(transitions);
-			Transition p2 = SceneManager.getCurrentGame().animationTurn(null);
+			
 			Transition p1 = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_START,SceneManager.getStackGame(), null);
 			SceneManager.getTransitionAnimation().setTxtAnimation("The game starts!");
 			SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
-			SequentialTransition initialTransition = new SequentialTransition(p1,p2);
-			initialTransition.play();
+			transitions = new Animation[1];
+			transitions[0]=p1;
+			
+			SpecialCard sc = new StartCard();
+			sc.action(transitions);
 			
 		} else {
 			// verify if it's a special theme
