@@ -15,6 +15,8 @@ import javafx.scene.text.Text;
 import model.BasicCard;
 import model.Deck;
 import model.Game;
+import serialisation.Serialisation;
+import util.Constants;
 
 public class CardsManagementAP extends AnchorPane {
 	public Game game;
@@ -159,15 +161,17 @@ public class CardsManagementAP extends AnchorPane {
 		}
 		btnModify.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
+				setDeck(Serialisation.loadDeckClear(Constants.DECK_PATH));
 				String toModify = getLvCards().getSelectionModel().getSelectedItem();
 				//if(toModify != null) {
 					for(BasicCard b : deck.getBasicCards()) {
 						if(toModify.contains(b.getSubject())) {
 							SceneManager.getSceneRoot().setRoot(SceneManager.getStackAddCards());
 							SceneManager.getAddCards().loadCard(b);
+							SceneManager.setD(deck);
 						}
 					}
-				//}
+				//} 
 			}
 		});
 		return btnModify;
@@ -180,7 +184,9 @@ public class CardsManagementAP extends AnchorPane {
 		btnDelete.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				ObservableList<String> toRemove = getLvCards().getSelectionModel().getSelectedItems();
+				Serialisation.removeCard(toRemove, deck);
 				getLvCards().getItems().removeAll(toRemove);
+				
 			}
 		});
 		return btnDelete;
@@ -207,8 +213,8 @@ public class CardsManagementAP extends AnchorPane {
 		
 		return deck;
 	}
-	
-	public void setDeck(Deck deck) {
+	*/
+	private void setDeck(Deck deck) {
 		this.deck = deck;
-	}*/
+	}
 }

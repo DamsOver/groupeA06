@@ -217,7 +217,7 @@
           "author": "Martin",
           "theme": "SCHOOL",
           "subject": "History",
-          "challenge": "According to the song \"Qui a eu cette idée folle, un jour d'inventer l''école\", who invented school?",
+          "challenge": "According to the song \"Qui a eu cette idée folle, un jour d\u0027inventer l\u0027\u0027école\", who invented school?",
           "answer": "Charlemagne"
         },
         {
@@ -511,7 +511,7 @@
           "author": "Damien",
           "theme": "SCHOOL",
           "subject": "Maths",
-          "challenge": "Solve this : 32 + 12 % 5² = ?",
+          "challenge": "Solve this : 32 + 12 % 5² \u003d ?",
           "answer": "44"
         },
         {
@@ -672,7 +672,7 @@
           "author": "Chiara",
           "theme": "INFORMATICS",
           "subject": "String in java",
-          "challenge": "What is 'String' in OOP?",
+          "challenge": "What is \u0027String\u0027 in OOP?",
           "answer": "Class"
         },
         {

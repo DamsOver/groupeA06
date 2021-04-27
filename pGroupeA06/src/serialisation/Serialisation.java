@@ -68,15 +68,16 @@ public class Serialisation implements Serializable {
 	}
 
 	public static void updateDeck(BasicCard oldbc, BasicCard newbc, Deck deck) {
-		System.out.println(deck.toString());
 		try {
 			deck.removeBasicCard(oldbc);
+			SceneManager.getCardsManagement().getLvCards().getItems().remove(oldbc.getSubject());
 		} catch (TooLittleException | NotPresentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			deck.addBasicCard(newbc);
+			SceneManager.getCardsManagement().getLvCards().getItems().add(newbc.getSubject());
 		} catch (AlreadyPresentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -87,7 +88,6 @@ public class Serialisation implements Serializable {
 	public static void addCard(BasicCard bc, Deck deck) {
 		try {
 			deck.addBasicCard(bc);
-			System.out.println(bc.getSubject());
 			SceneManager.getCardsManagement().getLvCards().getItems().add(bc.getSubject());
 		} catch (AlreadyPresentException e) {
 			// TODO Auto-generated catch block
@@ -97,7 +97,7 @@ public class Serialisation implements Serializable {
 	}
 	
 	public static void removeCard(ObservableList<String> toRemove, Deck deck) {
-		//remove String
+		//remove String	
 		for(BasicCard b : deck.getBasicCards()) {
 			if(toRemove.contains(b.getSubject())) {
 				try {
@@ -108,6 +108,7 @@ public class Serialisation implements Serializable {
 				}
 			}
 		}
+			
 		Serialisation.saveDeckClear(deck, Constants.DECK_PATH);
 	}
 }

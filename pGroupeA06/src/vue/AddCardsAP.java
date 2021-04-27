@@ -285,8 +285,8 @@ public class AddCardsAP extends AnchorPane {
 					// get questions
 					for (int i = 0; i < NB_QUESTION; i++) {
 						// add and create questions
-						System.out.println(getTxtFEachChallenges().get(i).getText()+ " "+
-								getTxtFEachAnswers().get(i).getText());
+//						System.out.println(getTxtFEachChallenges().get(i).getText()+ " "+
+//								getTxtFEachAnswers().get(i).getText());
 						try {
 							newCard.addQuestion(getTxtFEachChallenges().get(i).getText(),
 									getTxtFEachAnswers().get(i).getText());
@@ -298,9 +298,11 @@ public class AddCardsAP extends AnchorPane {
 							e.printStackTrace();
 						}
 					}
+					
 					Deck deck = new Deck().fromJson();
 					
 					if (modification) {
+						deck = SceneManager.getD();
 						// update
 						Serialisation.updateDeck(toModify, newCard, deck);
 						SceneManager.getSceneRoot().setRoot(SceneManager.getStackCardsManager());
