@@ -7,6 +7,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.Media;
 import javafx.util.Duration;
+import model.Deck;
 import model.Game;
 import util.Constants;
 import vue.AddCardsAP;
@@ -46,7 +47,7 @@ public class SceneManager {
 	private static QuestionAP question;
 
 	private static Game g;
-	
+	private static Deck d;
 
 	public void initialize() {
 
@@ -282,6 +283,14 @@ public class SceneManager {
 
 	public static StackPane getStackQuestion() {
 		return stackQuestion;
+	}
+	
+	public static void setD(Deck d) {
+		SceneManager.d = d;
+	}
+	
+	public static Deck getD() {
+		return d;
 	}
 
 }
