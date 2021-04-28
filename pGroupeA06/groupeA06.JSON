@@ -1,0 +1,844 @@
+{
+  "cards": [
+    {
+      "subject": "Nature",
+      "questions": [
+        {
+          "author": "Martin",
+          "theme": "IMPROBABLE",
+          "subject": "Nature",
+          "challenge": "What is the only flying mammal?",
+          "answer": "bat"
+        },
+        {
+          "author": "Martin",
+          "theme": "IMPROBABLE",
+          "subject": "Nature",
+          "challenge": "What is the only mammal that lays eggs?",
+          "answer": "platypus"
+        },
+        {
+          "author": "Martin",
+          "theme": "IMPROBABLE",
+          "subject": "Nature",
+          "challenge": "How many hearts does an Octopus have?",
+          "answer": "3"
+        },
+        {
+          "author": "Martin",
+          "theme": "IMPROBABLE",
+          "subject": "Nature",
+          "challenge": "How many times does a bee flap his wings per second?",
+          "answer": "200"
+        }
+      ],
+      "author": "Martin",
+      "theme": "IMPROBABLE"
+    },
+    {
+      "subject": "The Earth",
+      "questions": [
+        {
+          "author": "Martin",
+          "theme": "IMPROBABLE",
+          "subject": "The Earth",
+          "challenge": "What is the highest mountain of the world?",
+          "answer": "Everest"
+        },
+        {
+          "author": "Martin",
+          "theme": "IMPROBABLE",
+          "subject": "The Earth",
+          "challenge": "What is the largest ocean in the world?",
+          "answer": "Pacific Ocean"
+        },
+        {
+          "author": "Martin",
+          "theme": "IMPROBABLE",
+          "subject": "The Earth",
+          "challenge": "How many times does light go around the earth in a second?",
+          "answer": "7.5"
+        },
+        {
+          "author": "Martin",
+          "theme": "IMPROBABLE",
+          "subject": "The Earth",
+          "challenge": "What is the circumference of the earth? (in km)",
+          "answer": "40000"
+        }
+      ],
+      "author": "Martin",
+      "theme": "IMPROBABLE"
+    },
+    {
+      "subject": "Music",
+      "questions": [
+        {
+          "author": "Martin",
+          "theme": "PLEASURE",
+          "subject": "Music",
+          "challenge": "Which band sang \"Bohemian Rhapsody\"?",
+          "answer": "Queen"
+        },
+        {
+          "author": "Martin",
+          "theme": "PLEASURE",
+          "subject": "Music",
+          "challenge": "Who sang \"DjaDja\"?",
+          "answer": "Aya Nakamura"
+        },
+        {
+          "author": "Martin",
+          "theme": "PLEASURE",
+          "subject": "Music",
+          "challenge": "Who sang \"On verra\"?",
+          "answer": "Nekfeu"
+        },
+        {
+          "author": "Martin",
+          "theme": "PLEASURE",
+          "subject": "Music",
+          "challenge": "Who sang \"La Tactique du gendarme\"?",
+          "answer": "Bourvil"
+        }
+      ],
+      "author": "Martin",
+      "theme": "PLEASURE"
+    },
+    {
+      "subject": "Holidays",
+      "questions": [
+        {
+          "author": "Martin",
+          "theme": "PLEASURE",
+          "subject": "Holidays",
+          "challenge": "What is the most touristic country in the world?",
+          "answer": "France"
+        },
+        {
+          "author": "Martin",
+          "theme": "PLEASURE",
+          "subject": "Holidays",
+          "challenge": "In 2019, how many pictures did vacationers take per day?",
+          "answer": "55"
+        },
+        {
+          "author": "Martin",
+          "theme": "PLEASURE",
+          "subject": "Holidays",
+          "challenge": "In 2019, how many times did vacationers apply sunscreen per day?",
+          "answer": "3"
+        },
+        {
+          "author": "Martin",
+          "theme": "PLEASURE",
+          "subject": "Holidays",
+          "challenge": "In 2019, how much money did French vacationers spend per day? (€)",
+          "answer": "80"
+        }
+      ],
+      "author": "Martin",
+      "theme": "PLEASURE"
+    },
+    {
+      "subject": "Social Network",
+      "questions": [
+        {
+          "author": "Martin",
+          "theme": "INFORMATICS",
+          "subject": "Social Network",
+          "challenge": "How many Facebook accounts are there? (in billions)",
+          "answer": "2.8"
+        },
+        {
+          "author": "Martin",
+          "theme": "INFORMATICS",
+          "subject": "Social Network",
+          "challenge": "How old is Instagram? (in years)",
+          "answer": "9"
+        },
+        {
+          "author": "Martin",
+          "theme": "INFORMATICS",
+          "subject": "Social Network",
+          "challenge": "How many active Tiktok users are there? (in millions)",
+          "answer": "800"
+        },
+        {
+          "author": "Martin",
+          "theme": "INFORMATICS",
+          "subject": "Social Network",
+          "challenge": "Who has the most followers on Instagram? Cristiano Ronaldo, Lionel Messi or The Rock",
+          "answer": "Cristiano Ronaldo"
+        }
+      ],
+      "author": "Martin",
+      "theme": "INFORMATICS"
+    },
+    {
+      "subject": "Hardware",
+      "questions": [
+        {
+          "author": "Martin",
+          "theme": "INFORMATICS",
+          "subject": "Hardware",
+          "challenge": "What is the actual best Nvidia GPU?",
+          "answer": "RTX 3090"
+        },
+        {
+          "author": "Martin",
+          "theme": "INFORMATICS",
+          "subject": "Hardware",
+          "challenge": "What are the two main CPU brand?",
+          "answer": "Intel and AMD"
+        },
+        {
+          "author": "Martin",
+          "theme": "INFORMATICS",
+          "subject": "Hardware",
+          "challenge": "Which one is the best : Ryzen 5 3600, Ryzen 5 3600x or Ryzen 7 3700?",
+          "answer": "Ryzen 7 3700"
+        },
+        {
+          "author": "Martin",
+          "theme": "INFORMATICS",
+          "subject": "Hardware",
+          "challenge": "What is the abbreviation of NAS?",
+          "answer": "Network attached storage"
+        }
+      ],
+      "author": "Martin",
+      "theme": "INFORMATICS"
+    },
+    {
+      "subject": "History",
+      "questions": [
+        {
+          "author": "Martin",
+          "theme": "SCHOOL",
+          "subject": "History",
+          "challenge": "According to the song \"Qui a eu cette idée folle, un jour d\u0027inventer l\u0027\u0027école\", who invented school?",
+          "answer": "Charlemagne"
+        },
+        {
+          "author": "Martin",
+          "theme": "SCHOOL",
+          "subject": "History",
+          "challenge": "In Belgium, since when elementary school is compulsory?",
+          "answer": "1914"
+        },
+        {
+          "author": "Martin",
+          "theme": "SCHOOL",
+          "subject": "History",
+          "challenge": "In which century was calculus invented? (number of the century)",
+          "answer": "17"
+        },
+        {
+          "author": "Martin",
+          "theme": "SCHOOL",
+          "subject": "History",
+          "challenge": "When was the first girl school founded in Belgium?",
+          "answer": "1864"
+        }
+      ],
+      "author": "Martin",
+      "theme": "SCHOOL"
+    },
+    {
+      "subject": "Mathematics",
+      "questions": [
+        {
+          "author": "Martin",
+          "theme": "SCHOOL",
+          "subject": "Mathematics",
+          "challenge": "How much is the squared root of 625?",
+          "answer": "25"
+        },
+        {
+          "author": "Martin",
+          "theme": "SCHOOL",
+          "subject": "Mathematics",
+          "challenge": "How much is 172*12?",
+          "answer": "2064"
+        },
+        {
+          "author": "Martin",
+          "theme": "SCHOOL",
+          "subject": "Mathematics",
+          "challenge": "How much is log(1000)?",
+          "answer": "3"
+        },
+        {
+          "author": "Martin",
+          "theme": "SCHOOL",
+          "subject": "Mathematics",
+          "challenge": "Give the 4 first digits of pi.",
+          "answer": "3.141"
+        }
+      ],
+      "author": "Martin",
+      "theme": "SCHOOL"
+    },
+    {
+      "subject": "Animals",
+      "questions": [
+        {
+          "author": "Damien",
+          "theme": "IMPROBABLE",
+          "subject": "Animals",
+          "challenge": "What is the deadliest animal?",
+          "answer": "Mosquito"
+        },
+        {
+          "author": "Damien",
+          "theme": "IMPROBABLE",
+          "subject": "Animals",
+          "challenge": "What are Elephant tusks really?",
+          "answer": "Teeth"
+        },
+        {
+          "author": "Damien",
+          "theme": "IMPROBABLE",
+          "subject": "Animals",
+          "challenge": "Which fungus is able to control insects by parasitizing them?",
+          "answer": "Cordyceps"
+        },
+        {
+          "author": "Damien",
+          "theme": "IMPROBABLE",
+          "subject": "Animals",
+          "challenge": "What does the torpedo fish produces?",
+          "answer": "electricity"
+        }
+      ],
+      "author": "Damien",
+      "theme": "IMPROBABLE"
+    },
+    {
+      "subject": "Food",
+      "questions": [
+        {
+          "author": "Damien",
+          "theme": "IMPROBABLE",
+          "subject": "Food",
+          "challenge": "What size is the world\u0027s largest pizza? (m²)",
+          "answer": "1261"
+        },
+        {
+          "author": "Damien",
+          "theme": "IMPROBABLE",
+          "subject": "Food",
+          "challenge": "What is the maximum number of grapes eaten in 3 minutes?",
+          "answer": "205"
+        },
+        {
+          "author": "Damien",
+          "theme": "IMPROBABLE",
+          "subject": "Food",
+          "challenge": "What size is the longest sandwich in the world? (m)",
+          "answer": "735"
+        },
+        {
+          "author": "Damien",
+          "theme": "IMPROBABLE",
+          "subject": "Food",
+          "challenge": "How much does the largest packet of crisps in the world weigh? (kg)",
+          "answer": "130"
+        }
+      ],
+      "author": "Damien",
+      "theme": "IMPROBABLE"
+    },
+    {
+      "subject": "Video Games",
+      "questions": [
+        {
+          "author": "Damien",
+          "theme": "PLEASURE",
+          "subject": "Video games",
+          "challenge": "What was the name of Mario before changing it?",
+          "answer": "Jumpman"
+        },
+        {
+          "author": "Damien",
+          "theme": "PLEASURE",
+          "subject": "Video games",
+          "challenge": "What was the name of Pac-Man before changing it?",
+          "answer": "Puck-Man"
+        },
+        {
+          "author": "Damien",
+          "theme": "PLEASURE",
+          "subject": "Video games",
+          "challenge": "What is the first thing sold by Nintendo?",
+          "answer": "Playing cards"
+        },
+        {
+          "author": "Damien",
+          "theme": "PLEASURE",
+          "subject": "Video games",
+          "challenge": "When was the first virtual reality headset created?",
+          "answer": "1995"
+        }
+      ],
+      "author": "Damien",
+      "theme": "PLEASURE"
+    },
+    {
+      "subject": "Astronomy",
+      "questions": [
+        {
+          "author": "Damien",
+          "theme": "PLEASURE",
+          "subject": "Astronomy",
+          "challenge": "During which mission did Neil Armstrong land on the moon?",
+          "answer": "Apollo 11"
+        },
+        {
+          "author": "Damien",
+          "theme": "PLEASURE",
+          "subject": "Astronomy",
+          "challenge": "Which planet is the farthest from the solar system?",
+          "answer": "Neptune"
+        },
+        {
+          "author": "Damien",
+          "theme": "PLEASURE",
+          "subject": "Astronomy",
+          "challenge": "What is Sagittarius a*?",
+          "answer": "Black hole"
+        },
+        {
+          "author": "Damien",
+          "theme": "PLEASURE",
+          "subject": "Astronomy",
+          "challenge": "What is the name of the visible surface of the stars?",
+          "answer": "Photosphere"
+        }
+      ],
+      "author": "Damien",
+      "theme": "PLEASURE"
+    },
+    {
+      "subject": "OOP Concept",
+      "questions": [
+        {
+          "author": "Damien",
+          "theme": "INFORMATICS",
+          "subject": "OOP Concept",
+          "challenge": "What is the name of the process that takes care of automatic memory management?",
+          "answer": "Garbage Collector"
+        },
+        {
+          "author": "Damien",
+          "theme": "INFORMATICS",
+          "subject": "OOP Concept",
+          "challenge": "What mechanism allows you to define the same method several times with different arguments?",
+          "answer": "Overloading"
+        },
+        {
+          "author": "Damien",
+          "theme": "INFORMATICS",
+          "subject": "OOP Concept",
+          "challenge": "What is the relationship in which the destruction of a composite object does not lead to the destruction of the component object?",
+          "answer": "Aggregation"
+        },
+        {
+          "author": "Damien",
+          "theme": "INFORMATICS",
+          "subject": "OOP Concept",
+          "challenge": "What is the principle that relates to the protection of information contained in an object?",
+          "answer": "Encapsulation"
+        }
+      ],
+      "author": "Damien",
+      "theme": "INFORMATICS"
+    },
+    {
+      "subject": "Elements in a class",
+      "questions": [
+        {
+          "author": "Damien",
+          "theme": "INFORMATICS",
+          "subject": "Elements in a class",
+          "challenge": "What are the basic methods used to change the value of attributes?",
+          "answer": "Setters"
+        },
+        {
+          "author": "Damien",
+          "theme": "INFORMATICS",
+          "subject": "Elements in a class",
+          "challenge": "What is the name of the method with the same name as its class in java?",
+          "answer": "Constructor"
+        },
+        {
+          "author": "Damien",
+          "theme": "INFORMATICS",
+          "subject": "Elements in a class",
+          "challenge": "What type of attribute shares its value with all the objects in its class?",
+          "answer": "Class variable"
+        },
+        {
+          "author": "Damien",
+          "theme": "INFORMATICS",
+          "subject": "Elements in a class",
+          "challenge": "What element is made up of the name of the method as well as the list and type of its arguments?",
+          "answer": "Signature"
+        }
+      ],
+      "author": "Damien",
+      "theme": "INFORMATICS"
+    },
+    {
+      "subject": "Maths",
+      "questions": [
+        {
+          "author": "Damien",
+          "theme": "SCHOOL",
+          "subject": "Maths",
+          "challenge": "What is the probability of getting two 6s by rolling a dice twice in a row? (in fractions)",
+          "answer": "1/36"
+        },
+        {
+          "author": "Damien",
+          "theme": "SCHOOL",
+          "subject": "Maths",
+          "challenge": "What is the 6th prime number?",
+          "answer": "13"
+        },
+        {
+          "author": "Damien",
+          "theme": "SCHOOL",
+          "subject": "Maths",
+          "challenge": "Solve this : 32 + 12 % 5² \u003d ?",
+          "answer": "44"
+        },
+        {
+          "author": "Damien",
+          "theme": "SCHOOL",
+          "subject": "Maths",
+          "challenge": "What is the cube root of 64?",
+          "answer": "4"
+        }
+      ],
+      "author": "Damien",
+      "theme": "SCHOOL"
+    },
+    {
+      "subject": "Geography",
+      "questions": [
+        {
+          "author": "Damien",
+          "theme": "SCHOOL",
+          "subject": "Geography",
+          "challenge": "What is the capital of Finland?",
+          "answer": "Helsinki"
+        },
+        {
+          "author": "Damien",
+          "theme": "SCHOOL",
+          "subject": "Geography",
+          "challenge": "Where were the Nazis tried?",
+          "answer": "Nuremberg"
+        },
+        {
+          "author": "Damien",
+          "theme": "SCHOOL",
+          "subject": "Geography",
+          "challenge": "In which country is Machu Picchu located?",
+          "answer": "Peru"
+        },
+        {
+          "author": "Damien",
+          "theme": "SCHOOL",
+          "subject": "Geography",
+          "challenge": "Which country shares Everest with China?",
+          "answer": "Nepal"
+        }
+      ],
+      "author": "Damien",
+      "theme": "SCHOOL"
+    },
+    {
+      "subject": "The chocolate",
+      "questions": [
+        {
+          "author": "Chiara",
+          "theme": "IMPROBABLE",
+          "subject": "The chocolate",
+          "challenge": "What is the name of the chocolate tree?",
+          "answer": "cacao tree"
+        },
+        {
+          "author": "Chiara",
+          "theme": "IMPROBABLE",
+          "subject": "The chocolate",
+          "challenge": "What company is the greatest producer of chocolate?",
+          "answer": "Mars"
+        },
+        {
+          "author": "Chiara",
+          "theme": "IMPROBABLE",
+          "subject": "The chocolate",
+          "challenge": "What action consists of cooking cacao beans in an oven or over an open fire?",
+          "answer": "roasting"
+        },
+        {
+          "author": "Chiara",
+          "theme": "IMPROBABLE",
+          "subject": "The chocolate",
+          "challenge": "What action allows a glossy chocolate?",
+          "answer": "tempering"
+        }
+      ],
+      "author": "Chiara",
+      "theme": "IMPROBABLE"
+    },
+    {
+      "subject": "Alphabet over the world",
+      "questions": [
+        {
+          "author": "Chiara",
+          "theme": "IMPROBABLE",
+          "subject": "Alphabet over the world",
+          "challenge": "How many letters are in the French alphabet?",
+          "answer": "26"
+        },
+        {
+          "author": "Chiara",
+          "theme": "IMPROBABLE",
+          "subject": "Alphabet over the world",
+          "challenge": "What language uses only sinograms?",
+          "answer": "Chinese"
+        },
+        {
+          "author": "Chiara",
+          "theme": "IMPROBABLE",
+          "subject": "Alphabet over the world",
+          "challenge": "What old alphabet is composed by pictures?",
+          "answer": "Hieroglyph"
+        },
+        {
+          "author": "Chiara",
+          "theme": "IMPROBABLE",
+          "subject": "Alphabet over the world",
+          "challenge": "What language has the most simple and scientific alphabet?",
+          "answer": "Korean"
+        }
+      ],
+      "author": "Chiara",
+      "theme": "IMPROBABLE"
+    },
+    {
+      "subject": "Collection in java",
+      "questions": [
+        {
+          "author": "Chiara",
+          "theme": "INFORMATICS",
+          "subject": "Collection in java",
+          "challenge": "Complete this sentence : List, Set and Queue ....... from Collection?",
+          "answer": "inherit"
+        },
+        {
+          "author": "Chiara",
+          "theme": "INFORMATICS",
+          "subject": "Collection in java",
+          "challenge": "Which interface does not allow duplication? Set, List, Map or none of these?",
+          "answer": "Set"
+        },
+        {
+          "author": "Chiara",
+          "theme": "INFORMATICS",
+          "subject": "Collection in java",
+          "challenge": "Which interface is not part of Collection Framework? Queue, Stack, Array or Map?",
+          "answer": "Map"
+        },
+        {
+          "author": "Chiara",
+          "theme": "INFORMATICS",
+          "subject": "Collection in java",
+          "challenge": "What iterator allows the programmer to traverse the list in either direction?",
+          "answer": "ListIterator"
+        }
+      ],
+      "author": "Chiara",
+      "theme": "INFORMATICS"
+    },
+    {
+      "subject": "String in java",
+      "questions": [
+        {
+          "author": "Chiara",
+          "theme": "INFORMATICS",
+          "subject": "String in java",
+          "challenge": "What is \u0027String\u0027 in OOP?",
+          "answer": "Class"
+        },
+        {
+          "author": "Chiara",
+          "theme": "INFORMATICS",
+          "subject": "String in java",
+          "challenge": "What class allows String modification?",
+          "answer": "StringBuffer"
+        },
+        {
+          "author": "Chiara",
+          "theme": "INFORMATICS",
+          "subject": "String in java",
+          "challenge": "What method allows empty character sequence initialization?",
+          "answer": "String()"
+        },
+        {
+          "author": "Chiara",
+          "theme": "INFORMATICS",
+          "subject": "String in java",
+          "challenge": "How many constructors does the Class String in Java 11 count?",
+          "answer": "15"
+        }
+      ],
+      "author": "Chiara",
+      "theme": "INFORMATICS"
+    },
+    {
+      "subject": "The piano",
+      "questions": [
+        {
+          "author": "Chiara",
+          "theme": "PLEASURE",
+          "subject": "The piano",
+          "challenge": "How many pedals does the Grand Piano have?",
+          "answer": "3"
+        },
+        {
+          "author": "Chiara",
+          "theme": "PLEASURE",
+          "subject": "The piano",
+          "challenge": "Between which keys of the piano are there no black keys? C and D, D and E, E and F or F and G",
+          "answer": "E and F"
+        },
+        {
+          "author": "Chiara",
+          "theme": "PLEASURE",
+          "subject": "The piano",
+          "challenge": "How many keys are there usually on a Piano keyboard?",
+          "answer": "88"
+        },
+        {
+          "author": "Chiara",
+          "theme": "PLEASURE",
+          "subject": "The piano",
+          "challenge": "What is the name of the piano possessing pinched strings?",
+          "answer": "harpsichords"
+        }
+      ],
+      "author": "Chiara",
+      "theme": "PLEASURE"
+    },
+    {
+      "subject": "The painting",
+      "questions": [
+        {
+          "author": "Chiara",
+          "theme": "PLEASURE",
+          "subject": "The painting",
+          "challenge": "When you mix pigments that are complementary colors, what color do you get?",
+          "answer": "Brown"
+        },
+        {
+          "author": "Chiara",
+          "theme": "PLEASURE",
+          "subject": "The painting",
+          "challenge": "What’s the name of a mural painting?",
+          "answer": "fresco"
+        },
+        {
+          "author": "Chiara",
+          "theme": "PLEASURE",
+          "subject": "The painting",
+          "challenge": "What artistic current did “Impression, Sunrise” by Claude Monet initialize?",
+          "answer": "Impressionism"
+        },
+        {
+          "author": "Chiara",
+          "theme": "PLEASURE",
+          "subject": "The painting",
+          "challenge": "What type of paint did European artists use during the 15th through 19th centuries?",
+          "answer": "oil paint"
+        }
+      ],
+      "author": "Chiara",
+      "theme": "PLEASURE"
+    },
+    {
+      "subject": "The great Explorers",
+      "questions": [
+        {
+          "author": "Chiara",
+          "theme": "SCHOOL",
+          "subject": "The great Explorers",
+          "challenge": "Who made the first circumnavigation of the Earth?",
+          "answer": "Magellan"
+        },
+        {
+          "author": "Chiara",
+          "theme": "SCHOOL",
+          "subject": "The great Explorers",
+          "challenge": "What great explorer gave his name to America?",
+          "answer": "Amerigo Vespucci"
+        },
+        {
+          "author": "Chiara",
+          "theme": "SCHOOL",
+          "subject": "The great Explorers",
+          "challenge": "Who made the first circumnavigation of the Antarctic?",
+          "answer": "James Cook"
+        },
+        {
+          "author": "Chiara",
+          "theme": "SCHOOL",
+          "subject": "The great Explorers",
+          "challenge": "What are the three names of Christopher Columbus caravel?",
+          "answer": "Santa Maria, Nina and Pinta"
+        }
+      ],
+      "author": "Chiara",
+      "theme": "SCHOOL"
+    },
+    {
+      "subject": "The Atoms",
+      "questions": [
+        {
+          "author": "Chiara",
+          "theme": "SCHOOL",
+          "subject": "The Atoms",
+          "challenge": "What is the most lightweight gas?",
+          "answer": "Hydrogen"
+        },
+        {
+          "author": "Chiara",
+          "theme": "SCHOOL",
+          "subject": "The Atoms",
+          "challenge": "What is the chemical symbol for nitrogen?",
+          "answer": "N"
+        },
+        {
+          "author": "Chiara",
+          "theme": "SCHOOL",
+          "subject": "The Atoms",
+          "challenge": "What is the name of this atom : Sn",
+          "answer": "Tin"
+        },
+        {
+          "author": "Chiara",
+          "theme": "SCHOOL",
+          "subject": "The Atoms",
+          "challenge": "What is the chemical name of spirits of salt?",
+          "answer": "Hydrochloric acid"
+        }
+      ],
+      "author": "Chiara",
+      "theme": "SCHOOL"
+    }
+  ]
+}
