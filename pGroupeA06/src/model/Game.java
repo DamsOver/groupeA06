@@ -262,11 +262,23 @@ public class Game {
 
 		List<String> strings = new ArrayList<String>();
 		int index = 0;
-		while (index < q.getChallenge().length()) {
-			strings.add(question.substring(index, Math.min(index + Constants.SIZE_MAX_QUESTION, question.length())));
-			index += Constants.SIZE_MAX_QUESTION;
-		}
+		int i,val=0;
 
+		while (index < question.length()) {
+			for(i=Math.min(index + Constants.SIZE_MAX_QUESTION-1, question.length()-1);i>=index;i--) {
+				if(index + Constants.SIZE_MAX_QUESTION>=question.length()) {
+					val=question.length();
+					break;
+				}
+				if(question.charAt(i)==' ') {
+					val=i;
+					break;
+				}
+			}
+			strings.add(question.substring(index, Math.min(val, question.length())));
+			index = val;
+		}
+		
 		for (String s : strings) {
 			str.append(s);
 			str.append("\n");
