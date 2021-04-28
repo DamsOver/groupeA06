@@ -3,6 +3,7 @@ package tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
@@ -22,12 +23,13 @@ class TestBasicCard {
 	private BasicCard bc;
 	private List<Question> questions;
 
+	@SuppressWarnings("unchecked")
 	@BeforeEach
 	void setUp() throws Exception {
 		bc = new BasicCard("Martin", Theme.IMPROBABLE, "Nature");
 		Field field = bc.getClass().getDeclaredField("questions");
 		field.setAccessible(true);
-		questions = (List<Question>) field.get(bc);
+		questions = (List<Question>)(field.get(bc));
 	}
 
 	@AfterEach
@@ -99,6 +101,9 @@ class TestBasicCard {
 		assertFalse(bc.equals(bc2));
 		BasicCard bc3 = new BasicCard("Martin",Theme.IMPROBABLE,"Na");
 		assertFalse(bc.equals(bc3));
+		
+		BasicCard bc4 = new BasicCard("Mart",Theme.IMPROBABLE,"Nature");
+		assertFalse(bc.equals(bc4));
 	}
 
 	@Test
@@ -112,6 +117,8 @@ class TestBasicCard {
 		String test = "{\"subject\":\"Nature\",\"questions\":[{\"author\":\"Martin\",\"theme\":\"IMPROBABLE\",\"subject\":\"Nature\",\"challenge\":\"What is the only flying mammal?\",\"answer\":\"The bat\"}],\"author\":\"Martin\",\"theme\":\"IMPROBABLE\"}";
 		bc.addQuestion("What is the only flying mammal?", "The bat");
 		BasicCard bcTest = bc.fromJson(test);
+		System.out.println(bc.fromJson(test).toString());
+		System.out.println(bc.toString());
 		assertEquals(bc,bcTest);
 	}
 
@@ -131,5 +138,6 @@ class TestBasicCard {
 		copyBc.removeQuestion("What is the only flying mammal?", "The bat");
 		assertFalse(bc.getQuestions().size() == copyBc.getQuestions().size(), "The list of bc does'nt have the same size as the list of copyBc");
 	}
+	
 
 }

@@ -14,13 +14,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 import model.Question;
 import util.Constants;
 
 public class QuestionAP extends AnchorPane {
 
-	private Label lbTurn, lbQuestion, lbCorrectAS, lblTimer;
+	private Label lbTurn, lbCorrectAS, lblTimer,lbQuestion;
+	
 	private Button btnOK, btnQuestionMark;
 	private TextField tfAnswer;
 
@@ -89,7 +91,7 @@ public class QuestionAP extends AnchorPane {
 
 	public Label getLbQuestion() {
 		if (lbQuestion == null) {
-			lbQuestion = new Label("Question bateau ");
+			lbQuestion = new Label();
 		}
 		return lbQuestion;
 	}

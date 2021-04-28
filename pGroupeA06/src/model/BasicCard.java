@@ -185,7 +185,7 @@ public class BasicCard {
 			return false;
 		if (theme != other.theme)
 			return false;
-		if (author!=other.author)
+		if (!author.equals(other.author))
 			return false;
 		return true;
 	}
@@ -201,38 +201,11 @@ public class BasicCard {
 
 
 	/**
-	 * sets the author
-	 * @param author The new author of the Card
-	 * */
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
-
-	/**
 	 * returns the Theme
 	 * @return the Theme of the Card
 	 * */
 	public Theme getTheme() {
 		return theme;
-	}
-
-
-	/**
-	 * sets the Theme
-	 * @param theme The new Theme of the Card
-	 * */
-	public void setTheme(Theme theme) {
-		this.theme = theme;
-	}
-
-
-	/**
-	 * sets the subject
-	 * @param subject The new subject of the Card
-	 * */
-	public void setSubject(String subject) {
-		this.subject = subject;
 	}
 
 	/**
