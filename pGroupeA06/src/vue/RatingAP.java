@@ -16,17 +16,16 @@ import javafx.scene.control.ToggleGroup;
 public class RatingAP extends AnchorPane {
 	private Text txtTitle, txtAnswer;
 	private Label lbTheme, lbSubject, lbTurn;
-	private Button btnGo, btnSettings;	
-	
-	
+	private Button btnGo, btnSettings;
+
 	private ToggleGroup tgrRating;
 	private List<RadioButton> rdbRating;
 
 	public RatingAP() {
 		this.getStyleClass().add("paneQuestion");
-		this.getChildren().addAll(getTxtTitle(), getLbTurn(), getLbTheme(), getLbSubject(), getBtnGo(),
-				getTxtAnswer(), getBtnSettings());
-		
+		this.getChildren().addAll(getTxtTitle(), getLbTurn(), getLbTheme(), getLbSubject(), getBtnGo(), getTxtAnswer(),
+				getBtnSettings());
+
 		this.getChildren().addAll(getRdbRating());
 
 		// title
@@ -50,21 +49,21 @@ public class RatingAP extends AnchorPane {
 		AnchorPane.setTopAnchor(getLbSubject(), 500.0);
 		AnchorPane.setRightAnchor(getLbSubject(), 500.0);
 		AnchorPane.setLeftAnchor(getLbSubject(), 500.0);
-		
+
 		// Rdb
 		AnchorPane.setTopAnchor(getRdbRating().get(0), 730.0);
 		AnchorPane.setLeftAnchor(getRdbRating().get(0), 1000.0);
-		
+
 		AnchorPane.setTopAnchor(getRdbRating().get(1), 730.0);
 		AnchorPane.setLeftAnchor(getRdbRating().get(1), 1100.0);
-		
+
 		AnchorPane.setTopAnchor(getRdbRating().get(2), 730.0);
 		AnchorPane.setLeftAnchor(getRdbRating().get(2), 1200.0);
-		
+
 		AnchorPane.setTopAnchor(getRdbRating().get(3), 730.0);
 		AnchorPane.setLeftAnchor(getRdbRating().get(3), 1300.0);
 		tgrRating.getToggles().get(0).setSelected(true);
-		
+
 		// txtAnswer
 		txtAnswer.getStyleClass().add("h1");
 		AnchorPane.setTopAnchor(getTxtAnswer(), 720.0);
@@ -196,6 +195,7 @@ public class RatingAP extends AnchorPane {
 			}
 
 		}
+
 		return rdbRating;
 	}
 

@@ -11,6 +11,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
@@ -148,7 +149,24 @@ public class QuestionAP extends AnchorPane {
 	public TextField getTfAnswer() {
 		if (tfAnswer == null) {
 			tfAnswer = new TextField();
+
 		}
+
+		tfAnswer.setOnKeyReleased(event -> {
+
+			if (event.getCode() == KeyCode.ENTER) {
+				if (!getBtnOK().isDisable()) {
+					setAnswer();
+
+					// verification
+					SceneManager.getCurrentGame().answerVerification();
+					timeline.stop();
+					getBtnOK().setDisable(true);
+				}
+
+			}
+		});
+
 		return tfAnswer;
 	}
 
