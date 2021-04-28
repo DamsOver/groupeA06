@@ -22,18 +22,19 @@ import model.Deck;
 import serialisation.Serialisation;
 import util.Constants;
 
-
 public class AddCardsAP extends AnchorPane {
 	private final int NB_QUESTION = 4;
 	private Boolean modification = false;
 	private BasicCard toModify;
 
 	private Text txtTitle;
-
 	private Text txtTheme;
+	
 	private Label lblAuthor;
 	private Label lblSubject;
+	
 	private ComboBox<String> cbTheme;
+	
 	private TextField txtFAuthor;
 	private TextField txtFSubject;
 
@@ -66,7 +67,6 @@ public class AddCardsAP extends AnchorPane {
 		txtTitle.getStyleClass().add("title-style");
 		AnchorPane.setTopAnchor(getTxtTitle(), 80.0);
 		AnchorPane.setRightAnchor(getTxtTitle(), 600.0);
-//		AnchorPane.setLeftAnchor(getTxtTitle(), 600.0);
 
 		// txtTheme
 		txtTheme.getStyleClass().add("basicText");
@@ -77,7 +77,6 @@ public class AddCardsAP extends AnchorPane {
 		cbTheme.getStyleClass().add("cbbox");
 		AnchorPane.setTopAnchor(getCbTheme(), 325.0);
 		AnchorPane.setLeftAnchor(getCbTheme(), 280.0);
-//		cbTheme.setItems(FXCollections.observableArrayList("IMPROBABLE", "PLEASURE", "INFORMATICS", "SCHOOL"));
 		cbTheme.getSelectionModel().selectFirst();
 
 		// lblAuthor
@@ -145,7 +144,6 @@ public class AddCardsAP extends AnchorPane {
 
 	public Text getTxtTitle() {
 		if (txtTitle == null) {
-			//txtTitle = new Text("Add Cards");
 			txtTitle = new Text();
 			setModification(modification);
 		}
@@ -284,40 +282,35 @@ public class AddCardsAP extends AnchorPane {
 							getTxtFSubject().getText());
 					// get questions
 					for (int i = 0; i < NB_QUESTION; i++) {
-						// add and create questions
-//						System.out.println(getTxtFEachChallenges().get(i).getText()+ " "+
-//								getTxtFEachAnswers().get(i).getText());
 						try {
 							newCard.addQuestion(getTxtFEachChallenges().get(i).getText(),
 									getTxtFEachAnswers().get(i).getText());
 						} catch (AlreadyPresentException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (TooManyException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
-					
+
 					Deck deck = new Deck().fromJson();
-					
+
 					if (modification) {
 						deck = SceneManager.getD();
 						// update
 						Serialisation.updateDeck(toModify, newCard, deck);
+						SceneManager.getCardsManagement().fillTableView();
 						SceneManager.getSceneRoot().setRoot(SceneManager.getStackCardsManager());
 					} else {
 						Serialisation.addCard(newCard, deck);
 					}
-				//	SceneManager.getCardsManagement().setDeck(deck);
 					removeText();
-						
-				}
-				else {
+
+				} else {
 					SceneManager.getTransitionAnimation().setTxtAnimation("Some fields are empty!");
-	        		 SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
-	        		Transition pause1 = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_ERROR,SceneManager.getStackAddCards(),null);
-	        		pause1.play();
+					SceneManager.getSceneRoot().setRoot(SceneManager.getStackTransititionAnimation());
+					Transition pause1 = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_ERROR,
+							SceneManager.getStackAddCards(), null);
+					pause1.play();
 				}
 			}
 		});
@@ -388,16 +381,14 @@ public class AddCardsAP extends AnchorPane {
 		getTxtFAuthor().setText("");
 		getTxtFSubject().setText("");
 	}
-	
+
 	public void setModification(Boolean mod) {
 		modification = mod;
-		if(modification) {
+		if (modification) {
 			getTxtTitle().setText("Modify Card");
-		}
-		else {
+		} else {
 			getTxtTitle().setText("Add Cards");
 		}
 	}
-	
-	
+
 }

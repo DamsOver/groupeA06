@@ -28,17 +28,14 @@ public class Serialisation implements Serializable {
 	public static void saveDeckClear(Deck q, String nom) {
 
 		try (FileWriter writer = new FileWriter(nom); BufferedWriter bw = new BufferedWriter(writer)) {
-
 			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 			String json = gson.toJson(q);
-
 			bw.write(json);
 			bw.close();
 
 		} catch (IOException e) {
 			System.err.println(e);
 		}
-
 	}
 
 	public static Deck loadDeckClear(String nom) {
@@ -47,68 +44,59 @@ public class Serialisation implements Serializable {
 		try {
 			bufferedReader = new BufferedReader(new FileReader(nom));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return new Gson().fromJson(bufferedReader, Deck.class);
 	}
 
 	public static Board loadBoardClear(String nom) {
-		
+
 		BufferedReader bufferedReader = null;
 		try {
 			bufferedReader = new BufferedReader(new FileReader(nom));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
 		return new Gson().fromJson(bufferedReader, Board.class);
 	}
 
 	public static void updateDeck(BasicCard oldbc, BasicCard newbc, Deck deck) {
 		try {
 			deck.removeBasicCard(oldbc);
-			SceneManager.getCardsManagement().getLvCards().getItems().remove(oldbc.getSubject());
+			SceneManager.getCardsManagement().getTvCards().getItems().remove(oldbc);
 		} catch (TooLittleException | NotPresentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			deck.addBasicCard(newbc);
-			SceneManager.getCardsManagement().getLvCards().getItems().add(newbc.getSubject());
+			SceneManager.getCardsManagement().getTvCards().getItems().add(newbc);
 		} catch (AlreadyPresentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		saveDeckClear(deck, Constants.DECK_PATH);
 	}
-	
+
 	public static void addCard(BasicCard bc, Deck deck) {
 		try {
 			deck.addBasicCard(bc);
-			SceneManager.getCardsManagement().getLvCards().getItems().add(bc.getSubject());
+			SceneManager.getCardsManagement().getTvCards().getItems().add(bc);
 		} catch (AlreadyPresentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		saveDeckClear(deck, Constants.DECK_PATH);
 	}
-	
-	public static void removeCard(ObservableList<String> toRemove, Deck deck) {
-		//remove String	
-		for(BasicCard b : deck.getBasicCards()) {
-			if(toRemove.contains(b.getSubject())) {
+
+	public static void removeCard(ObservableList<BasicCard> toRemove, Deck deck) {
+		for (BasicCard b : deck.getBasicCards()) {
+			if (toRemove.contains(b)) {
 				try {
 					deck.removeBasicCard(b);
 				} catch (TooLittleException | NotPresentException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		}
-			
 		Serialisation.saveDeckClear(deck, Constants.DECK_PATH);
 	}
 }
