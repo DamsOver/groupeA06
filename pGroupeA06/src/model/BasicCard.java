@@ -185,6 +185,8 @@ public class BasicCard {
 			return false;
 		if (theme != other.theme)
 			return false;
+		if (author!=other.author)
+			return false;
 		return true;
 	}
 
