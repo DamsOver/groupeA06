@@ -28,6 +28,11 @@ public class Deck {
 		this.cards= new ArrayList<BasicCard>();
 	}
 	
+	public Deck(List<BasicCard> bcs) {
+		this.cards=bcs;
+	}
+	
+	
 	/**
 	 * Adds a BasicCard to the Deck
 	 * @param newBasicCard	BasicCard to add to the board
