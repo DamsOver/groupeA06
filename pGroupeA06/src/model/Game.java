@@ -679,8 +679,4 @@ public class Game {
 		});
 		return pauseTransition;
 	}
-	
-	
-	
-	
 }
