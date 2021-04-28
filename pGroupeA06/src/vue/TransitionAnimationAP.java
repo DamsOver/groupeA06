@@ -12,9 +12,9 @@ public class TransitionAnimationAP extends AnchorPane{
 		this.getStyleClass().add("pane");
 		this.getChildren().addAll(getTxtAnimation());
 		
-		getTxtAnimation().getStyleClass().add("title-style");
-		AnchorPane.setTopAnchor(getTxtAnimation(), 400.0 );
-		AnchorPane.setRightAnchor(getTxtAnimation(), 550.0 );
+		getTxtAnimation().getStyleClass().add("animation-title-style");
+		AnchorPane.setTopAnchor(getTxtAnimation(), 325.0 );
+		AnchorPane.setRightAnchor(getTxtAnimation(), 500.0 );
 		AnchorPane.setLeftAnchor(getTxtAnimation(), 550.0 );
 	}
 	

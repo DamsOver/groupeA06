@@ -91,6 +91,11 @@
 	-fx-font-size: 150;
 }
 
+.animation-title-style {
+	-fx-font-size: 150;
+	-fx-alignment: center;
+}
+
 .title2-style {
 	-fx-font-size: 130;
 }
