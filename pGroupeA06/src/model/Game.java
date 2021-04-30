@@ -288,6 +288,7 @@ public class Game {
 
 		// setting the answer to the QuestionAP
 		SceneManager.getQuestion().setLbAnswer(q);
+		System.out.println(q.getAnswer());
 
 		// enabling the ok button
 		SceneManager.getQuestion().enableBtnOK(true);

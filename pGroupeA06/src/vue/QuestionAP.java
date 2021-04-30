@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
@@ -31,6 +32,8 @@ public class QuestionAP extends AnchorPane {
 	private Timeline timeline;
 
 	private EventHandler<ActionEvent> clickBtn;
+	private EventHandler<KeyEvent> enterPressed;
+	
 
 	public QuestionAP() {
 		this.getStyleClass().add("paneQuestion");
@@ -151,26 +154,10 @@ public class QuestionAP extends AnchorPane {
 		if (tfAnswer == null) {
 			tfAnswer = new TextField();
 
-		}
-
-		tfAnswer.setOnKeyReleased(event -> {
-
-			if (event.getCode() == KeyCode.ENTER) {
-				if (!getBtnOK().isDisable()) {
-					setAnswer();
-
-					// verification
-					SceneManager.getCurrentGame().answerVerification();
-					timeline.stop();
-					getBtnOK().setDisable(true);
-				}
-
-			}
-		});
-
+		}	
 		return tfAnswer;
 	}
-
+	
 	public String getAnswer() {
 		if (tfAnswer == null) {
 			return null;

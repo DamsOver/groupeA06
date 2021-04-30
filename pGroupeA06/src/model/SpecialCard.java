@@ -14,7 +14,11 @@ public abstract class SpecialCard {
 	
 	/**activates the animation of the specialCard
 	 * @param transitions a table containing the previous animations*/
-	public abstract void action(Animation[] transitions);
+	public void action(Animation[] transitions) {
+		prelude();
+		Animation[] a = animCard(transitions);
+		show(a);
+	};
 	
 	/**Changes the message of the Animation
 	 * @param message The message needed to be shown
@@ -30,5 +34,9 @@ public abstract class SpecialCard {
 	}
 	
 	public abstract Animation[] animCard(Animation[]first);
+	
+	public abstract void prelude();
+	
+	public abstract void show(Animation[] a);
 		
 }

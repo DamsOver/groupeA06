@@ -13,21 +13,6 @@ import util.Constants;
 
 public class BasicSpecialCard extends SpecialCard{
 	
-	/**
-	 * Chooses an action thanks to a random number and create an animation linked to the action
-	 * @param transitions	A table containing the previous animations which needs to be played before the ones this method creates
-	 * */
-	@Override
-	public void action(Animation[] transitions) {
-		
-		Animation[] a = animCard(transitions);
-		
-		SceneManager.getCurrentGame().turnUp();
-		
-		SceneManager.getCurrentGame().turnRating(false,a);
-		
-		
-	}
 
 	@Override
 	public Animation[] animCard(Animation[] first) {
@@ -85,5 +70,16 @@ public class BasicSpecialCard extends SpecialCard{
 					return a;
 				}
 		return null;
+	}
+
+	@Override
+	public void prelude() {
+		
+	}
+
+	@Override
+	public void show(Animation[] a) {
+		SceneManager.getCurrentGame().turnUp();
+		SceneManager.getCurrentGame().turnRating(false,a);
 	}	
 }

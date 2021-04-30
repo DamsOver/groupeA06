@@ -14,19 +14,7 @@ import util.Constants;
  * @author Martin*/
 public class FinishCard extends SpecialCard{
 
-	
-	/**
-	 * Calls the function animationLastTurn() from the GameOperation
-	 * @param transitions	A table containing the previous animations which needs to be played before the ones this method creates
-	 * */
-	@Override
-	public void action(Animation[] transitions) {
-		Animation[] a = animCard(transitions);
-		SequentialTransition st = new SequentialTransition(a);
-		st.play();
-	}
 
-	
 	/** Creates an animation for the last turn
 	 * @return A table containing Animation of the whole turn*/
 	@Override
@@ -46,12 +34,8 @@ public class FinishCard extends SpecialCard{
 		});
 		
 		tabTemp[3]= pauseTransition;
-		tabTemp[2] = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_TURN,
-				SceneManager.getStackTransititionAnimation(),
-				"You have to answer\ncorrectly to this\ndifficult question to win");
-		tabTemp[1] = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_TURN,
-				SceneManager.getStackTransititionAnimation(),
-				"It's " + SceneManager.getCurrentGame().getPlayerTurn().getName() + "'s \nlast turn!");
+		tabTemp[2] = message("You have to answer\ncorrectly to this\ndifficult question to win",Constants.ANIMATION_TIME_TURN);
+		tabTemp[1] = message("It's " + SceneManager.getCurrentGame().getPlayerTurn().getName() + "'s \nlast turn!",Constants.ANIMATION_TIME_TURN);
 		tabTemp[0] = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_START,
 				SceneManager.getStackGame(), null);
 		if(first!=null) {
@@ -69,5 +53,19 @@ public class FinishCard extends SpecialCard{
 			
 			return tabTemp;
 		}
+	}
+
+
+	@Override
+	public void prelude() {
+		
+	}
+
+
+	@Override
+	public void show(Animation[] a) {
+		SequentialTransition st = new SequentialTransition(a);
+		st.play();
+		
 	}
 }
