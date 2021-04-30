@@ -21,8 +21,8 @@ public interface Constants {
 							STRING_PERCENTAGE_ERROR_ANSWER=20,
 							NUMBER_PERCENTAGE_ERROR_ANSWER=2; 
 	
-	public static final String 	DECK_PATH = "decktest.JSON",
-								BOARD_PATH= "board.JSON",
+	public static final String 	DECK_PATH = "groupeA06.JSON",
+								BOARD_PATH= "boardTest.JSON",
 								RULE_PATH= "/res/GameRule.txt",
 								MUSIC_1_PATH= "musics/bensound-hipjazz.wav",
 								CORRECT_ANSWER= "musics/CorrectAnswer.wav",

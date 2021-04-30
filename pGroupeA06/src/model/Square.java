@@ -82,10 +82,7 @@ public class Square {
 		if (getClass() != obj.getClass())
 			return false;
 		Square other = (Square) obj;
-		if (playersPosition == null) {
-			if (other.playersPosition != null)
-				return false;
-		} else if (!playersPosition.equals(other.playersPosition))
+		if (!playersPosition.equals(other.playersPosition))
 			return false;
 		if (theme != other.theme)
 			return false;

@@ -20,6 +20,7 @@ class TestSquare {
 	private Square sq;
 	private List<Position> playersPosition;
 
+	@SuppressWarnings("unchecked")
 	@BeforeEach
 	void setUp() throws Exception {
 		sq = new Square(Theme.INFORMATICS);
@@ -36,7 +37,10 @@ class TestSquare {
 
 	@Test
 	void testGetPlayersPosition() {
-//		fail("Not yet implemented");
+		playersPosition.add(new Position(1,1));
+		playersPosition.add(new Position(2,2));
+		
+		assertEquals(sq.getPlayersPosition(),playersPosition);
 	}
 
 	@Test
@@ -46,8 +50,36 @@ class TestSquare {
 	}
 
 	@Test
-	void testEqualsObject() {
-//		fail("Not yet implemented");
+	void testEqualsObject() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+		assertTrue(sq.equals(sq));
+		assertFalse(sq.equals(null));
+		assertFalse(sq.equals("ok"));
+		
+		
+		Square sq2 = new Square(Theme.INFORMATICS);
+		Field field2 = sq2.getClass().getDeclaredField("playersPosition");
+		field2.setAccessible(true);
+		List<Position> playersPosition2 = (List<Position>) field2.get(sq2);
+		
+		assertTrue(sq.equals(sq2));
+		playersPosition2.add(new Position(1,1));
+		assertFalse(sq.equals(sq2));
+		
+		Square sq3 = new Square(Theme.IMPROBABLE);
+		assertFalse(sq.equals(sq3));
+	}
+	
+	@Test
+	void testClone(){
+		playersPosition.add(new Position(1,1));
+		playersPosition.add(new Position(2,2));
+		
+		assertEquals(sq.clone(),sq);
+	}
+	
+	@Test
+	void testGetTheme() {
+		assertEquals(sq.getTheme(),Theme.INFORMATICS);
 	}
 
 }

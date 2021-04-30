@@ -8,9 +8,6 @@ import application.SceneManager;
 import enumerations.CharAnswerRemoval;
 import enumerations.PlayerColors;
 import enumerations.Theme;
-import exceptions.AlreadyPresentException;
-import exceptions.NotPresentException;
-import exceptions.TooLittleException;
 import javafx.animation.Animation;
 import javafx.animation.PauseTransition;
 import javafx.animation.SequentialTransition;
@@ -54,7 +51,7 @@ public class Game {
 		board = new Board().fromJson();
 		this.players = new ArrayList<Player>();
 		this.turn = 0;
-		this.deck = new Deck().fromJson();
+		this.deck = new Deck().fromJson(Constants.DECK_PATH);
 		oldCards = new Deck();
 	}
 
@@ -65,7 +62,7 @@ public class Game {
 	 * @throws AlreadyPresentException error if the player is already present
 	 * @return true if the Player has been successfully added to the list of questions
 	 * */
-	public boolean addPlayer(String name, int number) throws AlreadyPresentException {
+	public boolean addPlayer(String name, int number){
 		if (number < 0 || number > 7) {
 			return false;
 		} else {
@@ -77,7 +74,7 @@ public class Game {
 				// attributed
 				for (Player p : players) {
 					if (p.getColor().equals(PlayerColors.getColor(number))) {
-						throw new AlreadyPresentException(2.0);
+						return false;
 					}
 				}
 				players.add(new Player(name, number));
@@ -93,11 +90,7 @@ public class Game {
 		
 		int i = 0;
 		for (String s : playerNames) {
-			try {
 				this.addPlayer(s, i);
-			} catch (AlreadyPresentException e) {
-				e.printStackTrace();
-			}
 			i++;
 		}
 	}
@@ -367,11 +360,7 @@ public class Game {
 		this.turnUp();
 
 		// add the card to the old deck
-		try {
-			oldCards.addBasicCard(currentBC);
-		} catch (AlreadyPresentException e) {
-			e.printStackTrace();
-		}
+		oldCards.addBasicCard(currentBC);
 		// animation nextTurn
 		turnRating(false,tab);
 	}
@@ -560,48 +549,6 @@ public class Game {
 		}
 	}
 	
-	/** Creates an animation for the last turn
-	 * @return A table containing SequentialTransitions of the whole turn*/
-	public SequentialTransition animationLastTurn(Animation[] tempTransitions) {
-		Animation[] tab = new Animation[(tempTransitions==null)?4:tempTransitions.length+4];
-		Animation[] tabTemp = new Animation[4];
-		
-		//SceneManager.getSceneRoot().setRoot(SceneManager.getStackGame());
-		SceneManager.getRating().setLbTurn(this.getPlayerTurn().getName());
-		
-		PauseTransition pauseTransition = new PauseTransition(Duration.millis(Constants.ANIMATION_TIME_TURN));
-		pauseTransition.setOnFinished(e -> {
-			BasicCard tempBasicCard = SceneManager.getCurrentGame().drawCard(Theme.getRandomTheme());
-			SceneManager.getCurrentGame().setQuestion(tempBasicCard.getQuestions().get(3));
-			SceneManager.getQuestion().getBtnOK().setDisable(false);
-			SceneManager.getSceneRoot().setRoot(SceneManager.getStackQuestion());
-		});
-		
-		tabTemp[3]= pauseTransition;
-		tabTemp[2] = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_TURN,
-				SceneManager.getStackTransititionAnimation(),
-				"You have to answer\ncorrectly to this\ndifficult question to win");
-		tabTemp[1] = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_TURN,
-				SceneManager.getStackTransititionAnimation(),
-				"It's " + this.getPlayerTurn().getName() + "'s \nlast turn!");
-		tabTemp[0] = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_START,
-				SceneManager.getStackGame(), null);
-		if(tempTransitions!=null) {
-			for(int i = 0;i<tempTransitions.length;i++) {
-				tab[i]=tempTransitions[i];
-			}
-			
-			for(int i = tempTransitions.length;i<tempTransitions.length+4;i++) {
-				tab[i]=tabTemp[i-tempTransitions.length];
-			}
-			
-			return new SequentialTransition (tab);
-		}
-		else {
-			
-			return new SequentialTransition (tabTemp);
-		}
-	}
 	
 	/**creates the animations of a player victory
 	 * @return The SequentialTransition corresponding to the last animation*/
@@ -644,11 +591,7 @@ public class Game {
 			// remove all the questions with the same theme in the deck of oldCards
 			for (BasicCard b : oldCards.getBasicCards()) {
 				if (b.getTheme().equals(th)) {
-					try {
-						oldCards.removeBasicCard(b);
-					} catch (TooLittleException | NotPresentException e) {
-						e.printStackTrace();
-					}
+					oldCards.removeBasicCard(b);
 				}
 			}
 			return drawCard(th);

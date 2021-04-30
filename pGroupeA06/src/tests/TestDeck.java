@@ -10,9 +10,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import enumerations.Theme;
-import exceptions.AlreadyPresentException;
-import exceptions.NotPresentException;
-import exceptions.TooLittleException;
 import model.BasicCard;
 import model.Deck;
 
@@ -22,6 +19,7 @@ class TestDeck {
 	private BasicCard bc, bc2;
 	private List<BasicCard> basicCards;
 
+	@SuppressWarnings("unchecked")
 	@BeforeEach
 	void setUp() throws Exception {
 		deck = new Deck();
@@ -44,7 +42,7 @@ class TestDeck {
 	}
 
 	@Test
-	void testAddBasicCard() throws AlreadyPresentException {
+	void testAddBasicCard(){
 
 		// add a card to the deck
 		assertTrue(deck.addBasicCard(bc));
@@ -55,21 +53,21 @@ class TestDeck {
 		assertEquals(basicCards.size(), 1);
 
 		// add a copy of the card to the deck
-		assertThrows(AlreadyPresentException.class, () -> deck.addBasicCard(bc));
+		assertFalse(deck.addBasicCard(bc));
 		assertEquals(basicCards.size(), 1);
 	}
 
 	@Test
-	void testRemoveBasicCard() throws TooLittleException, NotPresentException, AlreadyPresentException {
+	void testRemoveBasicCard(){
 		// remove a card from an empty deck
-		assertThrows(TooLittleException.class, () -> deck.removeBasicCard(bc));
+		assertFalse(deck.removeBasicCard(bc));
 
 		// add a card to the deck
 		assertTrue(deck.addBasicCard(bc));
 		assertEquals(basicCards.size(), 1);
 
 		// remove a non-existing card
-		assertThrows(NotPresentException.class, () -> deck.removeBasicCard(null));
+		assertFalse(deck.removeBasicCard(null));
 		assertEquals(basicCards.size(), 1);
 
 		// remove a question
@@ -78,7 +76,7 @@ class TestDeck {
 	}
 
 	@Test
-	void testGetBasicCards() throws AlreadyPresentException, TooLittleException, NotPresentException {
+	void testGetBasicCards(){
 
 		// add 2 cards to the deck
 		deck.addBasicCard(bc);
@@ -102,7 +100,7 @@ class TestDeck {
 	}
 
 	@Test
-	void testToJson() throws AlreadyPresentException {
+	void testToJson() {
 		// add the card to the deck
 		deck.addBasicCard(bc);
 		assertEquals(deck.toJson(),
@@ -110,12 +108,13 @@ class TestDeck {
 	}
 
 	@Test
-	void testFromJson() throws AlreadyPresentException {
-//		fail("Not yet implemented");
+	void testFromJson(){
+		deck.addBasicCard(new BasicCard("Martin", Theme.IMPROBABLE, "Earth"));
+		assertEquals(deck,deck.fromJson("deckTest.JSON"));
 	}
 
 	@Test
-	void testToString() throws AlreadyPresentException {
+	void testToString(){
 		// add the card to the deck
 		deck.addBasicCard(bc);
 		assertEquals(deck.toString(),
@@ -123,7 +122,7 @@ class TestDeck {
 	}
 
 	@Test
-	void testEqualsObject() throws AlreadyPresentException {
+	void testEqualsObject(){
 		// Add the card to the deck
 		deck.addBasicCard(bc);
 
@@ -136,12 +135,16 @@ class TestDeck {
 	}
 
 	@Test
-	void testClone() throws AlreadyPresentException, TooLittleException, NotPresentException {
+	void testClone(){
 		deck.addBasicCard(bc);
 		Deck copyDeck = deck.clone();
 		assertEquals(deck, copyDeck);
 		copyDeck.removeBasicCard(bc);
-		assertTrue(deck!=copyDeck);
+		assertTrue(!deck.equals(copyDeck));
+		
+		copyDeck=deck.clone();
+		basicCards.add(bc);
+		Deck test=deck.clone();
+		assertEquals(test,copyDeck);
 	}
-
 }

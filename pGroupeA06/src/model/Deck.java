@@ -3,11 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.Gson;
-import exceptions.AlreadyPresentException;
-import exceptions.NotPresentException;
-import exceptions.TooLittleException;
 import serialisation.Serialisation;
-import util.Constants;
 
 /**
  * An object representing a Deck, containing different BasicCard object
@@ -28,24 +24,20 @@ public class Deck {
 		this.cards= new ArrayList<BasicCard>();
 	}
 	
-	public Deck(List<BasicCard> bcs) {
-		this.cards=bcs;
-	}
-	
 	
 	/**
 	 * Adds a BasicCard to the Deck
 	 * @param newBasicCard	BasicCard to add to the board
 	 * @throws AlreadyPresentException error if the basic card is already present
 	 * @return true if the BasicCard is successfully added*/
-	public boolean addBasicCard(BasicCard newBasicCard)throws AlreadyPresentException {
+	public boolean addBasicCard(BasicCard newBasicCard) {
 		if(newBasicCard==null)
 			return false;
 		
 		//scanning the list of cards to check if the BasicCard already exists
 		for(BasicCard bc : cards) {
 			if(bc.equals(newBasicCard)) {
-				throw new AlreadyPresentException(1);
+				return false;
 			}
 		}
 		
@@ -63,11 +55,11 @@ public class Deck {
 	 * @throws TooLittleException error if there is no BasicCard
 	 * @return true if the BasicCard has been successfully removed from the Deck
 	 * */
-	public boolean removeBasicCard(BasicCard basicCard)throws TooLittleException,NotPresentException {
+	public boolean removeBasicCard(BasicCard basicCard){
 
 		//verification if the number of cards is not 0
 		if(0==cards.size()) {
-			throw new TooLittleException(1);
+			return false;
 		}
 		
 		//scanning the list of card to check if it exists
@@ -80,7 +72,7 @@ public class Deck {
 		
 		//if the card does not exist
 		if(x==false) {
-			throw new NotPresentException(1);
+			return false;
 		}
 		
 		//removing the question
@@ -115,8 +107,8 @@ public class Deck {
 	 * Transforms a String (Json) into a Deck Object
 	 * @return A new Deck described by the String
 	 * */
-	public Deck fromJson() {
-		return Serialisation.loadDeckClear(Constants.DECK_PATH);
+	public Deck fromJson(String deckPath) {
+		return Serialisation.loadDeckClear(deckPath);
 	}
 
 	/**
@@ -151,15 +143,10 @@ public class Deck {
 	 * Returns a Deck with the fields having the exact same value as this Deck.
 	 * @return a Deck Cloned
 	 * */
-	public Deck clone() {
+	public Deck clone(){
 		Deck newDeck = new Deck();
 		for(BasicCard bc : cards) {
-			try {
-				newDeck.addBasicCard(bc.clone());
-			} catch (AlreadyPresentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			newDeck.addBasicCard(bc.clone());
 		}
 		return newDeck;
 	}

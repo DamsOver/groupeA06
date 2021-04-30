@@ -86,16 +86,6 @@ public class Question {
 		return new Gson().toJson(this);
 	}
 
-
-	/**
-	 * Transforms a String (Json) into a Question Object
-	 * @param json 	The String to convert
-	 * @return A new Question described by the String
-	 * */
-	public Question fromJson(String json) {
-		return new Gson().fromJson(json, Question.class);
-	}
-
 	/**
 	 * Converts the Question Object and his fields into a String
 	 * @return The String describing the Object

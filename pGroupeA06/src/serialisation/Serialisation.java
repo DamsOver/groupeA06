@@ -10,9 +10,6 @@ import java.io.Serializable;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import application.SceneManager;
-import exceptions.AlreadyPresentException;
-import exceptions.NotPresentException;
-import exceptions.TooLittleException;
 import javafx.collections.ObservableList;
 import java.io.FileWriter;
 import model.BasicCard;
@@ -60,19 +57,11 @@ public class Serialisation implements Serializable {
 
 	public static void updateDeck(BasicCard oldbc, BasicCard newbc, Deck deck) {
 
-		try {
-			deck.removeBasicCard(oldbc);
-			SceneManager.getCardsManagement().getTvCards().getItems().remove(oldbc);
-		} catch (TooLittleException | NotPresentException e) {
-			e.printStackTrace();
-		}
-		try {
-			deck.addBasicCard(newbc);
-			SceneManager.getCardsManagement().getTvCards().getItems().add(newbc);
-		} catch (AlreadyPresentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		deck.removeBasicCard(oldbc);
+		SceneManager.getCardsManagement().getTvCards().getItems().remove(oldbc);
+		deck.addBasicCard(newbc);
+		SceneManager.getCardsManagement().getTvCards().getItems().add(newbc);
 		saveDeckClear(deck, Constants.DECK_PATH);
 
 	}
@@ -107,27 +96,11 @@ public class Serialisation implements Serializable {
 
 	public static void addCard(BasicCard bc, Deck deck) {
 
-		// Add Card without overwrite
-//		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//		removeLastLine();
-//		BufferedWriter out;
-//		FileWriter fstream;
-//		try {
-//			fstream = new FileWriter(Constants.DECK_PATH, true);
-//			out = new BufferedWriter(fstream);
-//			out.write("," + "\n" + gson.toJson(bc) + "\n" + "]" + "\n" + "}");
-//			out.close();
-//			SceneManager.getCardsManagement().getTvCards().getItems().add(bc);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
 
-		try {
-			deck.addBasicCard(bc);
-			SceneManager.getCardsManagement().getTvCards().getItems().add(bc);
-		} catch (AlreadyPresentException e) {
-			e.printStackTrace();
-		}
+		deck.addBasicCard(bc);
+		SceneManager.getCardsManagement().getTvCards().getItems().add(bc);
+		deck.addBasicCard(bc);
+		SceneManager.getCardsManagement().getTvCards().getItems().add(bc);
 		saveDeckClear(deck, Constants.DECK_PATH);
 
 	}
@@ -136,11 +109,8 @@ public class Serialisation implements Serializable {
 
 		for (BasicCard b : deck.getBasicCards()) {
 			if (toRemove.contains(b)) {
-				try {
-					deck.removeBasicCard(b);
-				} catch (TooLittleException | NotPresentException e) {
-					e.printStackTrace();
-				}
+				
+				deck.removeBasicCard(b);
 			}
 		}
 		Serialisation.saveDeckClear(deck, Constants.DECK_PATH);

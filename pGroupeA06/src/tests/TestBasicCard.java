@@ -11,10 +11,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import enumerations.Theme;
-import exceptions.AlreadyPresentException;
-import exceptions.NotPresentException;
-import exceptions.TooLittleException;
-import exceptions.TooManyException;
 import model.BasicCard;
 import model.Question;
 
@@ -39,13 +35,13 @@ class TestBasicCard {
 	}
 
 	@Test
-	void testAddQuestion() throws AlreadyPresentException, TooManyException {
+	void testAddQuestion(){
 		// add a single question
 		assertTrue(bc.addQuestion("What is the only flying mammal?", "The bat"), "1st add succeed");
 		assertEquals(questions.size(), 1);
 
 		// add the same question
-		assertThrows(AlreadyPresentException.class, () -> bc.addQuestion("What is the only flying mammal?", "The bat"));
+		assertFalse(bc.addQuestion("What is the only flying mammal?", "The bat"));
 		assertEquals(questions.size(), 1);
 
 		// add a 2nd question
@@ -61,7 +57,7 @@ class TestBasicCard {
 		assertEquals(questions.size(), 4);
 
 		// try to add a 5th question
-		assertThrows(TooManyException.class, () -> bc.addQuestion("What is the only flying mammal?", "The"));
+		assertFalse(bc.addQuestion("What is the only flying mammal?", "The"));
 		assertEquals(questions.size(), 4);
 	}
 
@@ -72,18 +68,17 @@ class TestBasicCard {
 	}
 
 	@Test
-	void testRemoveQuestion()
-			throws NotPresentException, TooLittleException, AlreadyPresentException, TooManyException {
+	void testRemoveQuestion(){
 		// remove a question from an empty list
 		assertEquals(questions.size(), 0);
-		assertThrows(TooLittleException.class, () -> bc.removeQuestion("What is the only flying mammal?", "The bat"));
+		assertFalse(bc.removeQuestion("What is the only flying mammal?", "The bat"));
 
 		// add a question
 		assertTrue(bc.addQuestion("What is the only flying mammal?", "The bat"));
 		assertEquals(questions.size(), 1);
 
 		// remove a non-existing question
-		assertThrows(NotPresentException.class, () -> bc.removeQuestion("What is the only flying mammal?", "The ba"));
+		assertFalse(bc.removeQuestion("What is the only flying mammal?", "The ba"));
 		assertEquals(questions.size(), 1);
 
 		// remove a question
@@ -107,13 +102,13 @@ class TestBasicCard {
 	}
 
 	@Test
-	void testToString() throws AlreadyPresentException, TooManyException {
+	void testToString(){
 		assertTrue(bc.addQuestion("What is the only flying mammal?", "The bat"));
 		assertEquals(bc.toString(),"\nBasicCard [author=Martin, theme=IMPROBABLE, subject=Nature, questions=[\nQuestion [author=Martin, theme=IMPROBABLE, subject=Nature, challenge=What is the only flying mammal?, answer=The bat]]]\n");
 	}
 
 	@Test
-	void testFromJson() throws AlreadyPresentException, TooManyException {
+	void testFromJson(){
 		String test = "{\"subject\":\"Nature\",\"questions\":[{\"author\":\"Martin\",\"theme\":\"IMPROBABLE\",\"subject\":\"Nature\",\"challenge\":\"What is the only flying mammal?\",\"answer\":\"The bat\"}],\"author\":\"Martin\",\"theme\":\"IMPROBABLE\"}";
 		bc.addQuestion("What is the only flying mammal?", "The bat");
 		BasicCard bcTest = bc.fromJson(test);
@@ -123,7 +118,7 @@ class TestBasicCard {
 	}
 
 	@Test
-	void testToJson() throws AlreadyPresentException, TooManyException {
+	void testToJson(){
 		bc.addQuestion("What is the only flying mammal?", "The bat");
 		assertEquals(bc.toJson(), "{\"subject\":\"Nature\",\"questions\":[{\"author\":\"Martin\",\"theme\":\"IMPROBABLE\",\"subject\":\"Nature\",\"challenge\":\"What is the only flying mammal?\",\"answer\":\"The bat\"}],\"author\":\"Martin\",\"theme\":\"IMPROBABLE\"}");
 
@@ -131,7 +126,7 @@ class TestBasicCard {
 
 
 	@Test
-	void testClone() throws AlreadyPresentException, TooManyException, NotPresentException, TooLittleException {
+	void testClone(){
 		bc.addQuestion("What is the only flying mammal?", "The bat");
 		BasicCard copyBc = bc.clone();
 		assertEquals(bc, copyBc);
@@ -139,5 +134,9 @@ class TestBasicCard {
 		assertFalse(bc.getQuestions().size() == copyBc.getQuestions().size(), "The list of bc does'nt have the same size as the list of copyBc");
 	}
 	
+	@Test
+	void testGetSubject() {
+		assertEquals(bc.getSubject(),"Nature");
+	}
 
 }

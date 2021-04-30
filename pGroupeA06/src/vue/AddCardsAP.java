@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import application.SceneManager;
 import enumerations.Theme;
-import exceptions.AlreadyPresentException;
-import exceptions.TooManyException;
 import javafx.animation.Transition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -282,17 +280,10 @@ public class AddCardsAP extends AnchorPane {
 							getTxtFSubject().getText());
 					// get questions
 					for (int i = 0; i < NB_QUESTION; i++) {
-						try {
-							newCard.addQuestion(getTxtFEachChallenges().get(i).getText(),
-									getTxtFEachAnswers().get(i).getText());
-						} catch (AlreadyPresentException e) {
-							e.printStackTrace();
-						} catch (TooManyException e) {
-							e.printStackTrace();
-						}
+						newCard.addQuestion(getTxtFEachChallenges().get(i).getText(),getTxtFEachAnswers().get(i).getText());
 					}
 
-					Deck deck = new Deck().fromJson();
+					Deck deck = new Deck().fromJson(Constants.DECK_PATH);
 
 					if (modification) {
 						deck = SceneManager.getD();

@@ -2,6 +2,8 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.lang.reflect.Field;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,10 +15,19 @@ import model.Square;
 class TestPlayer {
 	
 	private Player player;
+	private Square sq,oldSq;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		player = new Player("Dams", 1, new Square(Theme.INFORMATICS));
+		
+		Field field = player.getClass().getDeclaredField("square");
+		field.setAccessible(true);
+		sq = (Square) field.get(player);
+		
+		Field field2 = player.getClass().getDeclaredField("oldSquare");
+		field2.setAccessible(true);
+		oldSq = (Square) field2.get(player);
 	}
 
 	@AfterEach
@@ -30,6 +41,11 @@ class TestPlayer {
 	}
 
 	@Test
+	void testGetName() {
+		assertEquals(player.getName(),"Dams");
+	}
+	
+	@Test
 	void testEqualsObject() {
 		Player p1 = new Player("Dams", 1, new Square(Theme.INFORMATICS));
 		assertEquals(player, p1);
@@ -37,8 +53,21 @@ class TestPlayer {
 		assertFalse(player.equals(p2));
 	}
 
+	void testGetSquare() {
+		assertEquals(player.getSquare(), sq);
+	}
+	
 	@Test
-	void testSetSquareSquareGamePlayerIntSquare() {
+	void testSetSquare() {
+		Square sq2 = new Square(Theme.IMPROBABLE);
+		assertFalse(sq.equals(sq2));
+		
+		player.setSquare(sq2);
+		assertTrue(player.getSquare().equals(sq2));
+	}
+	
+	@Test
+	void testSetSquare2() {
 //		fail("Not yet implemented");
 	}
 
@@ -54,5 +83,4 @@ class TestPlayer {
 		p1.setSquare(new Square(Theme.IMPROBABLE));
 		assertFalse(player.equals(p1));
 	}
-
 }

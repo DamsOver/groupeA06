@@ -10,7 +10,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import enumerations.Theme;
-import exceptions.AlreadyPresentException;
 import model.Game;
 import model.Player;
 import model.Square;
@@ -39,7 +38,7 @@ class TestGame {
 	}
 
 	@Test
-	void testGetPlayers() throws AlreadyPresentException {
+	void testGetPlayers(){
 		Player p1 = new Player("Player1",1,new Square(Theme.INFORMATICS));
 		Player p2 = new Player("Player2",2,new Square(Theme.PLEASURE));
 		game.addPlayer("Player1",1);
