@@ -3,7 +3,6 @@ package model;
 import java.util.Random;
 import application.SceneManager;
 import javafx.animation.Animation;
-import javafx.animation.SequentialTransition;
 import javafx.animation.Transition;
 import util.Constants;
 

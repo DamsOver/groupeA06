@@ -1,7 +1,7 @@
 package util;
 
 public interface Constants {
-	public static final double 	INITIAL_VOLUME = 0.50,
+	public static final double 	INITIAL_VOLUME = 50,
 								VOLUME_FACTOR = 0.001,
 								INITIAL_VOLUME_EFFECTS = 50,
 								VOLUME_EFFECTS_FACTOR = 0.004;
