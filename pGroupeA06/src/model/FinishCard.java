@@ -16,15 +16,15 @@ public class FinishCard extends SpecialCard{
 
 
 	/** Creates an animation for the last turn
+	 * @param first the table containing the previous animations needed to be played before the ones the FinishCard creates
 	 * @return A table containing Animation of the whole turn*/
 	@Override
 	public Animation[] animCard(Animation[] first) {
+		
 		Animation[] tab = new Animation[(first==null)?4:first.length+4];
 		Animation[] tabTemp = new Animation[4];
 		
-		//SceneManager.getSceneRoot().setRoot(SceneManager.getStackGame());
-		SceneManager.getRating().setLbTurn(SceneManager.getCurrentGame().getPlayerTurn().getName());
-		
+		//creation of the animation of the question
 		PauseTransition pauseTransition = new PauseTransition(Duration.millis(Constants.ANIMATION_TIME_TURN));
 		pauseTransition.setOnFinished(e -> {
 			BasicCard tempBasicCard = SceneManager.getCurrentGame().drawCard(Theme.getRandomTheme());
@@ -33,11 +33,13 @@ public class FinishCard extends SpecialCard{
 			SceneManager.getSceneRoot().setRoot(SceneManager.getStackQuestion());
 		});
 		
+		//animations of the FinishCard
 		tabTemp[3]= pauseTransition;
 		tabTemp[2] = message("You have to answer\ncorrectly to this\ndifficult question to win",Constants.ANIMATION_TIME_TURN);
 		tabTemp[1] = message("It's " + SceneManager.getCurrentGame().getPlayerTurn().getName() + "'s \nlast turn!",Constants.ANIMATION_TIME_TURN);
-		tabTemp[0] = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_START,
-				SceneManager.getStackGame(), null);
+		tabTemp[0] = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_START,SceneManager.getStackGame(), null);
+		
+		//add the previous animation to the table
 		if(first!=null) {
 			for(int i = 0;i<first.length;i++) {
 				tab[i]=first[i];
@@ -55,13 +57,18 @@ public class FinishCard extends SpecialCard{
 		}
 	}
 
-
+	/**
+	 * Sets the name of the player
+	 * */
 	@Override
 	public void prelude() {
-		
+		SceneManager.getRating().setLbTurn(SceneManager.getCurrentGame().getPlayerTurn().getName());
 	}
 
-
+	
+	/**
+	 * Chooses the way the animation will be send/displayed
+	 * @param a table containing the animation created in animCard*/
 	@Override
 	public void show(Animation[] a) {
 		SequentialTransition st = new SequentialTransition(a);

@@ -112,6 +112,7 @@ public class Deck {
 	
 	/**
 	 * Transforms a String (Json) into a Deck Object
+	 * @param deckPath The name of the JSON file
 	 * @return A new Deck described by the String
 	 * */
 	public Deck fromJson(String deckPath) {

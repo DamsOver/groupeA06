@@ -81,9 +81,7 @@ public class SceneManager {
 		stackRating = new StackPane(rating);
 		stackQuestion = new StackPane(question);
 
-		sceneRoot = new Scene(stackRoot, 1920, 1080); // Original
-//		sceneRoot = new Scene(stackRating, 1920, 1080); // Pour les tests
-
+		sceneRoot = new Scene(stackRoot, 1920, 1080); 
 	}
 
 	public void volumeInitialization() {

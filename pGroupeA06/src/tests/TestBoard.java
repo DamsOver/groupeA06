@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import application.SceneManager;
 import enumerations.Theme;
 import model.Board;
 import model.Question;
@@ -87,6 +88,7 @@ class TestBoard {
 		assertEquals(board.toString(),"Board [Board=[INFORMATICS, [[]], IMPROBABLE, [[]]]]");
 	}
 	
+
 	@SuppressWarnings("unchecked")
 	@Test
 	void testEquals() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
@@ -105,7 +107,7 @@ class TestBoard {
 		assertTrue(!board.equals(b));
 		
 		listSquares=null;
-		assertTrue(!board.equals(b));
+		assertTrue(!b.equals(board));
 		
 	}
 	

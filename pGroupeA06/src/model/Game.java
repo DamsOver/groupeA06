@@ -90,7 +90,7 @@ public class Game {
 
 	/** Adds the players to the list of players from the Class Game
 	 * @param playerNames 	The List of the names
-	 * @throws AlreadyPresentException */
+	 * @throws AlreadyPresentException if the player is already present in the list */
 	public void addPlayers(List<String> playerNames) throws AlreadyPresentException {
 		
 		int i = 0;

@@ -14,17 +14,22 @@ public class StartCard extends SpecialCard {
 
 
 	/** Creates an animation for the StartCard
-	 * @param before 	The animations before
+	 * @param first 	The animations before
 	 * @return A table containing SequentialTransitions of the turn*/
 	public Animation[] animCard(Animation[] first) {
+		
+		//choosing the length of the new table
 		Animation[] tab = new Animation[(first==null)?3:first.length+3];
 		Animation[] tabTemp = new Animation[3];
-		SceneManager.getRating().setLbTurn(SceneManager.getCurrentGame().getPlayerTurn().getName());
+		
+		//creation of the animations
 		tabTemp[2]= SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_RATING,
 				SceneManager.getStackRating(), null);
 		tabTemp[1] =  message("It's " + SceneManager.getCurrentGame().getPlayerTurn().getName() + "'s first turn!", Constants.ANIMATION_TIME_TURN);
 		tabTemp[0] = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_START,
 				SceneManager.getStackGame(), null);
+		
+		//add the animation to the new table
 		if(first!=null) {
 			for(int i = 0;i<first.length;i++) {
 				tab[i]=first[i];
@@ -42,15 +47,22 @@ public class StartCard extends SpecialCard {
 		}
 	}
 
+	
+	/**
+	 * Draws a card, shows it, and show the player
+	 * */
 	@Override
 	public void prelude() {
 		BasicCard bc = SceneManager.getCurrentGame().drawCard(Theme.getRandomTheme());
 		//change the ratingAP labels
 		SceneManager.getRating().setLbSubject(bc.getSubject());
 		SceneManager.getRating().setLbTheme(bc.getTheme());
-		
+		SceneManager.getRating().setLbTurn(SceneManager.getCurrentGame().getPlayerTurn().getName());
 	}
 
+	/**
+	 * Chooses the way the animation will be send/displayed
+	 * @param a table containing the animation created in animCard*/
 	@Override
 	public void show(Animation[] a) {
 		SequentialTransition st = new SequentialTransition(a);
