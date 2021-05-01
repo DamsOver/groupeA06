@@ -11,6 +11,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import enumerations.Theme;
+import exceptions.AlreadyPresentException;
+import exceptions.NotPresentException;
+import exceptions.TooLittleException;
+import exceptions.TooManyException;
 import model.BasicCard;
 import model.Question;
 
@@ -35,31 +39,52 @@ class TestBasicCard {
 	}
 
 	@Test
-	void testAddQuestion(){
-		// add a single question
+	void testAddQuestion() throws AlreadyPresentException, TooManyException{
+		
+		Question q = new Question("Martin",Theme.IMPROBABLE,"Nature","What is the only flying mammal?", "The bat");
+		
+		// add a question
+		assertEquals(questions.size(), 0,"No questions");
 		assertTrue(bc.addQuestion("What is the only flying mammal?", "The bat"), "1st add succeed");
-		assertEquals(questions.size(), 1);
-
-		// add the same question
-		assertFalse(bc.addQuestion("What is the only flying mammal?", "The bat"));
-		assertEquals(questions.size(), 1);
-
-		// add a 2nd question
-		assertTrue(bc.addQuestion("What is the only flying mammal?", "The ba"), "2nd add succeed");
-		assertEquals(questions.size(), 2);
-
-		// add a 3rd question
-		assertTrue(bc.addQuestion("What is the only flying mammal?", "The b"), "3rd add succeed");
-		assertEquals(questions.size(), 3);
-
-		// add a 4th question
-		assertTrue(bc.addQuestion("What is the only flying mammal?", "The "), "4th add succeed");
-		assertEquals(questions.size(), 4);
-
-		// try to add a 5th question
-		assertFalse(bc.addQuestion("What is the only flying mammal?", "The"));
-		assertEquals(questions.size(), 4);
+		assertEquals(questions.size(), 1,"One question");
+		assertTrue(questions.contains(q),"Questions contains the question");
 	}
+	
+	@Test
+	void testAddQuestionAlreadyPresentException() throws AlreadyPresentException, TooManyException{
+		
+		Question q = new Question("Martin",Theme.IMPROBABLE,"Nature","What is the only flying mammal?", "The bat");
+		
+		// add a first question
+		
+		questions.add(q);
+		assertEquals(questions.size(), 1,"One questions");
+		assertTrue(questions.contains(q),"Contains question q");
+		
+		// add the same question
+		assertThrows(AlreadyPresentException.class,()->bc.addQuestion("What is the only flying mammal?", "The bat"));
+	}
+	
+	@Test
+	void testAddQuestionTooManyException() throws AlreadyPresentException, TooManyException{
+		
+		Question q = new Question("Martin",Theme.IMPROBABLE,"Nature","What is the only flying mammal?", "The bat");
+		Question q1 = new Question("Martin",Theme.IMPROBABLE,"Nature","What is the only flying mamma?", "The ba");
+		Question q2 = new Question("Martin",Theme.IMPROBABLE,"Nature","What is the only flying mamm?", "The b");
+		Question q3= new Question("Martin",Theme.IMPROBABLE,"Nature","What is the only flying mam?", "The ");
+		
+		// add a first question
+		
+		questions.add(q);
+		questions.add(q1);
+		questions.add(q2);
+		questions.add(q3);
+		assertEquals(questions.size(), 4,"4 questions");
+
+		// add another question
+		assertThrows(TooManyException.class,()->bc.addQuestion("What is the only flying?", "The"));
+	}
+	
 
 	@Test
 	void testGetQuestions() {
@@ -68,23 +93,38 @@ class TestBasicCard {
 	}
 
 	@Test
-	void testRemoveQuestion(){
-		// remove a question from an empty list
-		assertEquals(questions.size(), 0);
-		assertFalse(bc.removeQuestion("What is the only flying mammal?", "The bat"));
-
+	void testRemoveQuestion() throws TooLittleException, NotPresentException{
+		
 		// add a question
-		assertTrue(bc.addQuestion("What is the only flying mammal?", "The bat"));
-		assertEquals(questions.size(), 1);
-
-		// remove a non-existing question
-		assertFalse(bc.removeQuestion("What is the only flying mammal?", "The ba"));
-		assertEquals(questions.size(), 1);
+		questions.add(new Question("Martin",Theme.IMPROBABLE,"Nature","What is the only flying mammal?", "The bat"));
+		assertEquals(questions.size(), 1,"1 question in questions");
 
 		// remove a question
 		assertTrue(bc.removeQuestion("What is the only flying mammal?", "The bat"));
 		assertEquals(questions.size(), 0);
 	}
+	
+	@Test
+	void testRemoveQuestionTooLittleException() throws TooLittleException, NotPresentException{
+		// remove a question from an empty list
+		assertEquals(questions.size(), 0);
+		assertThrows(TooLittleException.class,()-> bc.removeQuestion("What is the only flying mammal?", "The bat"));
+	}
+	
+	@Test
+	void testRemoveQuestionNotPresentException() throws TooLittleException, NotPresentException{
+
+
+		// add a question
+		questions.add(new Question("Martin",Theme.IMPROBABLE,"Nature","What is the only flying mammal?", "The bat"));
+		assertEquals(questions.size(), 1,"1 question in questions");
+
+		// remove a non-existing question
+		assertThrows(NotPresentException.class,()->bc.removeQuestion("What is the only flying mammal?", "The ba"));
+		assertEquals(questions.size(), 1);
+	}
+	
+	
 
 	@Test
 	void testEqualsObject() {
@@ -102,23 +142,21 @@ class TestBasicCard {
 	}
 
 	@Test
-	void testToString(){
+	void testToString() throws AlreadyPresentException, TooManyException{
 		assertTrue(bc.addQuestion("What is the only flying mammal?", "The bat"));
 		assertEquals(bc.toString(),"\nBasicCard [author=Martin, theme=IMPROBABLE, subject=Nature, questions=[\nQuestion [author=Martin, theme=IMPROBABLE, subject=Nature, challenge=What is the only flying mammal?, answer=The bat]]]\n");
 	}
 
 	@Test
-	void testFromJson(){
+	void testFromJson() throws AlreadyPresentException, TooManyException{
 		String test = "{\"subject\":\"Nature\",\"questions\":[{\"author\":\"Martin\",\"theme\":\"IMPROBABLE\",\"subject\":\"Nature\",\"challenge\":\"What is the only flying mammal?\",\"answer\":\"The bat\"}],\"author\":\"Martin\",\"theme\":\"IMPROBABLE\"}";
 		bc.addQuestion("What is the only flying mammal?", "The bat");
 		BasicCard bcTest = bc.fromJson(test);
-		System.out.println(bc.fromJson(test).toString());
-		System.out.println(bc.toString());
 		assertEquals(bc,bcTest);
 	}
 
 	@Test
-	void testToJson(){
+	void testToJson() throws AlreadyPresentException, TooManyException{
 		bc.addQuestion("What is the only flying mammal?", "The bat");
 		assertEquals(bc.toJson(), "{\"subject\":\"Nature\",\"questions\":[{\"author\":\"Martin\",\"theme\":\"IMPROBABLE\",\"subject\":\"Nature\",\"challenge\":\"What is the only flying mammal?\",\"answer\":\"The bat\"}],\"author\":\"Martin\",\"theme\":\"IMPROBABLE\"}");
 
@@ -126,7 +164,7 @@ class TestBasicCard {
 
 
 	@Test
-	void testClone(){
+	void testClone() throws AlreadyPresentException, TooManyException, TooLittleException, NotPresentException{
 		bc.addQuestion("What is the only flying mammal?", "The bat");
 		BasicCard copyBc = bc.clone();
 		assertEquals(bc, copyBc);

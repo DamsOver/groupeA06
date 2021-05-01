@@ -6,6 +6,10 @@ import java.util.List;
 import com.google.gson.Gson;
 
 import enumerations.Theme;
+import exceptions.AlreadyPresentException;
+import exceptions.NotPresentException;
+import exceptions.TooLittleException;
+import exceptions.TooManyException;
 import util.Constants;
 
 
@@ -81,7 +85,7 @@ public class BasicCard {
 	 * @throws TooManyException		error if there is too many Question
 	 * @return true if the Question has been successfully added to the list of questions
 	 * */
-	public boolean addQuestion(String challenge, String answer) {
+	public boolean addQuestion(String challenge, String answer) throws AlreadyPresentException, TooManyException{
 
 		// creation of a question
 		Question newQuestion = new Question(this.author, this.theme, this.subject, challenge, answer);
@@ -89,13 +93,13 @@ public class BasicCard {
 		// scanning the list of questions to check if the question already exists
 		for (Question q : questions) {
 			if (q.equals(newQuestion)) {
-				return false;
+				throw new AlreadyPresentException();
 			}
 		}
 
 		// verification if the number of question is not the maximum
 		if (Constants.NB_QUESTIONS_MAX == questions.size()) {
-			return false;
+			throw new TooManyException();
 		}
 
 		// if everything is ok, adding the question
@@ -134,14 +138,14 @@ public class BasicCard {
 	 * @throws TooLittleException	error if there is no question
 	 * @return true if the Question has been successfully removed from the list of questions
 	 * */
-	public boolean removeQuestion(String challenge, String answer){
+	public boolean removeQuestion(String challenge, String answer) throws TooLittleException, NotPresentException{
 
 		// creation of a question
 		Question newQuestion = new Question(this.author, this.theme, this.subject, challenge, answer);
 
 		// verification if the number of question is not 0
 		if (0 == questions.size()) {
-			return false;
+			throw new TooLittleException();
 		}
 
 		// scanning the list of questions to check if the question exists
@@ -154,7 +158,7 @@ public class BasicCard {
 
 		// if the question does not exist
 		if (x == false) {
-			return false;
+			throw new NotPresentException();
 		}
 
 		// removing the question

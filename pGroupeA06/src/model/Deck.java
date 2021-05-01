@@ -3,6 +3,11 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.Gson;
+
+import exceptions.AlreadyPresentException;
+import exceptions.NotPresentException;
+import exceptions.NullException;
+import exceptions.TooLittleException;
 import serialisation.Serialisation;
 
 /**
@@ -29,15 +34,16 @@ public class Deck {
 	 * Adds a BasicCard to the Deck
 	 * @param newBasicCard	BasicCard to add to the board
 	 * @throws AlreadyPresentException error if the basic card is already present
+	 * @throws NullException error if the basic card is null
 	 * @return true if the BasicCard is successfully added*/
-	public boolean addBasicCard(BasicCard newBasicCard) {
+	public boolean addBasicCard(BasicCard newBasicCard) throws AlreadyPresentException, NullException {
 		if(newBasicCard==null)
-			return false;
+			throw new NullException();
 		
 		//scanning the list of cards to check if the BasicCard already exists
 		for(BasicCard bc : cards) {
 			if(bc.equals(newBasicCard)) {
-				return false;
+				throw new AlreadyPresentException();
 			}
 		}
 		
@@ -55,11 +61,11 @@ public class Deck {
 	 * @throws TooLittleException error if there is no BasicCard
 	 * @return true if the BasicCard has been successfully removed from the Deck
 	 * */
-	public boolean removeBasicCard(BasicCard basicCard){
+	public boolean removeBasicCard(BasicCard basicCard) throws TooLittleException, NotPresentException{
 
 		//verification if the number of cards is not 0
 		if(0==cards.size()) {
-			return false;
+			throw new TooLittleException();
 		}
 		
 		//scanning the list of card to check if it exists
@@ -72,7 +78,7 @@ public class Deck {
 		
 		//if the card does not exist
 		if(x==false) {
-			return false;
+			throw new NotPresentException();
 		}
 		
 		//removing the question
@@ -86,6 +92,7 @@ public class Deck {
 	 * @return the list of BasicCard of the Deck
 	 * */
 	public List<BasicCard> getBasicCards(){
+		//no need to verify Duplicates because the list has none
 		ArrayList<BasicCard> newCards = new ArrayList<BasicCard>();
 		for(BasicCard bc : cards) {
 			newCards.add(bc.clone());
@@ -146,7 +153,10 @@ public class Deck {
 	public Deck clone(){
 		Deck newDeck = new Deck();
 		for(BasicCard bc : cards) {
-			newDeck.addBasicCard(bc.clone());
+			try {
+				newDeck.addBasicCard(bc.clone());
+			} catch (AlreadyPresentException | NullException e) {
+			}
 		}
 		return newDeck;
 	}

@@ -3,6 +3,7 @@ package vue;
 import java.util.ArrayList;
 import java.util.List;
 import application.SceneManager;
+import exceptions.AlreadyPresentException;
 import javafx.animation.Transition;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -128,7 +129,12 @@ public class AddPlayersAP extends AnchorPane {
 	        	else {
 	        		//checking if it's the first turn off the game (if there are no players and it's turn 0)
 	        		if(SceneManager.getCurrentGame().getPlayers().size()==0&&SceneManager.getCurrentGame().getTurn()==0) {
-	        			SceneManager.getCurrentGame().addPlayers(getPlayerNames());
+	        			try {
+							SceneManager.getCurrentGame().addPlayers(getPlayerNames());
+						} catch (AlreadyPresentException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 	        			SceneManager.getCurrentGame().setPlayerVisible();
 	        			SceneManager.getCurrentGame().turnRating(true,null);
 		        		

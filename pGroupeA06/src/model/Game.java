@@ -8,6 +8,10 @@ import application.SceneManager;
 import enumerations.CharAnswerRemoval;
 import enumerations.PlayerColors;
 import enumerations.Theme;
+import exceptions.AlreadyPresentException;
+import exceptions.NotPresentException;
+import exceptions.NullException;
+import exceptions.TooLittleException;
 import javafx.animation.Animation;
 import javafx.animation.PauseTransition;
 import javafx.animation.SequentialTransition;
@@ -48,7 +52,7 @@ public class Game {
 
 	/** Constructor of a Game*/
 	public Game() {
-		board = new Board().fromJson();
+		board = new Board().fromJson(Constants.BOARD_PATH);
 		this.players = new ArrayList<Player>();
 		this.turn = 0;
 		this.deck = new Deck().fromJson(Constants.DECK_PATH);
@@ -62,7 +66,7 @@ public class Game {
 	 * @throws AlreadyPresentException error if the player is already present
 	 * @return true if the Player has been successfully added to the list of questions
 	 * */
-	public boolean addPlayer(String name, int number){
+	public boolean addPlayer(String name, int number) throws AlreadyPresentException{
 		if (number < 0 || number > 7) {
 			return false;
 		} else {
@@ -74,7 +78,7 @@ public class Game {
 				// attributed
 				for (Player p : players) {
 					if (p.getColor().equals(PlayerColors.getColor(number))) {
-						return false;
+						throw new AlreadyPresentException();
 					}
 				}
 				players.add(new Player(name, number));
@@ -85,8 +89,9 @@ public class Game {
 	}
 
 	/** Adds the players to the list of players from the Class Game
-	 * @param playerNames 	The List of the names*/
-	public void addPlayers(List<String> playerNames) {
+	 * @param playerNames 	The List of the names
+	 * @throws AlreadyPresentException */
+	public void addPlayers(List<String> playerNames) throws AlreadyPresentException {
 		
 		int i = 0;
 		for (String s : playerNames) {
@@ -361,7 +366,12 @@ public class Game {
 		this.turnUp();
 
 		// add the card to the old deck
-		oldCards.addBasicCard(currentBC);
+		try {
+			oldCards.addBasicCard(currentBC);
+		} catch (AlreadyPresentException | NullException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// animation nextTurn
 		turnRating(false,tab);
 	}
@@ -592,7 +602,12 @@ public class Game {
 			// remove all the questions with the same theme in the deck of oldCards
 			for (BasicCard b : oldCards.getBasicCards()) {
 				if (b.getTheme().equals(th)) {
-					oldCards.removeBasicCard(b);
+					try {
+						oldCards.removeBasicCard(b);
+					} catch (TooLittleException | NotPresentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}
 			return drawCard(th);

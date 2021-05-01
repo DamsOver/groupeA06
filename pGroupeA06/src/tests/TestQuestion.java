@@ -22,7 +22,6 @@ class TestQuestion {
 	void tearDown() throws Exception {
 		question = null;
 	}
-
 	@Test
 	void testToJson() {
 		assertEquals(question.toJson(),"{\"author\":\"Damien\",\"theme\":\"INFORMATICS\",\"subject\":\"oop\",\"challenge\":\"What is the name of the process that takes care of automatic memory management?\",\"answer\":\"Garbage Collector\"}");

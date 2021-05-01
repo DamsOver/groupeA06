@@ -48,10 +48,11 @@ public class Board {
 
 	/**
 	 * Transforms a String (Json) into a Board Object
+	 * @param path Le chemin du deck
 	 * @return A new Board described by the String
 	 * */
-	public Board fromJson() {		
-		return Serialisation.loadBoardClear(Constants.BOARD_PATH);
+	public Board fromJson(String path) {		
+		return Serialisation.loadBoardClear(path);
 	}
 	
 	/**
@@ -61,4 +62,23 @@ public class Board {
 	public String toString() {
 		return "Board [Board=" + squares + "]";
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Board other = (Board) obj;
+		if (squares == null) {
+			if (other.squares != null)
+				return false;
+		} else if (!squares.equals(other.squares))
+			return false;
+		return true;
+	}
+	
+	
 }
