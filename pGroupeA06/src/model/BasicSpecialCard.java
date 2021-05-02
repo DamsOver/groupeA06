@@ -28,7 +28,6 @@ public class BasicSpecialCard extends SpecialCard{
 		String message = "";
 		int backwards,squares;
 		
-		
 		switch(randomNumber) {
 		case 1 :
 			//move the player forward or backwards 1 or 2 squares on the board
@@ -38,7 +37,8 @@ public class BasicSpecialCard extends SpecialCard{
 			//display the message
 			message=(backwards==0)?"SPECIAL CARD!\n You move "+squares+"\nsquares forward!":"SPECIAL CARD!\nYou move "+squares+"\nsquares backwards!";
 			p2 = message(message, Constants.ANIMATION_TIME_MESSAGE);
-			p1 = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_TURN, SceneManager.getStackTransititionAnimation(), "It's "+ SceneManager.getCurrentGame().getPlayerTurn().getName() +"'s turn!");
+			p1 = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_TURN, SceneManager.getStackTransititionAnimation(), 
+					"It's "+ SceneManager.getCurrentGame().getPlayerTurn().getName() +"'s turn!");
 			
 			squares=(backwards==0)?squares:-squares;
 			
@@ -67,7 +67,8 @@ public class BasicSpecialCard extends SpecialCard{
 			message = "SPECIAL CARD!\nYou skip your turn!";
 			p3 = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_TURN,SceneManager.getStackGame(), null);
 			p2 = message(message, Constants.ANIMATION_TIME_MESSAGE);
-			p1 = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_TURN, SceneManager.getStackTransititionAnimation(), "It's "+ SceneManager.getCurrentGame().getPlayerTurn().getName() +"'s turn!");
+			p1 = SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_TURN, SceneManager.getStackTransititionAnimation(), 
+					"It's "+ SceneManager.getCurrentGame().getPlayerTurn().getName() +"'s turn!");
 			a = new Animation[first.length+3];
 			
 			for(int i=0;i<first.length;i++) {
@@ -83,13 +84,9 @@ public class BasicSpecialCard extends SpecialCard{
 		return a;
 	}
 
-	/**
-	 * No need of an implementation for BasicSpecialCard
-	 * */
+	/**No need of an implementation for BasicSpecialCard*/
 	@Override
-	public void prelude() {
-		
-	}
+	public void prelude() {}
 
 	/**
 	 * Chooses the way the animation will be send/displayed

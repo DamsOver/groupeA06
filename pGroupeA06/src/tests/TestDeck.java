@@ -167,6 +167,7 @@ class TestDeck {
 		assertFalse(deck.equals(deck2));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	void testClone() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
 		

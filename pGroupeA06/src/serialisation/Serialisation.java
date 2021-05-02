@@ -5,7 +5,6 @@ import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.RandomAccessFile;
 import java.io.Serializable;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -77,34 +76,6 @@ public class Serialisation implements Serializable {
 		}
 		SceneManager.getCardsManagement().getTvCards().getItems().add(newbc);
 		saveDeckClear(deck, Constants.DECK_PATH);
-
-	}
-
-	private static void removeLastLine() {
-		RandomAccessFile f;
-		long length;
-		int tour = 0;
-		byte b;
-		while (tour < 2) {
-			try {
-				f = new RandomAccessFile(Constants.DECK_PATH, "rw");
-				length = f.length() - 1;
-				do {
-					length -= 1;
-					f.seek(length);
-					b = f.readByte();
-				} while (b != 10);
-				f.setLength(length + 1);
-				f.close();
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			tour++;
-		}
 
 	}
 

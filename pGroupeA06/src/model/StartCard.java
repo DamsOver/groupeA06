@@ -7,8 +7,7 @@ import javafx.animation.SequentialTransition;
 import util.Constants;
 
 
-/**
- * A SpecialCard which is used at the start of the game.
+/*** A SpecialCard which is used at the start of the game.
  * @author Martin*/
 public class StartCard extends SpecialCard {
 
@@ -34,23 +33,15 @@ public class StartCard extends SpecialCard {
 			for(int i = 0;i<first.length;i++) {
 				tab[i]=first[i];
 			}
-			
 			for(int i = first.length;i<first.length+3;i++) {
 				tab[i]=tabTemp[i-first.length];
 			}
-			
 			return tab;
 		}
-		else {
-			
-			return tabTemp;
-		}
+		else {return tabTemp;}
 	}
-
 	
-	/**
-	 * Draws a card, shows it, and show the player
-	 * */
+	/**Draws a card, shows it, and show the player*/
 	@Override
 	public void prelude() {
 		BasicCard bc = SceneManager.getCurrentGame().drawCard(Theme.getRandomTheme());
@@ -60,8 +51,7 @@ public class StartCard extends SpecialCard {
 		SceneManager.getRating().setLbTurn(SceneManager.getCurrentGame().getPlayerTurn().getName());
 	}
 
-	/**
-	 * Chooses the way the animation will be send/displayed
+	/**Chooses the way the animation will be send/displayed
 	 * @param a table containing the animation created in animCard*/
 	@Override
 	public void show(Animation[] a) {

@@ -3,36 +3,25 @@ package tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import application.SceneManager;
-import enumerations.Theme;
 import exceptions.AlreadyPresentException;
-import model.BasicCard;
 import model.Board;
 import model.Deck;
 import model.Game;
-import model.Player;
-import model.Square;
 import util.Constants;
 
 class TestGame {
 	private Game game;
-	private List<Player> players;
 	private Board board;
 	private Deck d;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		game = new Game();
-		Field field = game.getClass().getDeclaredField("players");
-		field.setAccessible(true);
-		players = (List<Player>) field.get(game);
 		
 		Field field2 = game.getClass().getDeclaredField("board");
 		field2.setAccessible(true);
@@ -47,14 +36,13 @@ class TestGame {
 	@AfterEach
 	void tearDown() throws Exception {
 		game = null;
-		players = null;
 	}
 
 	@Test
 	void testGetPlayers() throws AlreadyPresentException{
 		//Impossible because calls a method of player that uses the vue
-		Player p1 = new Player("Player1",1,new Square(Theme.INFORMATICS));
-		Player p2 = new Player("Player2",2,new Square(Theme.PLEASURE));
+		//Player p1 = new Player("Player1",1,new Square(Theme.INFORMATICS));
+		//Player p2 = new Player("Player2",2,new Square(Theme.PLEASURE));
 		//game.addPlayer("Player1",1);
 		//game.addPlayer("Player2",2);
 	}
@@ -113,8 +101,8 @@ class TestGame {
 		
 		Field field4 = d.getClass().getDeclaredField("cards");
 		field4.setAccessible(true);
-		@SuppressWarnings("unchecked")
-		ArrayList<BasicCard> bcs = (ArrayList<BasicCard>) field4.get(d);
+		//@SuppressWarnings("unchecked")
+		//ArrayList<BasicCard> bcs = (ArrayList<BasicCard>) field4.get(d);
 	}
 	
 	

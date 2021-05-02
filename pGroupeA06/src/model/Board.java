@@ -6,7 +6,6 @@ import java.util.List;
 import com.google.gson.Gson;
 
 import serialisation.Serialisation;
-import util.Constants;
 
 /**
  * A representation of the board of the game
@@ -80,5 +79,13 @@ public class Board {
 		return true;
 	}
 	
-	
+	public Board clone() {
+		Board b = new Board();
+		List<Square> s = new ArrayList<Square>();
+		for(Square sq : squares) {
+			s.add(sq);
+		}
+		b.squares=s;
+		return b;
+	}
 }

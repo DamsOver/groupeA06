@@ -3,19 +3,14 @@ package tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import application.SceneManager;
 import enumerations.PlayerColors;
 import enumerations.Theme;
-import javafx.animation.Animation;
 import model.Player;
-import model.Position;
 import model.Square;
 
 class TestPlayer {

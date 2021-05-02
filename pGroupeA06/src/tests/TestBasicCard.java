@@ -3,7 +3,6 @@ package tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
@@ -126,6 +125,7 @@ class TestBasicCard {
 	
 	
 
+	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	void testEqualsObject() {
 		assertTrue(bc.equals(bc));

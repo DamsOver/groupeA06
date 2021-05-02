@@ -72,7 +72,6 @@ public class Position {
 		return "Position [x=" + x + ", y=" + y + "]";
 	}
 	
-	
 	/**
 	 * Returns a Position with the fields having the exact same value as this Position.
 	 * @return a Position Cloned

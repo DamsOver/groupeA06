@@ -14,7 +14,6 @@ import util.Constants;
  * @author Martin*/
 public class FinishCard extends SpecialCard{
 
-
 	/** Creates an animation for the last turn
 	 * @param first the table containing the previous animations needed to be played before the ones the FinishCard creates
 	 * @return A table containing Animation of the whole turn*/
@@ -48,31 +47,23 @@ public class FinishCard extends SpecialCard{
 			for(int i = first.length;i<first.length+4;i++) {
 				tab[i]=tabTemp[i-first.length];
 			}
-			
 			return tab;
 		}
-		else {
-			
-			return tabTemp;
-		}
+		else {return tabTemp;}
 	}
 
-	/**
-	 * Sets the name of the player
-	 * */
+	/**Sets the name of the player*/
 	@Override
 	public void prelude() {
 		SceneManager.getRating().setLbTurn(SceneManager.getCurrentGame().getPlayerTurn().getName());
 	}
 
 	
-	/**
-	 * Chooses the way the animation will be send/displayed
+	/**Chooses the way the animation will be send/displayed
 	 * @param a table containing the animation created in animCard*/
 	@Override
 	public void show(Animation[] a) {
 		SequentialTransition st = new SequentialTransition(a);
-		st.play();
-		
+		st.play();	
 	}
 }

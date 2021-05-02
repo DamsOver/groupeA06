@@ -44,7 +44,6 @@ public abstract class SpecialCard {
 	 * */
 	public abstract Animation[] animCard(Animation[]first);
 	
-	
 	/**
 	 * Creates the steps needed before the creation of the animation
 	 * */

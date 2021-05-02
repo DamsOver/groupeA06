@@ -11,8 +11,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
@@ -32,7 +30,6 @@ public class QuestionAP extends AnchorPane {
 	private Timeline timeline;
 
 	private EventHandler<ActionEvent> clickBtn;
-	private EventHandler<KeyEvent> enterPressed;
 	
 
 	public QuestionAP() {

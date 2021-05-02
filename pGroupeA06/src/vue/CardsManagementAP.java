@@ -86,6 +86,7 @@ public class CardsManagementAP extends AnchorPane {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public TableView<BasicCard> getTvCards() {
 		if (tvCards == null) {
 			setDeck(Serialisation.loadDeckClear(Constants.DECK_PATH));

@@ -3,7 +3,6 @@ package tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -59,6 +58,7 @@ class TestSquare {
 		Square sq2 = new Square(Theme.INFORMATICS);
 		Field field2 = sq2.getClass().getDeclaredField("playersPosition");
 		field2.setAccessible(true);
+		@SuppressWarnings("unchecked")
 		List<Position> playersPosition2 = (List<Position>) field2.get(sq2);
 		
 		assertTrue(sq.equals(sq2));
