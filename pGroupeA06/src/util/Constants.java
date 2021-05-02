@@ -7,7 +7,7 @@ public interface Constants {
 								VOLUME_EFFECTS_FACTOR = 0.004;
 	
 	public static final int NB_QUESTIONS_MAX = 4,
-							SIZE_MAX_QUESTION = 60,
+							SIZE_MAX_QUESTION = 80,
 							NB_PLAYER = 8,
 							ANIMATION_TIME_START = 1500, //3000
 							ANIMATION_TIME_RATING = 1750,//2500
