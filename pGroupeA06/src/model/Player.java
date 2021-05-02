@@ -160,7 +160,6 @@ public class Player {
 		Square currentSquare = oldSquare;
 		Square targetSquare;
 		
-		
 		Animation[] a = new Animation[Math.abs(indexOfSquare-indexOfOldSquare)+1];
 		a[0]=SceneManager.getCurrentGame().animation(Constants.ANIMATION_TIME_START,
 				SceneManager.getStackGame(), null);

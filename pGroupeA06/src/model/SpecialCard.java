@@ -37,6 +37,7 @@ public abstract class SpecialCard {
 		return pauseTransition;
 	}
 	
+	
 	/**
 	 *Creates a specific animation for each individual SpecialCard
 	 *@param first the table containing the previous animations needed to be played before the one the SpecialCard creates
