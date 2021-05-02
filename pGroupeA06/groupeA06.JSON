@@ -133,7 +133,7 @@
           "author": "Martin",
           "theme": "PLEASURE",
           "subject": "Holidays",
-          "challenge": "In 2019, how much money did French vacationers spend per day? (�)",
+          "challenge": "In 2019, how much money did French vacationers spend per day?",
           "answer": "80"
         }
       ],
@@ -217,7 +217,7 @@
           "author": "Martin",
           "theme": "SCHOOL",
           "subject": "History",
-          "challenge": "According to the song \"Qui a eu cette id�e folle, un jour d\u0027inventer l\u0027\u0027�cole\", who invented school?",
+          "challenge": "According to the song \"Qui a eu cette idée folle, un jour d\u0027inventer l\u0027\u0027école\", who invented school?",
           "answer": "Charlemagne"
         },
         {
@@ -322,7 +322,7 @@
           "author": "Damien",
           "theme": "IMPROBABLE",
           "subject": "Food",
-          "challenge": "What size is the world\u0027s largest pizza? (m�)",
+          "challenge": "What size is the world\u0027s largest pizza? (m2)",
           "answer": "1261"
         },
         {
@@ -511,8 +511,8 @@
           "author": "Damien",
           "theme": "SCHOOL",
           "subject": "Mathematics",
-          "challenge": "Solve this : 32 + 12 % 5� \u003d ?",
-          "answer": "44"
+          "challenge": "Solve this : 32 + 12 % 5",
+          "answer": "34"
         },
         {
           "author": "Damien",
@@ -749,14 +749,14 @@
           "author": "Chiara",
           "theme": "PLEASURE",
           "subject": "The painting",
-          "challenge": "What�s the name of a mural painting?",
+          "challenge": "What''s the name of a mural painting?",
           "answer": "fresco"
         },
         {
           "author": "Chiara",
           "theme": "PLEASURE",
           "subject": "The painting",
-          "challenge": "What artistic current did �Impression, Sunrise� by Claude Monet initialize?",
+          "challenge": "What artistic current did \"Impression, Sunrise\" by Claude Monet initialize?",
           "answer": "Impressionism"
         },
         {
@@ -2646,7 +2646,7 @@
           "author": "Felouki",
           "theme": "PLEASURE",
           "subject": "Playing cards",
-          "challenge": "In the card game \"Lindor\", which card is the “yellow dwarf�??",
+          "challenge": "In the card game \"Lindor\", which card is the \"yellow dwarf\"?",
           "answer": "The seven of diamonds"
         },
         {
@@ -3157,7 +3157,7 @@
           "author": "Wauters",
           "theme": "PLEASURE",
           "subject": "Movies",
-          "challenge": "“Run! Forest! Run!!!�? Which movie does that quote come from?",
+          "challenge": "\"Run! Forest! Run!!!\" Which movie does that quote come from?",
           "answer": "Forrest Gump"
         },
         {
@@ -3178,7 +3178,7 @@
           "author": "Wauters",
           "theme": "PLEASURE",
           "subject": "Movies",
-          "challenge": "In the film Hunger Games, Haymitch gives Peeta and Katniss two advice. One “Stay in Love�?, what’s the other?",
+          "challenge": "In the film Hunger Games, Haymitch gives Peeta and Katniss two advice. One \"Stay in Love\", what’s the other?",
           "answer": "Make some friends"
         }
       ],
@@ -3199,7 +3199,7 @@
           "author": "Wauters",
           "theme": "PLEASURE",
           "subject": "Cartoons/Manga",
-          "challenge": "In “a silent voice�?, what is the deaf girl\u0027s name?",
+          "challenge": "In \"a silent voice\", what is the deaf girl\u0027s name?",
           "answer": "Shoko Nishimiya"
         },
         {
@@ -3507,14 +3507,14 @@
           "author": "Corentin Taranto",
           "theme": "PLEASURE",
           "subject": "Movies",
-          "challenge": "In the movie “The Hunger Games�?, which district are Katniss and Peeta from ?",
+          "challenge": "In the movie \"The Hunger Games\", which district are Katniss and Peeta from ?",
           "answer": "District 12"
         },
         {
           "author": "Corentin Taranto",
           "theme": "PLEASURE",
           "subject": "Movies",
-          "challenge": "Who played Cobb, the main character, in the movie “Inception�? ? ",
+          "challenge": "Who played Cobb, the main character, in the movie \"Inception\" ? ",
           "answer": "Leonardo DiCaprio"
         },
         {
@@ -3528,7 +3528,7 @@
           "author": "Corentin Taranto",
           "theme": "PLEASURE",
           "subject": "Movies",
-          "challenge": "Which movie does the quote “Mama always said life was like a box of chocolates. You never know what you\u0027re gonna get�? come from ?",
+          "challenge": "Which movie does the quote \"Mama always said life was like a box of chocolates. You never know what you\u0027re gonna get\" come from ?",
           "answer": "Forrest Gump"
         }
       ],
@@ -3556,7 +3556,7 @@
           "author": "Corentin Taranto",
           "theme": "PLEASURE",
           "subject": "Anime",
-          "challenge": "Which anime character said “My treasure? If you want it, you can have it. Search for it! I left everything this world has to offer there!�? ? ",
+          "challenge": "Which anime character said “My treasure? If you want it, you can have it. Search for it! I left everything this world has to offer there!\" ? ",
           "answer": "Gol D. Roger"
         },
         {
@@ -3598,7 +3598,7 @@
           "author": "Corentin Taranto",
           "theme": "SCHOOL",
           "subject": "Universities",
-          "challenge": "In “The Big Bang Theory�?, Sheldon, Leonard, Raj and Howard all work at a university. Which one is it ?",
+          "challenge": "In “The Big Bang Theory\", Sheldon, Leonard, Raj and Howard all work at a university. Which one is it ?",
           "answer": "Caltech"
         }
       ],
@@ -4151,7 +4151,7 @@
           "author": "Domenico Pasquale",
           "theme": "PLEASURE",
           "subject": "Series and anime",
-          "challenge": "Complete this title : “Once Upon a …�? ",
+          "challenge": "Complete this title : “Once Upon a …\" ",
           "answer": "Time"
         },
         {
@@ -5068,7 +5068,7 @@
           "author": "Raphael",
           "theme": "SCHOOL",
           "subject": "The French language around the world",
-          "challenge": "In Acadian French, an “abouette�? is fishing bait. True or false? ",
+          "challenge": "In Acadian French, an “abouette\" is fishing bait. True or false? ",
           "answer": "True"
         }
       ],
@@ -5299,7 +5299,7 @@
           "author": "Aleandro",
           "theme": "IMPROBABLE",
           "subject": "Toilet",
-          "challenge": "Which country calls the toilet “la Binoche�?? ",
+          "challenge": "Which country calls the toilet “la Binoche\"? ",
           "answer": "Belgium"
         },
         {
@@ -8001,7 +8001,7 @@
           "author": "Mathieu",
           "theme": "IMPROBABLE",
           "subject": "Perfumes",
-          "challenge": "Since Coco Chanel was superstitious, how was the mythic \"Chanel N�5\" launched on the market?",
+          "challenge": "Since Coco Chanel was superstitious, how was the mythic \"Chanel N5\" launched on the market?",
           "answer": "The fifth day of the fifth month of 1921"
         },
         {
@@ -8009,7 +8009,7 @@
           "theme": "IMPROBABLE",
           "subject": "Perfumes",
           "challenge": "What are the seven traditional olfactive families of perfume?",
-          "answer": "amber/oriental, chypre, floral bouquet, foug�re, leather, single floral, woody"
+          "answer": "amber/oriental, chypre, floral bouquet, fougere, leather, single floral, woody"
         }
       ],
       "author": "Mathieu",
