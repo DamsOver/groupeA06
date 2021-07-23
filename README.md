@@ -5,4 +5,6 @@ Le but était de réaliser un jeuxvidéo de type "Quizz" s'inspirant du jeu de s
 
 Projet importé de Bitbucket, certains comptes contributeur ont été perdus lors de l'import.
 
+Technologie : Java, JavaFX.
+
 Lien du projet bitbucket : https://bitbucket.org/Dams97/groupea06/
