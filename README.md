@@ -22,4 +22,6 @@ Projet bitbucket : https://bitbucket.org/Dams97/groupea06/
 
 <div>
 <img align=top src="https://github.com/damien-auversack/groupeA06/blob/master/presentation_pictures/picture_01.jpg" width="700px">
+<img align=top src="https://github.com/damien-auversack/groupeA06/blob/master/presentation_pictures/picture_02.jpg" width="700px">
 </div>
+
