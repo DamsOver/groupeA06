@@ -1,4 +1,4 @@
-# How much are you worth | Projet scolaire | [FR]
+# How-much-are-you-worth | Projet scolaire | [FR]
 
 ## Informations
 
