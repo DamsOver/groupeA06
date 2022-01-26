@@ -21,5 +21,5 @@ Projet bitbucket : https://bitbucket.org/Dams97/groupea06/
 ## Images de présentation :
 
 <div>
-<img align=top src="" width="250px">
+<img align=top src="https://github.com/damien-auversack/groupeA06/blob/master/presentation_pictures/picture_01.jpg" width="700px">
 </div>
